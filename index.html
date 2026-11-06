@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Wine Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--surface:#fbf3f5;--text:#3a0f1d;--muted:#7d5a66;--accent:#7a1f3d;--line:#ecd9df;--chip:#f5e6ea;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1c0a10;--surface:#2a1018;--text:#f8eef1;--muted:#c9a6b2;--accent:#e08aa6;--line:#4a2230;--chip:#3a1824;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1c0a10;--surface:#2a1018;--text:#f8eef1;--muted:#c9a6b2;--accent:#e08aa6;--line:#4a2230;--chip:#3a1824;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 56px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.6 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.1;margin:0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:6px;padding:10px 16px}
+nav a{white-space:nowrap;padding:6px 14px;border-radius:999px;font-size:14px;color:var(--muted);text-decoration:none}
+nav a:hover{background:var(--chip);color:var(--text)}
+header{text-align:center;padding:48px 22px 12px}
+header h1{font-size:clamp(38px,9vw,60px)}
+header p{color:var(--muted);max-width:32em;margin:12px auto 0}
+section{max-width:960px;margin:0 auto;padding:40px 18px 8px}
+h2{font-size:clamp(28px,6vw,38px);margin-bottom:16px}
+input[type=search]{width:100%;padding:13px 18px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit;margin-bottom:12px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.chip{border:1px solid var(--line);background:var(--chip);color:var(--text);padding:6px 16px;border-radius:999px;font:500 13px Inter,sans-serif;cursor:pointer}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.card h3{font-size:24px;display:flex;align-items:center;gap:10px}
+.dot{width:12px;height:12px;border-radius:50%;flex:none}
+.meta{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:6px 0 8px}
+.card p{margin:0 0 8px;font-size:14.5px;color:var(--muted)}
+.card b{color:var(--text);font-weight:500}
+.body{display:flex;gap:4px;margin-top:10px;align-items:center;font-size:12px;color:var(--muted)}
+.body i{width:18px;height:6px;border-radius:3px;background:var(--line)}
+.body i.f{background:var(--accent)}
+.empty{color:var(--muted);padding:20px 0}
+.wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);font-size:15px}
+th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+dl{margin:0}dt{font-weight:500;margin-top:14px}dd{margin:2px 0 0;color:var(--muted);font-size:15px}
+.pair{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+#pairOut{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:40px 20px}
+details{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+summary{cursor:pointer;font-size:13px;font-weight:500;color:var(--accent)}
+details p{margin:8px 0 0}
+.ch{grid-column:1/-1}.ch p{margin:0 0 4px;color:var(--muted);font-size:15px}
+details a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.pic{display:block;width:100%;height:84px;border-radius:10px;margin-bottom:14px}
+.pic{height:auto;border:1px solid var(--line)}.pic .sea{fill:var(--chip)}.pic .land{fill:var(--line);stroke:var(--muted);stroke-width:.6;vector-effect:non-scaling-stroke}.pic .halo{fill:var(--accent);opacity:.25}.pic .dot{fill:var(--accent);stroke:var(--surface);stroke-width:.8;vector-effect:non-scaling-stroke}
+.lab{fill:var(--text);stroke:var(--bg);stroke-width:.5em;paint-order:stroke;font-family:Inter,sans-serif;font-weight:500;pointer-events:none}
+#qo{gap:10px;margin-bottom:12px}.qo{font-size:14px;padding:10px 16px;text-align:left}.qo.ok{background:#2e7d4f;border-color:#2e7d4f;color:#fff}.qo.bad{background:#b3382c;border-color:#b3382c;color:#fff}
+.tgs h3{font-size:24px;margin-bottom:4px}.tgr{margin:12px 0 6px;font-size:13px;color:var(--muted)}.tgs .chips{margin:0;gap:6px}.tgs .chip{font-size:13px;padding:5px 13px}#tgo .chips{margin:10px 0 0}
+.wi{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--text);font:inherit}
+#sheets{display:none}
+@page{margin:12mm}
+@media print{body>*:not(#sheets){display:none!important}#sheets{display:block}html,body{background:#fff!important;padding:0}:root{padding:0!important}.sheet{color:#000;background:#fff;font:11px/1.35 Inter,Arial,sans-serif;break-after:page}.sheet:last-child{break-after:auto}.sheet h1{font:600 26px Georgia,serif;margin:0 0 4px;color:#000}.sheet .sm{color:#444;margin-bottom:8px}.sheet h2{font:600 12px Inter,Arial,sans-serif;text-transform:uppercase;letter-spacing:.08em;margin:10px 0 3px;border-bottom:1.5px solid #000;padding-bottom:2px;color:#000}.sheet table{width:100%;border-collapse:collapse;background:#fff;border:0}.sheet td{padding:3px 4px;border-bottom:1px solid #ccc;vertical-align:top;font-size:11px;text-align:left}.sheet td.l{width:26%;font-weight:600}.sheet .op{color:#555}.sheet .nt{min-height:50px;white-space:pre-wrap;border-bottom:1px solid #ccc}}
+.bar{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:13px}.bar span{width:112px;color:var(--muted);flex:none}.bar b{flex:1;height:8px;background:var(--line);border-radius:4px;overflow:hidden}.bar b i{display:block;height:100%;background:var(--accent)}
+@media print{.sheet .ph{float:right;max-height:100px;max-width:90px;margin:0 0 6px 10px;border:1px solid #999;object-fit:contain}}
+#shov{display:none;position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.55);align-items:flex-end;justify-content:center}.shc{background:var(--bg);color:var(--text);width:100%;max-width:520px;border-radius:20px 20px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px));max-height:92vh;overflow:auto}.shc img{max-width:100%;max-height:300px;border-radius:12px;display:block;margin:0 auto}.shc a.chip{text-decoration:none;display:inline-block}
+#age{position:fixed;inset:0;z-index:100;background:linear-gradient(#5a1230,#1c0a10);align-items:center;justify-content:center;padding:20px;overflow:auto}.agc{background:var(--surface);color:var(--text);width:100%;max-width:420px;border-radius:20px;padding:26px;text-align:center}.agl{display:block;text-align:left;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.vchart td.v,.vkey .v{text-align:center;font-weight:600}
+.v5{background:color-mix(in srgb,var(--accent) 80%,var(--surface));color:#fff}
+.v4{background:color-mix(in srgb,var(--accent) 45%,var(--surface))}
+.v3{background:color-mix(in srgb,var(--accent) 20%,var(--surface))}
+.v2{background:var(--chip);color:var(--muted)}
+.vkey{font-size:14px;color:var(--muted)}.vkey .v{display:inline-block;min-width:24px;padding:2px 6px;border-radius:4px;margin:0 4px 0 10px}.vkey .v:first-child{margin-left:0}
+.vnote{color:var(--muted);font-size:14px}
+.vchart td.v{padding:4px 2px}.vchart .n{display:block;line-height:1}
+.bt{width:20px;height:20px;display:block;margin:2px auto 0}.b45{transform:rotate(45deg)}.b90{transform:rotate(90deg)}
+.vkey .bt{display:inline-block;vertical-align:middle;margin:0 4px 0 10px;color:var(--text)}.vkey b{color:var(--text)}
+#mbtn{position:sticky;left:0;flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:36px;height:34px;margin-right:2px;padding:0;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--accent);cursor:pointer}
+#mov{position:fixed;inset:0;z-index:60;background:rgba(40,8,20,.5)}#mov[hidden]{display:none}
+#mdr{position:fixed;top:0;bottom:0;left:0;z-index:61;width:min(300px,82vw);background:var(--bg);color:var(--text);border-right:1px solid var(--line);padding:calc(14px + env(safe-area-inset-top,0px)) 0 calc(14px + env(safe-area-inset-bottom,0px));overflow-y:auto;transform:translateX(-100%);visibility:hidden;transition:transform .25s,visibility .25s}
+#mdr.open{transform:none;visibility:visible}
+#mdr .mh{display:flex;justify-content:space-between;align-items:center;padding:4px 20px 12px;border-bottom:1px solid var(--line);color:var(--accent)}
+#mcl{border:0;background:none;color:var(--muted);font-size:28px;line-height:1;cursor:pointer;padding:0 4px}
+#mdr a{display:block;padding:14px 20px;color:var(--text);text-decoration:none;border-bottom:1px solid var(--line)}#mdr a:hover,#mdr a:active{background:var(--chip);color:var(--accent)}
+@media (prefers-reduced-motion:reduce){#mdr{transition:none}}
+.off{display:none!important}
+#ttl{display:flex;align-items:center;padding:0 6px;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap}#ttl:hover{background:none;color:var(--accent)}
+.hgrid{max-width:960px;margin:0 auto;padding:8px 18px 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.hc{display:block;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 16px;color:var(--text);text-decoration:none}.hc:hover,.hc:active{border-color:var(--accent)}
+.hc b{display:block;color:var(--accent);font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:600;line-height:1.15;margin-bottom:6px}.hc span{font-size:13px;color:var(--muted)}
+#back{display:block;max-width:960px;margin:0 auto;padding:18px 18px 0;color:var(--accent);text-decoration:none;font-size:14px}
+.azl{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--accent);margin:26px 0 4px;scroll-margin-top:72px;border-bottom:1px solid var(--line)}
+#azbar{gap:6px;margin:0 0 6px}#azbar .chip{min-width:34px;padding:6px 8px;text-align:center}#azbar .dis{opacity:.35}
+.sb{grid-column:1/-1;display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:2px 4px 2px 18px;margin:0 0 6px}#az .sb{margin:10px 0 12px}.sb:focus-within{border-color:var(--accent)}
+.sb input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--text);font:16px Inter,sans-serif;padding:10px 0}
+.sbb{flex:0 0 auto;width:40px;height:40px;border:0;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.sres{grid-column:1/-1;margin:0 0 4px}.sres button{display:block;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 8px;color:var(--text);font:15px Inter,sans-serif;cursor:pointer}.sres button span{display:block;color:var(--muted);font-size:13px;margin-top:2px}.sres h4{margin:4px 2px 8px;font:500 13px Inter,sans-serif;color:var(--muted)}
+dt.hit{background:var(--chip);border-radius:6px;padding:2px 6px}
+.gct{font-size:13px}.gct td{vertical-align:top}.gct .gh th{background:var(--chip);text-align:left;color:var(--accent)}.gcd p{margin:10px 0}
+.subs{margin:12px 0 4px}.subs>b{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}.sc{display:inline-block;margin:0 6px 6px 0;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--chip);color:var(--text);font-size:13px;text-decoration:none}.sc:hover{border-color:var(--accent);color:var(--accent)}
+.rtabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:6px}.rtabs .chip{white-space:nowrap;flex:none}.rtl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}button.ccard{text-align:left;cursor:pointer;font:inherit;color:inherit;width:100%}
+</style>
+</head>
+<body>
+<nav><button id="mbtn" type="button" aria-label="Open categories" aria-expanded="false" aria-controls="mdr"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button><a id="ttl" href="#home">The Wine Reference</a></nav>
+<div id="mov" hidden></div>
+<aside id="mdr" aria-label="Categories" aria-hidden="true" inert><div class="mh"><b>Categories</b><button id="mcl" type="button" aria-label="Close categories">&times;</button></div><a href="#home">Home</a><a href="#grapes">Grape Varieties</a><a href="#winemap">Wine Map</a><a href="#regions">Wine Regions</a><a href="#pairing">What&#39;s for dinner?</a><a href="#serving">Serving Temperatures</a><a href="#vintage">Vintage Chart</a><a href="#glossary">Glossary</a><a href="#az">A–Z Glossary</a><a href="#study">Sommelier Study</a><a href="#careers">Sommelier Careers</a><a href="#about">About me</a><a href="#consultancy">Consultancy</a></aside>
+
+<header><h1>The Wine Reference</h1><p>A quick guide to grapes, food pairings, serving temperatures and the words you'll hear at the table.</p></header>
+<div id="home" class="hgrid"><div class="sb"><input id="hq" type="search" placeholder="Search categories and terms" aria-label="Search categories and glossary terms" autocomplete="off"><button type="button" class="sbb" data-f="hq" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div><div id="hres" class="sres off"></div><a class="hc" href="#grapes"><b>Grape Varieties</b><span>Flavors, styles and profiles</span></a><a class="hc" href="#winemap"><b>Wine Map</b><span>Where the wines come from</span></a><a class="hc" href="#regions"><b>Wine Regions</b><span>Explore regions and areas</span></a><a class="hc" href="#pairing"><b>What&#39;s for dinner?</b><span>Match wine to your meal</span></a><a class="hc" href="#serving"><b>Serving Temperatures</b><span>Serve each style at its best</span></a><a class="hc" href="#vintage"><b>Vintage Chart</b><span>Best years and when to drink</span></a><a class="hc" href="#glossary"><b>Glossary</b><span>Wine terms explained</span></a><a class="hc" href="#az"><b>A–Z Glossary</b><span>Wine terms from A to Z</span></a><a class="hc" href="#study"><b>Sommelier Study</b><span>Quizzes and tasting sheets</span></a><a class="hc" href="#careers"><b>Sommelier Careers</b><span>Paths and jobs in wine</span></a><a class="hc" href="#about"><b>About me</b><span>Diego Muntoni, head sommelier</span></a><a class="hc" href="#consultancy"><b>Consultancy</b><span>Wine services for venues and events</span></a></div>
+<a id="back" class="off" href="#home">&larr; Home</a>
+
+<section id="grapes">
+<h2>Grape Varieties</h2>
+<input type="search" id="q" placeholder="Search grapes, flavors or regions…">
+<div class="chips" id="chips"></div>
+<div class="grid" id="grid"></div>
+<button class="chip on" id="gmore" style="display:none;margin:16px auto 0"></button>
+</section>
+
+<section id="winemap">
+<h2>Wine Map</h2>
+<p style="color:var(--muted);margin:-6px 0 16px;font-size:15px">Pick a continent, then tap a dot or a name to explore.</p>
+<div class="chips" id="mchips"></div>
+<svg id="wmap" class="pic" role="img" aria-label="Map of wine regions"></svg>
+<div class="chips" id="mlist" style="margin-top:12px"></div>
+<div class="card" id="minfo" style="margin-top:4px">Tap a region to see its grapes and style.</div>
+</section>
+
+<section id="regions">
+<h2>Wine Regions</h2>
+<p style="color:var(--muted);margin:-6px 0 16px;font-size:15px">Start at the home page, then choose a country, a region and a subregion.</p>
+<input type="search" id="rq" placeholder="Search regions, countries, grapes or producers…">
+<div id="rnav" style="margin-top:12px"></div>
+<div id="rbody"></div>
+</section>
+
+<section id="pairing">
+<h2>What's for dinner?</h2>
+<div class="pair" id="foods"></div>
+<div id="pairOut">Pick a dish to see wines that suit it.</div>
+</section>
+
+<section id="serving">
+<h2>Serving Temperatures</h2>
+<div class="wrap"><table>
+<tr><th>Style</th><th>Temp</th><th>Tip</th></tr>
+<tr><td>Sparkling</td><td>6–8°C / 43–46°F</td><td>Chill about 3 hours</td></tr>
+<tr><td>Light white &amp; rosé</td><td>7–10°C / 45–50°F</td><td>Fridge for 2–3 hours</td></tr>
+<tr><td>Full white</td><td>10–13°C / 50–55°F</td><td>Take out 20 minutes early</td></tr>
+<tr><td>Light red</td><td>12–14°C / 54–57°F</td><td>Brief chill helps</td></tr>
+<tr><td>Full red</td><td>15–18°C / 59–64°F</td><td>Cooler than room temp</td></tr>
+</table></div>
+</section>
+
+<section id="vintage">
+<h2>Vintage Chart</h2>
+<p class="vnote">Weather shapes each harvest. Ratings and drinking windows are broad, simplified summaries of the general view as of today, not verdicts on any single bottle. Producer and wine level matter as much as the year.</p>
+<div class="wrap"><table class="vchart">
+<tr><th>Region</th><th>2016</th><th>2017</th><th>2018</th><th>2019</th><th>2020</th><th>2021</th><th>2022</th><th>2023</th></tr>
+<tr><th>Bordeaux</th><td class="v v5" title="Great, Drink or keep" aria-label="5, Great, Drink or keep"><span class="n">5</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v3" title="Fair, Drink now" aria-label="3, Fair, Drink now"><span class="n">3</span><svg class="bt b0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v3" title="Fair, Drink now" aria-label="3, Fair, Drink now"><span class="n">3</span><svg class="bt b0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Keep" aria-label="4, Good, Keep"><span class="n">4</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td></tr><tr><th>Burgundy (red)</th><td class="v v3" title="Fair, Drink or keep" aria-label="3, Fair, Drink or keep"><span class="n">3</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink now" aria-label="4, Good, Drink now"><span class="n">4</span><svg class="bt b0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v5" title="Great, Drink or keep" aria-label="5, Great, Drink or keep"><span class="n">5</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v3" title="Fair, Drink now" aria-label="3, Fair, Drink now"><span class="n">3</span><svg class="bt b0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Keep" aria-label="4, Good, Keep"><span class="n">4</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td></tr><tr><th>Northern Rhône</th><td class="v v5" title="Great, Drink or keep" aria-label="5, Great, Drink or keep"><span class="n">5</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink now" aria-label="4, Good, Drink now"><span class="n">4</span><svg class="bt b0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink now" aria-label="4, Good, Drink now"><span class="n">4</span><svg class="bt b0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Keep" aria-label="4, Good, Keep"><span class="n">4</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Keep" aria-label="4, Good, Keep"><span class="n">4</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td></tr><tr><th>Piedmont</th><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v3" title="Fair, Drink now" aria-label="3, Fair, Drink now"><span class="n">3</span><svg class="bt b0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v3" title="Fair, Drink now" aria-label="3, Fair, Drink now"><span class="n">3</span><svg class="bt b0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Keep" aria-label="4, Good, Keep"><span class="n">4</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Keep" aria-label="4, Good, Keep"><span class="n">4</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Keep" aria-label="4, Good, Keep"><span class="n">4</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td></tr><tr><th>Tuscany</th><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v3" title="Fair, Drink now" aria-label="3, Fair, Drink now"><span class="n">3</span><svg class="bt b0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td></tr><tr><th>Napa Valley</th><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v2" title="Poor, Drink now" aria-label="2, Poor, Drink now"><span class="n">2</span><svg class="bt b0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v5" title="Great, Keep" aria-label="5, Great, Keep"><span class="n">5</span><svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td><td class="v v4" title="Good, Drink or keep" aria-label="4, Good, Drink or keep"><span class="n">4</span><svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg></td></tr>
+</table></div>
+<p class="vkey"><b>Quality</b> <span class="v v5">5</span> Great <span class="v v4">4</span> Good <span class="v v3">3</span> Fair <span class="v v2">2</span> Poor</p>
+<p class="vkey"><b>Bottle</b> <svg class="bt b0" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg> Drink now <svg class="bt b45" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg> Drink or keep <svg class="bt b90" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 1h4v6l3 3v12a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V10l3-3z"/></svg> Keep</p>
+<p class="vnote">Examples: 2020 Napa was hit by wildfire smoke, and 2021 Burgundy was cut by spring frost.</p>
+</section>
+
+<section id="glossary">
+<h2>Glossary</h2>
+<dl>
+<dt>Tannin</dt><dd>Compounds from skins and seeds that give red wine its grip and dryness.</dd>
+<dt>Acidity</dt><dd>The freshness that makes your mouth water. High acidity feels crisp.</dd>
+<dt>Body</dt><dd>How heavy or light the wine feels, from light as skim milk to rich as cream.</dd>
+<dt>Terroir</dt><dd>The mix of soil, climate and landscape that shapes a wine's character.</dd>
+<dt>Vintage</dt><dd>The year the grapes were harvested.</dd>
+<dt>Brut</dt><dd>A dry style of sparkling wine with very little sugar.</dd>
+<dt>Finish</dt><dd>How long the flavors linger after you swallow.</dd>
+<dt>Decanting</dt><dd>Pouring wine into another vessel to aerate it or separate sediment.</dd>
+</dl>
+</section>
+<section id="az">
+<h2>A–Z Glossary</h2>
+<div class="sb"><input id="aq" type="search" placeholder="Search terms" aria-label="Search glossary terms" autocomplete="off"><button type="button" class="sbb" data-f="aq" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div><p id="anone" class="vnote off">No matching terms.</p>
+<div class="chips" id="azbar"><button type="button" class="chip" data-l="A">A</button><button type="button" class="chip" data-l="B">B</button><button type="button" class="chip" data-l="C">C</button><button type="button" class="chip" data-l="D">D</button><button type="button" class="chip" data-l="E">E</button><button type="button" class="chip" data-l="F">F</button><button type="button" class="chip" data-l="G">G</button><button type="button" class="chip" data-l="H">H</button><button type="button" class="chip" data-l="I">I</button><button type="button" class="chip" data-l="J">J</button><button type="button" class="chip" data-l="K">K</button><button type="button" class="chip" data-l="L">L</button><button type="button" class="chip" data-l="M">M</button><button type="button" class="chip" data-l="N">N</button><button type="button" class="chip" data-l="O">O</button><button type="button" class="chip" data-l="P">P</button><button type="button" class="chip" data-l="Q">Q</button><button type="button" class="chip" data-l="R">R</button><button type="button" class="chip" data-l="S">S</button><button type="button" class="chip" data-l="T">T</button><button type="button" class="chip" data-l="U">U</button><button type="button" class="chip" data-l="V">V</button><button type="button" class="chip" data-l="W">W</button><button type="button" class="chip" data-l="X">X</button><button type="button" class="chip" data-l="Y">Y</button><button type="button" class="chip" data-l="Z">Z</button></div>
+<h3 class="azl" id="az-A">A</h3><dl><dt>Abboccato</dt><dd>Italian for slightly sweet.</dd><dt>Acidity</dt><dd>The freshness that makes your mouth water. High acidity feels crisp.</dd><dt>Aeration</dt><dd>Letting wine meet air so its aromas open up and its flavors soften.</dd><dt>Alcohol by volume (ABV)</dt><dd>The percentage of a wine that is alcohol, shown on the label.</dd><dt>Amarone</dt><dd>A rich Italian red from partly dried grapes in Valpolicella.</dd><dt>Amontillado</dt><dd>Sherry that starts under flor, then ages with air contact. Nutty and amber.</dd><dt>Angel's share</dt><dd>The wine lost to evaporation while it ages in barrel.</dd><dt>AOC</dt><dd>Appellation d'Origine Contrôlée: France's system of protected wine regions and the rules for each.</dd><dt>Aperitif</dt><dd>A drink served before a meal to stimulate the appetite.</dd><dt>Appassimento</dt><dd>Italian method of drying harvested grapes on racks to concentrate sugar and flavor.</dd><dt>Appellation</dt><dd>A legally defined area where grapes are grown, with rules on what can be made there.</dd><dt>Aroma</dt><dd>A smell that comes from the grape itself, such as fruit or flowers.</dd><dt>Assemblage</dt><dd>The blending of different wines or grapes into the final wine.</dd><dt>Astringent</dt><dd>A drying, grippy feeling in the mouth, usually caused by tannin.</dd><dt>Auslese</dt><dd>German Prädikat for very ripe, selected bunches. Riper than Spätlese, often sweet.</dd><dt>Austere</dt><dd>Firm, lean and restrained, with little fruit or softness.</dd><dt>Autolysis</dt><dd>The breakdown of dead yeast cells, which adds bready, biscuit notes to sparkling wine.</dd><dt>AVA</dt><dd>American Viticultural Area: a US wine region defined by geography.</dd></dl><h3 class="azl" id="az-B">B</h3><dl><dt>Balance</dt><dd>How well acidity, sweetness, tannin, alcohol and fruit sit together without one standing out.</dd><dt>Balthazar</dt><dd>A 12-litre bottle, equal to 16 standard bottles.</dd><dt>Barrel aging</dt><dd>Maturing wine in oak barrels, which adds flavors like vanilla and spice and lets in tiny amounts of air.</dd><dt>Barrique</dt><dd>A 225-litre oak barrel, the classic Bordeaux size.</dd><dt>Bâtonnage</dt><dd>Stirring the lees in a barrel or tank to add richness and texture.</dd><dt>Beerenauslese</dt><dd>Sweet German wine from individually selected, very ripe, often botrytized berries.</dd><dt>Biodynamic</dt><dd>A farming approach that treats the vineyard as one living system and follows a set calendar of tasks.</dd><dt>Bitter</dt><dd>A sharp, unpleasant taste, often from tannin or unripe skins.</dd><dt>Blanc de Blancs</dt><dd>A white wine, often sparkling, made only from white grapes. In Champagne this means Chardonnay.</dd><dt>Blanc de Noirs</dt><dd>A white or pale wine made from dark-skinned grapes, with the juice kept away from the skins.</dd><dt>Blend</dt><dd>A wine made from more than one grape variety, vineyard or batch.</dd><dt>Blind tasting</dt><dd>Tasting wine without seeing the label, to judge it on its own merits.</dd><dt>Bodega</dt><dd>A Spanish winery or wine storehouse.</dd><dt>Body</dt><dd>How heavy or light the wine feels, from light as skim milk to rich as cream.</dd><dt>Bordeaux blend</dt><dd>A red blend of grapes such as Cabernet Sauvignon, Merlot and Cabernet Franc.</dd><dt>Botrytis</dt><dd>A mold that shrivels grapes and concentrates their sugar, used for sweet wines like Sauternes. Also called noble rot.</dd><dt>Bottle shock</dt><dd>A temporary dullness after bottling or travel that fades with rest.</dd><dt>Bouquet</dt><dd>The smells that develop as a wine ages in barrel and bottle.</dd><dt>Brettanomyces</dt><dd>A yeast that in small amounts adds savory notes, and in larger amounts barnyard or medicinal smells.</dd><dt>Brix</dt><dd>A scale measuring sugar in grape juice. Higher Brix means more potential alcohol.</dd><dt>Brut</dt><dd>A dry style of sparkling wine with very little sugar.</dd><dt>Bud break</dt><dd>The moment in spring when buds on the vines open and growth begins.</dd><dt>Buttery</dt><dd>A creamy, butter-like note, often from malolactic fermentation in Chardonnay.</dd></dl><h3 class="azl" id="az-C">C</h3><dl><dt>Canopy management</dt><dd>Adjusting a vine's leaves and shoots to control sunlight, airflow and ripening.</dd><dt>Cap</dt><dd>The mass of skins and solids that floats on top of fermenting red wine.</dd><dt>Cap Classique</dt><dd>South African sparkling wine made by the traditional method.</dd><dt>Capsule</dt><dd>The foil or plastic covering over a bottle's cork.</dd><dt>Carbonic maceration</dt><dd>Fermenting whole, uncrushed grapes in a carbon dioxide-rich tank. It gives light, fruity reds, as in Beaujolais.</dd><dt>Cassis</dt><dd>The aroma of blackcurrant, common in Cabernet Sauvignon.</dd><dt>Cava</dt><dd>Spanish sparkling wine made by the traditional method, mainly in Catalonia.</dd><dt>Cellar</dt><dd>A cool, dark place to store wine. Also the winery's area for making and storing it.</dd><dt>Chalky</dt><dd>A dry, powdery texture or a flavor like chalk, often noted in wines from limestone soils.</dd><dt>Chaptalization</dt><dd>Adding sugar to grape juice before fermentation to raise the final alcohol level.</dd><dt>Charmat</dt><dd>The tank method of making sparkling wine, with the second fermentation in a large tank.</dd><dt>Château</dt><dd>A wine estate, especially in Bordeaux.</dd><dt>Claret</dt><dd>The traditional British word for red Bordeaux.</dd><dt>Climat</dt><dd>A named, precisely defined vineyard plot in Burgundy.</dd><dt>Clone</dt><dd>A genetic variant of a grape variety chosen for traits like yield or flavor.</dd><dt>Clos</dt><dd>A vineyard enclosed by a wall, common in Burgundy.</dd><dt>Cold soak</dt><dd>Chilling crushed grapes with their skins before fermentation to extract color and fruit.</dd><dt>Complex</dt><dd>A wine with many layers of aroma and flavor that change as you taste it.</dd><dt>Cooked</dt><dd>A flat, stewed fruit flavor from too much heat in the vineyard or storage.</dd><dt>Cooperage</dt><dd>The craft of making barrels, or the place where they are made.</dd><dt>Cooperative</dt><dd>A winery owned by a group of growers who pool their grapes.</dd><dt>Corkage</dt><dd>A fee a restaurant charges for opening a bottle you bring yourself.</dd><dt>Corked</dt><dd>A wine spoiled by a compound called TCA, giving a smell of wet cardboard or damp cellar.</dd><dt>Coulure</dt><dd>Poor fruit set after flowering, which reduces the size of the crop.</dd><dt>Cover crop</dt><dd>Plants grown between vine rows to protect soil and encourage biodiversity.</dd><dt>Creamy</dt><dd>A smooth, rounded texture, often from lees or malolactic fermentation.</dd><dt>Crémant</dt><dd>A French sparkling wine made by the traditional method outside Champagne.</dd><dt>Crianza</dt><dd>A Spanish aging category with a minimum time in barrel and bottle. Rules vary by region.</dd><dt>Crisp</dt><dd>Fresh and lively, with refreshing acidity.</dd><dt>Cru</dt><dd>French for 'growth'. It marks a vineyard or estate of recognized quality.</dd><dt>Crust</dt><dd>The thick sediment that forms in unfiltered Vintage Port.</dd><dt>Cuvaison</dt><dd>The time a red wine spends in contact with its skins during fermentation.</dd><dt>Cuvée</dt><dd>A specific blend or batch of wine. In Champagne it can also mean the first pressing of the juice.</dd></dl><h3 class="azl" id="az-D">D</h3><dl><dt>Decanting</dt><dd>Pouring wine into another vessel to aerate it or separate sediment.</dd><dt>Dégorgement</dt><dd>French for disgorgement.</dd><dt>Demi-sec</dt><dd>Medium-sweet. For sparkling wine it is sweeter than dry.</dd><dt>Dense</dt><dd>Packed with concentrated flavor and color.</dd><dt>Dessert wine</dt><dd>A sweet wine served with or in place of dessert.</dd><dt>Digestif</dt><dd>A drink, often a spirit, served after a meal to aid digestion.</dd><dt>Disgorgement</dt><dd>Removing the yeast sediment from a bottle of sparkling wine after aging.</dd><dt>DO</dt><dd>Denominación de Origen: Spain's system of protected wine regions.</dd><dt>DOC / DOCG</dt><dd>Italy's quality labels for protected wine areas. DOCG has stricter rules and testing.</dd><dt>Domaine</dt><dd>A wine estate, especially in Burgundy.</dd><dt>Dosage</dt><dd>The small amount of sugar and wine added to sparkling wine just before final corking.</dd><dt>Doux</dt><dd>French for sweet. The sweetest level of Champagne.</dd><dt>Dry</dt><dd>A wine with little or no sugar left after fermentation.</dd><dt>Dumb</dt><dd>Describes a wine that is temporarily closed, with little aroma or flavor.</dd></dl><h3 class="azl" id="az-E">E</h3><dl><dt>Earthy</dt><dd>Aromas or flavors of soil, mushrooms or forest floor.</dd><dt>Elegant</dt><dd>Refined and balanced, with finesse rather than power.</dd><dt>Élevage</dt><dd>The aging and handling of wine between fermentation and bottling.</dd><dt>En primeur</dt><dd>Buying wine as a future, months or years before it is bottled and released.</dd><dt>Estate bottled</dt><dd>Wine grown, made and bottled by the same producer at one property.</dd><dt>Esters</dt><dd>Aroma compounds formed during fermentation and aging that give fruity and floral notes.</dd><dt>Extra brut</dt><dd>A very dry style of sparkling wine, drier than brut.</dd><dt>Extra dry</dt><dd>For sparkling wine, a style slightly sweeter than brut.</dd><dt>Extract</dt><dd>The dissolved solids in a wine, such as color, tannin and sugar, that give it depth.</dd></dl><h3 class="azl" id="az-F">F</h3><dl><dt>Fat</dt><dd>A full, heavy wine with low acidity.</dd><dt>Fermentation</dt><dd>The process in which yeast turns sugar into alcohol and carbon dioxide.</dd><dt>Field blend</dt><dd>A vineyard planted with several varieties that are harvested and fermented together.</dd><dt>Filtration</dt><dd>Passing wine through a filter to remove particles and microbes before bottling.</dd><dt>Fining</dt><dd>Adding a substance to clear a wine of tiny particles that cause cloudiness or harshness.</dd><dt>Finish</dt><dd>How long the flavors linger after you swallow.</dd><dt>Fino</dt><dd>A dry, pale Sherry aged under a layer of flor.</dd><dt>Firm</dt><dd>A wine with noticeable tannin or acidity that gives it a solid structure.</dd><dt>Flabby</dt><dd>A wine that tastes limp because it lacks acidity.</dd><dt>Flat</dt><dd>Lacking freshness or, in sparkling wine, lacking bubbles.</dd><dt>Fleshy</dt><dd>A soft, plump wine with ripe fruit.</dd><dt>Flight</dt><dd>A group of wines tasted together for comparison.</dd><dt>Flinty</dt><dd>A dry, smoky, struck-stone note often found in Sauvignon Blanc and Chablis.</dd><dt>Flor</dt><dd>A layer of yeast that grows on some Sherries and protects them from air.</dd><dt>Flute</dt><dd>A tall, narrow glass used for sparkling wine.</dd><dt>Fortified wine</dt><dd>Wine with added spirit, such as Port, Sherry or Madeira.</dd><dt>Foxy</dt><dd>The grapey, musky aroma typical of some American grapes such as Concord.</dd><dt>Free-run juice</dt><dd>The juice that flows from crushed grapes without pressing.</dd><dt>Frizzante</dt><dd>Italian for lightly sparkling.</dd><dt>Fruit set</dt><dd>The stage after flowering when tiny berries begin to form.</dd><dt>Fruit-forward</dt><dd>A style where ripe fruit flavors lead over earthy or oaky notes.</dd><dt>Full-bodied</dt><dd>A wine that feels rich and heavy in the mouth.</dd></dl><h3 class="azl" id="az-G">G</h3><dl><dt>Glycerol</dt><dd>A natural compound in wine that adds smoothness and body.</dd><dt>Grafting</dt><dd>Joining a vine variety onto a separate rootstock.</dd><dt>Gran Reserva</dt><dd>Spain's top aging category, with long aging in barrel and bottle.</dd><dt>Grand Cru</dt><dd>The top tier of vineyards in Burgundy and Alsace. In Bordeaux the term is used differently by each area.</dd><dt>Grand vin</dt><dd>The main, top-tier wine of an estate.</dd><dt>Green</dt><dd>Flavors of unripe fruit, leaves or stems.</dd><dt>Green harvest</dt><dd>Cutting off some unripe bunches to reduce yield and concentrate flavor.</dd><dt>Grippy</dt><dd>A wine whose tannins grab the mouth.</dd><dt>Grower Champagne</dt><dd>Champagne made by the same estate that grows the grapes.</dd></dl><h3 class="azl" id="az-H">H</h3><dl><dt>Hang time</dt><dd>How long grapes stay on the vine before picking.</dd><dt>Hard</dt><dd>A wine with harsh tannin or acidity.</dd><dt>Harvest</dt><dd>Picking the grapes, usually late summer to autumn. Also called vendange.</dd><dt>Heady</dt><dd>A wine with noticeably high alcohol.</dd><dt>Herbaceous</dt><dd>Aromas of fresh herbs, grass or green pepper.</dd><dt>Hock</dt><dd>A traditional British word for German white wine.</dd><dt>Hollow</dt><dd>A wine with a start and finish but little in the middle.</dd><dt>Horizontal tasting</dt><dd>Comparing wines from the same vintage but different producers.</dd><dt>Hot</dt><dd>A wine whose alcohol gives a burning feel.</dd><dt>Hybrid grape</dt><dd>A grape produced by crossing different species.</dd><dt>Hydrometer</dt><dd>A tool for measuring the sugar in juice to track ripeness and fermentation.</dd></dl><h3 class="azl" id="az-I">I</h3><dl><dt>Ice wine</dt><dd>Sweet wine from grapes frozen on the vine and pressed while still frozen. Eiswein in German.</dd><dt>IGT / IGP</dt><dd>Wine labels for a wider regional area, often allowing more freedom than DOC or AOC.</dd><dt>Inky</dt><dd>A very dark, deeply colored wine.</dd><dt>Integrated</dt><dd>A wine where oak, tannin and acidity blend smoothly with the fruit.</dd><dt>Isinglass</dt><dd>A fining agent made from fish bladders.</dd></dl><h3 class="azl" id="az-J">J</h3><dl><dt>Jammy</dt><dd>A red wine with very ripe, concentrated, cooked-fruit flavors.</dd><dt>Jeroboam</dt><dd>A large bottle holding 3 litres. For Bordeaux it can be 4.5 litres.</dd><dt>Jug wine</dt><dd>Inexpensive wine sold in large bottles.</dd></dl><h3 class="azl" id="az-K">K</h3><dl><dt>Kabinett</dt><dd>The lightest German Prädikat level, from fully ripe grapes.</dd><dt>Kosher wine</dt><dd>Wine made under Jewish dietary law.</dd><dt>Kvevri</dt><dd>A large buried clay vessel used for making wine in Georgia. Also spelled qvevri.</dd></dl><h3 class="azl" id="az-L">L</h3><dl><dt>Lactic</dt><dd>Related to lactic acid, which gives a soft, creamy impression.</dd><dt>Late harvest</dt><dd>Grapes picked later than usual for extra sugar, often used for sweet wines.</dd><dt>Lean</dt><dd>A wine with high acidity and little fruit or body.</dd><dt>Lees</dt><dd>The dead yeast and grape particles that settle after fermentation. Resting on them adds body and a bready note.</dd><dt>Legs</dt><dd>The streaks that run down the glass after swirling. They reflect alcohol and sugar, not quality.</dd><dt>Length</dt><dd>Another way to describe the finish. A long wine keeps its flavor well after you swallow.</dd><dt>Lieu-dit</dt><dd>A named place or parcel within a vineyard area, especially in France.</dd><dt>Lifted</dt><dd>A wine whose aromas feel bright and fragrant.</dd><dt>Light-bodied</dt><dd>A wine that feels light and delicate in the mouth.</dd><dt>Liqueur de tirage</dt><dd>The mix of yeast and sugar added to still wine to start the second fermentation in the bottle.</dd><dt>Lively</dt><dd>Fresh and energetic, with bright acidity.</dd><dt>Lush</dt><dd>A rich, soft wine with plenty of ripe fruit.</dd></dl><h3 class="azl" id="az-M">M</h3><dl><dt>Maceration</dt><dd>Soaking grape skins in juice or wine to draw out color, flavor and tannin.</dd><dt>Madeirized</dt><dd>A wine cooked or oxidized so that it tastes like Madeira, nutty and caramelized.</dd><dt>Magnum</dt><dd>A bottle holding 1.5 litres, equal to two standard bottles.</dd><dt>Malolactic fermentation</dt><dd>A step that turns sharp malic acid into softer lactic acid. It gives a creamy feel.</dd><dt>Medium-bodied</dt><dd>A wine between light and full in weight.</dd><dt>Mercaptans</dt><dd>Sulfur compounds that give smells of rotten onion, garlic or rubber.</dd><dt>Méthode traditionnelle</dt><dd>The method of making sparkling wine by a second fermentation in the bottle, as in Champagne.</dd><dt>Methuselah</dt><dd>A 6-litre bottle, equal to 8 standard bottles.</dd><dt>Micro-oxygenation</dt><dd>Adding tiny controlled amounts of oxygen to soften tannin and stabilize color.</dd><dt>Mid-palate</dt><dd>The middle part of the tasting experience, between the first taste and the finish.</dd><dt>Mildew</dt><dd>A fungal vine disease. Powdery and downy mildew are the main types.</dd><dt>Mineral</dt><dd>A word for flavors like wet stone, chalk or salt. Its exact meaning is debated.</dd><dt>Mis en bouteille au château</dt><dd>Bottled at the estate where the grapes were grown.</dd><dt>Monopole</dt><dd>A vineyard owned entirely by one producer, mainly in Burgundy.</dd><dt>Mousse</dt><dd>The foam and texture of the bubbles in sparkling wine.</dd><dt>Mouthfeel</dt><dd>The texture of a wine: its weight, smoothness, grip and warmth.</dd><dt>Mouthwatering</dt><dd>Describes wine with acidity that makes you salivate.</dd><dt>Muselet</dt><dd>The wire cage that holds a sparkling wine's cork in place.</dd><dt>Must</dt><dd>Freshly crushed grape juice, including skins, seeds and pulp, before it becomes wine.</dd><dt>Mutage</dt><dd>Adding spirit to stop fermentation, used to make fortified wines.</dd></dl><h3 class="azl" id="az-N">N</h3><dl><dt>Natural wine</dt><dd>Wine made with minimal intervention. There is no single legal definition.</dd><dt>Nebuchadnezzar</dt><dd>A 15-litre bottle, equal to 20 standard bottles.</dd><dt>Négociant</dt><dd>A merchant who buys grapes or wine and sells under their own label.</dd><dt>New World</dt><dd>Wine regions outside Europe's traditional areas, such as the US, Australia and Chile.</dd><dt>Noble grape</dt><dd>A name for classic grapes like Cabernet Sauvignon, Pinot Noir and Chardonnay.</dd><dt>Noble rot</dt><dd>See Botrytis.</dd><dt>Non-vintage (NV)</dt><dd>A wine blended from several years rather than one, common in Champagne.</dd><dt>Nose</dt><dd>The overall smell of a wine.</dd><dt>Nouveau</dt><dd>A very young wine released soon after harvest, such as Beaujolais Nouveau.</dd><dt>Nutty</dt><dd>Aromas of almonds, hazelnuts or walnuts, often from aging or oxidation.</dd></dl><h3 class="azl" id="az-O">O</h3><dl><dt>Oak</dt><dd>The wood used for barrels. It adds flavors such as vanilla, toast and spice.</dd><dt>Oaky</dt><dd>A wine with strong flavors from oak, such as vanilla, toast or smoke.</dd><dt>Oenology</dt><dd>The science of wine and winemaking.</dd><dt>Off-dry</dt><dd>Slightly sweet, just past dry.</dd><dt>Old vines</dt><dd>Vines that give smaller crops of more concentrated fruit. There is no legal age, though some regions define it.</dd><dt>Old World</dt><dd>Europe's traditional wine regions, such as France, Italy and Spain.</dd><dt>Oloroso</dt><dd>A dark, rich Sherry aged with air contact and no flor.</dd><dt>Opulent</dt><dd>Rich, ripe and luxurious.</dd><dt>Orange wine</dt><dd>White grapes fermented with their skins, which gives an amber color and some tannin.</dd><dt>Organic wine</dt><dd>Wine from grapes grown without synthetic pesticides or fertilizers. Rules vary by country.</dd><dt>Oxidation</dt><dd>Exposure to too much air, which dulls fruit and can give flavors of bruised apple or nuts.</dd></dl><h3 class="azl" id="az-P">P</h3><dl><dt>Palate</dt><dd>Your sense of taste, or the flavors of a wine in the mouth.</dd><dt>Passerillage</dt><dd>Drying grapes on the vine to concentrate their sugars.</dd><dt>Passito</dt><dd>Italian wine made from dried grapes, often sweet.</dd><dt>Peppery</dt><dd>A spicy note of black or white pepper, common in Syrah.</dd><dt>Pét-Nat</dt><dd>Short for pétillant naturel. A sparkling wine bottled before the first fermentation finishes.</dd><dt>Pétillant</dt><dd>Lightly sparkling, with fewer bubbles than a fully sparkling wine.</dd><dt>pH</dt><dd>A measure of acidity. Lower pH means a more acidic wine.</dd><dt>Phylloxera</dt><dd>A tiny insect that destroyed most European vineyards in the 1800s. Grafting onto resistant roots solved it.</dd><dt>Pigeage</dt><dd>Punching down the cap of skins into the fermenting wine.</dd><dt>Plush</dt><dd>A soft, velvety and generous wine.</dd><dt>Polished</dt><dd>Smooth, refined and without rough edges.</dd><dt>Pomace</dt><dd>The skins, seeds and stems left over after pressing.</dd><dt>Prädikat</dt><dd>Germany's quality system based on grape ripeness at harvest.</dd><dt>Premier Cru</dt><dd>French for 'first growth'. In Burgundy it ranks just below Grand Cru.</dd><dt>Pressing</dt><dd>Squeezing grapes to separate juice from skins.</dd><dt>Primary aromas</dt><dd>Aromas from the grape itself, such as fruit and flowers.</dd><dt>Pruning</dt><dd>Cutting back vines to control growth and crop size.</dd><dt>Pumping over</dt><dd>Pumping fermenting juice from the bottom of the tank over the cap. Also called remontage.</dd><dt>Punt</dt><dd>The dimple in the bottom of a wine bottle.</dd></dl><h3 class="azl" id="az-Q">Q</h3><dl><dt>Quaffable</dt><dd>Easy and enjoyable to drink.</dd><dt>Quinta</dt><dd>A Portuguese wine estate or farm, especially in the Douro.</dd></dl><h3 class="azl" id="az-R">R</h3><dl><dt>Racking</dt><dd>Moving wine off its sediment into a clean container.</dd><dt>Rancio</dt><dd>A nutty, savory aroma in aged, oxidized wines.</dd><dt>Reductive</dt><dd>Winemaking with little air contact, or a wine with a struck-match or rubbery smell from lack of oxygen.</dd><dt>Reserva / Riserva</dt><dd>A Spanish or Italian label for wine aged longer before release. Exact rules vary by country and region.</dd><dt>Residual sugar</dt><dd>The sugar left in a wine after fermentation stops.</dd><dt>Rich</dt><dd>A wine with depth, weight and concentrated flavor.</dd><dt>Riddling</dt><dd>Turning bottles of sparkling wine gradually so sediment collects in the neck.</dd><dt>Rim variation</dt><dd>The color difference between the center and the edge of the wine in the glass, which can show age.</dd><dt>Robust</dt><dd>Strong, full and powerful.</dd><dt>Rootstock</dt><dd>The root system a vine is grafted onto, often chosen for pest resistance.</dd><dt>Rosé</dt><dd>A pink wine made by leaving red grape skins in the juice for only a short time.</dd><dt>Round</dt><dd>Smooth and soft, without sharp tannin or acidity.</dd><dt>Ruby</dt><dd>A young, fruity style of Port aged briefly.</dd><dt>Rustic</dt><dd>A wine that is earthy and rough, with less polish.</dd></dl><h3 class="azl" id="az-S">S</h3><dl><dt>Saccharomyces</dt><dd>The yeast genus most used to ferment wine.</dd><dt>Saignée</dt><dd>Bleeding off some juice early from red grapes to concentrate the red or make rosé.</dd><dt>Screwcap</dt><dd>A metal closure that seals wine without a cork.</dd><dt>Sec</dt><dd>French for dry. For Champagne it actually means slightly sweet.</dd><dt>Second fermentation</dt><dd>A fermentation of a finished wine to create bubbles, as in Champagne.</dd><dt>Second wine</dt><dd>A wine from a top estate made from younger vines or lesser batches.</dd><dt>Secondary aromas</dt><dd>Aromas from fermentation, such as yeast, butter or bread.</dd><dt>Sediment</dt><dd>Solid particles that settle in older bottles. Harmless but unpleasant to drink.</dd><dt>Sekt</dt><dd>German or Austrian sparkling wine.</dd><dt>Sélection de Grains Nobles</dt><dd>A very sweet Alsace wine from botrytized grapes.</dd><dt>Silky</dt><dd>A smooth, fine texture.</dd><dt>Skin contact</dt><dd>Leaving juice in contact with grape skins to extract color, flavor and tannin.</dd><dt>Smoky</dt><dd>Aromas of smoke or toast, from oak, soil or smoke-affected grapes.</dd><dt>Soft</dt><dd>Low in tannin or acidity, easy and gentle.</dd><dt>Solera</dt><dd>A system of fractional blending that mixes younger and older wines, used for Sherry.</dd><dt>Sommelier</dt><dd>A trained wine professional, often working in restaurants, who manages the wine list and advises guests.</dd><dt>Sparkling wine</dt><dd>Wine with bubbles from carbon dioxide, made by various methods.</dd><dt>Spätlese</dt><dd>German for 'late harvest'. Riper than Kabinett.</dd><dt>Spicy</dt><dd>Notes of spices such as pepper, clove or cinnamon.</dd><dt>Stabilization</dt><dd>Treatments that prevent haze or crystals forming in the bottle.</dd><dt>Stainless steel</dt><dd>Tanks used for clean, fresh wines with no oak influence.</dd><dt>Steely</dt><dd>Tight, mineral and high in acidity, with little oak.</dd><dt>Stemmy</dt><dd>A green, bitter note from stems.</dd><dt>Stems</dt><dd>The woody parts of a grape bunch. Using them in fermentation adds tannin and spice.</dd><dt>Structure</dt><dd>The framework of acidity, tannin, alcohol and body that holds a wine together.</dd><dt>Sulfites</dt><dd>Compounds that occur naturally and are often added to protect wine from spoiling and oxidation.</dd><dt>Super Tuscan</dt><dd>A high-quality Tuscan red made outside the traditional rules, often with international grapes.</dd><dt>Supple</dt><dd>Smooth and flexible in the mouth, with soft tannin.</dd><dt>Sur lie</dt><dd>Aging a wine on its lees, for added richness and texture.</dd><dt>Sustainable winemaking</dt><dd>Methods that aim to protect the environment and the long-term health of the vineyard.</dd><dt>Swirling</dt><dd>Gently moving wine in the glass to release its aromas.</dd></dl><h3 class="azl" id="az-T">T</h3><dl><dt>Table wine</dt><dd>An everyday wine, or in Europe the lowest legal category.</dd><dt>Tannic</dt><dd>A wine with lots of tannin.</dd><dt>Tannin</dt><dd>Compounds from skins and seeds that give red wine its grip and dryness.</dd><dt>Tart</dt><dd>Sharply acidic.</dd><dt>Tartrate crystals</dt><dd>Harmless, glass-like crystals that sometimes form in bottles of wine, especially when chilled.</dd><dt>Tasting notes</dt><dd>Written observations of a wine's look, smell, taste and finish.</dd><dt>Tawny</dt><dd>Port aged for years in barrel, becoming amber and nutty.</dd><dt>TCA</dt><dd>The compound that causes cork taint.</dd><dt>Terroir</dt><dd>The mix of soil, climate and landscape that shapes a wine's character.</dd><dt>Tertiary aromas</dt><dd>Aromas from aging, such as leather, mushroom or dried fruit.</dd><dt>Texture</dt><dd>How a wine feels in the mouth, such as creamy, silky or grippy.</dd><dt>Thin</dt><dd>A wine lacking body and flavor.</dd><dt>Tight</dt><dd>Closed and firm, not yet showing its full character.</dd><dt>Tirage</dt><dd>Bottling still wine with yeast and sugar for the second fermentation.</dd><dt>Toast</dt><dd>The level to which the inside of a barrel is charred, affecting flavors like vanilla and smoke.</dd><dt>Trellis</dt><dd>A framework of posts and wires that supports vines.</dd><dt>Trockenbeerenauslese</dt><dd>The sweetest German Prädikat, from shriveled botrytized berries.</dd><dt>Typicity</dt><dd>How well a wine shows the traits expected of its grape or region.</dd></dl><h3 class="azl" id="az-U">U</h3><dl><dt>Ullage</dt><dd>The empty space between the wine and the cork. A larger gap can suggest an older or leaky bottle.</dd><dt>Unctuous</dt><dd>Rich, thick and oily in texture, often for sweet wines.</dd><dt>Unfiltered</dt><dd>Wine bottled without filtration, which can look slightly cloudy.</dd><dt>Unoaked</dt><dd>Wine made and aged without oak, such as in steel tanks, for a fresher, fruitier style.</dd></dl><h3 class="azl" id="az-V">V</h3><dl><dt>Varietal</dt><dd>A wine made mainly from one named grape, or the grape variety itself.</dd><dt>Vat</dt><dd>A large container for fermenting or storing wine.</dd><dt>Vegan wine</dt><dd>Wine made without animal-derived fining agents like egg, milk or isinglass.</dd><dt>Vegetal</dt><dd>Aromas of vegetables or green plants, such as bell pepper or asparagus.</dd><dt>Velvety</dt><dd>A soft, smooth texture.</dd><dt>Vendange tardive</dt><dd>French for late harvest, used for sweet Alsace wines.</dd><dt>Veraison</dt><dd>The point when grapes change color and begin to ripen.</dd><dt>Vertical tasting</dt><dd>Comparing the same wine from different vintages.</dd><dt>Vigneron</dt><dd>A French word for someone who grows grapes and makes wine.</dd><dt>Vin de pays</dt><dd>A former French category for regional wines, now called IGP.</dd><dt>Vin de table</dt><dd>The French term for basic table wine.</dd><dt>Vin doux naturel</dt><dd>A French sweet wine fortified before fermentation finishes.</dd><dt>Vin jaune</dt><dd>A Jura wine aged under a yeast film for at least six years.</dd><dt>Vineyard</dt><dd>A planted area of grapevines.</dd><dt>Vinification</dt><dd>The process of turning grapes into wine.</dd><dt>Vinous</dt><dd>Describes the general character of wine, such as fruit and fermentation notes.</dd><dt>Vintage</dt><dd>The year the grapes were harvested.</dd><dt>Viscosity</dt><dd>The thickness of a wine, which affects how it moves in the glass.</dd><dt>Viticulture</dt><dd>The growing of grapevines.</dd><dt>Vitis vinifera</dt><dd>The European grape species behind nearly all the world's quality wine.</dd><dt>Volatile acidity</dt><dd>Acetic acid in wine. A little adds complexity, too much smells of vinegar or nail polish.</dd></dl><h3 class="azl" id="az-W">W</h3><dl><dt>Weight</dt><dd>The impression of fullness in the mouth. Another word for body.</dd><dt>Weingut</dt><dd>The German word for a wine estate.</dd><dt>Whole-cluster</dt><dd>Fermenting grapes with their stems, which adds structure and spice.</dd><dt>Winemaker</dt><dd>The person who decides how grapes are turned into wine.</dd><dt>Winery</dt><dd>The place where wine is made.</dd><dt>Woody</dt><dd>An unpleasant flavor of raw oak or wet wood.</dd></dl><h3 class="azl" id="az-X">X</h3><dl><dt>Xarel·lo</dt><dd>A white grape grown mainly in Catalonia, Spain, and one of the three classic Cava grapes.</dd></dl><h3 class="azl" id="az-Y">Y</h3><dl><dt>Yeast</dt><dd>The microorganism that converts sugar to alcohol during fermentation.</dd><dt>Yeasty</dt><dd>A bready, doughy note from yeast.</dd><dt>Yield</dt><dd>The amount of grapes or wine produced from a vineyard area. Lower yields often mean more concentrated flavor.</dd><dt>Young wine</dt><dd>A wine early in its life, usually fruity and fresh.</dd></dl><h3 class="azl" id="az-Z">Z</h3><dl><dt>Zero dosage</dt><dd>Sparkling wine with no added sugar at disgorgement.</dd><dt>Zesty</dt><dd>A tasting word for lively, citrusy freshness.</dd><dt>Zymology</dt><dd>The study of fermentation.</dd></dl>
+</section>
+
+<section id="study">
+<h2>Sommelier Study</h2>
+<p style="color:var(--muted);margin:-6px 0 16px;font-size:15px">Quiz yourself on the regions, grapes and producers in this guide, then review a tasting framework.</p>
+<div class="chips" id="stt"></div>
+<div id="st-quiz">
+<div class="card" id="quiz">
+<div class="chips" id="qm" style="margin-bottom:12px"></div>
+<div class="meta" id="qs">Score 0/0 · Streak 0</div>
+<h3 id="qq" style="font-size:26px;margin-bottom:14px"></h3>
+<div class="chips" id="qo"></div>
+<p id="qf" style="min-height:1.6em;margin:0 0 8px;color:var(--text)"></p>
+<button class="chip on" id="qn" style="display:none">Next question →</button>
+</div>
+
+</div>
+<div id="st-grid">
+<h3 style="font-size:28px;margin:30px 0 6px">Tasting grid</h3>
+<p style="color:var(--muted);margin:0 0 14px;font-size:15px">A systematic, exam-style approach: describe the wine, assess its quality, then draw your conclusions. The analysis below checks your reasoning against this guide.</p>
+<div class="card" style="margin-bottom:12px"><h3>Wine details</h3><div class="grid" style="margin-top:10px;gap:10px"><input class="wi" id="wn" placeholder="Wine name"><input class="wi" id="wp" placeholder="Producer"><input class="wi" id="wv" placeholder="Vintage"></div>
+<h3 style="font-size:20px;margin-top:16px">Picture</h3><p style="color:var(--muted);margin:2px 0 8px;font-size:14px">Add a photo of the bottle or label. It prints on the tasting sheet.</p><div class="chips" style="margin:0"><label class="chip on" style="cursor:pointer">Take photo<input type="file" id="wf" accept="image/*" capture="environment" style="display:none"></label><label class="chip" style="cursor:pointer">Choose from library<input type="file" id="wf2" accept="image/*" style="display:none"></label></div><div id="wph" style="margin-top:10px"></div></div>
+<div id="tg"></div>
+<div class="card" style="margin-bottom:12px"><h3>Notes</h3><textarea class="wi" id="wt" rows="3" placeholder="Anything else you noticed…" style="margin-top:8px"></textarea></div>
+<div class="card" id="tgo" style="margin-top:12px"></div>
+<div class="card" id="tga" style="margin-top:12px"></div>
+<div class="card" style="margin-top:12px"><h3>Deduction clues</h3>
+<p><b>High acidity, lower alcohol:</b> often a cooler climate.</p>
+<p><b>Low acidity, high alcohol, ripe fruit:</b> often a warmer climate.</p>
+<p><b>Pale colour, high acidity, low tannin in a red:</b> think Pinot Noir or Nebbiolo-like styles.</p>
+<p><b>Deep colour, high tannin, full body:</b> think Cabernet Sauvignon, Syrah or Tempranillo.</p>
+<p style="margin:0">Use clues as a starting point and weigh them together. No single clue decides the answer.</p></div>
+
+</div>
+<div id="st-saved"><h3 style="font-size:28px;margin:30px 0 12px">Saved tasting sheets</h3><div id="tgsv"></div></div>
+<h3 style="font-size:28px;margin:30px 0 12px">Certification paths</h3>
+<div class="grid">
+<div class="card"><h3>Court of Master Sommeliers</h3><div class="meta">Four levels</div><p>Introductory, Certified, Advanced and Master. Combines theory, blind tasting and service.</p></div>
+<div class="card"><h3>WSET</h3><div class="meta">Levels 1 to 4</div><p>Wine &amp; Spirit Education Trust courses. Levels 1 to 3 build knowledge and tasting skills; Level 4 is the Diploma.</p></div>
+</div>
+<div class="card" style="margin-top:14px"><h3>Study tips</h3>
+<p>Learn regions with a map, then link each to grapes and styles. Taste with the same grid every time. Quiz in short, frequent sessions. Requirements and exam formats change, so confirm details with the provider.</p></div>
+</section>
+
+<section id="careers">
+<h2>Sommelier Careers</h2>
+<p style="color:var(--muted);margin:-6px 0 16px;font-size:15px">This guide doesn't host job postings. Use the search buttons to find openings, then save the roles you like in your tracker. The tracker stays on this device.</p>
+<div class="grid">
+<div class="card"><h3>Sommelier</h3><p>Runs wine service, guides guests and pairs wine with the menu.</p></div>
+<div class="card"><h3>Head sommelier</h3><p>Leads the team, trains staff and runs the wine list day to day.</p></div>
+<div class="card"><h3>Wine director</h3><p>Owns the wine program: list strategy, buying, budgets and inventory.</p></div>
+<div class="card"><h3>Beverage manager</h3><p>Oversees wine, spirits, beer and cocktails, including costs and suppliers.</p></div>
+<div class="card"><h3>Wine buyer</h3><p>Selects wines for retailers, importers or restaurants and negotiates with producers.</p></div>
+<div class="card"><h3>Educator or writer</h3><p>Teaches courses, hosts tastings or writes about wine.</p></div>
+</div>
+<div class="card" style="margin-top:14px"><h3>Credentials employers look for</h3><p style="margin:6px 0 0">Court of Master Sommeliers levels, WSET levels, and restaurant or retail experience. Requirements vary by employer and country.</p></div>
+
+<h3 style="font-size:28px;margin:30px 0 10px">Find jobs</h3>
+<div class="card"><div class="grid" style="gap:10px"><select class="wi" id="jk"><option>sommelier</option><option>wine director</option><option>wine buyer</option><option>beverage manager</option><option>wine educator</option></select><input class="wi" id="jl" placeholder="City or country (optional)"></div>
+<div class="chips" style="margin:12px 0 0"><a class="chip on" id="ji" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Indeed ↗</a><a class="chip on" id="jli" target="_blank" rel="noopener noreferrer" style="text-decoration:none">LinkedIn ↗</a><a class="chip on" id="jg" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Google ↗</a></div>
+<p style="font-size:13px;color:var(--muted);margin:10px 0 0">Each button opens that site's search results in a new tab.</p></div>
+
+<h3 style="font-size:28px;margin:30px 0 10px">Job tracker</h3>
+<div class="card"><div class="grid" style="gap:10px"><input class="wi" id="jt" placeholder="Role (required)"><input class="wi" id="jv" placeholder="Venue or company"><input class="wi" id="jc" placeholder="Location"><select class="wi" id="jy"><option>Full-time</option><option>Part-time</option><option>Seasonal</option><option>Freelance</option></select><input class="wi" id="jp" placeholder="Pay (optional)"><input class="wi" id="ju" placeholder="Link to posting (optional)"></div>
+<textarea class="wi" id="jn" rows="2" placeholder="Notes" style="margin-top:10px"></textarea>
+<div class="chips" style="margin:12px 0 0"><button class="chip on" id="jadd">Add job</button></div><p id="jm" style="font-size:13px;color:var(--accent);margin:8px 0 0"></p></div>
+<div class="chips" id="jfil" style="margin-top:14px"></div>
+<div id="jlist"></div>
+</section>
+
+<section id="about">
+<h2>About me</h2>
+<div class="card" style="text-align:center;padding:30px 22px"><div aria-hidden="true" style="width:84px;height:84px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font:600 32px 'Cormorant Garamond',Georgia,serif;margin:0 auto 14px">DM</div><h3 style="font-size:34px">Diego Muntoni</h3><div class="meta" style="margin-top:8px">Head Sommelier</div><p style="max-width:32em;margin:12px auto 0">This guide brings together wine grapes, regions, tasting tools and study material for wine lovers and aspiring sommeliers.</p></div>
+<h3 style="font-size:28px;margin:26px 0 12px">What you'll find here</h3>
+<div class="grid"><div class="card"><h3>Grapes and regions</h3><p>Grape profiles, wine regions by country, subregions, producers and maps.</p></div><div class="card"><h3>Tasting tools</h3><p>A step-by-step tasting grid with printable and shareable sheets.</p></div><div class="card"><h3>Study and careers</h3><p>Quizzes, a glossary, a vintage chart and career resources for sommeliers.</p></div></div>
+</section>
+
+<section id="consultancy">
+<h2>Consultancy</h2>
+<p style="color:var(--muted);margin:-6px 0 16px;font-size:15px">Wine consultancy from Diego Muntoni, head sommelier, for restaurants, hotels, shops and private clients.</p>
+<div class="grid">
+<div class="card"><h3>Wine list design</h3><p>Build or review a wine list that suits your menu, guests and budget.</p></div>
+<div class="card"><h3>Staff training</h3><p>Tasting sessions and service training for waiting and bar teams.</p></div>
+<div class="card"><h3>Tastings and events</h3><p>Private and corporate tastings, from relaxed evenings to guided masterclasses.</p></div>
+<div class="card"><h3>Pairing menus</h3><p>Food and wine pairings for tasting menus, dinners and special occasions.</p></div>
+<div class="card"><h3>Cellar and buying</h3><p>Advice on stock, storage, ordering and working with suppliers.</p></div>
+</div>
+<h3 style="font-size:28px;margin:26px 0 12px">How it works</h3>
+<div class="grid"><div class="card"><h3>1. Enquire</h3><p>Tell me what you need and when.</p></div><div class="card"><h3>2. Discuss</h3><p>We agree the scope, timing and price.</p></div><div class="card"><h3>3. Deliver</h3><p>I carry out the work and follow up.</p></div></div>
+<h3 style="font-size:28px;margin:26px 0 12px">Make an enquiry</h3>
+<div class="card"><div class="grid" style="gap:10px"><input class="wi" id="cn" placeholder="Your name"><input class="wi" id="ce" type="email" placeholder="Your email"><select class="wi" id="cs"><option>Wine list design</option><option>Staff training</option><option>Tastings and events</option><option>Pairing menus</option><option>Cellar and buying</option><option>Something else</option></select></div><textarea class="wi" id="cm" rows="4" placeholder="Tell me about your venue or event" style="margin-top:10px"></textarea><div class="chips" style="margin:12px 0 0"><button class="chip on" id="cgo">Prepare enquiry</button></div><div id="cout" style="margin-top:12px"></div></div>
+</section>
+
+<footer>For reference only. Please enjoy responsibly.</footer>
+
+<div id="age" role="dialog" aria-modal="true" aria-labelledby="ageh" style="display:none"><div class="agc"><div style="font-size:44px">🍷</div><h2 id="ageh" style="font-size:34px;margin:6px 0 8px">Are you of legal drinking age?</h2><p style="color:var(--muted);margin:0 0 16px;font-size:15px">This guide is about alcohol and is for adults only. Please confirm your age to enter.</p><label class="agl" for="agr">Where do you live?</label><select class="wi" id="agr"><option value="18">UK, EU, Australia and most countries (18+)</option><option value="21">United States (21+)</option><option value="19">Most Canadian provinces (19+)</option><option value="20">Japan, Thailand (20+)</option></select><label class="agl" for="agd">Your date of birth</label><input class="wi" type="date" id="agd"><label style="display:flex;gap:8px;align-items:center;margin:12px 0;font-size:14px;color:var(--muted)"><input type="checkbox" id="agk" checked> Remember me on this device</label><button class="chip on" id="age-go" style="width:100%;padding:13px;font-size:15px">Enter site</button><p id="agm" style="color:var(--accent);font-size:14px;min-height:1.4em;margin:10px 0 0"></p><p style="font-size:12px;color:var(--muted);margin:6px 0 0">This is a self-declared age check, not identity verification. Please enjoy responsibly.</p></div></div>
+<div id="shov"></div>
+<div id="sheets"></div>
+<script>
+const G=[
+["Cabernet Sauvignon","Red",5,"#5a1230","Blackcurrant, cedar, graphite","Bordeaux, Napa Valley, Coonawarra","Steak, lamb, aged cheddar"],
+["Merlot","Red",4,"#7a2a3e","Plum, cherry, chocolate","Bordeaux, Tuscany, Washington","Roast chicken, pork, mushrooms"],
+["Pinot Noir","Red",2,"#9a3b4c","Red cherry, earth, mushroom","Burgundy, Oregon, New Zealand","Duck, salmon, mushrooms"],
+["Syrah / Shiraz","Red",5,"#3f1428","Blackberry, pepper, smoke","Rhône, Barossa, Washington","BBQ, grilled meats, stews"],
+["Sangiovese","Red",3,"#8a2a30","Sour cherry, tomato leaf, herbs","Chianti, Montalcino","Pizza, pasta, tomato sauces"],
+["Tempranillo","Red",4,"#6e2230","Cherry, leather, vanilla","Rioja, Ribera del Duero","Chorizo, lamb, tapas"],
+["Chardonnay","White",3,"#e3c96a","Apple, lemon, butter, oak","Burgundy, California, Australia","Lobster, roast chicken, cream sauces"],
+["Sauvignon Blanc","White",2,"#d6dd8a","Grapefruit, lime, fresh herbs","Loire, Marlborough, Bordeaux","Goat cheese, salads, shellfish"],
+["Riesling","White",2,"#ecdc8e","Peach, lime, petrol, honey","Mosel, Alsace, Finger Lakes","Spicy Asian dishes, pork"],
+["Pinot Grigio","White",1,"#efe5a6","Pear, citrus, almond","Veneto, Alsace, Oregon","Light seafood, antipasti"],
+["Champagne (Chardonnay, Pinot Noir, Meunier)","Sparkling",2,"#f0e2a0","Brioche, green apple, citrus","Champagne, England","Oysters, fried foods, salty snacks"],
+["Prosecco (Glera)","Sparkling",1,"#f3e8b0","Pear, honeysuckle, melon","Veneto, Italy","Aperitivo, prosciutto, brunch"],
+["Grenache Rosé","Rosé",2,"#f0b6c0","Strawberry, melon, herbs","Provence, Spain","Salads, grilled fish, charcuterie"]
+];
+const G0=G.slice(0,13);
+`Nebbiolo|R|4|Cherry, rose, tar, truffle|Piedmont, Lombardy
+Barbera|R|3|Sour cherry, plum, spice|Piedmont
+Dolcetto|R|3|Plum, blackberry, almond|Piedmont
+Montepulciano|R|4|Plum, black cherry, spice|Abruzzo, Marche
+Nero d'Avola|R|4|Plum, blackberry, pepper|Sicily
+Primitivo|R|5|Blackberry, jam, spice|Puglia
+Negroamaro|R|4|Black cherry, plum, earth|Puglia
+Aglianico|R|5|Black cherry, plum, smoke|Campania, Basilicata
+Sagrantino|R|5|Blackberry, plum, spice|Umbria
+Corvina|R|3|Sour cherry, almond, spice|Veneto
+Lagrein|R|4|Plum, blackberry, violet|Alto Adige
+Teroldego|R|4|Blackberry, plum, pepper|Trentino
+Nerello Mascalese|R|3|Red cherry, herbs, smoke|Etna, Sicily
+Gaglioppo|R|4|Cherry, plum, herbs|Calabria
+Cannonau|R|4|Cherry, plum, spice|Sardinia
+Lambrusco|R|2|Red cherry, strawberry, violet|Emilia-Romagna
+Garnacha / Grenache|R|4|Strawberry, cherry, spice|Spain, Rhône, Sardinia
+Mourvèdre|R|5|Blackberry, plum, pepper, earth|Bandol, Spain
+Carignan|R|4|Blackberry, cherry, herbs|Languedoc, Sardinia
+Cinsault|R|2|Red cherry, strawberry, floral|Languedoc, South Africa
+Cabernet Franc|R|3|Red cherry, herbs, pepper|Loire, Bordeaux
+Malbec|R|4|Plum, blackberry, violet|Mendoza, Cahors
+Petit Verdot|R|5|Blackberry, violet, spice|Bordeaux, Australia
+Carménère|R|4|Black cherry, pepper, herbs|Chile
+Tannat|R|5|Blackberry, plum, spice|Uruguay, Madiran
+Pinotage|R|4|Blackberry, plum, smoke|South Africa
+Zinfandel|R|4|Blackberry, plum, pepper|California
+Petite Sirah|R|5|Blackberry, plum, pepper|California
+Gamay|R|2|Red cherry, strawberry, floral|Beaujolais
+Pinot Meunier|R|2|Red cherry, plum, spice|Champagne
+Touriga Nacional|R|5|Blackberry, violet, spice|Douro, Dão
+Mencía|R|3|Red cherry, blackberry, herbs|Bierzo
+Bobal|R|4|Black cherry, plum, spice|Utiel-Requena
+Monastrell|R|5|Blackberry, plum, pepper|Jumilla
+Graciano|R|4|Black cherry, plum, spice|Rioja
+Blaufränkisch|R|3|Blackberry, cherry, pepper|Burgenland
+Zweigelt|R|2|Cherry, plum, pepper|Austria
+St. Laurent|R|2|Cherry, plum, spice|Austria
+Saperavi|R|5|Blackberry, plum, spice|Georgia
+Xinomavro|R|4|Red cherry, tomato leaf, olive|Naoussa, Greece
+Agiorgitiko|R|3|Red cherry, plum, spice|Nemea, Greece
+Kadarka|R|2|Red cherry, pepper, spice|Hungary
+Plavac Mali|R|5|Blackberry, plum, herbs|Croatia
+Refosco|R|4|Blackberry, plum, herbs|Friuli
+Schiava|R|1|Red cherry, strawberry, almond|Alto Adige
+Frappato|R|2|Strawberry, red cherry, floral|Sicily
+Cesanese|R|3|Red cherry, plum, spice|Lazio
+Dornfelder|R|3|Black cherry, plum, spice|Germany
+Baga|R|5|Blackberry, plum, tar|Bairrada
+País|R|2|Red cherry, strawberry, earth|Chile
+Tintilia|R|4|Blackberry, plum, spice|Molise
+Marselan|R|4|Black cherry, plum, spice|Languedoc, China
+Albariño|W|2|Peach, citrus, saline|Rías Baixas, Vinho Verde
+Verdejo|W|2|Citrus, herbs, fennel|Rueda
+Godello|W|3|Pear, citrus, mineral|Valdeorras
+Viura|W|2|Apple, citrus, floral|Rioja
+Garnacha Blanca|W|3|Pear, herbs, mineral|Spain
+Xarel·lo|W|3|Apple, citrus, herbs|Penedès
+Palomino|W|2|Almond, apple, saline|Jerez
+Pedro Ximénez|W|4|Raisin, honey, caramel|Jerez
+Loureiro|W|2|Citrus, floral, herbs|Vinho Verde
+Arinto|W|2|Citrus, apple, mineral|Portugal
+Encruzado|W|3|Citrus, pear, mineral|Dão
+Gewürztraminer|W|4|Lychee, rose, spice|Alsace
+Pinot Blanc|W|3|Apple, pear, almond|Alsace, Alto Adige
+Muscat|W|3|Floral, peach, grape|Alsace, Italy
+Chenin Blanc|W|3|Apple, quince, honey|Loire, South Africa
+Sémillon|W|4|Lemon, honey, wax|Bordeaux, Hunter Valley
+Viognier|W|4|Peach, apricot, honeysuckle|Rhône
+Marsanne|W|4|Pear, almond, honey|Rhône
+Roussanne|W|4|Pear, herbs, honey|Rhône
+Clairette|W|3|Apple, herbs, floral|Rhône, Languedoc
+Melon de Bourgogne|W|1|Lemon, green apple, saline|Muscadet
+Aligoté|W|2|Lemon, apple, herbs|Burgundy
+Savagnin|W|3|Apple, walnut, spice|Jura
+Grüner Veltliner|W|3|Green apple, pepper, lime|Austria
+Müller-Thurgau|W|2|Pear, floral, peach|Germany
+Silvaner|W|3|Apple, herbs, mineral|Franken
+Scheurebe|W|3|Grapefruit, peach, herbs|Germany
+Furmint|W|3|Apple, pear, honey|Tokaj
+Hárslevelű|W|3|Pear, peach, honey|Tokaj
+Welschriesling|W|2|Apple, citrus, herbs|Austria
+Assyrtiko|W|3|Lemon, mineral, saline|Santorini
+Moschofilero|W|2|Rose, citrus, spice|Mantinia, Greece
+Malagousia|W|3|Peach, citrus, herbs|Greece
+Rkatsiteli|W|3|Apple, citrus, honey|Georgia
+Mtsvane|W|3|Peach, floral, herbs|Georgia
+Vermentino|W|3|Citrus, pear, herbs|Sardinia, Liguria
+Garganega|W|3|Almond, pear, citrus|Soave
+Trebbiano|W|2|Lemon, apple, almond|Italy
+Verdicchio|W|3|Lemon, almond, herbs|Marche
+Fiano|W|3|Pear, honey, almond|Campania
+Greco|W|3|Peach, pear, citrus|Campania
+Falanghina|W|3|Pear, citrus, floral|Campania
+Cortese|W|2|Lemon, apple, mineral|Gavi, Piedmont
+Arneis|W|3|Pear, peach, almond|Piedmont
+Friulano|W|3|Pear, almond, herbs|Friuli
+Ribolla Gialla|W|2|Citrus, apple, herbs|Friuli
+Pecorino|W|3|Pear, citrus, herbs|Abruzzo, Marche
+Grechetto|W|3|Pear, almond, citrus|Umbria
+Catarratto|W|3|Citrus, apple, almond|Sicily
+Grillo|W|3|Citrus, peach, herbs|Sicily
+Pigato|W|3|Citrus, herbs, peach|Liguria
+Kerner|W|3|Peach, apple, spice|Alto Adige
+Torrontés|W|3|Peach, floral, rose|Argentina
+Colombard|W|2|Citrus, apple, herbs|Gascony, South Africa
+Ugni Blanc|W|1|Lemon, apple, mineral|Cognac, Gascony
+Bacchus|W|2|Citrus, herbs, floral|England
+Vidal Blanc|W|3|Peach, tropical, honey|Canada, Finger Lakes
+Verdelho|W|3|Citrus, tropical, honey|Madeira, Australia
+Malvasia|W|3|Peach, floral, almond|Italy, Iberia
+Chasselas|W|2|Apple, citrus, mineral|Switzerland
+Petite Arvine|W|3|Grapefruit, saline, floral|Valais, Aosta Valley`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
+let gl=24;
+[["Cava","Sparkling",2,"#efe2a0","Apple, lemon, almond","Penedès, Spain","Tapas, jamón, fried foods"],
+["Crémant","Sparkling",2,"#f1e4a8","Apple, pear, citrus","Loire, Alsace, Burgundy","Aperitifs, shellfish, quiche"],
+["Franciacorta","Sparkling",3,"#ead88f","Brioche, citrus, almond","Lombardy, Italy","Risotto, seafood, antipasti"],
+["Trento DOC","Sparkling",2,"#f0e3a6","Green apple, citrus, brioche","Trentino, Italy","Trout, antipasti, light starters"],
+["Sekt","Sparkling",2,"#f2e8b4","Apple, citrus, mineral","Germany, Austria","Sausages, light starters"],
+["English sparkling wine","Sparkling",2,"#eddf9c","Green apple, citrus, brioche","Kent, Sussex, Hampshire","Oysters, fish and chips"],
+["Cap Classique","Sparkling",2,"#efe0a0","Citrus, apple, brioche","South Africa","Seafood, sushi, canapés"],
+["Asti / Moscato d'Asti","Sparkling",1,"#f4eab8","Peach, floral, grape","Piedmont, Italy","Fruit tarts, desserts, soft cheese"],
+["Pét-Nat (Pétillant Naturel)","Sparkling",2,"#e6d98c","Apple, citrus, yeast","Loire, worldwide","Charcuterie, casual dishes"],
+["Sparkling Shiraz","Sparkling",4,"#5a1a2c","Blackberry, plum, spice","Australia","Roast duck, barbecue"]].forEach(g=>G.push(g));
+const P={"Steak":["Cabernet Sauvignon","Syrah / Shiraz","Tempranillo"],"Salmon":["Pinot Noir","Chardonnay","Grenache Rosé"],"Pasta & tomato":["Sangiovese","Pinot Grigio"],"Spicy curry":["Riesling","Grenache Rosé"],"Oysters":["Champagne (Chardonnay, Pinot Noir, Meunier)","Sauvignon Blanc"],"Roast chicken":["Chardonnay","Merlot","Pinot Noir"],"Cheese board":["Prosecco (Glera)","Merlot","Riesling"],"Pizza":["Sangiovese","Prosecco (Glera)"]};
+let type="All";
+const $=id=>document.getElementById(id);
+$('chips').innerHTML=["All","Red","White","Sparkling","Rosé"].map(t=>`<button class="chip${t=="All"?" on":""}" data-t="${t}">${t}</button>`).join("");
+$('chips').onclick=e=>{if(!e.target.dataset.t)return;type=e.target.dataset.t;[...$('chips').children].forEach(c=>c.classList.toggle('on',c===e.target));gl=24;draw()};
+$('q').oninput=()=>{gl=24;draw()};$('gmore').onclick=()=>{gl+=24;draw()};
+function draw(){
+const s=$('q').value.toLowerCase();
+const r=G.filter(g=>(type=="All"||g[1]==type)&&g.join(" ").toLowerCase().includes(s));
+$('grid').innerHTML=r.length?r.slice(0,gl).map(g=>`<div class="card"><h3><span class="dot" style="background:${g[3]}"></span>${g[0]}</h3><div class="meta">${g[1]}</div><p><b>Flavors:</b> ${g[4]}</p><p><b>Regions:</b> ${g[5]}</p>${g[6]?`<p><b>Pairs with:</b> ${g[6]}</p>`:""}<div class="body">Body ${[1,2,3,4,5].map(i=>`<i class="${i<=g[2]?"f":""}"></i>`).join("")}</div></div>`).join(""):'<div class="empty">No grapes match that search.</div>';
+$('gmore').style.display=r.length>gl?"block":"none";$('gmore').textContent=`Show more (${r.length-gl} left)`;
+}
+$('foods').innerHTML=Object.keys(P).map(f=>`<button class="chip" data-f="${f}">${f}</button>`).join("");
+$('foods').onclick=e=>{const f=e.target.dataset.f;if(!f)return;[...$('foods').children].forEach(c=>c.classList.toggle('on',c===e.target));
+$('pairOut').innerHTML=`<h3 style="margin-bottom:10px">${f}</h3>`+P[f].map(n=>{const g=G.find(x=>x[0]==n);return `<p><b>${n}</b> <span style="color:var(--muted)">· ${g[1]} · ${g[4]}</span></p>`}).join("")};
+const R=[
+["Bordeaux","France","Europe","Cabernet Sauvignon, Merlot, Sémillon","Structured reds and sweet Sauternes"],
+["Burgundy","France","Europe","Pinot Noir, Chardonnay","Terroir-driven reds and whites"],
+["Champagne","France","Europe","Chardonnay, Pinot Noir, Meunier","The benchmark for sparkling wine"],
+["Rhône Valley","France","Europe","Syrah, Grenache, Viognier","Spicy reds in the north, blends in the south"],
+["Loire Valley","France","Europe","Sauvignon Blanc, Chenin Blanc, Cabernet Franc","Crisp, high-acid whites and light reds"],
+["Alsace","France","Europe","Riesling, Gewürztraminer, Pinot Gris","Aromatic dry whites"],
+["Provence","France","Europe","Grenache, Cinsault, Mourvèdre","Pale, dry rosé"],
+["Languedoc-Roussillon","France","Europe","Carignan, Grenache, Syrah","Value-driven blends"],
+["Tuscany","Italy","Europe","Sangiovese","Chianti, Brunello and Super Tuscans"],
+["Piedmont","Italy","Europe","Nebbiolo, Barbera, Moscato","Barolo, Barbaresco and Asti"],
+["Veneto","Italy","Europe","Corvina, Glera, Garganega","Valpolicella, Amarone, Prosecco"],
+["Sicily","Italy","Europe","Nero d'Avola, Etna Rosso, Grillo","Volcanic and Mediterranean styles"],
+["Aosta Valley","Italy","Europe","Petit Rouge, Fumin, Prié Blanc","Alpine reds and whites from Italy's smallest region"],
+["Lombardy","Italy","Europe","Nebbiolo, Pinot Noir, Chardonnay, Turbiana","Franciacorta sparkling and Alpine Valtellina reds"],
+["Trentino-Alto Adige","Italy","Europe","Pinot Grigio, Gewürztraminer, Lagrein, Teroldego","Crisp Alpine whites and bright reds"],
+["Friuli-Venezia Giulia","Italy","Europe","Friulano, Ribolla Gialla, Pinot Grigio, Refosco","Some of Italy's finest whites, plus orange wines"],
+["Liguria","Italy","Europe","Vermentino, Pigato, Rossese","Fresh coastal whites from steep terraces"],
+["Emilia-Romagna","Italy","Europe","Lambrusco, Sangiovese, Albana, Trebbiano","Fizzy Lambrusco and everyday Sangiovese"],
+["Umbria","Italy","Europe","Sagrantino, Sangiovese, Grechetto","Powerful Sagrantino and easy-drinking Orvieto"],
+["Marche","Italy","Europe","Verdicchio, Montepulciano, Sangiovese","Age-worthy Verdicchio and juicy reds"],
+["Lazio","Italy","Europe","Trebbiano, Malvasia, Cesanese","Easy Roman whites and local reds"],
+["Abruzzo","Italy","Europe","Montepulciano, Trebbiano, Pecorino","Generous reds and an excellent rosé"],
+["Molise","Italy","Europe","Tintilia, Montepulciano, Falanghina","A tiny region with a rare local red"],
+["Campania","Italy","Europe","Aglianico, Fiano, Greco, Falanghina","Ancient grapes and volcanic soils"],
+["Puglia","Italy","Europe","Primitivo, Negroamaro, Nero di Troia","Sun-ripened, full-bodied southern reds"],
+["Basilicata","Italy","Europe","Aglianico del Vulture","Deep reds from an extinct volcano"],
+["Calabria","Italy","Europe","Gaglioppo, Magliocco, Greco Bianco","Rustic reds and old Greek traditions"],
+["Sardinia","Italy","Europe","Cannonau, Vermentino, Carignano","Island wines with a Mediterranean character"],
+["Rioja","Spain","Europe","Tempranillo, Garnacha","Oak-aged reds with a long history"],
+["Ribera del Duero","Spain","Europe","Tempranillo","Powerful, concentrated reds"],
+["Priorat","Spain","Europe","Garnacha, Cariñena","Mineral, slate-grown reds"],
+["Rías Baixas","Spain","Europe","Albariño","Fresh coastal whites"],
+["Douro Valley","Portugal","Europe","Touriga Nacional, Touriga Franca","Port and robust dry reds"],
+["Alentejo","Portugal","Europe","Aragonez, Trincadeira","Warm, ripe, easy reds"],
+["Mosel","Germany","Europe","Riesling","Steep slate slopes, light and racy"],
+["Rheingau","Germany","Europe","Riesling, Spätburgunder","Richer, structured Riesling"],
+["Wachau","Austria","Europe","Grüner Veltliner, Riesling","Peppery, mineral whites"],
+["Tokaj","Hungary","Europe","Furmint, Hárslevelű","Famous sweet Tokaji Aszú"],
+["Santorini","Greece","Europe","Assyrtiko","Volcanic, saline whites"],
+["Kakheti","Georgia","Europe","Saperavi, Rkatsiteli","Home of qvevri amber wines"],
+["Napa Valley","USA","North America","Cabernet Sauvignon, Chardonnay","Bold, polished reds"],
+["Sonoma","USA","North America","Pinot Noir, Zinfandel, Chardonnay","Diverse cool and warm sub-regions"],
+["Willamette Valley","USA","North America","Pinot Noir, Pinot Gris","Elegant Oregon Pinot"],
+["Finger Lakes","USA","North America","Riesling, Cabernet Franc","Cool-climate New York"],
+["Washington State","USA","North America","Cabernet Sauvignon, Syrah, Merlot","Value and quality in dry, sunny valleys"],
+["Okanagan Valley","Canada","North America","Pinot Noir, Merlot, Riesling","Lakeside vineyards and icewine"],
+["Mendoza","Argentina","South America","Malbec","High-altitude, plush reds"],
+["Maipo Valley","Chile","South America","Cabernet Sauvignon, Carménère","Classic Chilean Cabernet"],
+["Salta (Cafayate)","Argentina","South America","Torrontés, Malbec, Tannat","High-altitude whites and bold reds"],
+["Uco Valley","Argentina","South America","Malbec, Cabernet Franc, Chardonnay","Fresh, high-altitude Malbec"],
+["Luján de Cuyo","Argentina","South America","Malbec, Cabernet Sauvignon","Classic, structured Malbec"],
+["San Juan","Argentina","South America","Syrah, Bonarda, Torrontés","Warm-climate reds and aromatic whites"],
+["La Rioja (Argentina)","Argentina","South America","Torrontés Riojano, Bonarda, Malbec","Aromatic whites and ripe reds"],
+["Patagonia (Argentina)","Argentina","South America","Pinot Noir, Malbec, Merlot","Cool, windy, southerly wines"],
+["Aconcagua Valley","Chile","South America","Cabernet Sauvignon, Syrah, Carménère","Ripe reds inland, cooler styles on the coast"],
+["Casablanca Valley","Chile","South America","Sauvignon Blanc, Chardonnay, Pinot Noir","Cool-climate coastal whites"],
+["Leyda Valley","Chile","South America","Sauvignon Blanc, Pinot Noir","Crisp coastal whites and light reds"],
+["Limarí Valley","Chile","South America","Chardonnay, Syrah","Mineral whites from limestone soils"],
+["Elqui Valley","Chile","South America","Syrah, Sauvignon Blanc","High, sunny, northern wines"],
+["Cachapoal Valley","Chile","South America","Cabernet Sauvignon, Carménère","Warm central-valley reds"],
+["Curicó Valley","Chile","South America","Sauvignon Blanc, Cabernet Sauvignon","Classic Chilean whites and reds"],
+["Maule Valley","Chile","South America","Carignan, Cabernet Sauvignon, País","Old-vine, value-driven reds"],
+["Itata Valley","Chile","South America","País, Cinsault, Muscat of Alexandria","Old-vine, rustic wines"],
+["Biobío Valley","Chile","South America","Pinot Noir, Riesling, Chardonnay","Cool, southern frontier wines"],
+["Canelones","Uruguay","South America","Tannat, Merlot","Uruguay's heartland for Tannat"],
+["Maldonado","Uruguay","South America","Tannat, Albariño, Pinot Noir","Cool, coastal wines"],
+["Colonia","Uruguay","South America","Tannat, Albariño","A small, mild region by the river"],
+["Serra Gaúcha","Brazil","South America","Merlot, Chardonnay, Moscato","Brazil's main region, strong in sparkling"],
+["Campanha Gaúcha","Brazil","South America","Cabernet Sauvignon, Tannat, Tempranillo","Drier, warmer southern reds"],
+["Serra Catarinense","Brazil","South America","Cabernet Sauvignon, Merlot, Pinot Noir","High-altitude, cool-climate reds"],
+["Vale do São Francisco","Brazil","South America","Syrah, Chenin Blanc, Moscato","Tropical, irrigated wines"],
+["Ica Valley","Peru","South America","Quebranta, Torontel, Tannat","Home of pisco, with a growing wine scene"],
+["Tarija Valley","Bolivia","South America","Tannat, Malbec, Muscat of Alexandria","Some of the world's highest vineyards"],
+["Colchagua Valley","Chile","South America","Carménère, Syrah","Ripe, full-bodied reds"],
+["Barossa Valley","Australia","Oceania","Shiraz, Grenache","Rich, old-vine Shiraz"],
+["Margaret River","Australia","Oceania","Cabernet Sauvignon, Chardonnay","Elegant, maritime-influenced"],
+["Yarra Valley","Australia","Oceania","Pinot Noir, Chardonnay","Cool-climate finesse"],
+["Marlborough","New Zealand","Oceania","Sauvignon Blanc","Zesty, tropical Sauvignon"],
+["Central Otago","New Zealand","Oceania","Pinot Noir","The world's southernmost Pinot region"],
+["Stellenbosch","South Africa","Africa","Cabernet Sauvignon, Chenin Blanc, Pinotage","Cape's most renowned region"]
+];
+const E={
+"Salta (Cafayate)":["Arid, high altitude (about 1,700 to 3,000 m) with intense sun and cold nights.","Cafayate, Calchaquí Valleys","Home to some of the world's highest vineyards. Torrontés is the signature white."],
+"Uco Valley":["High-altitude Andean foothills (about 900 to 1,500 m) with stony alluvial soils.","Tupungato, Tunuyán, San Carlos, Paraje Altamira","Cool nights keep acidity high. Many of Argentina's top Malbecs come from here."],
+"Luján de Cuyo":["Warm, dry foothill vineyards with sandy and stony soils.","Agrelo, Perdriel, Vistalba, Las Compuertas","Argentina's first controlled appellation (1993), known for Malbec."],
+"San Juan":["Hot, dry and sunny, with low rainfall.","Tulum Valley, Pedernal Valley, Zonda Valley","Second only to Mendoza in size. Also known for brandy and grape must."],
+"La Rioja (Argentina)":["Hot, arid valleys at moderate to high altitude.","Famatina Valley","Torrontés Riojano is the leading white. Not to be confused with Spain's Rioja."],
+"Patagonia (Argentina)":["Cool, windy semi-desert south of the Andes.","Neuquén, Río Negro","Among the world's most southerly vineyards. Pinot Noir and old-vine Malbec do well."],
+"Aconcagua Valley":["Warm inland valley with Andean cooling; the coastal part is much cooler.","Aconcagua Costa, Aconcagua Valley, Panquehue","Big, ripe Cabernet and Syrah inland, with fresher styles near the coast."],
+"Casablanca Valley":["Cool coastal valley with Pacific fog.","Casablanca Valley DO","A leading source of Chilean Sauvignon Blanc and Chardonnay."],
+"Leyda Valley":["Very cool and close to the Pacific, with granite and clay soils.","Leyda Valley, San Antonio Valley","Known for crisp Sauvignon Blanc and Pinot Noir."],
+"Limarí Valley":["Semi-arid, cooled by Pacific fog, with limestone soils.","Limarí Valley, Ovalle","Mineral Chardonnay is a signature."],
+"Elqui Valley":["Arid and sunny in Andean foothills, with vineyards up to about 2,000 m.","Elqui Valley","One of Chile's most northerly regions. Also famous for pisco."],
+"Cachapoal Valley":["Warm Mediterranean climate in the central valley with Andean influence.","Cachapoal Andes, Peumo, Requínoa","Part of the Rapel Valley with Colchagua. Peumo is known for Carménère."],
+"Curicó Valley":["Mediterranean climate with Pacific influence and cool nights.","Curicó Valley, Lontué, Molina","One of Chile's classic regions, where Miguel Torres was an early pioneer."],
+"Maule Valley":["Chile's largest region, with a Mediterranean climate and some very old vineyards.","Maule Valley, Loncomilla, Cauquenes","Old-vine Carignan, País and Cabernet Sauvignon are the highlights."],
+"Itata Valley":["Cool, rainy southern region with granite and clay soils.","Itata Valley","Among Chile's oldest plantings. Old-vine País and Cinsault are trending."],
+"Biobío Valley":["Cool and wet southern valley.","Biobío Valley","A cool-climate frontier. Pinot Noir, Riesling and Chardonnay are the stars."],
+"Canelones":["Mild, humid Atlantic climate near Montevideo.","Canelones, Progreso","Uruguay's largest region. Tannat is the national grape."],
+"Maldonado":["Cool and coastal near Punta del Este, with granite hills.","Garzón, Pueblo Eden","Known for Tannat, Albariño and Pinot Noir."],
+"Colonia":["Mild climate close to the Río de la Plata.","Colonia, Carmelo","A small region with Tannat and white wines."],
+"Serra Gaúcha":["Humid subtropical with wet summers in the hills of Rio Grande do Sul.","Vale dos Vinhedos DO, Pinto Bandeira","Brazil's main wine region, known for sparkling wine and Merlot."],
+"Campanha Gaúcha":["Drier, flatter and warmer than the Serra.","Campanha Gaúcha, Santana do Livramento","Cabernet Sauvignon, Tannat and Tempranillo thrive in the drier climate."],
+"Serra Catarinense":["Cool, high altitude (about 900 to 1,400 m) in Santa Catarina.","São Joaquim","Brazil's highest vineyards, with Cabernet, Merlot and Pinot Noir."],
+"Vale do São Francisco":["Tropical and semi-arid, near the equator, with irrigation.","Vale do São Francisco","Vines can give more than one harvest a year, an unusual tropical wine region."],
+"Ica Valley":["Hot desert coast, irrigated.","Ica, Pisco, Chincha","Famous for pisco from Quebranta and Italia, with wine a growing sideline."],
+"Tarija Valley":["High altitude (about 1,600 to 2,400 m), arid, with intense sun.","Valle de la Concepción","Among the world's highest vineyards. Tannat and Muscat of Alexandria are widely grown."],
+"Aosta Valley":["Alpine climate with some of Europe's highest vineyards, often above 1,000 m.","Valle d'Aosta DOC, Blanc de Morgex et de La Salle","Italy's smallest wine region, so most bottles are drunk locally. Look for Petit Rouge reds and crisp Prié Blanc whites."],
+"Lombardy":["Varied climate, from Alpine valleys to moderate lake and hill sites.","Franciacorta DOCG, Valtellina Superiore, Oltrepò Pavese, Lugana","Franciacorta is Italy's top traditional-method sparkling. Valtellina Nebbiolo is called Chiavennasca locally."],
+"Trentino-Alto Adige":["Alpine valleys with big day-night temperature swings and cool nights that keep acidity high.","Alto Adige DOC, Trentino DOC, Trento DOC, Teroldego Rotaliano","Alto Adige is German-speaking and also called Südtirol. Cooperatives make much of the wine."],
+"Friuli-Venezia Giulia":["Alpine and Adriatic influences. Collio and Colli Orientali have marl and sandstone soils.","Collio, Colli Orientali del Friuli, Friuli Grave, Carso","Known for refined whites and for skin-contact orange wines made from Ribolla Gialla."],
+"Liguria":["Mild Mediterranean coast with steep terraced vineyards that fall to the sea.","Cinque Terre, Riviera Ligure di Ponente, Rossese di Dolceacqua","Pigato and Vermentino suit seafood and pesto. Cinque Terre also makes the sweet Sciacchetrà."],
+"Emilia-Romagna":["Continental climate across the Po plain and Apennine foothills.","Lambrusco di Sorbara, Lambrusco Grasparossa, Romagna Albana, Colli Piacentini","Lambrusco is usually a dry, fizzy red. Albana was the first Italian white to get DOCG status."],
+"Umbria":["Landlocked green hills with moderate rainfall.","Montefalco Sagrantino DOCG, Orvieto, Torgiano Rosso Riserva","Sagrantino is among the most tannic grapes in the world. Orvieto is a light, fresh white."],
+"Marche":["Adriatic coast with hills and mild, breezy summers.","Verdicchio dei Castelli di Jesi, Verdicchio di Matelica, Rosso Conero, Offida","Verdicchio can age well and goes with seafood. Rosso Conero is a robust Montepulciano red."],
+"Lazio":["Warm Mediterranean climate with volcanic soils around Rome.","Frascati, Est! Est!! Est!!! di Montefiascone, Cesanese del Piglio","Frascati is the classic Roman white. Cesanese is a local red worth seeking out."],
+"Abruzzo":["Mountains and sea together, with Apennine influence and warm days.","Montepulciano d'Abruzzo, Trebbiano d'Abruzzo, Cerasuolo d'Abruzzo","The Montepulciano grape is not the same as the Tuscan town of Montepulciano or its Vino Nobile."],
+"Molise":["Hilly, warm and dry, between the Apennines and the Adriatic.","Biferno, Pentro di Isernia, Tintilia del Molise","One of Italy's smallest wine regions. Tintilia is a local red grape now enjoying a revival."],
+"Campania":["Warm Mediterranean climate. Volcanic soils around Vesuvius and inland hills.","Taurasi DOCG, Fiano di Avellino DOCG, Greco di Tufo DOCG, Falerno del Massico","Taurasi is called the Barolo of the south. Many varieties are ancient, including Aglianico, which the Greeks may have brought."],
+"Puglia":["Hot, dry and flat on the heel of Italy, with long sunny summers.","Salice Salentino, Primitivo di Manduria, Castel del Monte, Gioia del Colle","Primitivo is genetically the same grape as California's Zinfandel. Negroamaro anchors the Salento blends."],
+"Basilicata":["Mountainous and inland, with volcanic soils on the slopes of Monte Vulture.","Aglianico del Vulture DOC and Superiore DOCG","High-altitude Aglianico is structured and ages well. Production is small."],
+"Calabria":["Hot and hilly on the toe of Italy with strong sea influence.","Cirò, Greco di Bianco, Savuto","Cirò claims ancient Greek roots. Gaglioppo is the main red grape."],
+"Sardinia":["Mediterranean island with strong winds, hot summers and varied granite and limestone soils.","Vermentino di Gallura DOCG, Cannonau di Sardegna, Carignano del Sulcis, Vernaccia di Oristano","Cannonau is Grenache. Vermentino di Gallura is the island's only DOCG."],
+"Bordeaux":["Maritime climate. Gravel soils on the Left Bank, clay and limestone on the Right Bank.","Médoc, Pauillac, Saint-Émilion, Pomerol, Pessac-Léognan, Sauternes","Left Bank blends lead with Cabernet Sauvignon; Right Bank leads with Merlot. The 1855 Classification ranks top Médoc châteaux."],
+"Burgundy":["Continental climate. Limestone and clay soils, split into tiny vineyard parcels.","Chablis, Côte de Nuits, Côte de Beaune, Côte Chalonnaise, Mâconnais","Quality runs Regional, Village, Premier Cru, Grand Cru. The vineyard site matters more than the producer's name."],
+"Champagne":["Cool northern climate. Chalk subsoil holds water and drains well.","Montagne de Reims, Vallée de la Marne, Côte des Blancs, Côte des Bar","Made by the traditional method, with a second fermentation in the bottle. Look for Brut, Blanc de Blancs, Rosé and vintage bottlings."],
+"Rhône Valley":["Continental in the north, Mediterranean in the south. The mistral wind dries the vines.","North: Côte-Rôtie, Hermitage, Condrieu. South: Châteauneuf-du-Pape, Gigondas","Northern reds are pure Syrah; Condrieu is Viognier. Châteauneuf-du-Pape allows up to 13 grape varieties."],
+"Loire Valley":["Cool maritime climate near the Atlantic, becoming more continental inland. Long river with varied soils.","Muscadet, Vouvray, Savennières, Chinon, Sancerre, Pouilly-Fumé","Sancerre and Pouilly-Fumé are Sauvignon Blanc; Vouvray is Chenin Blanc in dry to sweet styles; Chinon is Cabernet Franc."],
+"Alsace":["Dry and sunny, sheltered by the Vosges Mountains. Very diverse soils.","Alsace AOC, Alsace Grand Cru (51 vineyards), Crémant d'Alsace","Unusual for France, wines are labeled by grape variety. Noble grapes are Riesling, Gewürztraminer, Pinot Gris and Muscat."],
+"Provence":["Hot, sunny Mediterranean climate with cooling coastal influence.","Côtes de Provence, Coteaux d'Aix, Bandol","Pale dry rosé dominates. Bandol is the exception, known for powerful Mourvèdre reds."],
+"Languedoc-Roussillon":["Warm Mediterranean climate with garrigue scrub and varied soils. France's largest wine area by vineyard.","Corbières, Minervois, Pic Saint-Loup, Faugères, Banyuls","Good value reds and a growing number of fine wines. Banyuls is a fortified sweet wine."],
+"Tuscany":["Warm hills with galestro and alberese clay-limestone soils.","Chianti Classico, Brunello di Montalcino, Vino Nobile di Montepulciano, Bolgheri","Chianti Classico carries the black rooster seal. Super Tuscans are blends that broke the old rules."],
+"Piedmont":["Continental climate. Autumn fog (nebbia) gives Nebbiolo its name.","Barolo, Barbaresco, Barbera d'Asti, Gavi, Moscato d'Asti","Barolo and Barbaresco are both Nebbiolo, pale in colour but high in tannin and acid. Both need age."],
+"Veneto":["Mild climate between the Alps and the Adriatic. Mix of hills and plains.","Valpolicella, Amarone della Valpolicella, Soave, Prosecco","Amarone is made from partly dried grapes. Prosecco is usually produced by the tank method, not in the bottle."],
+"Sicily":["Hot and dry Mediterranean climate. Volcanic soils around Mount Etna, with cooler high-altitude vineyards.","Etna DOC, Cerasuolo di Vittoria, Marsala, Pantelleria","Etna reds use Nerello Mascalese and are often compared to Burgundy for their finesse."],
+"Rioja":["Continental with Atlantic and Mediterranean influences. Altitude moderates the heat.","Rioja Alta, Rioja Alavesa, Rioja Oriental","Aging tiers are Joven, Crianza, Reserva and Gran Reserva, with minimum aging increasing at each step."],
+"Ribera del Duero":["High plateau (700 to 1,000 m) with hot days and cold nights.","Ribera del Duero DO, including the Vega Sicilia estate","Tempranillo here is known locally as Tinto Fino. Wines are darker and more powerful than Rioja."],
+"Priorat":["Hot and dry, with steep terraced hillsides.","Priorat DOQ, Montsant DO nearby","Soil is llicorella, a dark slate that forces roots deep. Yields are tiny and the wines concentrated."],
+"Rías Baixas":["Cool, wet Atlantic climate on Galicia's coast. Granite soils.","Rías Baixas DO, with Val do Salnés as the heartland","Vines are trained high on pergolas to keep grapes airy and dry. Albariño is the star."],
+"Douro Valley":["Hot, dry summers and steep schist terraces above the Douro River. The world's oldest demarcated wine region (1756).","Douro DOC (table wine), Porto DOC (Port)","Port comes as Ruby, Tawny, Vintage and more. Dry Douro reds now rival it in quality."],
+"Alentejo":["Hot, sunny plains and rolling hills, with cork oaks all around.","Alentejo DOC and eight sub-regions, including Borba and Redondo","Soft, ripe reds from Aragonez (Tempranillo) and Trincadeira; amphora-aged wines are a regional tradition."],
+"Mosel":["Cool climate with very steep slate slopes above a winding river.","Bernkastel, Piesport, Wehlen, Ürzig","Labels use Prädikat ripeness levels: Kabinett, Spätlese, Auslese and above. Many wines are low in alcohol with sweet-tart balance."],
+"Rheingau":["Sheltered south-facing slopes along the Rhine.","Rüdesheim, Johannisberg, Eltville","Riesling dominates. Many top estates belong to the VDP, which has its own quality classification."],
+"Wachau":["Warm days and cool nights from the Danube valley. Terraced vineyards on rocky soils.","Wachau DAC","Wines are classed by ripeness: Steinfeder (lightest), Federspiel and Smaragd (richest)."],
+"Tokaj":["Continental climate. Volcanic soils, with misty autumns encouraging noble rot from two rivers.","Tokaj, including Tokaji Aszú and dry Furmint","Sweetness in Aszú is traditionally measured in puttonyos, from 3 to 6."],
+"Santorini":["Windy, arid island with volcanic ash and pumice soils. Almost no rainfall.","Santorini PDO","Vines are woven into low baskets (kouloura) to shelter grapes from the wind. Also makes the sweet wine Vinsanto."],
+"Kakheti":["Continental climate in the Caucasus foothills. Home to one of the oldest winemaking traditions, about 8,000 years.","Tsinandali, Mukuzani, Kindzmarauli","Traditional wines age in buried clay vessels called qvevri. White grapes fermented on their skins make amber wine."]
+};
+let ct="All";
+const K={
+"Salta (Cafayate)":"Colomé|El Esteco|Amalaya|Piattelli Vineyards|Domingo Molina",
+"Uco Valley":"Salentein|Clos de los Siete|Zuccardi Valle de Uco|Gimenez Riili|Domaine Bousquet",
+"Luján de Cuyo":"Achával-Ferrer|Terrazas de los Andes|Norton|Ruca Malen|Cheval des Andes",
+"San Juan":"Pyros|Finca Las Moras|Graffigna|Callia|Huentala",
+"La Rioja (Argentina)":"La Riojana|Valle de la Puerta",
+"Patagonia (Argentina)":"Chacra|Familia Schroeder|NQN|Humberto Canale|Fin del Mundo",
+"Aconcagua Valley":"Errázuriz|Seña|Von Siebenthal",
+"Casablanca Valley":"Casas del Bosque|Veramonte|Kingston Family Vineyards|Indómita|Viña Mar",
+"Leyda Valley":"Viña Leyda|Amayna|Casa Marín",
+"Limarí Valley":"Tabalí|Tamaya|Maycas del Limarí",
+"Elqui Valley":"Falernia|Mayu",
+"Cachapoal Valley":"Altaïr|Anakena|Vik",
+"Curicó Valley":"Miguel Torres Chile|San Pedro|Valdivieso|Echeverría|Aresti",
+"Maule Valley":"Gillmore|Terranoble|Bouchon",
+"Itata Valley":"De Martino|Miguel Torres Chile|Cacique Maravilla",
+"Canelones":"Bouza|Deicas|Juanicó|Pisano|Marichal",
+"Maldonado":"Garzón|Alto de la Ballena|Sacromonte",
+"Colonia":"Narbona|Los Cerros de San Juan|Irurtia",
+"Serra Gaúcha":"Miolo|Salton|Casa Valduga|Pizzato|Aurora",
+"Campanha Gaúcha":"Cordilheira de Sant'Anna|Almadén|Seival|Dunamis",
+"Serra Catarinense":"Villa Francioni|Pericó|Suzin",
+"Vale do São Francisco":"Miolo Terranova|Vinibrasil|Rio Sol",
+"Ica Valley":"Tacama|Ocucaje|Intipalka|Santiago Queirolo|Vista Alegre",
+"Tarija Valley":"Kohlberg|Campos de Solana|Aranjuez|Casa Real|La Concepción",
+"Bordeaux":"Château Lafite Rothschild|Château Latour|Château Margaux|Château Haut-Brion|Château Pétrus",
+"Burgundy":"Domaine de la Romanée-Conti|Domaine Leroy|Domaine Leflaive|Domaine Armand Rousseau|Louis Jadot",
+"Champagne":"Krug|Louis Roederer|Bollinger|Veuve Clicquot|Taittinger",
+"Rhône Valley":"E. Guigal|M. Chapoutier|Jean-Louis Chave|Château de Beaucastel|Paul Jaboulet Aîné",
+"Loire Valley":"Didier Dagueneau|Domaine Huet|Henri Bourgeois|Domaine Vacheron|Coulée de Serrant",
+"Alsace":"Zind-Humbrecht|Trimbach|Hugel|Domaine Weinbach|Marcel Deiss",
+"Provence":"Domaine Tempier|Château d'Esclans|Château Minuty|Domaines Ott|Château Simone",
+"Languedoc-Roussillon":"Mas de Daumas Gassac|Domaine Gauby|Domaine de la Grange des Pères|Château de Lascaux|Domaine Peyre Rose",
+"Tuscany":"Antinori|Biondi-Santi|Tenuta San Guido|Ornellaia|Fontodi",
+"Piedmont":"Gaja|Giacomo Conterno|Bruno Giacosa|Pio Cesare|Produttori del Barbaresco",
+"Veneto":"Allegrini|Masi|Dal Forno Romano|Quintarelli|Bisol",
+"Sicily":"Planeta|Tasca d'Almerita|Donnafugata|Benanti|COS",
+"Aosta Valley":"Les Crêtes|Institut Agricole Régional|Grosjean|Cave Mont Blanc|Maison Anselmet",
+"Lombardy":"Ca' del Bosco|Bellavista|Nino Negri|ArPePe|Berlucchi",
+"Trentino-Alto Adige":"Alois Lageder|Cantina Terlano|Elena Walch|Foradori|Ferrari",
+"Friuli-Venezia Giulia":"Jermann|Livio Felluga|Gravner|Vie di Romans|Schiopetto",
+"Liguria":"Lunae Bosoni|Bisson|Punta Crena|Walter De Batté|Terenzuola",
+"Emilia-Romagna":"Cleto Chiarli|Lini 910|Medici Ermete|Fattoria Zerbina|Villa Papiano",
+"Umbria":"Arnaldo Caprai|Paolo Bea|Lungarotti|Castello della Sala|Scacciadiavoli",
+"Marche":"Umani Ronchi|Garofoli|Bucci|La Monacesca|Moroder",
+"Lazio":"Casale del Giglio|Falesco|Poggio Le Volpi|Castel de Paolis|Sergio Mottura",
+"Abruzzo":"Masciarelli|Valentini|Emidio Pepe|Cataldi Madonna|Zaccagnini",
+"Molise":"Di Majo Norante|Borgo di Colloredo|Catabbo|Cipressi|Terresacre",
+"Campania":"Mastroberardino|Feudi di San Gregorio|Terredora|Quintodecimo|Villa Matilde",
+"Puglia":"Cantele|Tormaresca|Felline|Rivera|Masseria Li Veli",
+"Basilicata":"Paternoster|Elena Fucci|Cantine del Notaio|D'Angelo|Basilisco",
+"Calabria":"Librandi|Ippolito 1845|Statti|'A Vita|Cataldo Calabretta",
+"Sardinia":"Argiolas|Sella & Mosca|Santadi|Capichera|Contini",
+"Rioja":"La Rioja Alta|CVNE|Marqués de Murrieta|López de Heredia|Muga",
+"Ribera del Duero":"Vega Sicilia|Dominio de Pingus|Pesquera|Aalto|Emilio Moro",
+"Priorat":"Clos Mogador|Álvaro Palacios|Clos Erasmus|Mas Doix|Scala Dei",
+"Rías Baixas":"Martín Códax|Pazo de Señoráns|Pazo Barrantes|Zárate|Albamar",
+"Douro Valley":"Quinta do Noval|Niepoort|Taylor's|Graham's|Quinta do Crasto",
+"Alentejo":"Herdade do Esporão|Cartuxa|Herdade do Mouchão|Herdade do Rocim|Fitapreta",
+"Mosel":"Joh. Jos. Prüm|Egon Müller|Dr. Loosen|Fritz Haag|Markus Molitor",
+"Rheingau":"Schloss Johannisberg|Robert Weil|Georg Breuer|Schloss Vollrads|Leitz",
+"Wachau":"F.X. Pichler|Emmerich Knoll|Franz Hirtzberger|Domäne Wachau|Rudi Pichler",
+"Tokaj":"Royal Tokaji|Disznókő|Szepsy|Oremus|Királyudvar",
+"Santorini":"Sigalas|Gaia Wines|Hatzidakis|Estate Argyros|Santo Wines",
+"Kakheti":"Pheasant's Tears|Tbilvino|Teliani Valley|Schuchmann Wines|Shumi",
+"Napa Valley":"Opus One|Screaming Eagle|Robert Mondavi|Stag's Leap Wine Cellars|Caymus",
+"Sonoma":"Kistler|Williams Selyem|Rochioli|Ridge Vineyards|Kosta Browne",
+"Willamette Valley":"Domaine Drouhin Oregon|Eyrie Vineyards|Domaine Serene|Ponzi|Adelsheim",
+"Finger Lakes":"Dr. Konstantin Frank|Hermann J. Wiemer|Ravines|Red Newt|Standing Stone",
+"Washington State":"Chateau Ste. Michelle|Woodward Canyon|L'Ecole No. 41|Leonetti Cellar|Quilceda Creek",
+"Okanagan Valley":"Mission Hill|Quails' Gate|Burrowing Owl|Blue Mountain|Tantalus",
+"Mendoza":"Catena Zapata|Zuccardi|Achával-Ferrer|Norton|Terrazas de los Andes",
+"Maipo Valley":"Concha y Toro|Santa Rita|Almaviva|Cousiño-Macul|Santa Carolina",
+"Colchagua Valley":"Montes|Casa Silva|Lapostolle|Viu Manent|Los Vascos",
+"Barossa Valley":"Penfolds|Torbreck|Peter Lehmann|Yalumba|Rockford",
+"Margaret River":"Leeuwin Estate|Vasse Felix|Cullen|Moss Wood|Cape Mentelle",
+"Yarra Valley":"Yering Station|Coldstream Hills|De Bortoli|Mount Mary|Giant Steps",
+"Marlborough":"Cloudy Bay|Villa Maria|Brancott Estate|Dog Point|Greywacke",
+"Central Otago":"Felton Road|Rippon|Mount Difficulty|Two Paddocks|Gibbston Valley",
+"Stellenbosch":"Kanonkop|Meerlust|Rust en Vrede|Rustenberg|Ken Forrester"
+};
+const CI={"Argentina":"High-altitude vineyards in the Andean foothills, led by Malbec.","Chile":"A long, narrow country with Pacific and Andean influences, from desert north to cool south.","Uruguay":"A mild Atlantic climate, with Tannat as the national grape.","Brazil":"From cool southern hills to tropical irrigated vineyards, with strong sparkling wines.","Peru":"A desert coast, best known for pisco.","Bolivia":"Among the highest vineyards in the world.","France":"The benchmark for many wine styles, organized by appellation (AOC).","Italy":"Vines grow in all 20 regions. Wines are classed DOCG, DOC and IGT.","Spain":"The world's largest vineyard area, led by Tempranillo and Garnacha.","Portugal":"Hundreds of native grapes, famous for Port and dry Douro reds.","Germany":"Cool-climate wines led by Riesling, graded by ripeness.","Austria":"Crisp whites led by Grüner Veltliner, organized by the DAC system.","Hungary":"A long tradition of sweet and dry wines, with many local grapes.","Greece":"Ancient winemaking and many native grapes, from island whites to northern reds.","Georgia":"Among the oldest winemaking traditions on earth, built around clay qvevri."};
+let cc="All";
+const LL={"Bordeaux":[44.84,-0.58],"Burgundy":[47.0,4.8],"Champagne":[49.04,3.96],"Rhône Valley":[45.0,4.8],"Loire Valley":[47.26,-0.08],"Alsace":[48.2,7.4],"Provence":[43.5,6.0],"Languedoc-Roussillon":[43.3,3.0],"Tuscany":[43.4,11.2],"Piedmont":[44.7,8.0],"Veneto":[45.5,11.0],"Sicily":[37.6,14.0],"Aosta Valley":[45.7,7.3],"Lombardy":[45.6,9.9],"Trentino-Alto Adige":[46.4,11.3],"Friuli-Venezia Giulia":[46.0,13.4],"Liguria":[44.3,8.8],"Emilia-Romagna":[44.5,11.0],"Umbria":[42.9,12.6],"Marche":[43.4,13.2],"Lazio":[41.9,12.5],"Abruzzo":[42.3,13.9],"Molise":[41.7,14.6],"Campania":[40.9,14.8],"Puglia":[40.8,17.0],"Basilicata":[40.6,16.0],"Calabria":[39.0,16.5],"Sardinia":[40.0,9.0],"Rioja":[42.4,-2.5],"Ribera del Duero":[41.6,-3.7],"Priorat":[41.2,0.8],"Rías Baixas":[42.4,-8.7],"Douro Valley":[41.1,-7.8],"Alentejo":[38.5,-7.9],"Mosel":[49.9,7.0],"Rheingau":[50.0,8.0],"Wachau":[48.4,15.4],"Tokaj":[48.1,21.4],"Santorini":[36.4,25.4],"Kakheti":[41.9,45.7],"Napa Valley":[38.5,-122.3],"Sonoma":[38.5,-122.9],"Willamette Valley":[45.2,-123.1],"Finger Lakes":[42.7,-76.9],"Washington State":[46.2,-119.5],"Okanagan Valley":[49.9,-119.5],"Mendoza":[-33.0,-68.8],"Maipo Valley":[-33.7,-70.7],"Colchagua Valley":[-34.6,-71.2],"Barossa Valley":[-34.5,139.0],"Margaret River":[-33.9,115.1],"Yarra Valley":[-37.7,145.5],"Marlborough":[-41.5,173.9],"Central Otago":[-45.0,169.2],"Salta (Cafayate)":[-26.07,-65.98],"Uco Valley":[-33.6,-69.2],"Luján de Cuyo":[-33.1,-68.9],"San Juan":[-31.5,-68.5],"La Rioja (Argentina)":[-29.4,-66.9],"Patagonia (Argentina)":[-39.0,-67.6],"Aconcagua Valley":[-32.8,-70.6],"Casablanca Valley":[-33.3,-71.4],"Leyda Valley":[-33.6,-71.5],"Limarí Valley":[-30.6,-71.2],"Elqui Valley":[-30.0,-70.5],"Cachapoal Valley":[-34.2,-70.75],"Curicó Valley":[-34.98,-71.2],"Maule Valley":[-35.4,-71.7],"Itata Valley":[-36.6,-72.6],"Biobío Valley":[-37.5,-72.4],"Canelones":[-34.55,-56.28],"Maldonado":[-34.9,-54.95],"Colonia":[-34.47,-57.84],"Serra Gaúcha":[-29.17,-51.52],"Campanha Gaúcha":[-31.33,-54.1],"Serra Catarinense":[-28.3,-49.9],"Vale do São Francisco":[-9.4,-40.5],"Ica Valley":[-14.07,-75.73],"Tarija Valley":[-21.53,-64.73],"Stellenbosch":[-33.9,18.8]};
+const VB={"Europe":[-13,50,33,62],"North America":[-130,-69,25,57],"South America":[-82,-34,-56,-5],"Oceania":[112,180,-48,-28],"Africa":[10,40,-37,-20]};
+const LAND=["-5.3,36 -6.3,36.5 -9,37 -9.5,38.7 -8.8,41.2 -9.3,43.2 -8,43.7 -1.8,43.4 -1.2,44.7 -1.2,46 -4.7,48.4 -2,48.7 -1.3,49.7 1.8,51 4.5,52.5 8.5,53.7 8.2,55.5 8.2,57 10.5,57.7 10.5,56.2 9.8,55 10.5,54.2 12,54.2 14,54 16.5,54.6 19.5,54.4 21,55.5 21,56.5 24,57 24.5,58.5 23.5,59.3 28,59.5 30.3,60 27,60.4 25,60.2 23,59.9 21.5,60.5 21.3,62.5 22.5,64 25,65.2 21.5,64.8 20,63.8 17.5,62.5 17.2,60.6 18.8,59.4 17.5,58.5 16.6,57 16.4,56.2 14.2,55.4 12.8,55.5 12.5,56.2 11.8,57.7 11.2,59 10.7,59.9 9.5,58.9 8,58.1 6,58.4 5.2,59.5 5,61 6,62.5 9,63.5 11.5,65 13.5,67 16,68.5 19,70 25,71 31,70.3 33,69.4 41,67.2 44,68.6 53,68.5 53,30 36.5,30 34.9,31.5 35,33 35.8,34.5 35.9,36 36.2,36.7 32.5,36.1 30.5,36.3 29,36.6 27.5,37 27,38.3 26.2,39.3 26.7,40.4 26,40.9 24,40.8 23.8,40 22.9,40.4 22.6,39.3 23.3,38.5 24,38 23.2,36.6 22.5,36.5 21.7,36.8 21.2,38 20.3,39.3 19.4,40.4 19.4,41.8 18.5,42.5 17,43.2 15.5,44.2 14.5,45.2 13.7,45.6 12.3,45.4 12.5,44.3 13.6,43.6 14.5,42.2 16.2,41.9 15.9,41.4 18.5,40.1 17.2,40.4 16.6,39.7 17.1,38.9 16,37.9 15.7,38 16.1,39.3 15.7,40 14.3,40.8 13,41.3 12.3,41.8 11,42.5 10.5,43 10.2,43.9 8.8,44.4 7.5,43.8 6.2,43.1 4.8,43.3 3.2,43.2 3.1,42.4 3.2,41.9 2.2,41.4 0.8,40.8 -0.3,39.5 0.2,38.8 -0.7,37.9 -2,36.8 -4.4,36.7",
+"12.5,38 15.6,38.2 15.1,36.7 12.4,37.7","8.2,41 9.7,41.1 9.7,39.2 8.5,39 8.4,40.4","8.6,42.5 9.5,43 9.4,41.5 8.8,41.6","-5.7,50 1.4,51.2 1.7,52.7 -0.2,54.2 -2,55.8 -1.8,57.5 -3,58.6 -5.5,58.5 -5.8,56.5 -4.8,54.7 -3,53.4 -4.5,52 -5.2,51.7 -3.5,51.2","-10,51.7 -6.2,52.2 -6,54.2 -6.8,55.2 -8.5,55.1 -10,54 -9.8,53","23.5,35.4 26.3,35.2 24,35",
+"-17,21 -13,27.7 -9.8,31 -6,35.8 -2,35.2 3,36.8 10.2,37.2 11,33.5 15.5,32.3 20,32 25,31.7 32,31.2 34.5,28 32.5,30 37,21 43,12 51,12 51,10.5 46,3 40,-3 39.5,-9 40.5,-15 35,-21 35.5,-24 32.5,-28.5 27,-33.5 20,-34.8 18.4,-34.2 16.5,-28.5 14,-22 11.8,-17 13.5,-11 12,-5 9,-1 9.5,4 5,6 -4,5.2 -8,4.3 -13,8 -17.5,14.7 -16.5,19",
+"-124.7,48.4 -124,46.2 -124.4,43 -124.2,40.4 -122.5,37.8 -121.9,36.6 -120.6,34.5 -118.5,34 -117.1,32.5 -106.5,31.7 -104.5,29.5 -99.2,26.2 -97.2,25.9 -97.4,27.8 -94.8,29.3 -90.5,29.1 -88,30.3 -85.5,29.7 -84,30.1 -82.8,28 -81.8,26.2 -80.4,25.2 -80,26.8 -81.3,30 -81,31.7 -79,33.5 -75.5,35.2 -76,37 -75,38.5 -74,40.5 -72,41 -70,41.7 -70.8,42.7 -70.2,43.7 -67,44.8 -65,43.7 -60,46 -57,51 -62,56 -70,58 -78,56 -80,51 -90,57 -94,59 -100,60 -110,62 -125,60 -130,55 -127,51",
+"-70.5,-18 -71.5,-30 -71.7,-35 -73.5,-37.5 -73.5,-42 -74,-47 -75,-50 -73,-53 -70,-55 -66,-55 -68.5,-52.5 -68.5,-50 -67.5,-46 -65.5,-45.5 -64.5,-42.5 -65,-41 -62.5,-39.5 -57.5,-38.2 -57,-36.5 -58.3,-34.4 -54,-34.5 -48.5,-27 -44,-23 -40,-20 -39,-13 -35,-8 -35,-5.5 -40,-2.5 -50,0 -52,5 -60,8 -67,10.5 -72,12 -75,10.8 -77,8 -79,1.5 -81,-4.5 -76,-14",
+"113.5,-22 114,-26 115,-34 118,-35 123.5,-34 129,-31.5 134,-32.7 137.5,-35 138,-33.5 140,-38 144,-38.5 146.5,-39 150,-37.5 153,-31 153.5,-28 150,-22.5 146,-18.5 145.5,-14.8 143.5,-12.5 142.5,-10.7 141.5,-13 141,-17 139.5,-17.5 136,-15 137,-12 132,-11.3 130,-12.5 126,-14 122.5,-17.5 121,-19.5 117,-20.5","144.7,-40.7 148.3,-40.9 147,-43.6 145.3,-42.2","174.8,-36.8 176.2,-37.7 178.5,-37.7 177,-39.3 176,-41.3 174.8,-41.3 175.2,-39.5 173.8,-39.2 174.5,-37","172.6,-40.5 174.2,-41.7 173,-43.5 171.2,-44.5 170.7,-46 168.3,-46.6 166.5,-46 168,-44 170,-43 171.5,-41.8"];
+const SEA=["28,41.8 28.5,44 29.7,45.2 30.5,46.4 33.5,46 32.5,45.4 35,45 37.5,47 38.5,47.2 39,45.2 37.5,44.5 40,43.5 41.6,41.6 36,41.3 31.5,41.1 29,41.2","17.5,61 17.2,63 19,64 21.5,65.5 25.3,65.3 22,63 21.3,61.5 21.5,60 19.5,59.8"];
+const mp=a=>a.map(t=>"M"+t.split(" ").map(q=>{const[x,y]=q.split(",");return x+" "+(-y)}).join("L")+"Z").join("");
+const LP=mp(LAND),SP=mp(SEA);
+function pic(g){const l=LL[g[0]],v=VB[g[2]];if(!l)return"";const w=v[1]-v[0],h=v[3]-v[2],r=(w/42).toFixed(2);
+return `<svg class="pic" role="img" aria-label="Map showing ${g[0]}" viewBox="${v[0]} ${-v[3]} ${w} ${h}" style="aspect-ratio:${w}/${h}"><rect x="${v[0]}" y="${-v[3]}" width="${w}" height="${h}" class="sea"/><path d="${LP}" class="land"/><path d="${SP}" class="sea"/><circle cx="${l[1]}" cy="${-l[0]}" r="${r*1.9}" class="halo"/><circle cx="${l[1]}" cy="${-l[0]}" r="${r}" class="dot"/></svg>`}
+const GC=`Altenberg de Bergbieten|Bergbieten|B|29.07
+Altenberg de Bergheim|Bergheim|H|35.06
+Altenberg de Wolxheim|Wolxheim|B|31.20
+Brand|Turckheim|H|57.95
+Bruderthal|Molsheim|B|18.40
+Eichberg|Eguisheim|H|57.62
+Engelberg|Dahlenheim, Scharrachbergheim|B|14.80
+Florimont|Ingersheim, Katzenthal|H|21
+Frankstein|Dambach-la-Ville|B|56.20
+Froehn|Zellenberg|H|14.60
+Furstentum|Kientzheim, Sigolsheim|H|30.50
+Geisberg|Ribeauvillé|H|8.53
+Gloeckelberg|Rodern, Saint-Hippolyte|H|23.40
+Goldert|Gueberschwihr|H|45.35
+Hatschbourg|Hattstatt, Voegtlinshoffen|H|47.36
+Hengst|Wintzenheim|H|53.02
+Kaefferkopf|Ammerschwihr|H|71.65
+Kanzlerberg|Bergheim|H|3.23
+Kastelberg|Andlau|B|5.82
+Kessler|Guebwiller|H|28.53
+Kirchberg de Barr|Barr|B|40.63
+Kirchberg de Ribeauvillé|Ribeauvillé|H|11.40
+Kitterlé|Guebwiller|H|25.79
+Mambourg|Sigolsheim|H|61.85
+Mandelberg|Mittelwihr, Beblenheim|H|22
+Marckrain|Bennwihr, Sigolsheim|H|53.35
+Moenchberg|Andlau, Eichhoffen|B|11.83
+Muenchberg|Nothalten|B|17.70
+Ollwiller|Wuenheim|H|35.86
+Osterberg|Ribeauvillé|H|24.60
+Pfersigberg|Eguisheim, Wettolsheim|H|74.55
+Pfingstberg|Orschwihr|H|28.15
+Praelatenberg|Kintzheim|B|18.70
+Rangen|Thann, Vieux-Thann|H|22.13
+Rosacker|Hunawihr|H|26.18
+Saering|Guebwiller|H|26.75
+Schlossberg|Kientzheim|H|80.28
+Schoenenbourg|Riquewihr, Zellenberg|H|53.40
+Sommerberg|Niedermorschwihr, Katzenthal|H|28.36
+Sonnenglanz|Beblenheim|H|32.80
+Spiegel|Bergholtz, Guebwiller|H|18.26
+Sporen|Riquewihr|H|23.70
+Steinert|Pfaffenheim, Westhalten|H|38.90
+Steingrubler|Wettolsheim|H|22.95
+Steinklotz|Marlenheim|B|40.60
+Vorbourg|Rouffach, Westhalten|H|73.61
+Wiebelsberg|Andlau|B|12.52
+Wineck-Schlossberg|Katzenthal, Ammerschwihr|H|27.40
+Winzenberg|Blienschwiller|B|19.20
+Zinnkoepflé|Soultzmatt, Westhalten|H|71.03
+Zotzenberg|Mittelbergheim|B|36.45`.split("\n").map(l=>l.split("|"));
+const GCX={"Altenberg de Bergheim":"R · G · PG, or a blend: Riesling 50–70%, Pinot Gris 10–25%, Gewürz. 10–25%, up to 10% other older-planted grapes","Kaefferkopf":"R · G · PG, or a blend: Gewürz. 60–80%, Riesling 10–40%, Pinot Gris 0–30%, up to 10% Muscat","Zotzenberg":"R · G · PG · Sylvaner (the only Grand Cru allowed Sylvaner)"};
+const gcRow=x=>`<tr><td><b>${x[0]}</b></td><td>${x[1]}</td><td>${x[3]}</td><td>${GCX[x[0]]||"R · G · PG · M"}</td></tr>`;
+const gcPart=(d,t)=>`<tr class="gh"><th colspan="4">${t}</th></tr>`+GC.filter(x=>x[2]==d).map(gcRow).join("");
+const GCS=GC.map(x=>x[0]+" "+x[1]).join(" ")+" grand cru";
+const GCH=`<details class="gcd"><summary>Grand Cru vineyards (51)</summary><p>Alsace Grand Cru wines come from 51 named vineyards, each its own appellation. They are white wines labelled with the vineyard name and made from a single noble grape, with a few exceptions noted below.</p><p class="vnote"><b>Permitted grapes:</b> R = Riesling, G = Gewürztraminer, PG = Pinot Gris, M = Muscat. Hand harvest is required.</p><div class="wrap"><table class="gct"><tr><th>Vineyard</th><th>Village</th><th>Ha</th><th>Grapes</th></tr>${gcPart("B","Bas-Rhin (north)")}${gcPart("H","Haut-Rhin (south)")}</table></div><p class="vnote">Exceptions: Zotzenberg allows Sylvaner, and Altenberg de Bergheim and Kaefferkopf allow blends. Some sites favor only some of the four grapes in practice, so check the producer's label.</p></details>`;
+function subs(g){if(cc=="All"||ct=="All"||!E[g[0]])return"";const a=E[g[0]][1].split(/,\s*(?![^()]*\))/).filter(Boolean);if(!a.length)return"";return `<div class="subs"><b>Subregions &amp; appellations</b><div>${a.map(n=>`<a class="sc" target="_blank" rel="noopener noreferrer" href="https://www.google.com/search?q=${encodeURIComponent(n+" "+g[0]+" wine")}">${n}</a>`).join("")}</div></div>`}
+function rcard(g){let h=rcard0(g);if(g[0]=="Alsace")h=h.replace(/<\/div>$/,GCH+"</div>");const u=subs(g);if(u){const i=h.indexOf("<details");h=i>=0?h.slice(0,i)+u+h.slice(i):h.replace(/<\/div>$/,u+"</div>")}return h}
+function rcard0(g){return `<div class="card">${pic(g)}<h3>${g[0]}</h3><div class="meta">${g[1]}</div><p><b>Key grapes:</b> ${g[3]}</p><p>${g[4]}</p>${E[g[0]]?`<details><summary>More detail</summary><p><b>Climate &amp; soil:</b> ${E[g[0]][0]}</p><p><b>Key appellations:</b> ${E[g[0]][1]}</p><p><b>Good to know:</b> ${E[g[0]][2]}</p></details>`:""}${K[g[0]]?`<details><summary>Top producers</summary><p>${K[g[0]].split("|").map(n=>`<a href="https://www.google.com/search?q=${encodeURIComponent(n+" wine official website")}" target="_blank" rel="noopener noreferrer">${n}</a>`).join(" · ")}</p></details>`:""}${LL[g[0]]?`<p style="margin:12px 0 0;font-size:13px"><a href="https://www.openstreetmap.org/?mlat=${LL[g[0]][0]}&mlon=${LL[g[0]][1]}#map=8/${LL[g[0]][0]}/${LL[g[0]][1]}" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">Open full map ↗</a></p>`:""}</div>`}
+const SUB={"Mendoza":"Uco Valley, Luján de Cuyo, Maipú, San Rafael","Maipo Valley":"Alto Maipo, Pirque, Isla de Maipo, Buin","Colchagua Valley":"Apalta, Marchigüe, Lolol, Los Lingues","Napa Valley":"Oakville, Rutherford, Stags Leap District, Howell Mountain, Carneros, Mount Veeder","Sonoma":"Russian River Valley, Dry Creek Valley, Alexander Valley, Sonoma Coast, Sonoma Valley","Willamette Valley":"Dundee Hills, Eola-Amity Hills, Ribbon Ridge, Chehalem Mountains","Finger Lakes":"Seneca Lake, Cayuga Lake, Keuka Lake","Washington State":"Columbia Valley, Walla Walla Valley, Yakima Valley, Red Mountain","Okanagan Valley":"Golden Mile Bench, Naramata Bench, Oliver, Osoyoos","Barossa Valley":"Eden Valley, Greenock, Marananga, Lyndoch","Margaret River":"Wilyabrup, Yallingup, Karridale, Wallcliffe","Yarra Valley":"Upper Yarra, Lower Yarra, Yarra Glen, Coldstream","Marlborough":"Wairau Valley, Awatere Valley, Southern Valleys","Central Otago":"Gibbston, Bannockburn, Bendigo, Wanaka","Stellenbosch":"Simonsberg, Jonkershoek Valley, Bottelary, Devon Valley"};
+const CO=["Europe","North America","South America","Oceania","Africa"],CNT=[];
+R.forEach(g=>{let c=CNT.find(x=>x.n==g[1]);if(!c){c={n:g[1],ct:g[2],r:[]};CNT.push(c)}c.r.push(g)});CNT.sort((a,b)=>CO.indexOf(a.ct)-CO.indexOf(b.ct));
+let Xc="",Xr="",Xs="";
+function ex(x){return String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+const subL=n=>(E[n]?E[n][1]:(SUB[n]||"")).split(/,\s*(?![^()]*\))/).map(x=>x.trim()).filter(x=>x&&x!=n&&!/including/i.test(x));
+const hnd=e=>{const b=e.target.closest("button");if(!b)return;const d=b.dataset;if("hm" in d){Xc=Xr=Xs=""}else if("c" in d){Xc=d.c;Xr=Xs=""}else if("r" in d){Xr=d.r;Xs=""}else if("s" in d){Xs=d.s}else return;drawR()};
+$('rnav').onclick=hnd;$('rbody').onclick=hnd;$('rq').oninput=()=>drawR();
+function drawR(){
+const q=$('rq').value.trim().toLowerCase(),nav=$('rnav'),body=$('rbody');
+if(q){nav.innerHTML="";const r=R.filter(g=>(g.join(" ")+(E[g[0]]||"")+(K[g[0]]||"")+(SUB[g[0]]||"")+(g[0]=="Alsace"?GCS:"")).toLowerCase().includes(q));body.innerHTML=`<div class="grid">${r.map(rcard).join("")||'<div class="empty">No regions match that search.</div>'}</div>`;return}
+const C=CNT.find(c=>c.n==Xc),G1=C&&C.r.find(g=>g[0]==Xr);
+let t=`<div class="rtabs"><button class="chip${!Xc?" on":""}" data-hm="1">Home</button>`+CNT.map(c=>`<button class="chip${c.n==Xc?" on":""}" data-c="${ex(c.n)}">${ex(c.n)}</button>`).join("")+"</div>";
+if(C)t+=`<div class="rtl">Regions in ${ex(Xc)}</div><div class="rtabs"><button class="chip${!Xr?" on":""}" data-r="">All</button>`+C.r.map(g=>`<button class="chip${g[0]==Xr?" on":""}" data-r="${ex(g[0])}">${ex(g[0])}</button>`).join("")+"</div>";
+if(G1){const ss=subL(Xr);t+=`<div class="rtl">Subregions of ${ex(Xr)}</div>`+(ss.length?`<div class="rtabs"><button class="chip${!Xs?" on":""}" data-s="">All</button>`+ss.map(x=>`<button class="chip${x==Xs?" on":""}" data-s="${ex(x)}">${ex(x)}</button>`).join("")+"</div>":'<p style="color:var(--muted);font-size:14px;margin:0 0 8px">No subregions listed for this region yet.</p>')}
+nav.innerHTML=t;
+if(!Xc){body.innerHTML=`<p style="color:var(--muted);margin:0 0 4px">${CNT.length} countries and ${R.length} regions. Choose a country to begin.</p>`+CO.map(co=>{const cs=CNT.filter(c=>c.ct==co);return cs.length?`<h3 style="font-size:24px;margin:18px 0 10px">${co}</h3><div class="grid">`+cs.map(c=>`<button class="card ccard" data-c="${ex(c.n)}"><h3>${ex(c.n)}</h3><p>${c.r.length} region${c.r.length>1?"s":""}</p><p style="font-size:13px">${c.r.slice(0,3).map(g=>ex(g[0])).join(", ")}${c.r.length>3?"…":""}</p></button>`).join("")+"</div>":""}).join("")}
+else if(!G1){body.innerHTML=`<p style="color:var(--muted);margin:0 0 12px">${CI[Xc]||""}</p><div class="grid">`+C.r.map(g=>`<div class="card"><h3>${ex(g[0])}</h3><div class="meta">${ex(g[1])}</div><p><b>Key grapes:</b> ${g[3]}</p><p>${g[4]}</p><button class="chip on" data-r="${ex(g[0])}">Open region</button></div>`).join("")+"</div>"}
+else{body.innerHTML=(Xs?`<div class="card" style="margin-bottom:12px"><h3>${ex(Xs)}</h3><div class="meta">Subregion of ${ex(Xr)}, ${ex(Xc)}</div><p style="margin:0 0 10px">${ex(Xs)} is one of the key appellations or sub-zones of ${ex(Xr)}. The region's grapes, style and producers are below.</p><a class="chip" target="_blank" rel="noopener noreferrer" style="text-decoration:none" href="https://www.google.com/search?q=${encodeURIComponent(Xs+" "+Xr+" wine")}">Search the web ↗</a></div>`:"")+rcard(G1)}
+}
+drawR();
+draw();
+let mc="Europe",ms=null;
+const mv=()=>R.filter(g=>g[2]==mc&&LL[g[0]]);
+$('mchips').innerHTML=Object.keys(VB).map(t=>`<button class="chip" data-m="${t}">${t}</button>`).join("");
+$('mchips').onclick=e=>{const t=e.target.dataset.m;if(!t)return;mc=t;ms=null;drawM()};
+$('wmap').onclick=e=>{const k=e.target.closest("[data-n]");if(k)selM(k.dataset.n)};
+$('mlist').onclick=e=>{if(e.target.dataset.n)selM(e.target.dataset.n)};
+$('minfo').onclick=e=>{if(e.target.id=="goR")goR(ms)};
+function selM(n){ms=n;drawM()}
+function goR(n){const g=R.find(x=>x[0]==n);Xc=g[1];Xr=n;Xs="";$('rq').value="";drawR();location.hash="regions"}
+function drawM(){
+const v=VB[mc],w=v[1]-v[0],h=v[3]-v[2],r=w/80,svg=$('wmap'),rs=mv();
+[...$('mchips').children].forEach(c=>c.classList.toggle('on',c.dataset.m==mc));
+svg.setAttribute("viewBox",`${v[0]} ${-v[3]} ${w} ${h}`);svg.style.aspectRatio=`${w}/${h}`;
+let o=`<rect x="${v[0]}" y="${-v[3]}" width="${w}" height="${h}" class="sea"/><path d="${LP}" class="land"/><path d="${SP}" class="sea"/>`;
+rs.forEach(g=>{const l=LL[g[0]],on=g[0]==ms;o+=`<g data-n="${g[0]}" style="cursor:pointer"><circle cx="${l[1]}" cy="${-l[0]}" r="${r*2.6}" fill="transparent"/>${on?`<circle cx="${l[1]}" cy="${-l[0]}" r="${r*2.4}" class="halo"/>`:""}<circle cx="${l[1]}" cy="${-l[0]}" r="${on?r*1.4:r}" class="dot"/></g>`});
+if(ms&&LL[ms]){const l=LL[ms];o+=`<text x="${l[1]}" y="${-l[0]-r*3.2}" text-anchor="middle" font-size="${w/34}" class="lab">${ms}</text>`}
+svg.innerHTML=o;
+$('mlist').innerHTML=rs.map(g=>`<button class="chip${g[0]==ms?" on":""}" data-n="${g[0]}">${g[0]}</button>`).join("");
+const g=R.find(x=>x[0]==ms);
+$('minfo').innerHTML=g?`<h3>${g[0]}</h3><div class="meta">${g[1]}</div><p><b>Key grapes:</b> ${g[3]}</p><p>${g[4]}</p><button class="chip on" id="goR">View region card ↓</button>`:`Tap a region to see its grapes and style. ${rs.length} regions shown.`;
+}
+drawM();
+let sc=0,tot=0,st=0,cq;
+const pk=a=>a[Math.floor(Math.random()*a.length)],sh=a=>[...a].sort(()=>Math.random()-.5),f1=g=>g[3].split(", ")[0];
+function mk(){const t=Math.floor(Math.random()*4);let q,ans,pool;
+if(t==0){const g=pk(R);q=`Which country is ${g[0]} in?`;ans=g[1];pool=[...new Set(R.map(x=>x[1]))]}
+else if(t==1){const g=pk(R);q=`Which grape leads the key grapes for ${g[0]}?`;ans=f1(g);pool=[...new Set(R.filter(x=>!g[3].includes(f1(x))).map(f1))]}
+else if(t==2){const g=pk(R.filter(x=>K[x[0]])),n=pk(K[g[0]].split("|"));q=`${n} is a top producer in which region?`;ans=g[0];pool=R.map(x=>x[0])}
+else{const g=pk(G);q=`What style is ${g[0]}?`;ans=g[1];pool=["Red","White","Sparkling","Rosé"]}
+return{q,ans,opts:sh([ans,...sh(pool.filter(x=>x!=ans)).slice(0,3)])}}
+let md="Easy";
+const fin=(q,ans,pool)=>({q,ans,opts:sh([ans,...sh(pool.filter(x=>x!=ans)).slice(0,3)])});
+function near(g){let p=R.filter(x=>x[1]==g[1]&&x[0]!=g[0]).map(x=>x[0]);if(p.length<3)p=R.filter(x=>x[2]==g[2]&&x[0]!=g[0]).map(x=>x[0]);return p}
+function mkH(){for(;;){const t=Math.floor(Math.random()*4);
+if(t==0){const g=pk(R.filter(x=>E[x[0]])),nm=g[0].split(" ")[0].toLowerCase(),ap=E[g[0]][1].split(", ").filter(a=>!a.toLowerCase().includes(nm)&&!/including| and /.test(a)&&a.length<28);if(!ap.length)continue;return fin(`${pk(ap)} is an appellation in which region?`,g[0],near(g))}
+if(t==1){const g=pk(R.filter(x=>E[x[0]]));let c=E[g[0]][2];c=c.split(g[0]).join("this region");const w=g[0].split(" ")[0];if(w.length>3)c=c.split(w).join("this region");return fin(`Which region? "${c}"`,g[0],near(g))}
+if(t==2){const g=pk(R.filter(x=>K[x[0]]));return fin(`${pk(K[g[0]].split("|"))} is a top producer in which region?`,g[0],near(g))}
+const g=pk(R.filter(x=>x[3].split(", ").length>=3)),own=g[3].split(", "),out=pk([...new Set(R.flatMap(x=>x[3].split(", ")))].filter(x=>!g[3].includes(x)));
+return{q:`Which grape is NOT among the key grapes of ${g[0]}?`,ans:out,opts:sh([out,...own.slice(0,3)])}}}
+$('qm').innerHTML=["Easy","Hard"].map(m=>`<button class="chip${m==md?" on":""}" data-d="${m}">${m}</button>`).join("");
+$('qm').onclick=e=>{const d=e.target.dataset.d;if(!d)return;md=d;[...$('qm').children].forEach(c=>c.classList.toggle('on',c.dataset.d==md));nextQ()};
+function nextQ(){cq=md=="Hard"?mkH():mk();$('qq').textContent=cq.q;$('qo').innerHTML=cq.opts.map((o,i)=>`<button class="chip qo" data-i="${i}">${o}</button>`).join("");$('qf').textContent="";$('qn').style.display="none"}
+$('qo').onclick=e=>{const i=e.target.dataset.i;if(i==null||cq.done)return;cq.done=1;const ok=cq.opts[i]==cq.ans;tot++;if(ok){sc++;st++}else st=0;
+[...$('qo').children].forEach((b,j)=>{if(cq.opts[j]==cq.ans)b.classList.add("ok");else if(j==i)b.classList.add("bad")});
+$('qf').textContent=ok?"Correct!":"The answer is "+cq.ans+".";$('qs').textContent=`Score ${sc}/${tot} · Streak ${st}`;$('qn').style.display="inline-block"};
+$('qn').onclick=nextQ;nextQ();
+const L5=["Low","Medium−","Medium","Medium+","High"],L5b=["Light","Medium−","Medium","Medium+","Pronounced"],BD=["Light","Medium−","Medium","Medium+","Full"];
+const CL={White:["Lemon-green","Lemon","Gold","Amber","Brown"],"Rosé":["Pink","Salmon","Orange"],Red:["Purple","Ruby","Garnet","Tawny","Brown"],Sparkling:["Lemon-green","Lemon","Gold","Pink","Salmon"]};
+const KW={"Citrus":["citrus","lemon","lime","grapefruit"],"Green fruit":["apple","pear"],"Stone fruit":["peach"],"Tropical":["melon","tropical","lychee"],"Red fruit":["cherry","strawberry"],"Black fruit":["blackcurrant","blackberry","plum"],"Floral":["honeysuckle","floral","rose","violet"],"Herbaceous":["tomato leaf"],"Herbal":["herb"],"Pungent spice":["pepper"],"Oak":["oak","cedar","vanilla"],"Butter/MLF":["butter"],"Yeast/lees":["brioche"],"Savoury":["mushroom","leather","earth","smoke"],"Dried/cooked fruit":["chocolate","honey"],"Oxidation/nutty":["almond"]};
+const TGR=[["Appearance",[["Type",["White","Rosé","Red","Sparkling"]],["Clarity",["Brilliant","Clear","Dull","Hazy","Cloudy"]],["Intensity",["Water-white","Pale","Medium","Deep","Opaque"]],["Colour","C"],["Rim colour","C"],["Core vs rim",["Uniform","Slight fade","Strong fade"]],["Age hue",["Youthful","Developing","Mature","Oxidised"]],["Colour clues",["Skin-contact (orange)","Oak ageing (golden)","Botrytis (deep gold)","Pink blush","Purple tinge"],1],["Viscosity",["Light","Medium","Heavy"]],["Bubble size",["Fine","Medium","Coarse"]],["Bubble persistence",["Short-lived","Moderate","Long-lasting"]],["Other observations",["Sediment","Tartrate crystals","Cork fragments","Bubbles","Legs/tears"],1]]],
+["Nose",[["Condition",["Clean","Unclean"]],["Intensity",L5b],["Primary aromas",["Floral","Green fruit","Citrus","Stone fruit","Tropical","Red fruit","Black fruit","Herbaceous","Herbal","Pungent spice"],1],["Fruit detail",["Lemon","Lime","Grapefruit","Green apple","Pear","Peach","Apricot","Pineapple","Melon","Strawberry","Raspberry","Cherry","Plum","Blackcurrant","Blackberry","Fig/raisin"],1],["Non-fruit detail",["Rose","Violet","Honeysuckle","Grass","Bell pepper","Mint","Black pepper","Vanilla","Toast","Smoke","Coconut","Brioche","Mushroom","Leather","Tobacco","Petrol","Honey","Earth","Wet stone"],1],["Secondary aromas",["Yeast/lees","Butter/MLF","Oak"],1],["Tertiary aromas",["Dried/cooked fruit","Oxidation/nutty","Savoury"],1],["Development",["Youthful","Developing","Fully developed","Tired"]]]],
+["Palate",[["Sweetness",["Dry","Off-dry","Medium-dry","Medium-sweet","Sweet","Luscious"]],["Acidity",L5],["Tannin",["N/A",...L5]],["Tannin character",["Fine-grained","Grippy","Chalky","Ripe","Green"]],["Alcohol",["Low","Medium","High"]],["Body",BD],["Fruit ripeness",["Under-ripe","Fresh","Ripe","Over-ripe"]],["Texture",["Oily","Creamy","Silky","Crisp","Mineral"],1],["Mousse",["Delicate","Creamy","Aggressive"]],["Flavour intensity",L5b],["Finish",["Short","Medium−","Medium","Medium+","Long"]]]],
+["Quality (BLIC)",[["Quality points",["Balance","Length","Intensity","Complexity"],1]]],
+["Conclusion",[["Quality",["Faulty","Poor","Acceptable","Good","Very good","Outstanding"]],["Readiness",["Too young","Drink now, can age","Drink now","Too old"]],["Ageing potential",["Short","Medium","Long"]]]],
+["Deductions",[["Climate",["Cool","Moderate","Warm"]],["Old/New World",["Old World","New World"]],["Grape guess","D"],["Region guess","R2"],["Age guess",["Under 2 years","2 to 5 years","5 to 10 years","10+ years"]]]]];
+let tg={};
+const tv=r=>{const v=tg[r];return Array.isArray(v)?v.join(", "):v||""},ta=r=>tg[r]||[];
+function cands(){if(!tg.Type)return[];const bi=BD.indexOf(tg.Body)+1,aro=[...ta("Primary aromas"),...ta("Secondary aromas"),...ta("Tertiary aromas")],dt=[...ta("Fruit detail"),...ta("Non-fruit detail")].map(x=>x.toLowerCase());
+return G.filter(g=>g[1]==tg.Type).map(g=>{let sc=0,why=[];const gf=g[4].toLowerCase();if(bi){const d=Math.abs(bi-g[2]);sc+=Math.max(0,2-d);if(d<=1)why.push("body")}
+if(tg.Type=="Red"){const iv=tg.Intensity;if((iv=="Deep"||iv=="Opaque")&&g[2]>=4){sc+=1;why.push("deep colour")}else if(iv=="Pale"&&g[2]<=2){sc+=1;why.push("pale colour")}}
+aro.forEach(a=>{if((KW[a]||[]).some(k=>gf.includes(k))){sc+=2;why.push(a.toLowerCase())}});
+dt.forEach(d=>{if(gf.includes(d)||gf.includes(d.split(" ").pop())){sc+=1.5;why.push(d)}});
+return{n:g[0],sc,why}}).filter(x=>x.sc>0).sort((a,b)=>b.sc-a.sc).slice(0,3)}
+const STR={Sweetness:["Dry","Off-dry","Medium-dry","Medium-sweet","Sweet","Luscious"],Acidity:L5,Tannin:["N/A",...L5],Alcohol:["Low","Medium","High"],Body:BD,"Flavour intensity":L5b,Finish:["Short","Medium−","Medium","Medium+","Long"]};
+function bars(){const o=Object.entries(STR).filter(([k])=>tg[k]).map(([k,a])=>{const i=a.indexOf(tg[k]),pc=k=="Tannin"&&i==0?0:Math.round((i+1)/a.length*100);return `<div class="bar"><span>${k}</span><b><i style="width:${pc}%"></i></b></div>`}).join("");return o?`<p style="margin:0 0 4px"><b>Structure profile</b></p>${o}`:""}
+function analysis(){const o=[],w=[],ac=tg.Acidity,al=tg.Alcohol,bl=ta("Quality points").length,nt=tg.Type&&tg.Type!="Red",nw=tg["Old/New World"];
+if(["High","Medium+"].includes(ac)&&["Low","Medium"].includes(al))o.push("<b>Climate clue:</b> higher acidity with low or moderate alcohol points to a cooler climate.");
+else if(["Low","Medium−"].includes(ac)&&al=="High")o.push("<b>Climate clue:</b> lower acidity with high alcohol points to a warmer climate.");
+if(tg["Fruit ripeness"]=="Under-ripe"||tg["Fruit ripeness"]=="Over-ripe")o.push(`<b>Ripeness:</b> ${tg["Fruit ripeness"].toLowerCase()} fruit suggests a ${tg["Fruit ripeness"]=="Under-ripe"?"cool climate or early harvest":"hot climate or late harvest"}.`);
+const col=tg.Colour,iv=tg.Intensity,rc=tg["Rim colour"];
+if(tg.Type=="Red"){if((iv=="Deep"||iv=="Opaque")&&["Purple","Ruby"].includes(col))o.push("<b>Appearance:</b> a deep, youthful colour suggests thick-skinned grapes such as Cabernet Sauvignon, Syrah or Malbec.");else if(iv=="Pale"&&["Ruby","Garnet"].includes(col))o.push("<b>Appearance:</b> a pale ruby or garnet colour suggests thin-skinned grapes such as Pinot Noir or Gamay.");if(["Garnet","Tawny","Brown"].includes(rc))o.push("<b>Appearance:</b> a garnet, tawny or brown rim indicates bottle age.")}
+if(tg.Type=="White"){if(col=="Lemon-green")o.push("<b>Appearance:</b> lemon-green suggests youth, often from a cooler climate or an unoaked style.");if(["Gold","Amber"].includes(col))o.push("<b>Appearance:</b> gold or amber suggests age, oak or a sweet style.");if(col=="Brown")o.push("<b>Appearance:</b> brown suggests oxidation or considerable age.")}
+if(tg["Bubble size"]=="Fine"&&tg["Bubble persistence"]=="Long-lasting")o.push("<b>Appearance:</b> fine, long-lasting bubbles often point to a traditional-method sparkling wine.");
+if(["Hazy","Cloudy"].includes(tg.Clarity))o.push("<b>Appearance:</b> haze or cloudiness can mean an unfiltered wine or a fault, so compare it with the nose.");
+const wm=[];if(ta("Secondary aromas").includes("Oak"))wm.push("oak maturation");if(ta("Secondary aromas").includes("Butter/MLF"))wm.push("malolactic fermentation");if(ta("Secondary aromas").includes("Yeast/lees"))wm.push("lees contact or bottle-fermented sparkling");if(ta("Tertiary aromas").includes("Oxidation/nutty"))wm.push("oxidative handling or extended age");
+if(wm.length)o.push("<b>Winemaking clues:</b> "+wm.join(", ")+".");
+const Q=["","acceptable","good","very good","outstanding"];
+if(bl)o.push(`<b>Quality (BLIC):</b> ${bl} of 4 points (${ta("Quality points").join(", ").toLowerCase()}) suggests ${Q[bl]}.`+(tg.Quality&&!Q[bl].includes(tg.Quality.toLowerCase())?" Your rating differs, so check your reasoning.":""));
+const c=cands();if(c.length)o.push("<b>Closest grapes in this guide:</b> "+c.map(x=>`${x.n} (${[...new Set(x.why)].join(", ")})`).join("; ")+".");
+if(tg["Grape guess"]&&c.length)o.push(c.some(x=>x.n==tg["Grape guess"])?`<b>Your guess:</b> ${tg["Grape guess"]} matches one of the candidates.`:`<b>Your guess:</b> ${tg["Grape guess"]} isn't among the closest matches, so recheck the clues.`);
+const rg=[...new Set(c.slice(0,2).flatMap(x=>{const ps=x.n.split(" / ");return R.filter(r=>ps.some(n=>r[3].includes(n))&&(nw=="Old World"?r[2]=="Europe":nw=="New World"?r[2]!="Europe":true)).map(r=>r[0])}))].slice(0,6);
+if(rg.length)o.push("<b>Regions to consider:</b> "+rg.join(", ")+".");
+if(tg["Region guess"]&&rg.length)o.push(rg.includes(tg["Region guess"])?`<b>Region guess:</b> ${tg["Region guess"]} fits the leading grapes.`:`<b>Region guess:</b> ${tg["Region guess"]} isn't among the regions linked to the leading grapes.`);
+if(nt&&tg.Tannin&&tg.Tannin!="N/A")w.push("Tannin recorded for a non-red wine. Most whites and rosés have little or none.");
+if(tg.Condition=="Unclean"&&["Good","Very good","Outstanding"].includes(tg.Quality))w.push("An unclean wine is hard to justify as high quality.");
+if(tg.Body=="Light"&&al=="High")w.push("Light body with high alcohol is an unusual pairing.");
+if(al=="Low"&&tg.Body=="Full")w.push("Full body with low alcohol is an unusual pairing.");
+if(tg.Type&&tg.Type!="Sparkling"&&(ta("Other observations").includes("Bubbles")||tg.Mousse||tg["Bubble size"]||tg["Bubble persistence"]))w.push("Bubbles or mousse noted but the wine type isn't sparkling.");
+if(tg.Development=="Youthful"&&ta("Tertiary aromas").length)w.push("Youthful development doesn't fit with tertiary aromas.");
+if((tg.Development=="Youthful"&&tg["Age guess"]=="10+ years")||(tg.Development=="Tired"&&tg["Age guess"]=="Under 2 years"))w.push("Your age guess doesn't match the development you recorded.");
+if(tg["Age hue"]=="Mature"&&tg.Development=="Youthful")w.push("A mature colour doesn't fit with a youthful nose.");
+if(["Purple","Lemon-green"].includes(col)&&tg["Age guess"]=="10+ years")w.push("Purple or lemon-green colours usually mean youth, so check your age guess.");
+if(["Garnet","Tawny","Brown"].includes(rc)&&tg["Age guess"]=="Under 2 years")w.push("A garnet or tawny rim suggests more age than under 2 years.");
+if(tg.Type=="Red"&&iv=="Water-white")w.push("Water-white isn't realistic for a red wine.");
+return `<h3>Analysis</h3>`+bars()+(o.length||w.length?o.map(x=>`<p>${x}</p>`).join("")+w.map(x=>`<p style="color:var(--accent)">⚠ ${x}</p>`).join(""):"<p>Select observations to see climate clues, a quality check and matching grapes.</p>")}
+let SV=[],M={name:"",producer:"",vintage:"",notes:""};
+try{SV=JSON.parse(localStorage.getItem("tgSheets")||"[]")}catch(e){SV=[]}
+const esc=x=>String(x||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const persist=()=>{try{localStorage.setItem("tgSheets",JSON.stringify(SV))}catch(e){}};
+const hasCur=()=>M.name||M.producer||M.vintage||M.notes||M.photo||Object.values(tg).some(v=>Array.isArray(v)?v.length:v);
+const snap=()=>({m:{...M},t:JSON.parse(JSON.stringify(tg)),d:new Date().toLocaleDateString()});
+function sheetHTML(x){const m=x.m,t=x.t,bl=x.blank,ov=r=>{const v=t[r];return Array.isArray(v)?v.join(", "):v||""},hint=rw=>(rw[1]=="C")?[...new Set(Object.values(CL).flat())].join(" · "):(rw[1]=="D"||rw[1]=="R2")?"__________":rw[1].join(" · ");
+return `<div class="sheet">${m.photo?`<img class="ph" src="${m.photo}" alt="">`:""}<h1>${esc(m.name)||(bl?"Tasting sheet":"Untitled wine")}</h1><div class="sm">${bl?"Wine: ______________ &nbsp; Producer: ______________ &nbsp; Vintage: ______":[m.producer,m.vintage,x.d].filter(Boolean).map(esc).join(" · ")}</div>`+TGR.map(([sec,rows])=>`<h2>${sec}</h2><table>`+rows.map(rw=>{const v=ov(rw[0]);return `<tr><td class="l">${rw[0]}</td><td>${v?`<b>${esc(v)}</b>`:bl?`<span class="op">${esc(hint(rw))}</span>`:"—"}</td></tr>`}).join("")+"</table>").join("")+`<h2>Notes</h2><div class="nt">${m.notes?esc(m.notes):bl?"\n\n\n":"—"}</div></div>`}
+function updSheets(){let l=[...SV];if(hasCur())l.push(snap());if(!l.length)l=[{m:{},t:{},d:"",blank:true}];$('sheets').innerHTML=l.map(sheetHTML).join("")}
+const TABS=[["Quiz","st-quiz"],["Tasting grid","st-grid"],["Saved sheets","st-saved"]];
+let stab="Quiz";
+function drawTabs(){$('stt').innerHTML=TABS.map(([t])=>`<button class="chip${t==stab?" on":""}" data-tab="${t}">${t}${t=="Saved sheets"?` (${SV.length})`:""}</button>`).join("");TABS.forEach(([t,id])=>$(id).style.display=t==stab?"":"none")}
+const gotoTab=t=>{stab=t;drawTabs()};
+$('stt').onclick=e=>{if(e.target.dataset.tab)gotoTab(e.target.dataset.tab)};
+const sl=x=>TGR.map(([sec,rows])=>{const p=rows.filter(([r])=>x.t[r]&&(!Array.isArray(x.t[r])||x.t[r].length)).map(([r])=>`${r.toLowerCase()}: ${(Array.isArray(x.t[r])?x.t[r].join(", "):x.t[r]).toLowerCase()}`);return p.length?`<p style="margin:4px 0"><b>${sec}:</b> ${esc(p.join("; "))}.</p>`:""}).join("");
+let DL=null;
+try{(window.claude&&claude.use?claude.use("downloads"):Promise.resolve(null)).then(d=>{DL=d}).catch(()=>{})}catch(e){}
+const svm=t=>{const m=$('svm');if(m)m.textContent=t};
+async function exportSheets(){const data=JSON.stringify({app:"wine-reference",version:1,sheets:SV},null,2),fn="tasting-sheets-"+new Date().toISOString().slice(0,10)+".json";
+if(DL){try{await DL.save({filename:fn,data});svm("Backup saved.")}catch(e){svm(e&&e.code=="declined"?"Export cancelled.":"Export isn't available here.")}}
+else{try{await navigator.clipboard.writeText(data);svm("Downloads aren't available here, so the backup text was copied. Paste it into a .json file to keep it.")}catch(e){svm("Export isn't available here.")}}}
+function importSheets(f){if(!f)return;const r=new FileReader();r.onload=()=>{try{const j=JSON.parse(r.result),a=Array.isArray(j)?j:j.sheets;if(!Array.isArray(a))throw 0;const have=new Set(SV.map(x=>JSON.stringify(x)));let n=0;
+a.filter(x=>x&&typeof x.m=="object"&&typeof x.t=="object").forEach(x=>{const t={};Object.entries(x.t).forEach(([k,v])=>{t[k]=Array.isArray(v)?v.map(String):String(v)});const y={m:{name:String(x.m.name||""),producer:String(x.m.producer||""),vintage:String(x.m.vintage||""),notes:String(x.m.notes||""),photo:/^data:image\/(jpeg|png|webp);base64,/.test(x.m.photo||"")&&x.m.photo.length<600000?x.m.photo:""},t,d:String(x.d||"")};if(!have.has(JSON.stringify(y))){SV.push(y);have.add(JSON.stringify(y));n++}});
+persist();updSheets();drawS();svm(`Imported ${n} sheet${n==1?"":"s"}.`)}catch(e){svm("That file couldn't be read as a tasting backup.")}};r.readAsText(f)}
+const gv=(x,k)=>{const v=x.t[k];return Array.isArray(v)?v.join(", "):v||""};
+function shareText(x){const m=x.m,g=k=>gv(x,k),t=[m.name||"Untitled wine",m.vintage].filter(Boolean).join(" "),b=[[g("Type"),g("Colour")].filter(Boolean).join(" "),g("Acidity")&&"acidity "+g("Acidity").toLowerCase(),g("Tannin")&&g("Tannin")!="N/A"&&"tannin "+g("Tannin").toLowerCase(),g("Body")&&g("Body").toLowerCase()+" body",g("Finish")&&g("Finish").toLowerCase()+" finish"].filter(Boolean).join(" · ");
+return `🍷 ${t}${m.producer?" · "+m.producer:""}${b?"\n"+b:""}${g("Quality")?"\nQuality: "+g("Quality").toLowerCase():""}${g("Grape guess")?"\nMy guess: "+g("Grape guess"):""}`}
+function rr(q,x,y,w,h,r){q.beginPath();q.moveTo(x+r,y);q.arcTo(x+w,y,x+w,y+h,r);q.arcTo(x+w,y+h,x,y+h,r);q.arcTo(x,y+h,x,y,r);q.arcTo(x,y,x+w,y,r);q.closePath()}
+function wrapT(q,t,x,y,mw,lh,ml){let l="",n=0;for(const w of String(t).split(" ")){const tt=l?l+" "+w:w;if(q.measureText(tt).width>mw&&l){q.fillText(l,x,y+n*lh);n++;l=w;if(n>=ml){l="";break}}else l=tt}if(l&&n<ml){q.fillText(l,x,y+n*lh);n++}return n}
+async function cardBlob(x){const W=1080,H=1350,c=document.createElement("canvas");c.width=W;c.height=H;const q=c.getContext("2d"),m=x.m,g=k=>gv(x,k);
+const gr=q.createLinearGradient(0,0,0,H);gr.addColorStop(0,"#4a0f24");gr.addColorStop(1,"#17100f");q.fillStyle=gr;q.fillRect(0,0,W,H);
+q.fillStyle="#f6ebe0";q.font="600 76px Georgia,serif";const n=wrapT(q,[m.name||"Untitled wine",m.vintage].filter(Boolean).join(" "),80,150,920,88,2);
+q.fillStyle="#d9b8c2";q.font="34px Arial,sans-serif";q.fillText([m.producer,x.d].filter(Boolean).join(" · "),80,150+n*88+10);
+const top=150+n*88+70;let fx=80;
+if(m.photo){try{const im=await new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=m.photo});q.save();rr(q,80,top,360,360,24);q.clip();const k=Math.max(360/im.width,360/im.height),w=im.width*k,h=im.height*k;q.drawImage(im,80+(360-w)/2,top+(360-h)/2,w,h);q.restore();fx=480}catch(e){}}
+const rows=[["Colour",[g("Type"),g("Colour")].filter(Boolean).join(" ")],["Intensity",g("Intensity")],["Acidity",g("Acidity")],["Tannin",g("Tannin")],["Body",g("Body")],["Finish",g("Finish")],["Quality",g("Quality")],["Readiness",g("Readiness")]].filter(r=>r[1]).slice(0,8);
+q.font="34px Arial,sans-serif";rows.forEach((r,i)=>{q.fillStyle="#d9b8c2";q.fillText(r[0],fx,top+40+i*46);q.fillStyle="#f6ebe0";q.fillText(r[1],fx+190,top+40+i*46)});
+let y=top+Math.max(m.photo?400:0,rows.length*46+30)+20;
+const ar=[...(x.t["Primary aromas"]||[]),...(x.t["Fruit detail"]||[]),...(x.t["Non-fruit detail"]||[])].join(", ").toLowerCase();
+if(ar){q.fillStyle="#d9b8c2";q.font="600 30px Arial,sans-serif";q.fillText("AROMAS",80,y);q.fillStyle="#f6ebe0";q.font="34px Arial,sans-serif";y+=50+wrapT(q,ar,80,y+50,920,46,3)*46-46+10}
+if(m.notes){q.fillStyle="#d9b8c2";q.font="italic 34px Georgia,serif";wrapT(q,m.notes,80,y+40,920,46,4)}
+q.fillStyle="#b6a59f";q.font="28px Arial,sans-serif";q.fillText("The Wine Reference · tasting sheet",80,H-70);
+return new Promise(r=>c.toBlob(r,"image/png"))}
+async function openShare(x){const ov=$('shov'),txt=shareText(x),title=[x.m.name||"Tasting",x.m.vintage].filter(Boolean).join(" "),slug=title.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"tasting";
+ov.style.display="flex";ov.onclick=e=>{if(e.target==ov)ov.style.display="none"};
+const msg=t=>{const e=$('shm');if(e)e.textContent=t};
+ov.innerHTML=`<div class="shc"><h3>Share tasting sheet</h3><div id="shi" style="text-align:center;color:var(--muted);margin:10px 0">Preparing image…</div><div class="chips">${navigator.share?'<button class="chip on" id="shn">Share…</button>':""}${DL?'<button class="chip on" id="shs">Save image</button>':""}<button class="chip" id="shc">Copy text</button><a class="chip" target="_blank" rel="noopener noreferrer" href="https://twitter.com/intent/tweet?text=${encodeURIComponent(txt)}">Post on X</a><a class="chip" target="_blank" rel="noopener noreferrer" href="https://wa.me/?text=${encodeURIComponent(txt)}">WhatsApp</a><button class="chip" id="shx">Close</button></div><p style="font-size:13px;color:var(--muted);margin:10px 0 0">For Instagram or Facebook, use Share… or save the image and post it from their app. The image includes your photo and notes, so check it before posting.</p><p id="shm" style="font-size:13px;color:var(--accent);margin:6px 0 0"></p></div>`;
+$('shx').onclick=()=>{ov.style.display="none"};
+$('shc').onclick=async()=>{try{await navigator.clipboard.writeText(txt);msg("Text copied.")}catch(e){msg("Copy isn't available here.")}};
+let blob=null;try{blob=await cardBlob(x);$('shi').innerHTML=`<img src="${URL.createObjectURL(blob)}" alt="Tasting sheet image">`}catch(e){$('shi').textContent="Image preview isn't available."}
+const sn=$('shn');if(sn)sn.onclick=async()=>{try{const f=blob&&new File([blob],slug+".png",{type:"image/png"});if(f&&navigator.canShare&&navigator.canShare({files:[f]}))await navigator.share({files:[f],text:txt,title});else await navigator.share({text:txt,title})}catch(e){if(!e||e.name!="AbortError")msg("Sharing isn't available here. Try Copy text or the links.")}};
+const ss=$('shs');if(ss)ss.onclick=async()=>{if(!blob)return;try{await DL.save({filename:slug+".png",data:blob});msg("Image saved.")}catch(e){msg(e&&e.code=="declined"?"Save cancelled.":"Saving isn't available here.")}}}
+function printList(l){$('sheets').innerHTML=l.map(sheetHTML).join("");doPrint()}
+function drawS(){
+$('tgsv').innerHTML=SV.length?SV.map((x,i)=>`<div class="card" style="margin-bottom:12px">${x.m.photo?`<img src="${x.m.photo}" alt="" style="float:right;width:72px;height:72px;object-fit:cover;border-radius:10px;margin-left:10px">`:""}<h3>${esc(x.m.name)||"Untitled wine"}${x.m.vintage?" "+esc(x.m.vintage):""}</h3><div class="meta">${[x.m.producer,x.d].filter(Boolean).map(esc).join(" · ")}</div>${sl(x)}${x.m.notes?`<p style="margin:4px 0"><b>Notes:</b> ${esc(x.m.notes)}</p>`:""}<div class="chips" style="margin:12px 0 0"><button class="chip on" data-pr="${i}">Print</button><button class="chip" data-sh="${i}">Share</button><button class="chip" data-ed="${i}">Edit</button><button class="chip" data-del="${i}">Remove</button></div></div>`).join("")+`<div class="chips"><button class="chip on" id="tgpa">Print all (${SV.length})</button><button class="chip" id="tgb">Print blank sheet</button></div>`:`<div class="card"><p style="margin:0 0 10px">No saved sheets yet. Fill in the Tasting grid and tap Save sheet.</p><div class="chips" style="margin:0"><button class="chip on" id="tgg">Go to Tasting grid</button><button class="chip" id="tgb">Print blank sheet</button></div></div>`;
+$('tgsv').insertAdjacentHTML("beforeend",`<div class="chips" style="margin-top:12px">${SV.length?'<button class="chip" id="tge">Export backup</button>':""}<button class="chip" id="tgi">Import backup</button><input type="file" id="imf" accept=".json,application/json" style="display:none"></div><p id="svm" style="font-size:13px;color:var(--muted);margin:6px 0 0"></p>`);
+const ex=$('tge');if(ex)ex.onclick=exportSheets;
+$('tgi').onclick=()=>$('imf').click();
+$('imf').onchange=e=>{importSheets(e.target.files[0]);e.target.value=""};
+$('tgb').onclick=()=>printList([{m:{},t:{},d:"",blank:true}]);
+const pa=$('tgpa');if(pa)pa.onclick=()=>printList(SV);
+const gg=$('tgg');if(gg)gg.onclick=()=>gotoTab("Tasting grid");
+$('tgsv').querySelectorAll("[data-pr]").forEach(b=>b.onclick=()=>printList([SV[+b.dataset.pr]]));
+$('tgsv').querySelectorAll("[data-sh]").forEach(b=>b.onclick=()=>openShare(SV[+b.dataset.sh]));
+$('tgsv').querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{SV.splice(+b.dataset.del,1);persist();updSheets();drawS()});
+$('tgsv').querySelectorAll("[data-ed]").forEach(b=>b.onclick=()=>{const x=SV.splice(+b.dataset.ed,1)[0];persist();tg=x.t;M={...x.m};[["wn","name"],["wp","producer"],["wv","vintage"],["wt","notes"]].forEach(([i,k])=>$(i).value=M[k]||"");showPh();drawT();gotoTab("Tasting grid")});
+drawTabs();
+}
+function doPrint(){try{window.print()}catch(e){}updSheets();const m=$('tgm');if(m)m.textContent="If no print dialog opened, use your browser's Print option. The sheets are ready."}
+function saveSheet(){if(!hasCur()){$('tgm').textContent="Nothing to save yet.";return}SV.push(snap());persist();resetAll();$('tgm').textContent="Saved. Find it in the Saved sheets tab."}
+function resetAll(){tg={};M={name:"",producer:"",vintage:"",notes:""};["wn","wp","wv","wt"].forEach(i=>$(i).value="");showPh();drawT()}
+[["wn","name"],["wp","producer"],["wv","vintage"],["wt","notes"]].forEach(([i,k])=>$(i).oninput=()=>{M[k]=$(i).value;updSheets()});
+function showPh(){$('wph').innerHTML=M.photo?`<img src="${M.photo}" alt="Wine photo" style="max-width:100%;max-height:220px;border-radius:12px"><div class="chips" style="margin:8px 0 0"><button class="chip" id="wphr">Remove photo</button></div>`:"";const r=$('wphr');if(r)r.onclick=()=>{M.photo="";showPh();updSheets()}}
+function loadPhoto(f){if(!f||!/^image\//.test(f.type))return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,640/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);M.photo=c.toDataURL("image/jpeg",.72);showPh();updSheets()};im.src=r.result};r.readAsDataURL(f)}
+['wf','wf2'].forEach(i=>$(i).onchange=e=>{loadPhoto(e.target.files[0]);e.target.value=""});
+function drawT(){
+$('tg').innerHTML=TGR.map(([sec,rows])=>`<div class="card tgs" style="margin-bottom:12px"><h3>${sec}</h3>`+rows.map(([r,o,m])=>{
+const opts=(o=="C"||o=="RC")?(CL[tg.Type]||[]):o=="D"?(tg.Type?G.filter(g=>g[1]==tg.Type&&(G0.includes(g)||g[1]=="Sparkling")).map(g=>g[0]):[]):o=="R2"?(tg["Old/New World"]?R.filter(r=>(tg["Old/New World"]=="Old World")==(r[2]=="Europe")).map(r=>r[0]):[]):o;
+return `<div class="tgr">${r}${m?" (choose any)":""}</div><div class="chips">`+(opts.length?opts.map(v=>{const on=m?ta(r).includes(v):tg[r]==v;return `<button class="chip${on?" on":""}" data-r="${r}" data-v="${v}" data-m="${m?1:""}">${v}</button>`}).join(""):'<span style="font-size:13px;color:var(--muted)">Choose the related option above first</span>')+"</div>"}).join("")+"</div>").join("");
+const lines=TGR.map(([sec,rows])=>{const p=rows.filter(([r])=>tv(r)).map(([r])=>`${r.toLowerCase()}: ${tv(r).toLowerCase()}`);return p.length?[sec,p.join("; ")]:null}).filter(Boolean);
+$('tgo').innerHTML=`<h3>Your tasting note</h3>`+(lines.length?lines.map(l=>`<p><b>${l[0]}:</b> ${l[1]}.</p>`).join(""):"<p>Your observations will appear here as you tap.</p>")+`<div class="chips"><button class="chip on" id="tgc">Copy note</button><button class="chip" id="tgr">Reset</button><button class="chip" id="tgs1">Save sheet</button><button class="chip" id="tgp">Print sheets</button><button class="chip" id="tgsh">Share</button></div><p id="tgm" style="margin:6px 0 0;font-size:13px;color:var(--muted)"></p>`;
+$('tga').innerHTML=analysis();
+$('tgc').onclick=()=>{const t=(M.name?M.name+(M.vintage?" "+M.vintage:"")+"\n":"")+lines.map(l=>l[0]+": "+l[1]+".").join("\n"),f=()=>$('tgm').textContent="Copy isn't available here. Select the text above instead.";try{navigator.clipboard.writeText(t).then(()=>$('tgm').textContent="Copied.",f)}catch(e){f()}};
+$('tgr').onclick=resetAll;$('tgs1').onclick=saveSheet;$('tgp').onclick=doPrint;$('tgsh').onclick=()=>{if(!hasCur()){$('tgm').textContent="Fill in a tasting first.";return}openShare(snap())};updSheets();drawS();
+}
+$('tg').onclick=e=>{const d=e.target.dataset;if(!d.r)return;if(d.m){const a=ta(d.r);tg[d.r]=a.includes(d.v)?a.filter(x=>x!=d.v):[...a,d.v]}else{tg[d.r]=tg[d.r]==d.v?"":d.v;if(d.r=="Type"){tg.Colour="";tg["Rim colour"]=""}}drawT()};
+drawT();
+
+(function(){const g=$('age'),lock=on=>{document.body.style.overflow=on?"hidden":"";document.querySelectorAll("body>nav,body>header,body>section,body>footer").forEach(e=>{on?e.setAttribute("inert",""):e.removeAttribute("inert")})};
+let ok=false,blocked=false;try{ok=localStorage.getItem("ageOK")=="1"}catch(e){}try{blocked=sessionStorage.getItem("ageBlock")=="1"}catch(e){}
+if(ok&&!blocked)return;
+g.style.display="flex";lock(true);
+const m=t=>$('agm').textContent=t;
+if(blocked){m("Sorry, you must be of legal drinking age to enter this site.");$('age-go').disabled=true}
+$('age-go').onclick=()=>{const v=$('agd').value,min=+$('agr').value;if(!v){m("Please enter your date of birth.");return}
+const d=new Date(v+"T00:00:00"),n=new Date();if(isNaN(d)||d>n||d.getFullYear()<1900){m("That date doesn't look right.");return}
+let a=n.getFullYear()-d.getFullYear();if(n.getMonth()<d.getMonth()||(n.getMonth()==d.getMonth()&&n.getDate()<d.getDate()))a--;
+if(a<min){m(`Sorry, you must be at least ${min} to enter this site.`);$('age-go').disabled=true;try{sessionStorage.setItem("ageBlock","1")}catch(e){}return}
+if($('agk').checked){try{localStorage.setItem("ageOK","1")}catch(e){}}
+g.style.display="none";lock(false)}})();
+
+(function(){const ST=["Saved","Applied","Interview","Offer","Rejected"];let JB=[],jf="All";
+try{JB=JSON.parse(localStorage.getItem("jobs")||"[]")}catch(e){JB=[]}
+const save=()=>{try{localStorage.setItem("jobs",JSON.stringify(JB))}catch(e){}};
+const upd=()=>{const k=$('jk').value,l=$('jl').value.trim(),q=encodeURIComponent(k),e=encodeURIComponent(l);
+$('ji').href=`https://www.indeed.com/jobs?q=${q}${l?"&l="+e:""}`;$('jli').href=`https://www.linkedin.com/jobs/search/?keywords=${q}${l?"&location="+e:""}`;$('jg').href=`https://www.google.com/search?q=${encodeURIComponent(k+" jobs "+l)}`};
+$('jk').onchange=upd;$('jl').oninput=upd;upd();
+function draw(){$('jfil').innerHTML=["All",...ST].map(t=>`<button class="chip${t==jf?" on":""}" data-f="${t}">${t} (${t=="All"?JB.length:JB.filter(j=>j.status==t).length})</button>`).join("");
+const l=JB.filter(j=>jf=="All"||j.status==jf);
+$('jlist').innerHTML=l.length?l.map(j=>`<div class="card" style="margin-top:12px"><h3>${esc(j.role)}</h3><div class="meta">${[j.venue,j.loc,j.type].filter(Boolean).map(esc).join(" · ")}</div>${j.pay?`<p><b>Pay:</b> ${esc(j.pay)}</p>`:""}${j.notes?`<p>${esc(j.notes)}</p>`:""}${/^https?:\/\//i.test(j.link||"")?`<p><a href="${esc(j.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">View posting ↗</a></p>`:""}<div class="chips" style="margin:8px 0 0"><select class="wi" data-st="${j.id}" style="width:auto">${ST.map(t=>`<option${t==j.status?" selected":""}>${t}</option>`).join("")}</select><button class="chip" data-del="${j.id}">Remove</button></div></div>`).join(""):`<p style="color:var(--muted);margin-top:12px">${JB.length?"No jobs with this status.":"No jobs saved yet. Add one above."}</p>`}
+$('jfil').onclick=e=>{if(e.target.dataset.f){jf=e.target.dataset.f;draw()}};
+$('jlist').onclick=e=>{const d=e.target.dataset.del;if(d){JB=JB.filter(j=>String(j.id)!=d);save();draw()}};
+$('jlist').onchange=e=>{const id=e.target.dataset.st;if(id){const j=JB.find(x=>String(x.id)==id);if(j){j.status=e.target.value;save();draw()}}};
+$('jadd').onclick=()=>{const r=$('jt').value.trim();if(!r){$('jm').textContent="Please enter a role.";return}
+JB.unshift({id:Date.now(),role:r,venue:$('jv').value.trim(),loc:$('jc').value.trim(),type:$('jy').value,pay:$('jp').value.trim(),link:$('ju').value.trim(),notes:$('jn').value.trim(),status:"Saved"});save();
+["jt","jv","jc","jp","ju","jn"].forEach(i=>$(i).value="");$('jm').textContent="Added to your tracker.";draw()};
+draw()})();
+</script>
+<script>
+(function(){const b=document.getElementById("mbtn"),d=document.getElementById("mdr"),o=document.getElementById("mov"),c=document.getElementById("mcl");
+const set=on=>{d.classList.toggle("open",on);o.hidden=!on;d.setAttribute("aria-hidden",on?"false":"true");on?d.removeAttribute("inert"):d.setAttribute("inert","");b.setAttribute("aria-expanded",on);(on?c:b).focus()};
+b.onclick=()=>set(true);c.onclick=o.onclick=()=>set(false);
+d.querySelectorAll("a").forEach(a=>a.onclick=()=>{d.classList.remove("open");o.hidden=true;d.setAttribute("aria-hidden","true");d.setAttribute("inert","");b.setAttribute("aria-expanded","false")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&d.classList.contains("open"))set(false)})})();
+</script>
+<script>
+(function(){const secs=[...document.querySelectorAll("body>section")],hd=document.querySelector("body>header"),hm=document.getElementById("home"),bk=document.getElementById("back");
+const ids=secs.map(x=>x.id);
+function route(){const h=decodeURIComponent(location.hash.slice(1)),id=ids.includes(h)?h:"home";
+secs.forEach(x=>x.classList.toggle("off",x.id!==id));[hd,hm].forEach(x=>x.classList.toggle("off",id!=="home"));bk.classList.toggle("off",id==="home");
+const t=id==="home"?"The Wine Reference":document.querySelector("#"+id+" h2").textContent+" · The Wine Reference";document.title=t;window.scrollTo(0,0)}
+window.addEventListener("hashchange",route);route()})();
+</script>
+<script>
+document.getElementById("azbar").addEventListener("click",e=>{const b=e.target.closest("button[data-l]");if(b&&!b.disabled)document.getElementById("az-"+b.dataset.l).scrollIntoView({behavior:"smooth"})});
+</script>
+<script>
+(function(){const n=x=>x.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase(),az=document.getElementById("az"),dts=[...az.querySelectorAll("dt")];
+const G=dts.map(d=>({d,t:n(d.textContent),x:n(d.nextElementSibling.textContent)}));
+const hq=document.getElementById("hq"),hres=document.getElementById("hres"),cards=[...document.querySelectorAll("#home .hc")];
+const esc=x=>x.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+function home(){const q=n(hq.value.trim());cards.forEach(c=>c.classList.toggle("off",!!q&&!n(c.textContent).includes(q)));
+if(!q){hres.classList.add("off");hres.innerHTML="";return}
+const m=G.filter(g=>g.t.includes(q)).concat(G.filter(g=>!g.t.includes(q)&&g.x.includes(q))).slice(0,12);
+hres.classList.remove("off");hres.innerHTML=(m.length?"<h4>Glossary terms</h4>":"<h4>No glossary terms found</h4>")+m.map(g=>{const i=G.indexOf(g);return '<button type="button" data-i="'+i+'">'+esc(g.d.textContent)+"<span>"+esc(g.d.nextElementSibling.textContent)+"</span></button>"}).join("")}
+hq.addEventListener("input",home);
+hres.addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(!b)return;const d=G[+b.dataset.i].d;aq.value="";gl();location.hash="az";setTimeout(()=>{d.scrollIntoView({block:"center"});d.classList.add("hit");setTimeout(()=>d.classList.remove("hit"),2500)},120)});
+const aq=document.getElementById("aq"),none=document.getElementById("anone");
+function gl(){const q=n(aq.value.trim());let any=false;G.forEach(g=>{const ok=!q||g.t.includes(q)||g.x.includes(q);g.d.classList.toggle("off",!ok);g.d.nextElementSibling.classList.toggle("off",!ok);if(ok)any=true});
+az.querySelectorAll("h3.azl").forEach(h=>h.classList.toggle("off",!!q&&![...h.nextElementSibling.querySelectorAll("dt")].some(d=>!d.classList.contains("off"))));none.classList.toggle("off",any)}
+aq.addEventListener("input",gl);
+document.querySelectorAll(".sbb").forEach(b=>b.addEventListener("click",()=>document.getElementById(b.dataset.f).focus()))})();
+</script>
+<script>
+(function(){const CONTACT="";const $=id=>document.getElementById(id),ex=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+$('cgo').onclick=()=>{const n=$('cn').value.trim(),e=$('ce').value.trim(),m=$('cm').value.trim();
+if(!n||!e||!m){$('cout').innerHTML='<p style="color:var(--accent);margin:0">Please add your name, email and a short message.</p>';return}
+const subj="Wine consultancy enquiry: "+$('cs').value,body="Name: "+n+"\nEmail: "+e+"\nService: "+$('cs').value+"\n\n"+m;
+$('cout').innerHTML='<p style="margin:0 0 8px"><b>Your enquiry</b></p><div style="white-space:pre-wrap;border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg)">'+ex(body)+'</div><div class="chips" style="margin:10px 0 0">'+(CONTACT?'<a class="chip on" style="text-decoration:none" href="mailto:'+CONTACT+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body)+'">Send by email</a>':'')+'<button class="chip'+(CONTACT?'':' on')+'" id="ccp">Copy enquiry</button></div><p id="cmsg" style="font-size:13px;color:var(--muted);margin:8px 0 0">'+(CONTACT?'':'Copy this and send it to Diego directly.')+'</p>';
+$('ccp').onclick=async()=>{try{await navigator.clipboard.writeText(body);$('cmsg').textContent="Copied."}catch(x){$('cmsg').textContent="Copy isn't available here. Select the text above instead."}}}})();
+</script>
+</body>
+</html>
