@@ -2,7 +2,7 @@
 Run from the repo root after adding photos: python3 tools/make_sitemap.py"""
 import re,datetime
 from xml.sax.saxutils import escape
-U='https://wine-reference.netlify.app/'
+U='https://winereference.github.io/wine-reference/'
 s=open('index.html',encoding='utf-8').read()
 ph=re.search(r'const PH=\{(.*?)\n\};',s,re.S).group(1)
 ent=re.findall(r'^"([^"]+)":\["([^"]+)", "[^"]*", "[^"]*", "([^"]*)"\]',ph,re.M)

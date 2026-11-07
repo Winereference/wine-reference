@@ -6,13 +6,13 @@
 <meta name="description" content="Free wine guide by head sommelier Diego Muntoni: 80 wine regions with photos and a map, grape varieties, food pairings, serving temperatures, vintage chart and an A–Z glossary.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="Diego Muntoni">
-<link rel="canonical" href="https://wine-reference.netlify.app/">
+<link rel="canonical" href="https://winereference.github.io/wine-reference/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Wine Reference">
 <meta property="og:title" content="The Wine Reference: Grapes, Wine Regions, Food Pairing &amp; Sommelier Guide">
 <meta property="og:description" content="Free wine guide by head sommelier Diego Muntoni: 80 wine regions with photos and a map, grape varieties, food pairings, serving temperatures, vintage chart and an A–Z glossary.">
-<meta property="og:url" content="https://wine-reference.netlify.app/">
-<meta property="og:image" content="https://wine-reference.netlify.app/img/og-wine-reference-douro-vineyards.jpg">
+<meta property="og:url" content="https://winereference.github.io/wine-reference/">
+<meta property="og:image" content="https://winereference.github.io/wine-reference/img/og-wine-reference-douro-vineyards.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Terraced vineyards in the Douro Valley, Portugal">
@@ -20,8 +20,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Wine Reference: Grapes, Wine Regions, Food Pairing &amp; Sommelier Guide">
 <meta name="twitter:description" content="Free wine guide by head sommelier Diego Muntoni: 80 wine regions with photos and a map, grape varieties, food pairings, serving temperatures, vintage chart and an A–Z glossary.">
-<meta name="twitter:image" content="https://wine-reference.netlify.app/img/og-wine-reference-douro-vineyards.jpg">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://wine-reference.netlify.app/#website", "url": "https://wine-reference.netlify.app/", "name": "The Wine Reference", "description": "Free wine guide by head sommelier Diego Muntoni: 80 wine regions with photos and a map, grape varieties, food pairings, serving temperatures, vintage chart and an A–Z glossary.", "inLanguage": "en", "author": {"@id": "https://wine-reference.netlify.app/#diego"}, "publisher": {"@id": "https://wine-reference.netlify.app/#diego"}}, {"@type": "Person", "@id": "https://wine-reference.netlify.app/#diego", "name": "Diego Muntoni", "jobTitle": "Head Sommelier", "url": "https://wine-reference.netlify.app/#about"}]}</script>
+<meta name="twitter:image" content="https://winereference.github.io/wine-reference/img/og-wine-reference-douro-vineyards.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://winereference.github.io/wine-reference/#website", "url": "https://winereference.github.io/wine-reference/", "name": "The Wine Reference", "description": "Free wine guide by head sommelier Diego Muntoni: 80 wine regions with photos and a map, grape varieties, food pairings, serving temperatures, vintage chart and an A–Z glossary.", "inLanguage": "en", "author": {"@id": "https://winereference.github.io/wine-reference/#diego"}, "publisher": {"@id": "https://winereference.github.io/wine-reference/#diego"}}, {"@type": "Person", "@id": "https://winereference.github.io/wine-reference/#diego", "name": "Diego Muntoni", "jobTitle": "Head Sommelier", "url": "https://winereference.github.io/wine-reference/#about"}]}</script>
 <title>The Wine Reference: Grapes, Wine Regions, Food Pairing &amp; Sommelier Guide</title>
 <script>
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}
@@ -1839,7 +1839,7 @@ const WH=[
 const fd=d=>{try{return new Date(d+"T12:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"})}catch(e){return d}};
 const live=ST.filter(x=>x.d<=new Date().toISOString().slice(0,10));
 const full=x=>`<article class="card stf" id="st-${q(x.id)}">${x.img?`<figure><img src="img/s/${q(x.img[0])}" alt="${q(x.img[3]||x.t)}" width="1200" height="675" decoding="async"><figcaption>Photo: <a href="https://unsplash.com/@${q(x.img[2])}?utm_source=wine_reference&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">${q(x.img[1])}</a> on Unsplash</figcaption></figure>`:""}<div style="display:flex;gap:14px;align-items:center;margin:0 0 6px"><a class="calf" href="#stories/calendar" title="Open the story calendar"><small>${q(new Date(x.d+"T12:00:00").toLocaleDateString("en-GB",{month:"short"}))}</small><b>${q(+x.d.slice(8,10))}</b><small>${q(x.d.slice(0,4))}</small></a><div><div class="meta">${q(x.c)} · <time datetime="${q(x.d)}">${fd(x.d)}</time></div><h3 style="margin:4px 0 0">${q(x.t)}</h3></div></div><p class="lead"><b>${q(x.s)}</b></p>${x.b.map(p=>`<p>${q(p)}</p>`).join("")}${x.r&&x.r.length?`<div class="src"><h4>Sources and further reading</h4><ol>${x.r.map(r=>`<li><a href="${q(r[1])}" target="_blank" rel="noopener">${q(r[0])}</a></li>`).join("")}</ol></div>`:""}${shr(x)}</article>`;
-const SU="https://wine-reference.netlify.app/";
+const SU="https://winereference.github.io/wine-reference/";
 const shr=x=>{const u=SU+"#stories/"+encodeURIComponent(x.id),e=encodeURIComponent,tx=x.t+" · The Wine Reference";return `<div class="shr" aria-label="Share this story"><h4>Share this story</h4><a class="chip" href="https://wa.me/?text=${e(tx+" "+u)}" target="_blank" rel="noopener noreferrer">WhatsApp</a><a class="chip" href="https://www.facebook.com/sharer/sharer.php?u=${e(u)}" target="_blank" rel="noopener noreferrer">Facebook</a><a class="chip" href="https://x.com/intent/tweet?text=${e(tx)}&amp;url=${e(u)}" target="_blank" rel="noopener noreferrer">X</a><button type="button" class="chip" data-cp="${q(u)}">Copy link</button><span class="ok" role="status" aria-live="polite"></span></div>`};
 $('stv').addEventListener("click",ev=>{const b=ev.target.closest("[data-cp]");if(!b)return;const u=b.dataset.cp,st=b.parentNode.querySelector(".ok"),done=m=>{if(st){st.textContent=m;setTimeout(()=>{st.textContent=""},2500)}};
 const fb=()=>{try{const t=document.createElement("textarea");t.value=u;t.setAttribute("readonly","");t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();const ok=document.execCommand("copy");t.remove();done(ok?"Link copied":"Copy this link: "+u)}catch(e){done("Copy this link: "+u)}};
@@ -1882,7 +1882,7 @@ hh.querySelector("b").textContent=yr(x)+" · "+x.t;hh.querySelector("p").textCon
 const up=()=>{tk=false;b.classList.toggle("on",window.scrollY>Math.max(700,window.innerHeight*1.2))};
 window.addEventListener("scroll",()=>{if(!tk){tk=true;requestAnimationFrame(up)}},{passive:true});window.addEventListener("hashchange",()=>setTimeout(up,80));
 b.onclick=()=>{const rm=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;window.scrollTo({top:0,behavior:rm?"auto":"smooth"});const f=document.querySelector("nav a#ttl");if(f)f.focus({preventScroll:true})};up()})();
-(function(){try{const U="https://wine-reference.netlify.app/",S=U+"#az",ts=[];
+(function(){try{const U="https://winereference.github.io/wine-reference/",S=U+"#az",ts=[];
 document.querySelectorAll("#az dl dt").forEach(dt=>{const dd=dt.nextElementSibling;if(!dd||dd.tagName!=="DD")return;const n=dt.textContent.trim(),d=dd.textContent.trim();if(n&&d)ts.push({"@type":"DefinedTerm","name":n,"description":d,"inDefinedTermSet":{"@id":S}})});
 if(!ts.length)return;const j={"@context":"https://schema.org","@type":"DefinedTermSet","@id":S,"name":"A–Z Wine Glossary","description":"Wine terms from A to Z, explained in plain English.","url":S,"inLanguage":"en","hasDefinedTerm":ts};
 const e=document.createElement("script");e.type="application/ld+json";e.id="az-ld";e.textContent=JSON.stringify(j).replace(/</g,"\\u003c");document.head.appendChild(e)}catch(e){}})();
