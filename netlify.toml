@@ -1,0 +1,13 @@
+# Publish the repo root as-is (no build step).
+[build]
+  publish = "."
+
+# Always revalidate HTML so visitors get the latest version right after a deploy.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
