@@ -838,7 +838,7 @@ if(ms&&LL[ms]){const l=LL[ms];o+=`<text x="${l[1]}" y="${-l[0]-r*3.2}" text-anch
 svg.innerHTML=o;
 $('mlist').innerHTML=rs.map(g=>`<button class="chip${g[0]==ms?" on":""}" data-n="${g[0]}">${g[0]}</button>`).join("");
 const g=R.find(x=>x[0]==ms);
-$('minfo').innerHTML=g?`<h3>${g[0]}</h3><div class="meta">${g[1]}</div><p><b>Key grapes:</b> ${g[3]}</p><p>${g[4]}</p><button class="chip on" id="goR">View region card ↓</button>`:`Tap a region to see its grapes and style. ${rs.length} regions shown.`;
+$('minfo').innerHTML=g?`${phx(g[0])}<h3>${g[0]}</h3><div class="meta">${g[1]}</div><p><b>Key grapes:</b> ${g[3]}</p><p>${g[4]}</p><button class="chip on" id="goR">View region card ↓</button>`:`Tap a region to see its grapes and style. ${rs.length} regions shown.`;
 }
 drawM();
 let sc=0,tot=0,st=0,cq;
