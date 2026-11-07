@@ -1769,7 +1769,7 @@ el.innerHTML=CG.filter(x=>x.d<=today).map((x,i)=>`<details class="card" style="m
 </script>
 <script>
 // WINE QUIZ on the home page (under Today in wine history): random multiple-choice questions built from the site's own data.
-(function(){const el=document.getElementById("qz");if(!el)return;const $=i=>document.getElementById(i),q=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+(function(){const el=document.getElementById("qz");if(!el)return;el.parentNode.appendChild(el);const $=i=>document.getElementById(i),q=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const pick=a=>a[Math.floor(Math.random()*a.length)],shuf=a=>a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
 const opts=(right,pool)=>{const w=shuf([...new Set(pool.filter(x=>x&&x!==right))]).slice(0,3);return w.length<3?null:shuf([right,...w])};
 const GL=[...document.querySelectorAll("#az dt")].map(dt=>[dt.textContent.trim(),dt.nextElementSibling&&dt.nextElementSibling.textContent.trim()]).filter(x=>x[1]&&x[1].length<170&&!x[1].toLowerCase().includes(x[0].toLowerCase().split(" ")[0]));
