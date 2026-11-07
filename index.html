@@ -956,7 +956,7 @@ $('chips').onclick=e=>{if(!e.target.dataset.t)return;type=e.target.dataset.t;[..
 $('q').oninput=()=>{gl=24;draw()};$('gmore').onclick=()=>{gl+=24;draw()};
 function draw(){
 const s=$('q').value.toLowerCase();
-const r=G.filter(g=>(type=="All"||g[1]==type)&&g.join(" ").toLowerCase().includes(s)).sort((a,b)=>(b[0].toLowerCase()==s.trim())-(a[0].toLowerCase()==s.trim()));
+const r=G.filter(g=>(type=="All"||g[1]==type)&&g.join(" ").toLowerCase().includes(s)).sort((a,b)=>(b[0].toLowerCase()==s.trim())-(a[0].toLowerCase()==s.trim())||a[0].localeCompare(b[0],"en",{sensitivity:"base"}));
 $('grid').innerHTML=r.length?r.slice(0,gl).map(g=>`<div class="card">${phx(g[0])}<h3><span class="dot" style="background:${g[3]}"></span>${g[0]}</h3><div class="meta">${g[1]}</div><p><b>Flavors:</b> ${g[4]}</p>${lkr(g)}${g[6]?`<p><b>Pairs with:</b> ${g[6]}</p>`:""}<div class="body">Body ${[1,2,3,4,5].map(i=>`<i class="${i<=g[2]?"f":""}"></i>`).join("")}</div>${gdx(g[0])}</div>`).join(""):'<div class="empty">No grapes match that search.</div>';
 $('gmore').style.display=r.length>gl?"block":"none";$('gmore').textContent=`Show more (${r.length-gl} left)`;
 }
