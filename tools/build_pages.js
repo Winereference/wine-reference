@@ -24,7 +24,7 @@ async function loadData(){
   const d=await p.evaluate(()=>{const g=n=>{try{return eval(n)}catch(e){return null}};
     const gl=[...document.querySelectorAll('#az dt')].map(dt=>{const dd=dt.nextElementSibling;return [dt.textContent.trim(),dd&&dd.tagName=='DD'?dd.textContent.trim():'']});
     return {R:g('R'),G:g('G'),G0:g('G0').map(x=>x[0]),GD:g('GD'),K:g('K'),SUB:g('SUB'),CI:g('CI'),AP:g('AP'),PH:g('PH'),WL:g('WL'),DP:g('DP'),PC:g('PC'),
-      SPR:g('SPR'),SPB:g('SPB'),SPC:g('SPC'),ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},gl}});
+      SPR:g('SPR'),SPB:g('SPB'),SPD:g('SPD')||{},SPH:g('SPH')||{},SPC:g('SPC'),ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},gl}});
   await b.close();return d}
 
 let NL={};
@@ -82,7 +82,7 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
 (async()=>{
   const D=await loadData();NL=D.NL||{};
   for(const o of OUT)fs.rmSync(path.join(ROOT,o),{recursive:true,force:true});
-  const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;
+  const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;const SPD=D.SPD||{},SPH=D.SPH||{};
   const PHf=n=>PH&&PH[n];
   // grape name lookup incl. aliases ("Syrah / Shiraz" -> Syrah, Shiraz; "Prosecco (Glera)" -> Glera)
   const GS={},GA={};G.forEach(g=>{const s=slug(g[0]);GS[g[0]]=s;GA[g[0].toLowerCase()]=g[0];g[0].split(/\s*\/\s*|\s*\(\s*|\s*\)\s*|,\s*/).filter(x=>x.length>2).forEach(a=>{const k=a.toLowerCase();if(!GA[k])GA[k]=g[0]})});
@@ -162,11 +162,13 @@ ${conts.map(ct=>`<h2>${esc(ct)}</h2>${uniq(R.filter(r=>r[2]==ct).map(r=>r[1])).m
     const kw=uniq([`${x.n} ${x.s}`,x.s,`${x.s} guide`,`how ${x.s} is made`,`best ${x.s}`,`${x.n} distilleries`,...x.p.slice(0,4),x.c,x.t.toLowerCase(),'spirits guide']);
     const title=T(`${x.n} ${x.s}: How It's Made, Taste & Bottles`);
     const desc=cut(`${x.n} (${x.c}) and its ${x.s}: ${x.d} How it is made, how it tastes and the bottles to try.`,158);
-    const body=`<p class="meta">${esc(x.t)} · ${esc(x.c)}</p><p class="lead">${esc(x.d)}</p>
+    const ph=SPH[x.n],dd=SPD[x.n]||{};
+    const body=`${ph?`<img class="hero" src="${up}img/p/${esc(ph[0])}" alt="${esc(ph[3]||x.n)}" width="600" height="400"><p class="credit">Photo: <a href="https://unsplash.com/@${esc(ph[2])}?utm_source=wine_reference&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">${esc(ph[1])}</a> on Unsplash</p>`:''}<p class="meta">${esc(x.t)} · ${esc(x.c)}</p><p class="lead">${esc(x.d)}</p>
 <div class="facts"><div><b>Spirit</b>${esc(x.s)}</div><div><b>Made from</b>${esc(x.k)}</div><div><b>Taste</b>${esc(x.tl)}</div><div><b>How to drink</b>${esc(x.dr)}</div></div>
-<h2>How it's made</h2><p>${esc(x.m)}</p>
+<h2>How it's made</h2><p>${esc(x.m)}</p>${dd.pr?`<p>${esc(dd.pr)}</p>`:''}
+${[['History',dd.h],['Ageing and label terms',dd.ag],['Styles',dd.sy],['Rules and protected names',dd.ru],['How to serve and classic cocktails',dd.cx],['With food',dd.fx],['Good to know',dd.x]].filter(r=>r[1]).map(r=>`<h2>${r[0]}</h2><p>${esc(r[1])}</p>`).join('\n')}
 <h2>Producers</h2><ul class="list">${x.p.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
-${bs.length?`<h2>Bottles to try</h2><div class="grid">${bs.map(b=>`<div class="card"><div class="meta">${esc(b.t)} · ${esc(b.c)}</div><h3>${esc(b.p)} ${esc(b.w)}</h3><p>${esc(b.n)}</p>${b.dr?`<p><b>Serve:</b> ${esc(b.dr)}</p>`:''}</div>`).join('')}</div>`:''}
+${bs.length?`<h2>Bottles to try</h2><div class="grid">${bs.map(b=>`<div class="card"><div class="meta">${esc(b.t)} · ${esc(b.c)}</div><h3>${esc(b.p)} ${esc(b.w)}</h3><p>${esc(b.n)}</p>${b.a||b.ag?`<p>${b.a?`<b>Strength:</b> ${esc(b.a)}`:''}${b.a&&b.ag?' · ':''}${b.ag?`<b>Age and cask:</b> ${esc(b.ag)}`:''}</p>`:''}${b.x?`<p>${esc(b.x)}</p>`:''}${b.dr?`<p><b>Serve:</b> ${esc(b.dr)}</p>`:''}</div>`).join('')}</div>`:''}
 ${x.wr&&RS[x.wr]?`<p>Also a wine region: <a href="${up}regions/${RS[x.wr]}/">${esc(x.wr)} wine guide</a>.</p>`:''}
 ${same.length?`<h2>More ${esc(x.t.toLowerCase())} regions</h2><div class="chips">${same.map(y=>`<a class="chip" href="${up}spirits/${slug(y.n)}/">${esc(y.n)}</a>`).join('')}</div>`:''}
 <p><a class="btn" href="${up}#spirits">Explore all spirits in the interactive guide</a></p>`;
