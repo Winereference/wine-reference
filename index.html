@@ -1806,10 +1806,10 @@ const gens=[
 ()=>{const a=pick((has("AP")?AP:[]).filter(x=>x.g&&x.g.length&&gcol(x.g[0])));if(!a)return null;const g=a.g[0],c=gcol(g);return{q:`What is the main grape of ${a.n} (${a.t})?`,a:g,o:opts(g,GN.filter(x=>x[1]==c).map(x=>x[0])),l:"#grapes",lt:"Read about the grapes"}},
 // appellation: year current status granted
 ()=>{const a=pick((has("AP")?AP:[]).filter(x=>x.y));if(!a)return null;const y=+a.y,w=new Set();while(w.size<3){const d=(Math.floor(Math.random()*12)+2)*(Math.random()<.5?-1:1);if(y+d<=new Date().getFullYear())w.add(y+d)}
- return{q:`In which year did ${a.n} gain its ${a.t} status?`,a:String(y),o:shuf([String(y),...[...w].map(String)]),l:"#regions",lt:"See the official appellations"}},
+ return{dt:1,q:`In which year did ${a.n} gain its ${a.t} status?`,a:String(y),o:shuf([String(y),...[...w].map(String)]),l:"#regions",lt:"See the official appellations"}},
 // history: year of an event
 ()=>{const h=pick((has("WH")?WH:[]).filter(x=>!x.ca&&x.y>1000));if(!h)return null;const y=h.y,w=new Set();while(w.size<3){const d=(Math.floor(Math.random()*30)+3)*(Math.random()<.5?-1:1);if(y+d<=new Date().getFullYear())w.add(y+d)}
- return{q:`When did this happen: ${h.t} (${h.p})?`,a:yr(y),o:shuf([yr(y),...[...w].map(yr)]),l:"#stories/history",lt:"Open the wine history timeline"}},
+ return{dt:1,q:`When did this happen: ${h.t} (${h.p})?`,a:yr(y),o:shuf([yr(y),...[...w].map(yr)]),l:"#stories/history",lt:"Open the wine history timeline"}},
 // Wine Library: which grape is in this wine (same colour)
 ()=>{if(!has("WL"))return null;const w=pick(WL.filter(x=>x.g.length==1&&gcol(x.g[0])));if(!w)return null;const g=w.g[0],c=gcol(g);return{q:`Which grape is ${w.p} ${w.w} made from?`,a:g,o:opts(g,GN.filter(x=>x[1]==c).map(x=>x[0])),l:"#library",lt:"Browse the Wine Library"}},
 // spirits: what it's made from
@@ -1822,7 +1822,7 @@ const prog=document.createElement("div");prog.id="qzp";prog.className="qzp";el.i
 const res=document.createElement("div");res.id="qzr";res.className="qzr";res.hidden=true;el.appendChild(res);
 function bar(){prog.innerHTML=`<span>Question ${Math.min(asked+1,N)} of ${N}</span><span>Score ${score}</span><i><b style="width:${asked/N*100}%"></b></i>`}
 function show(on){["qzq","qzo","qzm","qzn"].forEach(i=>$(i).hidden=on);prog.hidden=on;res.hidden=!on;el.querySelector("small").hidden=on}
-function next(){if(asked>=N)return finish();let x=null;for(let i=0;i<40;i++){const y=pick(gens)();if(y&&y.o&&!seen.has(y.q)){x=y;break}}if(!x)return;seen.add(x.q);cur=x;
+function next(){if(asked>=N)return finish();let x=null;for(let i=0;i<40;i++){const y=pick(gens)();if(y&&y.o&&!seen.has(y.q)){if(y.dt&&Math.random()>.16)continue;x=y;break}}if(!x)return;seen.add(x.q);cur=x;
 bar();$('qzq').textContent=x.q;$('qzm').textContent="";$('qzn').hidden=true;
 $('qzo').innerHTML=x.o.map(o=>`<button type="button" data-v="${q(o)}">${q(o)}</button>`).join("");
 $('qzo').onclick=e=>{const b=e.target.closest("button");if(!b||b.disabled)return;asked++;const ok=b.dataset.v===x.a;if(ok)score++;
