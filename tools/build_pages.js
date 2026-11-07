@@ -9,7 +9,7 @@ const {chromium}=require('playwright');
 const fs=require('fs'),path=require('path'),{execSync}=require('child_process');
 const ROOT=path.resolve(__dirname,'..');
 const SITE='https://winereference.github.io/wine-reference/';
-const OUT=['grapes','regions','spirits','stories','wine-library','food-pairing','glossary'];
+const OUT=['grapes','regions','spirits','stories','wine-library','food-pairing','glossary','careers'];
 
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const slug=t=>String(t).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[·']/g,'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -24,7 +24,7 @@ async function loadData(){
   const d=await p.evaluate(()=>{const g=n=>{try{return eval(n)}catch(e){return null}};
     const gl=[...document.querySelectorAll('#az dt')].map(dt=>{const dd=dt.nextElementSibling;return [dt.textContent.trim(),dd&&dd.tagName=='DD'?dd.textContent.trim():'']});
     return {R:g('R'),G:g('G'),G0:g('G0').map(x=>x[0]),GD:g('GD'),K:g('K'),SUB:g('SUB'),CI:g('CI'),AP:g('AP'),PH:g('PH'),WL:g('WL'),DP:g('DP'),PC:g('PC'),
-      SPR:g('SPR'),SPB:g('SPB'),SPC:g('SPC'),ST:g('ST'),gl}});
+      SPR:g('SPR'),SPB:g('SPB'),SPC:g('SPC'),ST:g('ST'),CG:g('CG')||[],gl}});
   await b.close();return d}
 
 function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
@@ -65,7 +65,7 @@ function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
 ${body}
 <div class="support"><h2>Support The Wine Reference</h2><p>This guide is free, with no paywall. If it helped you choose a bottle, you can buy me a glass and keep it growing.</p><a class="btn" href="https://ko-fi.com/winereference" target="_blank" rel="noopener">🍷 Buy me a glass</a></div>
 </main>
-<footer><div class="in"><nav aria-label="Browse"><a href="${up}">Interactive guide</a><a href="${up}grapes/">Grapes</a><a href="${up}regions/">Wine regions</a><a href="${up}wine-library/">Wine Library</a><a href="${up}spirits/">Spirits</a><a href="${up}food-pairing/">Food pairing</a><a href="${up}stories/">Wine stories</a><a href="${up}glossary/">Glossary</a></nav>
+<footer><div class="in"><nav aria-label="Browse"><a href="${up}">Interactive guide</a><a href="${up}grapes/">Grapes</a><a href="${up}regions/">Wine regions</a><a href="${up}wine-library/">Wine Library</a><a href="${up}spirits/">Spirits</a><a href="${up}food-pairing/">Food pairing</a><a href="${up}stories/">Wine stories</a><a href="${up}glossary/">Glossary</a><a href="${up}careers/">Sommelier careers</a></nav>
 <p>By Diego Muntoni, head sommelier. For reference only. Please enjoy responsibly. Over 18s only (21 in the USA).</p></div></footer>
 <div id="age" role="dialog" aria-modal="true" aria-labelledby="ageh"><div class="box"><div style="font-size:42px">🍷</div><h2 id="ageh" style="margin:6px 0 8px">Are you of legal drinking age?</h2><p class="muted" style="margin:0 0 12px">This guide is about alcohol and is for adults only: 18 or over in the UK, EU and most countries, 21 in the USA.</p><button id="agy" type="button">Yes, I am of legal drinking age</button><button id="agn" class="no" type="button">No</button><p id="agm" style="min-height:1.4em;color:var(--accent);font-size:14px;margin:8px 0 0"></p></div></div>
 <script>(function(){var a=document.getElementById('age'),ok=false;try{ok=localStorage.getItem('ageOK')=='1'}catch(e){}if(ok)return;a.style.display='flex';document.body.style.overflow='hidden';
@@ -215,6 +215,23 @@ ${L.map(l=>`<h2 id="${l}">${l}</h2><dl>${D.gl.filter(t=>t[0].normalize('NFD')[0]
    pages.push([rel,page({rel,title:'Wine Glossary A–Z: Wine Terms Explained | The Wine Reference',desc:cut(`${D.gl.length} wine terms explained in plain English, from acidity and appellation to tannin, terroir and vintage. A sommelier's A–Z glossary.`,158),
      keywords:['wine glossary','wine terms','wine terminology','wine vocabulary','tasting terms','what does tannin mean','wine words A-Z'],h1:'Wine glossary A–Z',crumbs:[['Glossary',rel]],body,
      jsonld:{"@type":"DefinedTermSet","name":"Wine glossary","url":SITE+rel,"hasDefinedTerm":D.gl.slice(0,400).map(t=>({"@type":"DefinedTerm","name":t[0],"description":t[1]}))}})]);}
+
+  // ---------- CAREERS ----------
+  const today=new Date().toISOString().slice(0,10);const CGv=(D.CG||[]).filter(x=>x.d<=today);
+  for(const x of CGv){
+    const up='../../',rel=`careers/${x.id}/`;
+    const kw=uniq([...x.t.split(/[:,–-]/).map(y=>y.trim()).filter(y=>y.length>3).slice(0,3),'sommelier career','how to become a sommelier','sommelier jobs',x.c.toLowerCase()+' for sommeliers','wine career']);
+    const body=`<p class="meta">${esc(x.c)} · ${esc(x.d)}</p><p class="lead">${esc(x.s)}</p>${x.b.map(p=>`<p>${esc(p)}</p>`).join('\n')}
+${x.k&&x.k.length?`<h2>Key points</h2><ul class="list">${x.k.map(k=>`<li>${esc(k)}</li>`).join('')}</ul>`:''}
+${x.r&&x.r.length?`<h2>Sources</h2><ul class="list">${x.r.map(r=>`<li><a href="${esc(r[1])}" target="_blank" rel="noopener">${esc(r[0])}</a></li>`).join('')}</ul>`:''}
+<p><a class="btn" href="${up}careers/">More sommelier career guides</a></p>`;
+    pages.push([rel,page({rel,title:T(x.t),desc:cut(x.s,158),keywords:kw,h1:x.t,crumbs:[['Sommelier careers','careers/'],[x.t,rel]],body,
+      jsonld:{"@type":"Article","headline":x.t,"description":x.s,"datePublished":x.d,"author":{"@type":"Person","name":"Diego Muntoni","jobTitle":"Head Sommelier"},"mainEntityOfPage":SITE+rel}})]);
+  }
+  {const rel='careers/',up='../';const body=`<p class="lead">In-depth guides to a career in wine by head sommelier Diego Muntoni: qualifications, roles, skills, interviews, pay and progression. A new guide every week.</p><div class="grid">${CGv.map(x=>`<a class="card" href="${up}careers/${x.id}/"><div class="meta">${esc(x.c)} · ${esc(x.d)}</div><h3>${esc(x.t)}</h3><p>${esc(x.s)}</p></a>`).join('')}</div>
+<p><a class="btn" href="${up}#careers">Find sommelier jobs and use the job tracker</a></p>`;
+   pages.push([rel,page({rel,title:'Sommelier Careers: How to Become a Sommelier | The Wine Reference',desc:'How to become a sommelier: qualifications (Court of Master Sommeliers, WSET), roles, skills, interviews, pay and career progression, explained by a head sommelier.',
+     keywords:['sommelier career','how to become a sommelier','sommelier qualifications','sommelier jobs','wine career','Court of Master Sommeliers','WSET'],h1:'Sommelier careers',crumbs:[['Sommelier careers',rel]],body,jsonld:{"@type":"CollectionPage","name":"Sommelier careers","url":SITE+rel}})]);}
 
   const seen=new Set();for(const [rel,html] of pages){if(seen.has(rel))throw new Error('Duplicate page '+rel);seen.add(rel);write(rel,html)}
   console.log('pages written:',pages.length);

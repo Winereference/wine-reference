@@ -85,6 +85,12 @@
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/piedmont-barbaresco-langhe-vineyards-sunset-italy.webp</image:loc><image:title>Piedmont</image:title><image:caption>Sunset over the Barbaresco vineyards in the Langhe, Piedmont, Italy</image:caption></image:image>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/careers/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/food-pairing/</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>daily</changefreq>
@@ -125,6 +131,12 @@
     <lastmod>2026-11-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/careers/sommelier-qualifications-cms-vs-wset/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/agiorgitiko/</loc>
