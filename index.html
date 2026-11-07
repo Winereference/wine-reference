@@ -1766,12 +1766,34 @@ el.innerHTML=CG.filter(x=>x.d<=today).map((x,i)=>`<details class="card" style="m
 const pick=a=>a[Math.floor(Math.random()*a.length)],shuf=a=>a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
 const opts=(right,pool)=>{const w=shuf([...new Set(pool.filter(x=>x&&x!==right))]).slice(0,3);return w.length<3?null:shuf([right,...w])};
 const GL=[...document.querySelectorAll("#az dt")].map(dt=>[dt.textContent.trim(),dt.nextElementSibling&&dt.nextElementSibling.textContent.trim()]).filter(x=>x[1]&&x[1].length<170&&!x[1].toLowerCase().includes(x[0].toLowerCase().split(" ")[0]));
+const has=n=>typeof window[n]!="undefined"||(()=>{try{return eval("typeof "+n)!="undefined"}catch(e){return false}})();
+const yr=y=>y<0?`${-y} BC`:String(y);
+const GN=G.filter(x=>x[1]=="Red"||x[1]=="White"),gcol=n=>{const g=G.find(x=>x[0]==n);return g?g[1]:null};
+const sameCountry=c=>R.filter(r=>r[1]==c),sameCont=c=>{const r=R.find(x=>x[1]==c);return r?R.filter(x=>x[2]==r[2]):R};
+const syn=[];if(has("GD"))for(const n in GD){const k=GD[n].k;if(!k)continue;k.split(/,|;/).map(x=>x.replace(/\(.*?\)/g,"").replace(/\.$/,"").trim()).filter(x=>x&&x.length<25&&!/^(also|in|the)\b/i.test(x)&&!n.toLowerCase().includes(x.toLowerCase())).forEach(x=>syn.push([x,n]))}
 const gens=[
-()=>{const r=pick(R);return{q:`In which country is the ${r[0]} wine region?`,a:r[1],o:opts(r[1],R.map(x=>x[1])),l:"#regions",lt:"Explore wine regions"}},
-()=>{const a=pick((typeof AP!="undefined"?AP:[]).filter(x=>x.g&&x.g.length));if(!a)return null;const g=a.g[0];return{q:`Which grape is the main variety of ${a.n}?`,a:g,o:opts(g,G.map(x=>x[0]).filter(x=>!/[(]/.test(x))),l:"#grapes",lt:"Read about the grapes"}},
-()=>{const t=pick(GL);return t?{q:`Which wine word means: ${t[1]}`,a:t[0],o:opts(t[0],GL.map(x=>x[0])),l:"#az",lt:"Open the A–Z glossary"}:null},
-()=>{if(typeof SPR=="undefined")return null;const x=pick(SPR);return{q:`Which spirit is ${x.n}${x.c.startsWith(x.n)?"":` (${x.c})`} famous for?`,a:x.s,o:opts(x.s,SPR.map(y=>y.s)),l:"#spirits",lt:"Explore spirits"}},
-()=>{if(typeof WL=="undefined")return null;const w=pick(WL);return{q:`Where does ${w.p} ${w.w} come from?`,a:w.r,o:opts(w.r,WL.map(y=>y.r)),l:"#library",lt:"Browse the Wine Library"}}];
+// grape synonym
+()=>{const x=pick(syn);if(!x)return null;const c=gcol(x[1]);return{q:`Which grape is also known as ${x[0]}?`,a:x[1],o:opts(x[1],GN.filter(g=>g[1]==c).map(g=>g[0])),l:"#grapes",lt:"Read about the grapes"}},
+// subregion belongs to which region (same-country distractors)
+()=>{if(!has("SUB"))return null;const n=pick(Object.keys(SUB).filter(k=>R.some(r=>r[0]==k)));const r=R.find(x=>x[0]==n),sub=pick(SUB[n].split(",").map(x=>x.trim()).filter(x=>x&&!x.toLowerCase().includes(n.toLowerCase().split(" ")[0])));if(!sub)return null;
+ let pool=sameCountry(r[1]).map(x=>x[0]);if(pool.length<4)pool=sameCont(r[1]).map(x=>x[0]);return{q:`${sub} is part of which wine region?`,a:n,o:opts(n,pool),l:"#regions",lt:"Explore wine regions"}},
+// producer belongs to which region
+()=>{if(!has("K"))return null;const n=pick(Object.keys(K).filter(k=>R.some(r=>r[0]==k)));const r=R.find(x=>x[0]==n),pr=pick(K[n].split("|"));let pool=sameCountry(r[1]).map(x=>x[0]);if(pool.length<4)pool=sameCont(r[1]).map(x=>x[0]);
+ return{q:`In which region will you find the producer ${pr}?`,a:n,o:opts(n,pool),l:"#regions",lt:"Explore wine regions"}},
+// appellation main grape (same-colour distractors)
+()=>{const a=pick((has("AP")?AP:[]).filter(x=>x.g&&x.g.length&&gcol(x.g[0])));if(!a)return null;const g=a.g[0],c=gcol(g);return{q:`What is the main grape of ${a.n} (${a.t})?`,a:g,o:opts(g,GN.filter(x=>x[1]==c).map(x=>x[0])),l:"#grapes",lt:"Read about the grapes"}},
+// appellation: year current status granted
+()=>{const a=pick((has("AP")?AP:[]).filter(x=>x.y));if(!a)return null;const y=+a.y,w=new Set();while(w.size<3){const d=(Math.floor(Math.random()*12)+2)*(Math.random()<.5?-1:1);if(y+d<=new Date().getFullYear())w.add(y+d)}
+ return{q:`In which year did ${a.n} gain its ${a.t} status?`,a:String(y),o:shuf([String(y),...[...w].map(String)]),l:"#regions",lt:"See the official appellations"}},
+// history: year of an event
+()=>{const h=pick((has("WH")?WH:[]).filter(x=>!x.ca&&x.y>1000));if(!h)return null;const y=h.y,w=new Set();while(w.size<3){const d=(Math.floor(Math.random()*30)+3)*(Math.random()<.5?-1:1);if(y+d<=new Date().getFullYear())w.add(y+d)}
+ return{q:`When did this happen: ${h.t} (${h.p})?`,a:yr(y),o:shuf([yr(y),...[...w].map(yr)]),l:"#stories/history",lt:"Open the wine history timeline"}},
+// Wine Library: which grape is in this wine (same colour)
+()=>{if(!has("WL"))return null;const w=pick(WL.filter(x=>x.g.length==1&&gcol(x.g[0])));if(!w)return null;const g=w.g[0],c=gcol(g);return{q:`Which grape is ${w.p} ${w.w} made from?`,a:g,o:opts(g,GN.filter(x=>x[1]==c).map(x=>x[0])),l:"#library",lt:"Browse the Wine Library"}},
+// spirits: what it's made from
+()=>{if(!has("SPR"))return null;const x=pick(SPR);return{q:`What is ${x.s}${x.s.includes(x.n)?"":` from ${x.n}`} made from?`,a:x.k,o:opts(x.k,SPR.filter(y=>y.t!=x.t&&y.k.split(/[ ,]/)[0]!=x.k.split(/[ ,]/)[0]).map(y=>y.k)),l:"#spirits",lt:"Explore spirits"}},
+// glossary (harder: only longer definitions, terms from the same letter range where possible)
+()=>{const t=pick(GL);if(!t)return null;const L=t[0][0].toUpperCase();let pool=GL.filter(x=>x[0][0].toUpperCase()==L).map(x=>x[0]);if(pool.length<4)pool=GL.map(x=>x[0]);return{q:`Which wine term means: ${t[1]}`,a:t[0],o:opts(t[0],pool),l:"#az",lt:"Open the A–Z glossary"}}];
 let score=0,asked=0;
 function next(){let x=null;for(let i=0;i<20&&!(x&&x.o);i++)x=pick(gens)();if(!x||!x.o)return;
 $('qzq').textContent=x.q;$('qzm').textContent="";
