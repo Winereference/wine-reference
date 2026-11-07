@@ -1,17 +1,19 @@
-# Publish the repo root as-is (no build step).
+# The live site moved to GitHub Pages on 2026-11-07:
+#   https://winereference.github.io/wine-reference/
+# This file only tells the OLD Netlify address (wine-reference.netlify.app) to send
+# every visitor and search engine to the same page on the new site (permanent 301).
+
 [build]
   publish = "."
-  # Publish at most once a day: Netlify only builds when the latest commit message contains [deploy].
-  # The daily "publish" scheduled task makes that commit; any other push is skipped (saves deploy credits).
+  # Netlify deploys cost credits, so only build when a commit message contains [netlify].
+  # Normal updates go live on GitHub Pages and never trigger Netlify.
   # Exit code 0 = skip the build, 1 = build.
-  ignore = "! git log -1 --pretty=%B | grep -qF '[deploy]'"
+  ignore = "! git log -1 --pretty=%B | grep -qF '[netlify]'"
 
-# Always revalidate HTML so visitors get the latest version right after a deploy.
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-[[headers]]
-  for = "/"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+# Send every path to the same path on the new site, e.g.
+#   /grapes/merlot/  ->  https://winereference.github.io/wine-reference/grapes/merlot/
+[[redirects]]
+  from = "/*"
+  to = "https://winereference.github.io/wine-reference/:splat"
+  status = 301
+  force = true
