@@ -106,6 +106,8 @@ dt.hit{background:var(--chip);border-radius:6px;padding:2px 6px}
 .wbuy{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0 0;padding-top:14px;border-top:1px solid var(--line)}.wbuy>b{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-right:4px}.wbuy a{text-decoration:none}.wbuy small{flex-basis:100%;color:var(--muted);font-size:12px}
 .wnext{margin-top:22px}.wnext h4{font:500 13px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
 .hc.wh{grid-column:1/-1;background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 55%,#000));border-color:transparent;color:#fff}.hc.wh b{color:#fff;font-size:26px}.hc.wh span{color:rgba(255,255,255,.85)}.hc.wh small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-bottom:4px}
+.tipw{text-align:center;margin:0 auto 18px;max-width:520px}.tipw p{color:var(--muted);font-size:14px;margin:0 0 10px}.tipb{display:inline-block;text-decoration:none;font-size:14px;padding:9px 20px}
+.disc{max-width:560px;margin:10px auto 0;font-size:12px;color:var(--muted)}.wbuy .aff{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
 </style>
 </head>
 <body>
@@ -992,6 +994,35 @@ JB.unshift({id:Date.now(),role:r,venue:$('jv').value.trim(),loc:$('jc').value.tr
 draw()})();
 </script>
 <script>
+/* ===== MONEY SETTINGS: fill these in once your accounts are approved. Leave "" to keep a feature switched off. ===== */
+window.MONEY={
+  // Google AdSense publisher ID, e.g. "ca-pub-1234567890123456"
+  adsense:"",
+  // Ko-fi username, e.g. "winereference" (from ko-fi.com/winereference)
+  kofi:"",
+  // Awin publisher ID, e.g. "123456"
+  awin:"",
+  // Retailers you are approved for on Awin. Each: {name:"Shop name", mid:"Awin merchant ID", search:"https://shop.example/search?q={q}"}
+  retailers:[]
+};
+</script>
+<script>
+(function(){const M=window.MONEY||{},e=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+/* Display ads: Google Auto ads. Turn on AdSense's own "Privacy & messaging" consent message for UK/EU visitors. */
+if(/^ca-pub-\d+$/.test(M.adsense||"")){const sc=document.createElement("script");sc.async=true;sc.crossOrigin="anonymous";sc.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client="+M.adsense;document.head.appendChild(sc)}
+/* Support button */
+if(M.kofi){const u="https://ko-fi.com/"+encodeURIComponent(M.kofi),b='<a class="chip on tipb" target="_blank" rel="noopener" href="'+u+'">🍷 Buy me a glass</a>';
+const f=document.querySelector("body>footer");if(f)f.insertAdjacentHTML("afterbegin",'<div class="tipw"><p>Enjoying The Wine Reference? It\'s free to use. Your support keeps it growing.</p>'+b+'</div>');}
+/* Affiliate retailer buttons for the Wine of the Day */
+const R=(M.retailers||[]).filter(r=>r&&r.name&&r.mid&&r.search);
+window.affButtons=t=>{if(!M.awin||!R.length)return"";const q=encodeURIComponent(t);
+return R.map(r=>'<a class="chip on" target="_blank" rel="sponsored noopener" href="https://www.awin1.com/cread.php?awinmid='+encodeURIComponent(r.mid)+'&awinaffid='+encodeURIComponent(M.awin)+'&ued='+encodeURIComponent(r.search.replace("{q}",q))+'">Buy at '+e(r.name)+'</a>').join("")};
+window.affOn=!!(M.awin&&R.length);
+/* Disclosure, shown only when ads or affiliate links are on (required by UK ASA/CAP rules) */
+if(window.affOn||/^ca-pub-\d+$/.test(M.adsense||"")){const f=document.querySelector("body>footer");if(f)f.insertAdjacentHTML("beforeend",'<p class="disc">This site may show ads and contains affiliate links. If you buy through them we may earn a small commission, at no extra cost to you.</p>')}
+})();
+</script>
+<script>
 (function(){
 // [name, style, country/region, grape(s), tasting notes, food, serve, why it matters]
 const W=[
@@ -1042,7 +1073,7 @@ const today=new Date(),k=key(today),pick=i=>W[((i%W.length)+W.length)%W.length];
 const w=pick(k),e=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmt=d=>d.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long"});
 const slug=t=>t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"+").replace(/^\+|\+$/g,"");
-const buy=t=>{const q=encodeURIComponent(t);return '<div class="wbuy"><b>Where to buy</b><a class="chip on" target="_blank" rel="noopener" href="https://www.wine-searcher.com/find/'+slug(t)+'/1/uk">Compare UK prices</a><a class="chip" target="_blank" rel="noopener" href="https://www.google.co.uk/search?tbm=shop&q='+q+'">Google Shopping</a><a class="chip" target="_blank" rel="noopener" href="https://www.vivino.com/search/wines?q='+q+'">Vivino</a><small>Opens a search for this bottle at UK retailers. Prices and stock vary. Over 18s only.</small></div>'};
+const buy=t=>{const q=encodeURIComponent(t);return '<div class="wbuy"><b>Where to buy</b>'+(window.affButtons?window.affButtons(t):"")+'<a class="chip on" target="_blank" rel="noopener" href="https://www.wine-searcher.com/find/'+slug(t)+'/1/uk">Compare UK prices</a><a class="chip" target="_blank" rel="noopener" href="https://www.google.co.uk/search?tbm=shop&q='+q+'">Google Shopping</a><a class="chip" target="_blank" rel="noopener" href="https://www.vivino.com/search/wines?q='+q+'">Vivino</a><small>'+(window.affOn?'Shop links marked "Buy at" are affiliate links. ':'')+'Opens a search for this bottle at UK retailers. Prices and stock vary. Over 18s only.</small></div>'};
 document.getElementById("wotdc").innerHTML='<p class="wl">'+e(fmt(today))+'</p><h3>'+e(w[8])+'<span class="wst">'+e(w[1])+'</span></h3><p class="wr">'+e(w[0])+' · '+e(w[2])+'</p><p style="margin:0;font-size:16px">'+e(w[7])+'</p><div class="wg"><div><b>Grape</b><span>'+e(w[3])+'</span></div><div><b>Tasting notes</b><span>'+e(w[4])+'</span></div><div><b>Pair with</b><span>'+e(w[5])+'</span></div><div><b>Serve at</b><span>'+e(w[6])+'</span></div></div>'+buy(w[8]);
 let n="";for(let i=1;i<=3;i++){const d=new Date(today);d.setDate(d.getDate()+i);const x=pick(key(d));n+='<div class="card"><p class="meta">'+e(fmt(d))+'</p><h3 style="font-size:21px">'+e(x[8])+'</h3><p style="margin:4px 0 0">'+e(x[0])+' · '+e(x[2])+'</p></div>'}
 document.getElementById("wotdn").innerHTML=n;
