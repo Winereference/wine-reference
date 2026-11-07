@@ -1,0 +1,54 @@
+/* Styles for the generated SEO pages (grapes/, regions/, spirits/, stories/, glossary/, wine-library/, food-pairing/). Built by tools/build_pages.js. */
+:root{--bg:#fff;--surface:#fbf3f5;--text:#3a0f1d;--muted:#7d5a66;--accent:#7a1f3d;--line:#ecd9df;--chip:#f5e6ea}
+@media (prefers-color-scheme:dark){:root{--bg:#1c0a10;--surface:#2a1018;--text:#f8eef1;--muted:#c9a6b2;--accent:#e08aa6;--line:#4a2230;--chip:#3a1824;color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.65 Inter,system-ui,sans-serif;padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.15;margin:0}
+h1{font-size:clamp(32px,7vw,46px);margin:6px 0 10px}
+h2{font-size:28px;margin:30px 0 10px}
+h3{font-size:21px;margin:0 0 4px}
+a{color:var(--accent)}
+img{max-width:100%;height:auto}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:10px 16px}
+.top .logo{font-family:"Cormorant Garamond",serif;font-size:21px;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap}
+.top .tip{margin-left:auto;text-decoration:none;font:600 13px Inter,sans-serif;padding:7px 12px;border-radius:999px;background:var(--accent);color:var(--bg);white-space:nowrap}
+.wrap{max-width:860px;margin:0 auto;padding:12px 18px 40px}
+.crumbs{font-size:13px;color:var(--muted);margin:6px 0 0}
+.crumbs a{color:var(--muted)}
+.lead{font-size:18px;color:var(--text);margin:0 0 14px}
+.meta{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:6px 0 4px}
+.muted{color:var(--muted)}
+.hero{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:14px;margin:8px 0 4px;background:var(--chip)}
+.wide{aspect-ratio:16/9}
+.credit{font-size:12px;color:var(--muted);margin:0 0 14px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:14px 0}
+.facts div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.facts b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:block;color:var(--text);text-decoration:none}
+a.card:hover{border-color:var(--accent)}
+.card p{margin:4px 0 0;font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chip{display:inline-block;border:1px solid var(--line);background:var(--chip);color:var(--text);padding:6px 14px;border-radius:999px;font:500 13px Inter,sans-serif;text-decoration:none}
+.chip.on{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.btn{display:inline-block;background:var(--accent);color:var(--bg);text-decoration:none;font-weight:600;padding:11px 22px;border-radius:999px;margin:10px 0}
+ul.list{padding-left:20px}
+ul.list li{margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:15px;background:var(--surface);border:1px solid var(--line)}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.tbl{overflow-x:auto}
+dl dt{font-weight:600;margin-top:12px}
+dl dd{margin:2px 0 0}
+.az{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.az a{min-width:34px;text-align:center}
+.support{background:var(--surface);border:2px solid var(--accent);border-radius:16px;padding:20px;text-align:center;margin:34px 0 0}
+.support h2{margin:0 0 6px;color:var(--accent)}
+footer{border-top:1px solid var(--line);padding:22px 18px 34px;font-size:14px;color:var(--muted)}
+footer .in{max-width:860px;margin:0 auto}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0 0 12px}
+#age{position:fixed;inset:0;z-index:100;background:linear-gradient(#5a1230,#1c0a10);display:none;align-items:center;justify-content:center;padding:20px}
+#age .box{background:var(--surface);color:var(--text);max-width:420px;width:100%;border-radius:20px;padding:26px;text-align:center}
+#age button{width:100%;border:0;border-radius:999px;background:var(--accent);color:var(--bg);font:600 15px Inter,sans-serif;padding:13px;cursor:pointer;margin-top:8px}
+#age .no{background:var(--chip);color:var(--text)}
