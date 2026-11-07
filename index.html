@@ -161,10 +161,13 @@ dt.hit{background:var(--chip);border-radius:6px;padding:2px 6px}
 <section id="winemap">
 <h2>Wine Map</h2>
 <img class="sbn" src="img/vineyards-aerial-view-wine-country.webp" alt="Patchwork of vineyards seen from above" loading="lazy" decoding="async" width="1600" height="600">
-<p style="color:var(--muted);margin:-6px 0 16px;font-size:15px">Pick a continent, then tap a dot or a name to explore.</p>
+<p style="color:var(--muted);margin:-6px 0 16px;font-size:15px">Pick a continent, then a country, then a region.</p>
 <div class="chips" id="mchips"></div>
+<div class="rtl" id="mctl">Countries</div>
+<div class="chips" id="mctry"></div>
 <svg id="wmap" class="pic" role="img" aria-label="Map of wine regions"></svg>
-<div class="chips" id="mlist" style="margin-top:12px"></div>
+<div class="rtl" id="mrtl" style="margin-top:12px">Regions</div>
+<div class="chips" id="mlist"></div>
 <div class="card" id="minfo" style="margin-top:4px">Tap a region to see its grapes and style.</div>
 </section>
 
@@ -833,26 +836,31 @@ else{body.innerHTML=(Xs?`<div class="card" style="margin-bottom:12px"><h3>${ex(X
 }
 drawR();
 draw();
-let mc="Europe",ms=null;
+let mc="Europe",ms=null,mcy="";
 const mv=()=>R.filter(g=>g[2]==mc&&LL[g[0]]);
 $('mchips').innerHTML=Object.keys(VB).map(t=>`<button class="chip" data-m="${t}">${t}</button>`).join("");
-$('mchips').onclick=e=>{const t=e.target.dataset.m;if(!t)return;mc=t;ms=null;drawM()};
+$('mchips').onclick=e=>{const t=e.target.dataset.m;if(!t)return;mc=t;ms=null;mcy="";drawM()};
+$('mctry').onclick=e=>{const b=e.target.closest("[data-k]");if(!b)return;const k=b.dataset.k;mcy=(k==mcy&&k)?"":k;ms=null;drawM()};
 $('wmap').onclick=e=>{const k=e.target.closest("[data-n]");if(k)selM(k.dataset.n)};
 $('mlist').onclick=e=>{if(e.target.dataset.n)selM(e.target.dataset.n)};
 $('minfo').onclick=e=>{if(e.target.id=="goR")goR(ms)};
-function selM(n){ms=n;drawM()}
+function selM(n){ms=n;const g=R.find(x=>x[0]==n);if(g)mcy=g[1];drawM()}
 function goR(n){const g=R.find(x=>x[0]==n);Xc=g[1];Xr=n;Xs="";$('rq').value="";drawR();location.hash="regions"}
 function drawM(){
-const v=VB[mc],w=v[1]-v[0],h=v[3]-v[2],r=w/80,svg=$('wmap'),rs=mv();
+const v=VB[mc],w=v[1]-v[0],h=v[3]-v[2],r=w/80,svg=$('wmap'),all=mv(),ct=[...new Set(all.map(g=>g[1]))];
+if(ct.length==1)mcy=ct[0];if(mcy&&!ct.includes(mcy))mcy="";
+const rs=mcy?all.filter(g=>g[1]==mcy):[];
+$('mctry').innerHTML=(ct.length>1?`<button class="chip${mcy?"":" on"}" data-k="">All</button>`:"")+ct.map(c=>`<button class="chip${c==mcy?" on":""}" data-k="${c}">${c} <small style="opacity:.7">${all.filter(g=>g[1]==c).length}</small></button>`).join("");
+$('mrtl').style.display=mcy?"":"none";
 [...$('mchips').children].forEach(c=>c.classList.toggle('on',c.dataset.m==mc));
 svg.setAttribute("viewBox",`${v[0]} ${-v[3]} ${w} ${h}`);svg.style.aspectRatio=`${w}/${h}`;
 let o=`<rect x="${v[0]}" y="${-v[3]}" width="${w}" height="${h}" class="sea"/><path d="${LP}" class="land"/><path d="${SP}" class="sea"/>`;
-rs.forEach(g=>{const l=LL[g[0]],on=g[0]==ms;o+=`<g data-n="${g[0]}" style="cursor:pointer"><circle cx="${l[1]}" cy="${-l[0]}" r="${r*2.6}" fill="transparent"/>${on?`<circle cx="${l[1]}" cy="${-l[0]}" r="${r*2.4}" class="halo"/>`:""}<circle cx="${l[1]}" cy="${-l[0]}" r="${on?r*1.4:r}" class="dot"/></g>`});
+all.forEach(g=>{const l=LL[g[0]],on=g[0]==ms,dim=mcy&&g[1]!=mcy;o+=`<g data-n="${g[0]}" style="cursor:pointer${dim?";opacity:.3":""}"><circle cx="${l[1]}" cy="${-l[0]}" r="${r*2.6}" fill="transparent"/>${on?`<circle cx="${l[1]}" cy="${-l[0]}" r="${r*2.4}" class="halo"/>`:""}<circle cx="${l[1]}" cy="${-l[0]}" r="${on?r*1.4:r}" class="dot"/></g>`});
 if(ms&&LL[ms]){const l=LL[ms];o+=`<text x="${l[1]}" y="${-l[0]-r*3.2}" text-anchor="middle" font-size="${w/34}" class="lab">${ms}</text>`}
 svg.innerHTML=o;
 $('mlist').innerHTML=rs.map(g=>`<button class="chip${g[0]==ms?" on":""}" data-n="${g[0]}">${g[0]}</button>`).join("");
 const g=R.find(x=>x[0]==ms);
-$('minfo').innerHTML=g?`${phx(g[0])}<h3>${g[0]}</h3><div class="meta">${g[1]}</div><p><b>Key grapes:</b> ${g[3]}</p><p>${g[4]}</p><button class="chip on" id="goR">View region card ↓</button>`:`Tap a region to see its grapes and style. ${rs.length} regions shown.`;
+$('minfo').innerHTML=g?`${phx(g[0])}<h3>${g[0]}</h3><div class="meta">${g[1]}</div><p><b>Key grapes:</b> ${g[3]}</p><p>${g[4]}</p><button class="chip on" id="goR">View region card ↓</button>`:(mcy?`Tap a region in ${mcy} to see its grapes and style. ${rs.length} region${rs.length==1?"":"s"}.`:`Choose a country to see its regions. ${ct.length} countries and ${all.length} regions in ${mc}.`);
 }
 drawM();
 let sc=0,tot=0,st=0,cq;
