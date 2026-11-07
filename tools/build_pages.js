@@ -9,7 +9,7 @@ const {chromium}=require('playwright');
 const fs=require('fs'),path=require('path'),{execSync}=require('child_process');
 const ROOT=path.resolve(__dirname,'..');
 const SITE='https://winereference.github.io/wine-reference/';
-const OUT=['grapes','regions','spirits','stories','wine-library','food-pairing','glossary','careers'];
+const OUT=['grapes','regions','spirits','stories','wine-library','food-pairing','glossary','careers','newsletter'];
 
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const slug=t=>String(t).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[·']/g,'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -67,7 +67,7 @@ ${body}
 ${/^https:\/\//.test(NL.action||'')?`<div class="support nl"><h2>The Wine Reference newsletter</h2><p>New wines, stories and career guides, one email a week at most.</p><form method="post" target="_blank" action="${esc(NL.action)}" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center"><label for="nle" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label><input type="email" id="nle" name="${esc(NL.field||'email')}" required autocomplete="email" placeholder="Your email address" style="flex:1 1 200px;min-width:0;padding:11px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit"><button class="btn" type="submit" style="border:0;margin:0;cursor:pointer;font:600 15px Inter,sans-serif">Subscribe</button></form><p class="muted" style="font-size:12px;margin:8px 0 0">Over 18s only. Unsubscribe any time with one click. Your email is stored securely by ${esc(NL.provider||'our newsletter provider')} and never shared.</p></div>`:''}
 <div class="support"><h2>Support The Wine Reference</h2><p>This guide is free, with no paywall. If it helped you choose a bottle, you can buy me a glass and keep it growing.</p><a class="btn" href="https://ko-fi.com/winereference" target="_blank" rel="noopener">🍷 Buy me a glass</a></div>
 </main>
-<footer><div class="in"><nav aria-label="Browse"><a href="${up}">Interactive guide</a><a href="${up}grapes/">Grapes</a><a href="${up}regions/">Wine regions</a><a href="${up}wine-library/">Wine Library</a><a href="${up}spirits/">Spirits</a><a href="${up}food-pairing/">Food pairing</a><a href="${up}stories/">Wine stories</a><a href="${up}glossary/">Glossary</a><a href="${up}careers/">Sommelier careers</a></nav>
+<footer><div class="in"><nav aria-label="Browse"><a href="${up}">Interactive guide</a><a href="${up}grapes/">Grapes</a><a href="${up}regions/">Wine regions</a><a href="${up}wine-library/">Wine Library</a><a href="${up}spirits/">Spirits</a><a href="${up}food-pairing/">Food pairing</a><a href="${up}stories/">Wine stories</a><a href="${up}glossary/">Glossary</a><a href="${up}careers/">Sommelier careers</a><a href="${up}newsletter/">Newsletter</a></nav>
 <p>By Diego Muntoni, head sommelier. For reference only. Please enjoy responsibly. Over 18s only (21 in the USA).</p></div></footer>
 <div id="age" role="dialog" aria-modal="true" aria-labelledby="ageh"><div class="box"><div style="font-size:42px">🍷</div><h2 id="ageh" style="margin:6px 0 8px">Are you of legal drinking age?</h2><p class="muted" style="margin:0 0 12px">This guide is about alcohol and is for adults only: 18 or over in the UK, EU and most countries, 21 in the USA.</p><button id="agy" type="button">Yes, I am of legal drinking age</button><button id="agn" class="no" type="button">No</button><p id="agm" style="min-height:1.4em;color:var(--accent);font-size:14px;margin:8px 0 0"></p></div></div>
 <script>(function(){var a=document.getElementById('age'),ok=false;try{ok=localStorage.getItem('ageOK')=='1'}catch(e){}if(ok)return;a.style.display='flex';document.body.style.overflow='hidden';
@@ -234,6 +234,20 @@ ${x.r&&x.r.length?`<h2>Sources</h2><ul class="list">${x.r.map(r=>`<li><a href="$
 <p><a class="btn" href="${up}#careers">Find sommelier jobs and use the job tracker</a></p>`;
    pages.push([rel,page({rel,title:'Sommelier Careers: How to Become a Sommelier | The Wine Reference',desc:'How to become a sommelier: qualifications (Court of Master Sommeliers, WSET), roles, skills, interviews, pay and career progression, explained by a head sommelier.',
      keywords:['sommelier career','how to become a sommelier','sommelier qualifications','sommelier jobs','wine career','Court of Master Sommeliers','WSET'],h1:'Sommelier careers',crumbs:[['Sommelier careers',rel]],body,jsonld:{"@type":"CollectionPage","name":"Sommelier careers","url":SITE+rel}})]);}
+
+  // ---------- NEWSLETTER (data/newsletter.json) ----------
+  {let NI=[];try{NI=JSON.parse(fs.readFileSync(path.join(ROOT,'data','newsletter.json'),'utf8')).issues||[]}catch(e){console.warn('newsletter.json not read:',e.message)}
+   NI=NI.filter(x=>x.d<=today);const abs=u=>/^https?:/.test(u||'')?u:SITE+(u||'');
+   for(const x of NI){const up='../../',rel=`newsletter/${x.id}/`;
+     const body=`<p class="meta">Newsletter · ${esc(x.d)}</p><p class="lead">${esc(x.intro)}</p>
+${x.items.map(it=>`<h2>${esc(it.h)}</h2><p>${esc(it.p)}</p><p><a class="btn" href="${esc(abs(it.u))}">${esc(it.cta||'Read more')}</a></p>`).join('\n')}
+<p>${esc(x.outro)}</p>
+<p class="muted" style="font-size:14px">Missed an issue? <a href="${up}newsletter/">See all newsletters</a>.</p>`;
+     pages.push([rel,page({rel,title:T(x.subject),desc:cut(x.preview,158),keywords:['wine newsletter','The Wine Reference newsletter','wine recommendations','sommelier tips'],h1:x.subject,crumbs:[['Newsletter','newsletter/'],[x.d,rel]],body,
+       jsonld:{"@type":"Article","headline":x.subject,"description":x.preview,"datePublished":x.d,"author":{"@type":"Person","name":"Diego Muntoni"},"mainEntityOfPage":SITE+rel}})]);}
+   const rel='newsletter/',up='../';const body=`<p class="lead">A short weekly email from head sommelier Diego Muntoni: new wine stories, bottles worth opening, spirits and career advice. One email a week at most; unsubscribe any time.</p>
+<h2>Past issues</h2><div class="grid">${NI.map(x=>`<a class="card" href="${up}newsletter/${x.id}/"><div class="meta">${esc(x.d)}</div><h3>${esc(x.subject)}</h3><p>${esc(x.preview)}</p></a>`).join('')||'<p class="muted">The first issue is on its way.</p>'}</div>`;
+   pages.push([rel,page({rel,title:'The Wine Reference Newsletter: Weekly Wine Picks & Stories',desc:'Sign up for a short weekly email from a head sommelier: new wine stories, bottles worth opening, spirits and career advice. Read past issues here.',keywords:['wine newsletter','weekly wine email','wine recommendations','sommelier newsletter'],h1:'The Wine Reference newsletter',crumbs:[['Newsletter',rel]],body,jsonld:{"@type":"CollectionPage","name":"The Wine Reference newsletter","url":SITE+rel}})]);}
 
   const seen=new Set();for(const [rel,html] of pages){if(seen.has(rel))throw new Error('Duplicate page '+rel);seen.add(rel);write(rel,html)}
   console.log('pages written:',pages.length);

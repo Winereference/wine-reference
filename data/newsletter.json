@@ -1,0 +1,20 @@
+{
+  "_about": "Newsletter issues for The Wine Reference. One object per issue, newest first. Pages are generated at newsletter/ and newsletter/<id>/ by tools/build_pages.js. u = path on the site (relative to the site root) or a full https URL.",
+  "issues": [
+    {
+      "id": "2026-11-07",
+      "d": "2026-11-07",
+      "subject": "Spirits, a wine quiz and the day California beat France",
+      "preview": "This week on The Wine Reference: a new Spirits guide, 100 wines to try and how to become a sommelier.",
+      "intro": "Welcome to the first newsletter from The Wine Reference. Every week I'll share the best of what's new on the site: stories, bottles worth opening and practical advice from behind the wine list. Here's what happened this week.",
+      "items": [
+        {"h": "New: the Spirits guide", "p": "Wine's cousins now have their own home. Explore 41 spirit regions, from Islay malts and Kentucky bourbon to Cognac, Jalisco tequila and Martinique rhum agricole, with how each is made, how it tastes and real bottles to try.", "u": "spirits/", "cta": "Explore the spirits"},
+        {"h": "Story of the week: the Judgment of Paris", "p": "In 1976 a blind tasting in Paris put two little-known Napa Valley wines above the best of Bordeaux and Burgundy. Here's how it happened and why it still matters when you choose a bottle today.", "u": "stories/judgment-of-paris-1976/", "cta": "Read the story"},
+        {"h": "100 wines to try", "p": "The Wine Library has doubled to 100 real bottles, from Italian icons such as Sagrantino and Taurasi to great-value finds from Chile, Uruguay and the Languedoc. Every wine links to its region and grapes.", "u": "wine-library/", "cta": "Browse the Wine Library"},
+        {"h": "Sommelier careers: CMS or WSET?", "p": "Thinking about working in wine? The first in-depth career guide explains the Court of Master Sommeliers and WSET levels, what each tests and which suits the job you want. A new guide arrives every Monday.", "u": "careers/sommelier-qualifications-cms-vs-wset/", "cta": "Read the guide"},
+        {"h": "Test yourself", "p": "There's a new wine quiz at the bottom of the home page. Can you name the grape also known as Spanna, or the year Barolo became a DOCG? Fair warning: it's not easy.", "u": "", "cta": "Take the quiz"}
+      ],
+      "outro": "Thank you for subscribing. If you enjoy the guide, forward this email to a friend who loves wine. Cheers, Diego Muntoni, head sommelier"
+    }
+  ]
+}
