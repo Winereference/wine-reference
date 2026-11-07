@@ -121,6 +121,7 @@ dt.hit{background:var(--chip);border-radius:6px;padding:2px 6px}
 .stf figure{margin:-20px -20px 16px;position:relative}.stf figure img{display:block;width:100%;height:auto;max-height:420px;aspect-ratio:16/9;object-fit:cover;border-radius:13px 13px 0 0;background:var(--chip)}.stf figcaption{font-size:11px;color:var(--muted);padding:6px 20px 0}.stf figcaption a{color:inherit}
 .stf h3{font-size:clamp(26px,5vw,34px);margin:4px 0 10px}.stf .lead{font-size:16.5px;color:var(--text);margin:0 0 14px}.stf p{font-size:15.5px;line-height:1.7}.stf .src{margin-top:18px;padding-top:12px;border-top:1px solid var(--line)}.stf .src h4{font:500 12px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}.stf .src ol{margin:0;padding-left:20px;font-size:14px}.stf .src a{color:var(--accent);word-break:break-word}
 .stc{display:block;text-decoration:none;color:var(--text);padding:0;overflow:hidden}.stc img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;background:var(--chip)}.stc div{padding:14px 16px}.stc h3{font-size:21px}.stc p{margin:6px 0 0}.stc:hover{border-color:var(--accent)}
+#az dd a.gl{color:var(--accent);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}#az dd a.gl:hover{text-decoration-style:solid}
 </style>
 </head>
 <body>
@@ -1147,6 +1148,30 @@ document.getElementById("azbar").addEventListener("click",e=>{const b=e.target.c
 <script>
 (function(){const n=x=>x.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase(),az=document.getElementById("az"),dts=[...az.querySelectorAll("dt")];
 const G=dts.map(d=>({d,t:n(d.textContent),x:n(d.nextElementSibling.textContent)}));
+// Cross-links between glossary terms (built automatically, so new terms are linked too)
+const slug=x=>n(x).replace(/\(.*?\)/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const SHORT_OK=new Set(["aoc","ava","brix","brut","cava","clos","cru","cuvee","doux","fino","flor","hock","lees","ph","rose","sec","sekt","tca","tawny","punt","oak","crust","do","abv","nv","doc","docg","igt","igp","malo"]);
+const ali=[];dts.forEach((d,i)=>{const id=slug(d.textContent);d.id="az-t-"+id;d.dataset.s=id;
+ const full=d.textContent.trim(),parts=[full.replace(/\s*\(.*?\)\s*/g," ").trim()];
+ (full.match(/\(([^)]+)\)/g)||[]).forEach(m=>parts.push(m.slice(1,-1)));
+ full.split(/\s*\/\s*/).forEach(x=>{if(x!==full)parts.push(x.replace(/\s*\(.*?\)\s*/g," ").trim())});
+ [...new Set(parts)].forEach(a=>{if(!a)return;const up=a.length>1&&a===a.toUpperCase()&&/[A-Z]/.test(a);
+  if(a.length<=5&&!SHORT_OK.has(n(a))&&!(a==="pH"))return;ali.push({a,i,cs:up||a==="pH"})})});
+ali.sort((x,y)=>y.a.length-x.a.length);
+const rx=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+const B="(?<![\\p{L}\\p{N}])",E="(?:s|es)?(?![\\p{L}\\p{N}])";
+const RI=new RegExp(B+"("+ali.filter(x=>!x.cs).map(x=>rx(x.a)).join("|")+")"+E,"giu"),RC=new RegExp(B+"("+ali.filter(x=>x.cs).map(x=>rx(x.a)).join("|")+")(?![\\p{L}\\p{N}])","gu");
+const find=(m,cs)=>ali.find(x=>x.cs===cs&&(cs?x.a===m:n(x.a)===n(m)));
+dts.forEach((d,i)=>{const dd=d.nextElementSibling;if(!dd||dd.querySelector("a"))return;const txt=dd.textContent,hits=[],used=new Set([i]);
+ [[RI,false],[RC,true]].forEach(([R,cs])=>{R.lastIndex=0;let m;while((m=R.exec(txt))){const t=find(m[1],cs);if(t&&!used.has(t.i)&&!hits.some(h=>m.index<h.e&&m.index+m[0].length>h.s)){hits.push({s:m.index,e:m.index+m[0].length,i:t.i});used.add(t.i)}}});
+ if(!hits.length)return;hits.sort((a,b)=>a.s-b.s);const keep=hits.slice(0,4);let o="",p=0;
+ keep.forEach(h=>{o+=esc0(txt.slice(p,h.s))+'<a class="gl" href="#az/'+dts[h.i].dataset.s+'" title="'+esc0(dts[h.i].textContent)+'">'+esc0(txt.slice(h.s,h.e))+"</a>";p=h.e});
+ dd.innerHTML=o+esc0(txt.slice(p))});
+function esc0(x){return x.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;")}
+function goT(){const h=decodeURIComponent(location.hash.slice(1));if(!h.startsWith("az/"))return;const d=document.getElementById("az-t-"+h.slice(3));if(!d)return;
+ const a=document.getElementById("aq");if(a&&a.value){a.value="";a.dispatchEvent(new Event("input"))}
+ setTimeout(()=>{d.scrollIntoView({block:"center"});d.classList.add("hit");setTimeout(()=>d.classList.remove("hit"),2500)},150)}
+window.addEventListener("hashchange",goT);goT();
 const hq=document.getElementById("hq"),hres=document.getElementById("hres"),cards=[...document.querySelectorAll("#home .hc")];
 const esc=x=>x.replace(/&/g,"&amp;").replace(/</g,"&lt;");
 function home(){const q=n(hq.value.trim());cards.forEach(c=>c.classList.toggle("off",!!q&&!n(c.textContent).includes(q)));
