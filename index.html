@@ -69,6 +69,7 @@ th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted
 tr:last-child td{border-bottom:0}
 dl{margin:0}dt{font-weight:500;margin-top:14px}dd{margin:2px 0 0;color:var(--muted);font-size:15px}
 .pair{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+#pairOut li a{color:var(--accent)}
 #pairOut{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
 #ckb{position:fixed;left:12px;right:12px;bottom:12px;z-index:90;max-width:560px;margin:0 auto;background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:0 8px 28px rgba(0,0,0,.18);font-size:14px;display:none}#ckb.on{display:block}#ckb p{margin:0 0 10px}#ckb .ckr{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}#ckb .chip{padding:8px 16px}
 footer{text-align:center;color:var(--muted);font-size:13px;padding:40px 20px}
@@ -206,7 +207,11 @@ dt.hit{background:var(--chip);border-radius:6px;padding:2px 6px}
 <section id="pairing">
 <h2>What's for dinner?</h2>
 <img class="sbn" src="img/cheese-and-wine-pairing.webp" alt="Cheese and a glass of wine for food pairing" loading="lazy" decoding="async" width="1600" height="600">
+<p style="color:var(--muted);margin:-6px 0 12px;font-size:15px">Pick a dish to see the grapes that suit it, real bottles to try and a recipe. <span id="pcount"></span></p>
+<input type="search" id="pq" placeholder="Search dishes, grapes or wines…" aria-label="Search food and wine pairings">
+<div class="chips" id="pcats" style="margin-top:12px"></div>
 <div class="pair" id="foods"></div>
+<button class="chip" id="pmore" type="button" style="display:none;margin:4px 0 12px">Show more dishes</button>
 <div id="pairOut">Pick a dish to see wines that suit it.</div>
 </section>
 
@@ -571,7 +576,20 @@ let gl=24;
 ["Asti / Moscato d'Asti","Sparkling",1,"#f4eab8","Peach, floral, grape","Piedmont, Italy","Fruit tarts, desserts, soft cheese"],
 ["Pét-Nat (Pétillant Naturel)","Sparkling",2,"#e6d98c","Apple, citrus, yeast","Loire, worldwide","Charcuterie, casual dishes"],
 ["Sparkling Shiraz","Sparkling",4,"#5a1a2c","Blackberry, plum, spice","Australia","Roast duck, barbecue"]].forEach(g=>G.push(g));
-const P={"Steak":["Cabernet Sauvignon","Syrah / Shiraz","Tempranillo"],"Salmon":["Pinot Noir","Chardonnay","Grenache Rosé"],"Pasta & tomato":["Sangiovese","Pinot Grigio"],"Spicy curry":["Riesling","Grenache Rosé"],"Oysters":["Champagne (Chardonnay, Pinot Noir, Meunier)","Sauvignon Blanc"],"Roast chicken":["Chardonnay","Merlot","Pinot Noir"],"Cheese board":["Prosecco (Glera)","Merlot","Riesling"],"Pizza":["Sangiovese","Prosecco (Glera)"]};
+// Food & wine pairings for "What's for dinner?". One dish per line, newest added at the end.
+// d=dish, c=category (one of PC), g=grape names exactly as in G (or a wine style), r=[recipe title, recipe URL, source site] or null,
+// b=bottles [[producer, wine name, region/country]] (real producers; linked via search), n=one-sentence why it works.
+const PC=["Meat","Poultry & game","Fish & seafood","Vegetarian & vegan","Pasta, rice & grains","Spicy & world","Cheese","Desserts","Snacks & party"];
+const DP=[
+{"d": "Steak", "c": "Meat", "g": ["Cabernet Sauvignon", "Syrah / Shiraz", "Tempranillo"], "r": null, "b": [], "n": ""},
+{"d": "Salmon", "c": "Fish & seafood", "g": ["Pinot Noir", "Chardonnay", "Grenache Rosé"], "r": null, "b": [], "n": ""},
+{"d": "Pasta & tomato", "c": "Pasta, rice & grains", "g": ["Sangiovese", "Pinot Grigio"], "r": null, "b": [], "n": ""},
+{"d": "Spicy curry", "c": "Spicy & world", "g": ["Riesling", "Grenache Rosé"], "r": null, "b": [], "n": ""},
+{"d": "Oysters", "c": "Fish & seafood", "g": ["Champagne (Chardonnay, Pinot Noir, Meunier)", "Sauvignon Blanc"], "r": null, "b": [], "n": ""},
+{"d": "Roast chicken", "c": "Poultry & game", "g": ["Chardonnay", "Merlot", "Pinot Noir"], "r": null, "b": [], "n": ""},
+{"d": "Cheese board", "c": "Cheese", "g": ["Prosecco (Glera)", "Merlot", "Riesling"], "r": null, "b": [], "n": ""},
+{"d": "Pizza", "c": "Pasta, rice & grains", "g": ["Sangiovese", "Prosecco (Glera)"], "r": null, "b": [], "n": ""},
+];
 let type="All";
 const $=id=>document.getElementById(id);
 $('chips').innerHTML=["All","Red","White","Sparkling","Rosé"].map(t=>`<button class="chip${t=="All"?" on":""}" data-t="${t}">${t}</button>`).join("");
@@ -583,9 +601,23 @@ const r=G.filter(g=>(type=="All"||g[1]==type)&&g.join(" ").toLowerCase().include
 $('grid').innerHTML=r.length?r.slice(0,gl).map(g=>`<div class="card">${phx(g[0])}<h3><span class="dot" style="background:${g[3]}"></span>${g[0]}</h3><div class="meta">${g[1]}</div><p><b>Flavors:</b> ${g[4]}</p><p><b>Regions:</b> ${g[5]}</p>${g[6]?`<p><b>Pairs with:</b> ${g[6]}</p>`:""}<div class="body">Body ${[1,2,3,4,5].map(i=>`<i class="${i<=g[2]?"f":""}"></i>`).join("")}</div></div>`).join(""):'<div class="empty">No grapes match that search.</div>';
 $('gmore').style.display=r.length>gl?"block":"none";$('gmore').textContent=`Show more (${r.length-gl} left)`;
 }
-$('foods').innerHTML=Object.keys(P).map(f=>`<button class="chip" data-f="${f}">${f}</button>`).join("");
-$('foods').onclick=e=>{const f=e.target.dataset.f;if(!f)return;[...$('foods').children].forEach(c=>c.classList.toggle('on',c===e.target));
-$('pairOut').innerHTML=`<h3 style="margin-bottom:10px">${f}</h3>`+P[f].map(n=>{const g=G.find(x=>x[0]==n);return `<p><b>${n}</b> <span style="color:var(--muted)">· ${g[1]} · ${g[4]}</span></p>`}).join("")};
+(function(){let pc="All",pl=40,ps="";const fd=$('foods'),po=$('pairOut'),pq=$('pq'),pcs=$('pcats'),pm=$('pmore');
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const gs=q=>"https://www.google.com/search?q="+encodeURIComponent(q);
+function cats(){const n=c=>c=="All"?DP.length:DP.filter(x=>x.c==c).length;pcs.innerHTML=["All",...PC].filter(c=>n(c)).map(c=>`<button class="chip${c==pc?" on":""}" data-c="${esc(c)}">${esc(c)} <small style="opacity:.7">${n(c)}</small></button>`).join("")}
+function list(){const q=pq.value.trim().toLowerCase();const r=DP.filter(x=>(pc=="All"||x.c==pc)&&(!q||JSON.stringify(x).toLowerCase().includes(q)));
+fd.innerHTML=r.length?r.slice(0,pl).map(x=>`<button class="chip${x.d==ps?" on":""}" data-d="${esc(x.d)}">${esc(x.d)}</button>`).join(""):'<span style="color:var(--muted)">No dishes match that search.</span>';
+pm.style.display=r.length>pl?"inline-block":"none";pm.textContent=`Show more dishes (${r.length-pl} left)`}
+function show(d){const x=DP.find(y=>y.d==d);if(!x)return;ps=d;list();
+const gr=x.g.map(n=>{const g=G.find(y=>y[0]==n);return `<p style="margin:4px 0"><b>${esc(n)}</b>${g?` <span style="color:var(--muted)">· ${esc(g[1])} · ${esc(g[4])}</span>`:""}</p>`}).join("");
+const bt=x.b&&x.b.length?`<h4 style="margin:16px 0 6px">Bottles to try</h4><ul style="margin:0;padding-left:20px">${x.b.map(b=>`<li style="margin:4px 0"><a href="${gs(b[0]+" "+b[1]+" wine")}" target="_blank" rel="noopener noreferrer">${esc(b[0])} – ${esc(b[1])}</a>${b[2]?` <span style="color:var(--muted)">· ${esc(b[2])}</span>`:""}</li>`).join("")}</ul>`:"";
+const rc=x.r?`<p style="margin:16px 0 0"><a class="chip on" style="display:inline-block;text-decoration:none" href="${esc(x.r[1])}" target="_blank" rel="noopener noreferrer">Recipe: ${esc(x.r[0])}${x.r[2]?" · "+esc(x.r[2]):""} ↗</a></p>`:"";
+po.innerHTML=`<h3 style="margin-bottom:4px">${esc(x.d)}</h3><div class="meta">${esc(x.c)}</div>${x.n?`<p style="margin:10px 0">${esc(x.n)}</p>`:""}<h4 style="margin:14px 0 6px">Grapes and styles</h4>${gr}${bt}${rc}`;
+po.scrollIntoView({behavior:"smooth",block:"nearest"})}
+pcs.onclick=e=>{const b=e.target.closest("[data-c]");if(!b)return;pc=b.dataset.c;pl=40;cats();list()};
+fd.onclick=e=>{const b=e.target.closest("[data-d]");if(b)show(b.dataset.d)};
+pq.oninput=()=>{pl=40;list()};pm.onclick=()=>{pl+=40;list()};
+$('pcount').textContent=`${DP.length} dishes`;cats();list()})();
 const R=[
 ["Bordeaux","France","Europe","Cabernet Sauvignon, Merlot, Sémillon","Structured reds and sweet Sauternes"],
 ["Burgundy","France","Europe","Pinot Noir, Chardonnay","Terroir-driven reds and whites"],
