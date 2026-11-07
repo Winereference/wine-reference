@@ -335,6 +335,15 @@ dt.hit{background:var(--chip);border-radius:6px;padding:2px 6px}
 <script>
 // Photos for grape and region cards. Key = exact grape/region name. Value = [descriptive-seo-file-name.webp in img/p/, photographer name, Unsplash username, descriptive alt text]
 const PH={
+"Bordeaux":["bordeaux-pomerol-merlot-grapes-on-the-vine-france.webp", "John Cameron", "john_cameron", "Ripe Merlot grapes on the vine in Pomerol, Bordeaux, France"],
+"Burgundy":["burgundy-vineyard-rows-yonne-france.webp", "Alexander Van Steenberge", "lexerium", "Green vineyard rows under blue sky in Burgundy, France"],
+"Champagne":["champagne-vineyards-ay-autumn-france.webp", "PJ DC", "pj_only__", "Autumn vineyards on the hills around Aÿ in Champagne, France"],
+"Loire Valley":["loire-valley-sancerre-vineyards-autumn-france.webp", "Sue Winston", "winniepix", "Autumn vines in the Sancerre vineyards of the Loire Valley, France"],
+"Alsace":["alsace-wine-village-and-vineyards-france.webp", "Armands Brants", "armandsbrants", "A wine village surrounded by vineyards in Alsace, France"],
+"Provence":["provence-winery-vineyard-rows-france.webp", "Gwyn Hay", "grabe5", "Vineyard rows leading to a winery in Provence, France"],
+"Languedoc-Roussillon":["languedoc-pic-saint-loup-vineyard-autumn-france.webp", "Morgane Le Breton", "morgane_lb", "Autumn vineyard below Pic Saint-Loup in the Languedoc, France"],
+"Tuscany":["tuscany-chianti-vineyard-hillside-sunset-italy.webp", "Johny Goerend", "johnygoerend", "Vineyard rows on a Tuscan hillside at sunset, Italy"],
+"Piedmont":["piedmont-barbaresco-langhe-vineyards-sunset-italy.webp", "Beatrice Zinetti", "beatricezinetti", "Sunset over the Barbaresco vineyards in the Langhe, Piedmont, Italy"],
 };
 function phx(n){const p=PH[n];if(!p)return"";const q=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));return `<div class="cph"><img src="img/p/${q(p[0])}" alt="${q(p[3]||n)}" loading="lazy" decoding="async" width="600" height="400"><small>Photo: <a href="https://unsplash.com/@${q(p[2])}?utm_source=wine_reference&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">${q(p[1])}</a></small></div>`}
 const G=[
