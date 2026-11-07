@@ -24,9 +24,10 @@ async function loadData(){
   const d=await p.evaluate(()=>{const g=n=>{try{return eval(n)}catch(e){return null}};
     const gl=[...document.querySelectorAll('#az dt')].map(dt=>{const dd=dt.nextElementSibling;return [dt.textContent.trim(),dd&&dd.tagName=='DD'?dd.textContent.trim():'']});
     return {R:g('R'),G:g('G'),G0:g('G0').map(x=>x[0]),GD:g('GD'),K:g('K'),SUB:g('SUB'),CI:g('CI'),AP:g('AP'),PH:g('PH'),WL:g('WL'),DP:g('DP'),PC:g('PC'),
-      SPR:g('SPR'),SPB:g('SPB'),SPC:g('SPC'),ST:g('ST'),CG:g('CG')||[],gl}});
+      SPR:g('SPR'),SPB:g('SPB'),SPC:g('SPC'),ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},gl}});
   await b.close();return d}
 
+let NL={};
 function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
   const depth=rel.split('/').filter(Boolean).length, up='../'.repeat(depth), url=SITE+rel;
   const og=img?SITE+img:SITE+'img/og-wine-reference-douro-vineyards.jpg';
@@ -63,6 +64,7 @@ function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
 <p class="crumbs"><a href="${up}">Home</a>${crumbs.map((c,i)=>i<crumbs.length-1?` › <a href="${up}${c[1]}">${esc(c[0])}</a>`:` › ${esc(c[0])}`).join('')}</p>
 <h1>${esc(h1)}</h1>
 ${body}
+${/^https:\/\//.test(NL.action||'')?`<div class="support nl"><h2>The Wine Reference newsletter</h2><p>New wines, stories and career guides, one email a week at most.</p><form method="post" target="_blank" action="${esc(NL.action)}" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center"><label for="nle" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label><input type="email" id="nle" name="${esc(NL.field||'email')}" required autocomplete="email" placeholder="Your email address" style="flex:1 1 200px;min-width:0;padding:11px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit"><button class="btn" type="submit" style="border:0;margin:0;cursor:pointer;font:600 15px Inter,sans-serif">Subscribe</button></form><p class="muted" style="font-size:12px;margin:8px 0 0">Over 18s only. Unsubscribe any time with one click. Your email is stored securely by ${esc(NL.provider||'our newsletter provider')} and never shared.</p></div>`:''}
 <div class="support"><h2>Support The Wine Reference</h2><p>This guide is free, with no paywall. If it helped you choose a bottle, you can buy me a glass and keep it growing.</p><a class="btn" href="https://ko-fi.com/winereference" target="_blank" rel="noopener">🍷 Buy me a glass</a></div>
 </main>
 <footer><div class="in"><nav aria-label="Browse"><a href="${up}">Interactive guide</a><a href="${up}grapes/">Grapes</a><a href="${up}regions/">Wine regions</a><a href="${up}wine-library/">Wine Library</a><a href="${up}spirits/">Spirits</a><a href="${up}food-pairing/">Food pairing</a><a href="${up}stories/">Wine stories</a><a href="${up}glossary/">Glossary</a><a href="${up}careers/">Sommelier careers</a></nav>
@@ -78,7 +80,7 @@ document.getElementById('agn').onclick=function(){document.getElementById('agm')
 function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,html)}
 
 (async()=>{
-  const D=await loadData();
+  const D=await loadData();NL=D.NL||{};
   for(const o of OUT)fs.rmSync(path.join(ROOT,o),{recursive:true,force:true});
   const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;
   const PHf=n=>PH&&PH[n];
