@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wine-reference.netlify.app/sitemap.xml

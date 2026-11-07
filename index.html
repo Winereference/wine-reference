@@ -3,8 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="The Wine Reference: grape varieties, wine regions and maps, food pairings, serving temperatures, vintage chart, glossary, sommelier study and a new wine story every day.">
-<title>The Wine Reference</title>
+<meta name="description" content="Free wine guide by head sommelier Diego Muntoni: 80 wine regions with photos and a map, grape varieties, food pairings, serving temperatures, vintage chart and an A–Z glossary.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Diego Muntoni">
+<link rel="canonical" href="https://wine-reference.netlify.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Wine Reference">
+<meta property="og:title" content="The Wine Reference: Grapes, Wine Regions, Food Pairing &amp; Sommelier Guide">
+<meta property="og:description" content="Free wine guide by head sommelier Diego Muntoni: 80 wine regions with photos and a map, grape varieties, food pairings, serving temperatures, vintage chart and an A–Z glossary.">
+<meta property="og:url" content="https://wine-reference.netlify.app/">
+<meta property="og:image" content="https://wine-reference.netlify.app/img/og-wine-reference-douro-vineyards.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Terraced vineyards in the Douro Valley, Portugal">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Wine Reference: Grapes, Wine Regions, Food Pairing &amp; Sommelier Guide">
+<meta name="twitter:description" content="Free wine guide by head sommelier Diego Muntoni: 80 wine regions with photos and a map, grape varieties, food pairings, serving temperatures, vintage chart and an A–Z glossary.">
+<meta name="twitter:image" content="https://wine-reference.netlify.app/img/og-wine-reference-douro-vineyards.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://wine-reference.netlify.app/#website", "url": "https://wine-reference.netlify.app/", "name": "The Wine Reference", "description": "Free wine guide by head sommelier Diego Muntoni: 80 wine regions with photos and a map, grape varieties, food pairings, serving temperatures, vintage chart and an A–Z glossary.", "inLanguage": "en", "author": {"@id": "https://wine-reference.netlify.app/#diego"}, "publisher": {"@id": "https://wine-reference.netlify.app/#diego"}}, {"@type": "Person", "@id": "https://wine-reference.netlify.app/#diego", "name": "Diego Muntoni", "jobTitle": "Head Sommelier", "url": "https://wine-reference.netlify.app/#about"}]}</script>
+<title>The Wine Reference: Grapes, Wine Regions, Food Pairing &amp; Sommelier Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fff;--surface:#fbf3f5;--text:#3a0f1d;--muted:#7d5a66;--accent:#7a1f3d;--line:#ecd9df;--chip:#f5e6ea;
@@ -1182,10 +1200,10 @@ document.addEventListener("keydown",e=>{if(e.key==="Escape"&&d.classList.contain
 </script>
 <script>
 (function(){const secs=[...document.querySelectorAll("body>section")],hd=document.querySelector("body>header"),hm=document.getElementById("home"),bk=document.getElementById("back");
-const ids=secs.map(x=>x.id);
+const ids=secs.map(x=>x.id);const HT=document.title;
 function route(){let h=decodeURIComponent(location.hash.slice(1)).split("/")[0];const wm=h==="winemap";if(wm)h="regions";const id=ids.includes(h)?h:"home";
 secs.forEach(x=>x.classList.toggle("off",x.id!==id));[hd,hm].forEach(x=>x.classList.toggle("off",id!=="home"));bk.classList.toggle("off",id==="home");
-const t=id==="home"?"The Wine Reference":document.querySelector("#"+id+" h2").textContent+" · The Wine Reference";document.title=t;window.scrollTo(0,0);if(wm){const m=document.getElementById("rmap");if(m){m.open=true;setTimeout(()=>m.scrollIntoView({block:"start"}),60)}}}
+const t=id==="home"?HT:document.querySelector("#"+id+" h2").textContent+" · The Wine Reference";document.title=t;window.scrollTo(0,0);if(wm){const m=document.getElementById("rmap");if(m){m.open=true;setTimeout(()=>m.scrollIntoView({block:"start"}),60)}}}
 window.addEventListener("hashchange",route);route()})();
 </script>
 <script>
