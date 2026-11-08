@@ -52,6 +52,7 @@ input[type=search]{width:100%;padding:13px 18px;border-radius:999px;border:1px s
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
 .chip{border:1px solid var(--line);background:var(--chip);color:var(--text);padding:6px 16px;border-radius:999px;font:500 13px Inter,sans-serif;cursor:pointer}
 .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.rb{text-align:left;font:inherit;color:inherit;cursor:pointer;display:flex;flex-direction:column;transition:transform .15s,border-color .15s}.rb:hover,.rb:focus-visible{border-color:var(--accent);transform:translateY(-2px)}.rb h3{margin:0 0 4px}.rb p{margin:0 0 10px;flex:1}.rb span{font-size:13px;font-weight:600;color:var(--accent)}a.card.tcb{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;text-decoration:none;background:var(--accent);color:#fff;border-color:var(--accent)}a.card.tcb b{display:block;color:#fff;font-weight:700;font-size:22px;font-family:"Cormorant Garamond",serif}a.card.tcb small{display:block;color:#fff;opacity:.9;line-height:1.4}.tcb i{font-style:normal;font-size:26px}a.card.tcb:hover{filter:brightness(1.1)}@media (max-width:700px){.rgrid{grid-template-columns:repeat(2,1fr);gap:10px}.rb{padding:14px}.rb h3{font-size:19px}.rb p{font-size:13px;line-height:1.4}}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
 .card h3{font-size:24px;display:flex;align-items:center;gap:10px}
@@ -194,7 +195,7 @@ section.lkd>*:not(h2):not(.gate){display:none!important}
 <body>
 <nav><button id="mbtn" type="button" aria-label="Open categories" aria-expanded="false" aria-controls="mdr"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button><a id="ttl" href="#home">The Wine Reference</a></nav>
 <div id="mov" hidden></div>
-<aside id="mdr" aria-label="Categories" aria-hidden="true" inert><div class="mh"><b>Categories</b><button id="mcl" type="button" aria-label="Close categories">&times;</button></div><a href="#home">Home</a><a href="#wotd">Wine of the Day</a><a href="#stories">Wine Stories</a><a href="#grapes">Grape Varieties</a><a href="#regions">Wine Regions</a><a href="#library">The Wine Library</a><a href="#spirits">Spirits</a><a href="#pairing">What&#39;s for dinner?</a><a href="#vintage">Vintage Chart</a><a href="#az">A–Z Glossary</a><a href="#study">Sommelier Study</a><a href="#careers">Sommelier Careers</a><a href="#suppliers">UK Suppliers (trade)</a><a href="#account" id="mnacc">Log in / Account</a><a href="#about">About me</a><a href="#consultancy">Consultancy</a></aside>
+<aside id="mdr" aria-label="Categories" aria-hidden="true" inert><div class="mh"><b>Categories</b><button id="mcl" type="button" aria-label="Close categories">&times;</button></div><a href="#home">Home</a><a href="#wotd">Wine of the Day</a><a href="#stories">Wine Stories</a><a href="#grapes">Grape Varieties</a><a href="#regions">Wine Regions</a><a href="#library">The Wine Library</a><a href="#spirits">Spirits</a><a href="#pairing">What&#39;s for dinner?</a><a href="#vintage">Vintage Chart</a><a href="#az">A–Z Glossary</a><a href="#study">Sommelier Study</a><a href="#careers">Sommelier Careers</a><a href="#tastings">Trade Tasting Calendar</a><a href="#suppliers">UK Suppliers (trade)</a><a href="#account" id="mnacc">Log in / Account</a><a href="#about">About me</a><a href="#consultancy">Consultancy</a></aside>
 
 <header class="hero"><img class="hbg" src="img/douro-valley-terraced-vineyards-portugal.webp" alt="Terraced vineyards in the Douro Valley, Portugal" width="1600" height="600" fetchpriority="high"><h1>The Wine Reference</h1><p>A quick guide to grapes, food pairings, serving temperatures and the words you'll hear at the table.</p></header>
 <div id="home" class="hgrid"><div class="sb"><input id="hq" type="search" placeholder="Search categories and terms" aria-label="Search categories and glossary terms" autocomplete="off"><button type="button" class="sbb" data-f="hq" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div><div id="hres" class="sres off"></div><a class="hc wh" id="wotdh" href="#wotd"><small>Wine of the Day</small><b>Today's wine</b><span>See today's pick</span></a><a class="hc hh" id="whh" href="#stories/history" hidden><small>Today in wine history</small><b></b><p></p><span>Open the wine history timeline →</span></a><div class="hc qz" id="qz" aria-live="polite"></div><a class="hc" href="#stories"><img class="hi" src="img/wine-books-and-vintage-bottles-on-shelf-sm.webp" alt="Wine books, a decanter and vintage wine bottles on a shelf" loading="lazy" decoding="async" width="600" height="400"><b>Wine Stories</b><span>A new wine story every day</span></a><a class="hc" href="#grapes"><img class="hi" src="img/wine-grapes-ripening-on-the-vine-sm.webp" alt="Wine grapes ripening on the vine" loading="lazy" decoding="async" width="600" height="400"><b>Grape Varieties</b><span>Flavors, styles and profiles</span></a><a class="hc" href="#regions"><img class="hi" src="img/burgundy-vineyard-rows-france-sm.webp" alt="Vineyard rows in Burgundy, France" loading="lazy" decoding="async" width="600" height="400"><b>Wine Regions</b><span>Explore regions and areas</span></a><a class="hc" href="#library"><img class="hi" src="img/vineyards-aerial-view-wine-country-sm.webp" alt="Patchwork of vineyards seen from above" loading="lazy" decoding="async" width="600" height="400"><b>The Wine Library</b><span>Real bottles by region and style</span></a><a class="hc" href="#pairing"><img class="hi" src="img/cheese-and-wine-pairing-sm.webp" alt="Cheese and a glass of wine for food pairing" loading="lazy" decoding="async" width="600" height="400"><b>What&#39;s for dinner?</b><span>Match wine to your meal, plus serving temperatures</span></a><a class="hc" href="#spirits"><img class="hi" src="img/oak-wine-barrels-underground-cellar-sm.webp" alt="Oak barrels ageing in a cellar" loading="lazy" decoding="async" width="600" height="400"><b>Spirits</b><span>Whisky, brandy, rum, agave and gin regions</span></a><a class="hc" href="#vintage"><img class="hi" src="img/wine-bottle-on-oak-barrel-sm.webp" alt="A bottle of wine resting on an oak barrel" loading="lazy" decoding="async" width="600" height="400"><b>Vintage Chart</b><span>Best years and when to drink</span></a><a class="hc" href="#az"><img class="hi" src="img/pile-of-wine-corks-sm.webp" alt="A pile of used wine corks" loading="lazy" decoding="async" width="600" height="400"><b>A–Z Glossary</b><span>Wine terms from A to Z</span></a><a class="hc" href="#study"><img class="hi" src="img/wine-tasting-glasses-and-bottle-sm.webp" alt="Two wine glasses and a bottle set for a tasting" loading="lazy" decoding="async" width="600" height="400"><b>Sommelier Study</b><span>Quizzes and tasting sheets</span></a><a class="hc" href="#careers"><img class="hi" src="img/oak-wine-barrels-underground-cellar-sm.webp" alt="Oak wine barrels in an underground cellar" loading="lazy" decoding="async" width="600" height="400"><b>Sommelier Careers</b><span>Paths and jobs in wine</span></a><a class="hc" href="#suppliers"><b>UK Suppliers</b><span>Who imports which producers (trade)</span></a><a class="hc" href="#about"><img class="hi" src="img/candlelit-dinner-table-wine-glasses-sm.webp" alt="A candlelit dinner table set with wine glasses" loading="lazy" decoding="async" width="600" height="400"><b>About me</b><span>Diego Muntoni, head sommelier</span></a><a class="hc" href="#consultancy"><img class="hi" src="img/restaurant-table-set-with-wine-bottles-sm.webp" alt="A restaurant table set with wine bottles and glasses" loading="lazy" decoding="async" width="600" height="400"><b>Consultancy</b><span>Wine services for venues and events</span></a></div>
@@ -357,21 +358,38 @@ section.lkd>*:not(h2):not(.gate){display:none!important}
 <h2>Sommelier Careers</h2>
 <img class="sbn" src="img/oak-wine-barrels-underground-cellar.webp" alt="Oak wine barrels in an underground cellar" loading="lazy" decoding="async" width="1600" height="600">
 <p style="color:var(--muted);margin:-6px 0 16px;font-size:15px">This guide doesn't host job postings. Use the search buttons to find openings, then save the roles you like in your tracker. The tracker stays on this device.</p>
-<div class="grid">
-<div class="card"><h3>Sommelier</h3><p>Runs wine service, guides guests and pairs wine with the menu.</p></div>
-<div class="card"><h3>Head sommelier</h3><p>Leads the team, trains staff and runs the wine list day to day.</p></div>
-<div class="card"><h3>Wine director</h3><p>Owns the wine program: list strategy, buying, budgets and inventory.</p></div>
-<div class="card"><h3>Beverage manager</h3><p>Oversees wine, spirits, beer and cocktails, including costs and suppliers.</p></div>
-<div class="card"><h3>Wine buyer</h3><p>Selects wines for retailers, importers or restaurants and negotiates with producers.</p></div>
-<div class="card"><h3>Educator or writer</h3><p>Teaches courses, hosts tastings or writes about wine.</p></div>
+<p class="vnote" style="margin:0 0 10px">Tap a role to search jobs for it.</p>
+<div class="rgrid">
+<button type="button" class="card rb" data-k="sommelier"><h3>Sommelier</h3><p>Runs wine service, guides guests and pairs wine with the menu.</p><span>Find jobs →</span></button>
+<button type="button" class="card rb" data-k="head sommelier"><h3>Head sommelier</h3><p>Leads the team, trains staff and runs the wine list day to day.</p><span>Find jobs →</span></button>
+<button type="button" class="card rb" data-k="wine director"><h3>Wine director</h3><p>Owns the wine program: list strategy, buying, budgets and inventory.</p><span>Find jobs →</span></button>
+<button type="button" class="card rb" data-k="beverage manager"><h3>Beverage manager</h3><p>Oversees wine, spirits, beer and cocktails, including costs and suppliers.</p><span>Find jobs →</span></button>
+<button type="button" class="card rb" data-k="wine buyer"><h3>Wine buyer</h3><p>Selects wines for retailers, importers or restaurants and negotiates with producers.</p><span>Find jobs →</span></button>
+<button type="button" class="card rb" data-k="wine educator"><h3>Educator or writer</h3><p>Teaches courses, hosts tastings or writes about wine.</p><span>Find jobs →</span></button>
+</div>
+<a class="card tcb" href="#tastings"><span><b>🗓️ Trade tasting calendar</b><small>Wine fairs and UK trade tastings, with dates and links</small></span><i aria-hidden="true">→</i></a>
 </div>
 <div class="card" style="margin-top:14px"><h3>Credentials employers look for</h3><p style="margin:6px 0 0">Court of Master Sommeliers levels, WSET levels, and restaurant or retail experience. Requirements vary by employer and country.</p></div>
 <h3 style="font-size:28px;margin:30px 0 6px">Career guides</h3>
 <p class="vnote" style="margin:0 0 12px">In-depth guides to working in wine: qualifications, roles, skills, interviews, pay and progression. A new guide every week.</p>
 <div id="cgl"></div>
 
-<h3 style="font-size:28px;margin:30px 0 6px" id="ttc">Trade tasting calendar</h3>
-<p class="vnote" style="margin:0 0 12px">Major trade fairs and UK trade tastings for sommeliers and buyers. Most are trade-only, so register with your work details. Dates come from the organisers; "TBC" means the date isn't announced yet. Always check the official site before you travel.</p>
+<h3 style="font-size:28px;margin:30px 0 10px">Find jobs</h3>
+<div class="card"><div class="grid" style="gap:10px"><select class="wi" id="jk"><option>sommelier</option><option>wine director</option><option>wine buyer</option><option>head sommelier</option><option>beverage manager</option><option>wine educator</option></select><input class="wi" id="jl" placeholder="City or country (optional)"></div>
+<div class="chips" style="margin:12px 0 0"><a class="chip on" id="ji" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Indeed ↗</a><a class="chip on" id="jli" target="_blank" rel="noopener noreferrer" style="text-decoration:none">LinkedIn ↗</a><a class="chip on" id="jg" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Google ↗</a></div>
+<p style="font-size:13px;color:var(--muted);margin:10px 0 0">Each button opens that site's search results in a new tab.</p></div>
+
+<h3 style="font-size:28px;margin:30px 0 10px">Job tracker</h3>
+<div class="card"><div class="grid" style="gap:10px"><input class="wi" id="jt" placeholder="Role (required)"><input class="wi" id="jv" placeholder="Venue or company"><input class="wi" id="jc" placeholder="Location"><select class="wi" id="jy"><option>Full-time</option><option>Part-time</option><option>Seasonal</option><option>Freelance</option></select><input class="wi" id="jp" placeholder="Pay (optional)"><input class="wi" id="ju" placeholder="Link to posting (optional)"></div>
+<textarea class="wi" id="jn" rows="2" placeholder="Notes" style="margin-top:10px"></textarea>
+<div class="chips" style="margin:12px 0 0"><button class="chip on" id="jadd">Add job</button></div><p id="jm" style="font-size:13px;color:var(--accent);margin:8px 0 0"></p></div>
+<div class="chips" id="jfil" style="margin-top:14px"></div>
+<div id="jlist"></div>
+</section>
+<section id="tastings">
+<h2 id="ttc">Trade Tasting Calendar</h2>
+<p style="margin:-6px 0 14px"><a href="#careers" style="color:var(--accent);text-decoration:none;font-weight:600">← Sommelier Careers</a></p>
+<p class="vnote" style="margin:0 0 12px">Major trade fairs and UK trade tastings for sommeliers and buyers. Most are trade-only, so register with your work details. Dates come from the organisers; "TBC" means the date isn't announced yet. Always check the official site before you travel. New events are added every week.</p>
 <div class="chips" id="tcf"></div>
 <div id="tcl"></div>
 <p style="font-size:13px;color:var(--muted);margin:10px 0 0">For smaller importer and generic tastings, see the <a href="https://wsta.co.uk/trade-diary/" target="_blank" rel="noopener noreferrer">WSTA trade diary ↗</a>.</p>
@@ -418,17 +436,6 @@ const TT=[
 })();
 </script>
 
-<h3 style="font-size:28px;margin:30px 0 10px">Find jobs</h3>
-<div class="card"><div class="grid" style="gap:10px"><select class="wi" id="jk"><option>sommelier</option><option>wine director</option><option>wine buyer</option><option>beverage manager</option><option>wine educator</option></select><input class="wi" id="jl" placeholder="City or country (optional)"></div>
-<div class="chips" style="margin:12px 0 0"><a class="chip on" id="ji" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Indeed ↗</a><a class="chip on" id="jli" target="_blank" rel="noopener noreferrer" style="text-decoration:none">LinkedIn ↗</a><a class="chip on" id="jg" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Google ↗</a></div>
-<p style="font-size:13px;color:var(--muted);margin:10px 0 0">Each button opens that site's search results in a new tab.</p></div>
-
-<h3 style="font-size:28px;margin:30px 0 10px">Job tracker</h3>
-<div class="card"><div class="grid" style="gap:10px"><input class="wi" id="jt" placeholder="Role (required)"><input class="wi" id="jv" placeholder="Venue or company"><input class="wi" id="jc" placeholder="Location"><select class="wi" id="jy"><option>Full-time</option><option>Part-time</option><option>Seasonal</option><option>Freelance</option></select><input class="wi" id="jp" placeholder="Pay (optional)"><input class="wi" id="ju" placeholder="Link to posting (optional)"></div>
-<textarea class="wi" id="jn" rows="2" placeholder="Notes" style="margin-top:10px"></textarea>
-<div class="chips" style="margin:12px 0 0"><button class="chip on" id="jadd">Add job</button></div><p id="jm" style="font-size:13px;color:var(--accent);margin:8px 0 0"></p></div>
-<div class="chips" id="jfil" style="margin-top:14px"></div>
-<div id="jlist"></div>
 </section>
 
 <section id="suppliers">
@@ -1917,7 +1924,7 @@ try{JB=JSON.parse(localStorage.getItem("jobs")||"[]")}catch(e){JB=[]}
 const save=()=>{try{localStorage.setItem("jobs",JSON.stringify(JB))}catch(e){}};
 const upd=()=>{const k=$('jk').value,l=$('jl').value.trim(),q=encodeURIComponent(k),e=encodeURIComponent(l);
 $('ji').href=`https://www.indeed.com/jobs?q=${q}${l?"&l="+e:""}`;$('jli').href=`https://www.linkedin.com/jobs/search/?keywords=${q}${l?"&location="+e:""}`;$('jg').href=`https://www.google.com/search?q=${encodeURIComponent(k+" jobs "+l)}`};
-$('jk').onchange=upd;$('jl').oninput=upd;upd();
+$('jk').onchange=upd;document.querySelectorAll('.rb').forEach(b=>b.onclick=()=>{$('jk').value=b.dataset.k;upd();$('jk').closest('.card').scrollIntoView({behavior:'smooth',block:'center'});$('jk').focus({preventScroll:true})});$('jl').oninput=upd;upd();
 function draw(){$('jfil').innerHTML=["All",...ST].map(t=>`<button class="chip${t==jf?" on":""}" data-f="${t}">${t} (${t=="All"?JB.length:JB.filter(j=>j.status==t).length})</button>`).join("");
 const l=JB.filter(j=>jf=="All"||j.status==jf);
 $('jlist').innerHTML=l.length?l.map(j=>`<div class="card" style="margin-top:12px"><h3>${esc(j.role)}</h3><div class="meta">${[j.venue,j.loc,j.type].filter(Boolean).map(esc).join(" · ")}</div>${j.pay?`<p><b>Pay:</b> ${esc(j.pay)}</p>`:""}${j.notes?`<p>${esc(j.notes)}</p>`:""}${/^https?:\/\//i.test(j.link||"")?`<p><a href="${esc(j.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--accent)">View posting ↗</a></p>`:""}<div class="chips" style="margin:8px 0 0"><select class="wi" data-st="${j.id}" style="width:auto">${ST.map(t=>`<option${t==j.status?" selected":""}>${t}</option>`).join("")}</select><button class="chip" data-del="${j.id}">Remove</button></div></div>`).join(""):`<p style="color:var(--muted);margin-top:12px">${JB.length?"No jobs with this status.":"No jobs saved yet. Add one above."}</p>`}
