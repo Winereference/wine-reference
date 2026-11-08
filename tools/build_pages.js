@@ -37,6 +37,7 @@ function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="${up}assets/icon.svg" type="image/svg+xml"><link rel="icon" href="${up}assets/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="${up}assets/apple-touch-icon.png"><meta name="theme-color" content="#7a1f3d">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
@@ -59,7 +60,7 @@ function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});try{if(localStorage.getItem('wr-consent')==='granted'){gtag('consent','update',{analytics_storage:'granted'});gtag('js',new Date());gtag('config','G-7LNSJRE6G4',{anonymize_ip:true});var t=document.createElement('script');t.async=1;t.src='https://www.googletagmanager.com/gtag/js?id=G-7LNSJRE6G4';document.head.appendChild(t)}}catch(e){}</script>
 </head>
 <body>
-<header class="top"><a class="logo" href="${up}">The Wine Reference</a><a class="tip" href="https://ko-fi.com/winereference" target="_blank" rel="noopener">🍷 Support</a></header>
+<header class="top"><a class="logo" href="${up}"><img src="${up}assets/icon.svg" alt="" width="26" height="26" style="vertical-align:-6px;margin-right:8px">The Wine Reference</a><a class="tip" href="https://ko-fi.com/winereference" target="_blank" rel="noopener">🍷 Support</a></header>
 <main class="wrap">
 <p class="crumbs"><a href="${up}">Home</a>${crumbs.map((c,i)=>i<crumbs.length-1?` › <a href="${up}${c[1]}">${esc(c[0])}</a>`:` › ${esc(c[0])}`).join('')}</p>
 <h1>${esc(h1)}</h1>
