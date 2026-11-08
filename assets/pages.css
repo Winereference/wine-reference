@@ -54,3 +54,4 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0 0 12px}
 #age .no{background:var(--chip);color:var(--text)}
 
 .shr{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:28px 0 8px;padding-top:16px;border-top:1px solid #ead7dc}.shr b{flex-basis:100%;font:600 12px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#8a6a72}.shr a{display:inline-block;padding:7px 14px;border-radius:999px;border:1px solid #ead7dc;background:#fbf1f3;color:#5a1a2c;text-decoration:none;font:600 14px Inter,sans-serif}.shr a:hover{background:#f3dde3}
+.ds{display:inline-block;background:#7a1f3d;color:#f3dfae;border-radius:999px;padding:1px 9px;font:600 12px Inter,sans-serif;letter-spacing:.02em}

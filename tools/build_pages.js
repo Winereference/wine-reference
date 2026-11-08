@@ -92,7 +92,9 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
   const RS={};R.forEach(r=>RS[r[0]]=slug(r[0]));
   const glink=(t,up)=>{const n=gfind(t);return n?`<a href="${up}grapes/${GS[n]}/">${esc(t.trim())}</a>`:esc(t.trim())};
   const rlink=(t,up)=>RS[t]?`<a href="${up}regions/${RS[t]}/">${esc(t)}</a>`:esc(t);
-  const wineList=(ws,up)=>`<div class="grid">${ws.map(w=>`<div class="card"><div class="meta">${esc(w.s)} · ${esc(w.c)}</div><h3>${esc(w.p)} ${esc(w.w)}</h3><p class="muted">${rlink(w.r,up)}${w.a&&w.a!=w.r?' · '+esc(w.a):''} · ${w.g.map(x=>glink(x,up)).join(', ')}</p><p>${esc(w.n)}</p>${w.f?`<p><b>Food:</b> ${esc(w.f)}</p>`:''}</div>`).join('')}</div>`;
+  const WSL=new Map();{const used=new Set();for(const w of WL){let s=slug(w.p+' '+w.w)||'wine',k=s,i=2;while(used.has(k))k=s+'-'+(i++);used.add(k);WSL.set(w,k)}}
+  const wlink=(w,up)=>`<a href="${up}wine-library/${WSL.get(w)}/">${esc(w.p)} ${esc(w.w)}</a>`;
+  const wineList=(ws,up)=>`<div class="grid">${ws.map(w=>`<div class="card"><div class="meta">${esc(w.s)} · ${esc(w.c)}${w.src=='oxo'?' · <span class="ds">Diego\'s Selection</span>':''}</div><h3>${wlink(w,up)}</h3><p class="muted">${rlink(w.r,up)}${w.a&&w.a!=w.r?' · '+esc(w.a):''} · ${w.g.map(x=>glink(x,up)).join(', ')}</p><p>${esc(w.n)}</p>${w.f?`<p><b>Food:</b> ${esc(w.f)}</p>`:''}</div>`).join('')}</div>`;
   const photo=(n,up,cls)=>{const p=PHf(n);return p?`<img class="hero${cls?' '+cls:''}" src="${up}img/p/${esc(p[0])}" alt="${esc(p[3]||n)}" width="600" height="400"><p class="credit">Photo: <a href="https://unsplash.com/@${esc(p[2])}?utm_source=wine_reference&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">${esc(p[1])}</a> on Unsplash</p>`:''};
   const pages=[];
 
@@ -205,6 +207,24 @@ ${cs.map(c=>`<h2 id="${slug(c)}">${esc(c)}</h2>${wineList(WL.filter(w=>w.c==c),u
 <p><a class="btn" href="${up}#library">Search and filter the Wine Library</a></p>`;
    pages.push([rel,page({rel,title:'The Wine Library: Real Wines to Try by Region & Grape | The Wine Reference',desc:cut(`${WL.length} recommended wines from real producers, from classic Bordeaux and Barolo to great-value bottles, with tasting notes and food pairing, by a head sommelier.`,158),
      keywords:['wine recommendations','best wines to try','wine list','red wine recommendations','white wine recommendations','sommelier wine picks'],h1:'The Wine Library',crumbs:[['Wine Library',rel]],body,jsonld:{"@type":"CollectionPage","name":"The Wine Library","url":SITE+rel}})]);}
+
+  // ---------- ONE PAGE PER WINE ----------
+  for(const w of WL){
+    const s=WSL.get(w),rel=`wine-library/${s}/`,up='../../',nm=`${w.p} ${w.w}`,ds=w.src=='oxo';
+    const more=WL.filter(x=>x!==w&&x.r==w.r).slice(0,6), gr=w.g.map(x=>glink(x,up)).join(', ');
+    const q=encodeURIComponent(nm);
+    const title=T(`${nm}: ${w.s} Wine from ${w.r}, ${w.c}`);
+    const desc=cut(`${nm} (${w.s.toLowerCase()}, ${w.r}, ${w.c}), made from ${w.g.join(', ')}. ${w.n}${w.f?' Food match: '+w.f+'.':''}`,158);
+    const body=`<p class="meta">${esc(w.s)} · ${esc(w.c)}${ds?` · <span class="ds"><img src="${up}assets/icon.svg" alt="" width="18" height="18" style="vertical-align:-4px;margin-right:4px">Diego's Selection</span>`:''}</p>
+<p class="lead">${esc(w.n)}</p>
+<div class="facts"><div><b>Producer</b>${esc(w.p)}</div><div><b>Region</b>${rlink(w.r,up)}</div>${w.a&&w.a!=w.r?`<div><b>Appellation</b>${esc(w.a)}</div>`:''}<div><b>Country</b>${esc(w.c)}</div><div><b>Style</b>${esc(w.s)}</div><div><b>Grapes</b>${gr}</div>${w.f?`<div><b>Food match</b>${esc(w.f)}</div>`:''}</div>
+${ds?`<p class="muted">Diego's Selection: a wine Diego Muntoni pours as head sommelier.</p>`:''}
+<h2>Where to buy</h2><div class="chips"><a class="chip" href="https://www.wine-searcher.com/find/${slug(nm).replace(/-/g,'+')}/1/uk" target="_blank" rel="noopener">Compare UK prices (Wine-Searcher)</a><a class="chip" href="https://www.google.com/search?tbm=shop&q=${q}" target="_blank" rel="noopener">Google Shopping</a><a class="chip" href="https://www.vivino.com/search/wines?q=${q}" target="_blank" rel="noopener">Vivino</a></div>
+${more.length?`<h2>More wines from ${esc(w.r)}</h2>${wineList(more,up)}`:''}
+<p><a class="btn" href="${up}#library/w/${q}">Open in the interactive Wine Library</a></p>`;
+    pages.push([rel,page({rel,title,desc,keywords:uniq([nm,`${w.p} wine`,`${w.w}`,`${w.r} wine`,`${w.g[0]} wine`,`${w.c} wine`,'wine recommendation']),h1:nm,crumbs:[['Wine Library','wine-library/'],[nm,rel]],body,img:PHf(w.r)?'img/p/'+PHf(w.r)[0]:null,
+      jsonld:{"@type":"Product","name":nm,"brand":{"@type":"Brand","name":w.p},"category":`${w.s} wine`,"description":desc,"url":SITE+rel,...(PHf(w.r)?{"image":SITE+'img/p/'+PHf(w.r)[0]}:{})}})]);
+  }
 
   // ---------- FOOD PAIRING ----------
   {const rel='food-pairing/',up='../';const cats=(D.PC||uniq(DP.map(x=>x.c)));
