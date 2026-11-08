@@ -370,6 +370,54 @@ section.lkd>*:not(h2):not(.gate){display:none!important}
 <p class="vnote" style="margin:0 0 12px">In-depth guides to working in wine: qualifications, roles, skills, interviews, pay and progression. A new guide every week.</p>
 <div id="cgl"></div>
 
+<h3 style="font-size:28px;margin:30px 0 6px" id="ttc">Trade tasting calendar</h3>
+<p class="vnote" style="margin:0 0 12px">Major trade fairs and UK trade tastings for sommeliers and buyers. Most are trade-only, so register with your work details. Dates come from the organisers; "TBC" means the date isn't announced yet. Always check the official site before you travel.</p>
+<div class="chips" id="tcf"></div>
+<div id="tcl"></div>
+<p style="font-size:13px;color:var(--muted);margin:10px 0 0">For smaller importer and generic tastings, see the <a href="https://wsta.co.uk/trade-diary/" target="_blank" rel="noopener noreferrer">WSTA trade diary ↗</a>.</p>
+<script>
+// TRADE TASTING CALENDAR: d/e = start/end (YYYY-MM-DD), tbc = text when date not announced (d then = YYYY-MM for sorting)
+const TT=[
+{d:"2027-02-01",n:"Barcelona Wine Week",o:"Fira de Barcelona",l:"Barcelona, Spain",t:"Fair",u:"https://www.barcelonawineweek.com/",tbc:"expected 1–3 Feb, check organiser",note:"Spain's biggest trade fair for Spanish wine, with every DO represented."},
+{d:"2027-02-09",n:"Australia & New Zealand Trade Tasting (London)",o:"Wine Australia & New Zealand Winegrowers",l:"Lindley Hall, Royal Horticultural Halls, London",t:"Generic",u:"https://www.wineaustralia.com/whats-happening/events/australia-and-new-zealand-trade-tasting-2027",note:"Around 1,000 wines from about 250 wineries. 10:00–17:00."},
+{d:"2027-02-11",n:"Australia & New Zealand Trade Tasting (Edinburgh)",o:"Wine Australia & New Zealand Winegrowers",l:"Edinburgh (venue TBC)",t:"Generic",u:"https://www.wineaustralia.com/whats-happening/events/australia-and-new-zealand-trade-tasting-2027",note:"Trade tasting plus a masterclass."},
+{d:"2027-02-15",e:"2027-02-17",n:"Wine Paris",o:"Vinexposium",l:"Paris Expo Porte de Versailles, Paris",t:"Fair",u:"https://wineparis.com/",note:"Now one of the world's biggest wine and spirits fairs. Many UK importers exhibit."},
+{d:"2027-02-15",e:"2027-02-16",n:"UGCB Bordeaux 2024 vintage tasting",o:"Union des Grands Crus de Bordeaux",l:"At Wine Paris, Paris",t:"Generic",u:"https://wineparis.com/",note:"Classed growths showing the 2024 vintage from bottle."},
+{d:"2027-03-07",e:"2027-03-09",n:"ProWein",o:"Messe Düsseldorf",l:"Messe Düsseldorf, Germany",t:"Fair",u:"https://www.prowein.com/",note:"Huge international fair. Plan your halls in advance."},
+{d:"2027-03-15",n:"The Big Fortified Tasting",o:"the bft",l:"IET London, 2 Savoy Place, London",t:"Generic",u:"https://thebft.co.uk/",note:"Port, Sherry, Madeira, Marsala and more. Trade only, 10:00–16:00."},
+{d:"2027-04-11",e:"2027-04-14",n:"Vinitaly",o:"Veronafiere",l:"Veronafiere, Verona, Italy",t:"Fair",u:"https://www.vinitaly.com/",note:"59th edition. The essential Italian wine fair."},
+{d:"2027-04",n:"Bordeaux en primeur week",o:"Union des Grands Crus de Bordeaux",l:"Bordeaux, France",t:"Generic",u:"https://www.ugcb.net/",tbc:"usually early April",note:"First tastings of the 2026 vintage from barrel. Invitation through your importer."},
+{d:"2027-05-17",e:"2027-05-19",n:"London Wine Fair",o:"London Wine Fair",l:"Olympia, London",t:"Fair",u:"https://www.londonwinefair.com/",note:"The UK's main trade fair: importers, producers, masterclasses and the Discovery zone."},
+{d:"2027-01",n:"Liberty Wines annual portfolio tasting",o:"Liberty Wines",l:"The Kia Oval, London",t:"Portfolio",u:"https://www.libertywines.co.uk/",tbc:"usually late January or February",note:"Wines grouped by grape and price. Invitation for customers and trade."},
+{d:"2027-02",n:"Fells annual portfolio tasting",o:"Fells",l:"London (2026 edition: IET, Savoy Place)",t:"Portfolio",u:"https://fells.co.uk/",tbc:"usually February",note:"Port, Champagne, Burgundy and more, with masterclasses."}
+];
+(function(){
+ const L=document.getElementById('tcl'),F=document.getElementById('tcf');if(!L)return;
+ const MO=['January','February','March','April','May','June','July','August','September','October','November','December'];
+ const today=new Date().toISOString().slice(0,10);let cur='All';
+ const fmt=(a,b)=>{const x=new Date(a+'T12:00'),o={day:'numeric',month:'short'};let r=x.toLocaleDateString('en-GB',{weekday:'short',...o});if(b&&b!==a)r+=' – '+new Date(b+'T12:00').toLocaleDateString('en-GB',{weekday:'short',...o});return r+' '+x.getFullYear()};
+ const esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ function ics(ev){const s=ev.d.replace(/-/g,''),en=new Date((ev.e||ev.d)+'T12:00');en.setDate(en.getDate()+1);const e2=en.toISOString().slice(0,10).replace(/-/g,'');
+  const t=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//The Wine Reference//Trade Calendar//EN','BEGIN:VEVENT','UID:'+s+'-'+ev.n.replace(/\W+/g,'').slice(0,30)+'@winereference','DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z','DTSTART;VALUE=DATE:'+s,'DTEND;VALUE=DATE:'+e2,'SUMMARY:'+ev.n.replace(/[,;]/g,'\\$&'),'LOCATION:'+ev.l.replace(/[,;]/g,'\\$&'),'DESCRIPTION:'+(ev.note+' '+ev.u).replace(/[,;]/g,'\\$&'),'URL:'+ev.u,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/calendar'}));a.download=ev.n.replace(/\W+/g,'-').toLowerCase()+'.ics';document.body.appendChild(a);a.click();a.remove();}
+ const up=TT.filter(v=>v.tbc?v.d>=today.slice(0,7):(v.e||v.d)>=today).sort((a,b)=>a.d.localeCompare(b.d));
+ const types=['All',...new Set(up.map(v=>v.t))];
+ F.innerHTML=types.map(t=>'<button class="chip'+(t==cur?' on':'')+'" data-t="'+t+'">'+t+'</button>').join('');
+ F.onclick=e=>{const b=e.target.closest('[data-t]');if(!b)return;cur=b.dataset.t;F.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c.dataset.t==cur));draw()};
+ function draw(){const rows=up.filter(v=>cur=='All'||v.t==cur);if(!rows.length){L.innerHTML='<p class="vnote">No upcoming events of this type.</p>';return}
+  let h='',m='';rows.forEach(v=>{const k=v.d.slice(0,7);if(k!==m){m=k;h+='<h4 style="margin:18px 0 8px;font-size:18px;color:var(--accent)">'+MO[+k.slice(5,7)-1]+' '+k.slice(0,4)+'</h4>'}
+   const i=TT.indexOf(v);
+   h+='<div class="card" style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline"><h3 style="margin:0">'+esc(v.n)+'</h3><span class="chip" style="cursor:default">'+v.t+'</span></div>'
+    +'<p style="margin:6px 0 0;font-weight:600">'+(v.tbc?'Date TBC ('+esc(v.tbc)+')':fmt(v.d,v.e))+'</p>'
+    +'<p style="margin:4px 0 0;color:var(--muted);font-size:14px">'+esc(v.l)+' · '+esc(v.o)+'</p>'
+    +'<p style="margin:8px 0 0">'+esc(v.note)+'</p>'
+    +'<div class="chips" style="margin:10px 0 0"><a class="chip on" style="text-decoration:none" href="'+v.u+'" target="_blank" rel="noopener noreferrer">Official site ↗</a>'+(v.tbc?'':'<button class="chip" data-ics="'+i+'">Add to calendar</button>')+'</div></div>'});
+  L.innerHTML=h}
+ L.onclick=e=>{const b=e.target.closest('[data-ics]');if(b)ics(TT[+b.dataset.ics])};
+ draw();
+})();
+</script>
+
 <h3 style="font-size:28px;margin:30px 0 10px">Find jobs</h3>
 <div class="card"><div class="grid" style="gap:10px"><select class="wi" id="jk"><option>sommelier</option><option>wine director</option><option>wine buyer</option><option>beverage manager</option><option>wine educator</option></select><input class="wi" id="jl" placeholder="City or country (optional)"></div>
 <div class="chips" style="margin:12px 0 0"><a class="chip on" id="ji" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Indeed ↗</a><a class="chip on" id="jli" target="_blank" rel="noopener noreferrer" style="text-decoration:none">LinkedIn ↗</a><a class="chip on" id="jg" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Google ↗</a></div>
