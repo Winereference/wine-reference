@@ -52,3 +52,5 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0 0 12px}
 #age .box{background:var(--surface);color:var(--text);max-width:420px;width:100%;border-radius:20px;padding:26px;text-align:center}
 #age button{width:100%;border:0;border-radius:999px;background:var(--accent);color:var(--bg);font:600 15px Inter,sans-serif;padding:13px;cursor:pointer;margin-top:8px}
 #age .no{background:var(--chip);color:var(--text)}
+
+.shr{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:28px 0 8px;padding-top:16px;border-top:1px solid #ead7dc}.shr b{flex-basis:100%;font:600 12px Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#8a6a72}.shr a{display:inline-block;padding:7px 14px;border-radius:999px;border:1px solid #ead7dc;background:#fbf1f3;color:#5a1a2c;text-decoration:none;font:600 14px Inter,sans-serif}.shr a:hover{background:#f3dde3}
