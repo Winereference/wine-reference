@@ -2244,6 +2244,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/spirits/sweden/</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/spirits/taiwan/</loc>
     <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
