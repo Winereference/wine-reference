@@ -600,6 +600,16 @@ const PH={
 "Languedoc-Roussillon":["languedoc-pic-saint-loup-vineyard-autumn-france.webp", "Morgane Le Breton", "morgane_lb", "Autumn vineyard below Pic Saint-Loup in the Languedoc, France"],
 "Tuscany":["tuscany-chianti-vineyard-hillside-sunset-italy.webp", "Johny Goerend", "johnygoerend", "Vineyard rows on a Tuscan hillside at sunset, Italy"],
 "Piedmont":["piedmont-barbaresco-langhe-vineyards-sunset-italy.webp", "Beatrice Zinetti", "beatricezinetti", "Sunset over the Barbaresco vineyards in the Langhe, Piedmont, Italy"],
+"Penedès":["penedes-vineyard-el-vendrell-catalonia-spain.webp", "Manuel Torres Garcia", "matoga", "Bare fig tree above autumn vineyard rows near El Vendrell, Penedès, Spain"],
+"Navarra":["navarra-bardenas-reales-castildetierra-spain.webp", "JP Desvigne", "jpdvg", "Castildetierra rock formation in the Bardenas Reales desert, Navarra, Spain"],
+"Bierzo":["bierzo-las-medulas-red-rock-landscape-spain.webp", "Giuseppe B.", "giuband", "Red rock pinnacles of Las Médulas among green hills in El Bierzo, Spain"],
+"La Mancha":["la-mancha-consuegra-windmills-castle-dusk-spain.webp", "Enrique Jiménez", "enriquejro", "White windmills and castle of Consuegra at dusk, La Mancha, Spain"],
+"Sussex":["sussex-seven-sisters-chalk-cliffs-england.webp", "Jack B", "nervum", "Seven Sisters chalk cliffs glowing at sunset on the Sussex coast, England"],
+"Kent":["kent-white-chalk-cliffs-coast-england.webp", "Andreas Haslinger", "andreas_haslinger", "White chalk cliffs above a rocky bay on the Kent coast, England"],
+"Lanzarote":["lanzarote-volcano-cone-landscape-canary-islands-spain.webp", "Maria Lupan", "luandmario", "Grassy volcanic cone under a cloudy sky on Lanzarote, Canary Islands, Spain"],
+"Getariako Txakolina":["getaria-green-hills-basque-coast-spain.webp", "Caroline Zumbiehl", "carozum", "Green hills sloping down to the sea and the town of Getaria, Basque Country, Spain"],
+"Empordà":["emporda-cadaques-coast-night-sky-spain.webp", "Marc Sendra Martorell", "marcsm", "Starry night sky with meteors over the Cala Nans lighthouse near Cadaqués, Empordà, Spain"],
+"Málaga":["malaga-axarquia-hills-sunset-andalusia-spain.webp", "Michael Cummins", "michaelcummins", "Golden sunset over the hills of the Axarquía, Málaga, Spain"],
 };
 function phx(n){const p=PH[n];if(!p)return"";const q=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));return `<div class="cph"><img src="img/p/${q(p[0])}" alt="${q(p[3]||n)}" loading="lazy" decoding="async" width="600" height="400"><small>Photo: <a href="https://unsplash.com/@${q(p[2])}?utm_source=wine_reference&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">${q(p[1])}</a></small></div>`}
 const G=[
