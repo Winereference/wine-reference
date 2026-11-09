@@ -1024,6 +1024,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/alicante-castle-archway-city-view-sunset-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/almansa/</loc>
@@ -1082,6 +1083,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/bierzo-las-medulas-red-rock-landscape-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/binissalem/</loc>
@@ -1259,6 +1261,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/cornwall-wheal-coates-engine-house-coast-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/costers-del-segre/</loc>
@@ -1278,12 +1281,14 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/devon-dartmoor-valley-moorland-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/dorset/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/dorset-durdle-door-limestone-arch-coast-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/douro-valley/</loc>
@@ -1317,6 +1322,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/emporda-cadaques-coast-night-sky-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/essex/</loc>
@@ -1350,18 +1356,21 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/getaria-green-hills-basque-coast-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/gran-canaria/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/gran-canaria-roque-nublo-rock-arch-view-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/granada/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/granada-alhambra-sierra-nevada-andalusia-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/hampshire/</loc>
@@ -1388,6 +1397,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/islas-canarias-teide-national-park-pines-tenerife-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/itata-valley/</loc>
@@ -1420,6 +1430,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/kent-white-chalk-cliffs-coast-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/la-gomera/</loc>
@@ -1432,12 +1443,14 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/la-mancha-consuegra-windmills-castle-dusk-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/la-palma/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/la-palma-volcanic-ash-aerial-canary-islands-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/la-rioja-argentina/</loc>
@@ -1458,6 +1471,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/lanzarote-volcano-cone-landscape-canary-islands-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/lazio/</loc>
@@ -1531,6 +1545,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/malaga-axarquia-hills-sunset-andalusia-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/maldonado/</loc>
@@ -1642,6 +1657,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/navarra-bardenas-reales-castildetierra-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/okanagan-valley/</loc>
@@ -1662,6 +1678,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/penedes-vineyard-el-vendrell-catalonia-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/piedmont/</loc>
@@ -1860,6 +1877,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sussex-seven-sisters-chalk-cliffs-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/tacoronte-acentejo/</loc>
@@ -1879,6 +1897,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/tarragona-roman-amphitheatre-mediterranean-coast-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/terra-alta/</loc>
@@ -1969,6 +1988,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/valencia-old-town-rooftops-church-tower-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/valle-de-guimar/</loc>
@@ -2811,6 +2831,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/kent-white-chalk-cliffs-coast-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/charles-heidsieck-blanc-de-blancs/</loc>
@@ -3283,12 +3304,14 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sussex-seven-sisters-chalk-cliffs-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/cradle-valley-pinot-gris/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sussex-seven-sisters-chalk-cliffs-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/craggy-range-martinborough-pinot-noir/</loc>
@@ -3329,6 +3352,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/kent-white-chalk-cliffs-coast-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/de-ladoucette-pouilly-fume/</loc>
@@ -3397,6 +3421,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/bierzo-las-medulas-red-rock-landscape-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/devaux-cuvee-d-rose/</loc>
@@ -3417,6 +3442,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sussex-seven-sisters-chalk-cliffs-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/disznoko-dry-furmint/</loc>
@@ -3971,6 +3997,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/penedes-vineyard-el-vendrell-catalonia-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/g-d-vajra-barolo-albe/</loc>
@@ -4652,6 +4679,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sussex-seven-sisters-chalk-cliffs-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/p-and-m-jacqueson-rully-les-chaponnieres/</loc>
@@ -4812,12 +4840,14 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/bierzo-las-medulas-red-rock-landscape-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/pittacum-pittacum/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/bierzo-las-medulas-red-rock-landscape-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/planeta-cerasuolo-di-vittoria/</loc>
@@ -4984,12 +5014,14 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sussex-seven-sisters-chalk-cliffs-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/rathfinny-wine-estate-blanc-de-noirs-brut/</loc>
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sussex-seven-sisters-chalk-cliffs-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/renegade-urban-winery-calvin-white-pinot-noir/</loc>
@@ -5115,6 +5147,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/kent-white-chalk-cliffs-coast-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/specogna-pinot-grigio-ramato/</loc>
@@ -5389,6 +5422,7 @@
     <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sussex-seven-sisters-chalk-cliffs-england.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/xavier-vignon-cotes-du-rhone/</loc>
