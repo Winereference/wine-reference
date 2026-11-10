@@ -770,7 +770,17 @@ Vidal Blanc|W|3|Peach, tropical, honey|Canada, Finger Lakes
 Verdelho|W|3|Citrus, tropical, honey|Madeira, Australia
 Malvasia|W|3|Peach, floral, almond|Italy, Iberia
 Chasselas|W|2|Apple, citrus, mineral|Switzerland
-Petite Arvine|W|3|Grapefruit, saline, floral|Valais, Aosta Valley`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
+Petite Arvine|W|3|Grapefruit, saline, floral|Valais, Aosta Valley
+Touriga Franca|R|4|Black cherry, blackberry, violet, spice|Douro
+Fetească Neagră|R|3|Black plum, dried fruit, spice|Romania, Moldova
+Nero di Troia|R|4|Black cherry, violet, tobacco|Puglia
+Trousseau|R|2|Red berry, earth, spice|Jura, California
+Vranac|R|4|Blackberry, plum, sour cherry, spice|Montenegro, North Macedonia
+Picpoul|W|2|Lemon, green apple, saline|Languedoc
+Petit Manseng|W|4|Pineapple, apricot, honey, ginger|Jurançon, Virginia
+Vernaccia|W|2|Lemon, almond, mineral|San Gimignano
+Carricante|W|2|Lemon, aniseed, flint|Etna, Sicily
+Fernão Pires|W|3|Citrus, peach, floral|Tejo, Bairrada`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
 // GRAPE DETAILS for the "More detail" panel on grape cards. Key = exact grape name in G. o origin & history, w where it grows,
 // st structure (body, acidity, tannin), y aromas young and aged, a ageing, k also known as, x one extra fact. One grape per line.
 const GD={
