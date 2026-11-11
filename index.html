@@ -800,7 +800,17 @@ Picpoul|W|2|Lemon, green apple, saline|Languedoc
 Petit Manseng|W|4|Pineapple, apricot, honey, ginger|Jurançon, Virginia
 Vernaccia|W|2|Lemon, almond, mineral|San Gimignano
 Carricante|W|2|Lemon, aniseed, flint|Etna, Sicily
-Fernão Pires|W|3|Citrus, peach, floral|Tejo, Bairrada`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
+Fernão Pires|W|3|Citrus, peach, floral|Tejo, Bairrada
+Alicante Bouschet|R|4|Black cherry, plum, chocolate, earth|Alentejo, Almansa, Languedoc
+Poulsard|R|1|Red currant, cranberry, rose petal, earth|Jura, Arbois
+Mavrud|R|4|Blackberry, plum, tobacco, spice|Thracian Valley, Asenovgrad
+Croatina|R|3|Black cherry, plum, violet, spice|Oltrepò Pavese, Colli Piacentini
+Listán Negro|R|2|Red cherry, pepper, smoke, herbs|Tenerife, Lanzarote
+Parellada|W|1|Green apple, citrus, floral|Penedès, Conca de Barberà
+Gros Manseng|W|3|Pineapple, grapefruit, quince, spice|Jurançon, Gascony
+Fetească Albă|W|2|Peach, apricot, floral, grape|Romania, Moldova
+Savatiano|W|2|Lemon, green apple, herbs|Attica, Boeotia
+Pošip|W|3|Apricot, citrus, almond, herbs|Korčula, Dalmatia`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
 // GRAPE DETAILS for the "More detail" panel on grape cards. Key = exact grape name in G. o origin & history, w where it grows,
 // st structure (body, acidity, tannin), y aromas young and aged, a ageing, k also known as, x one extra fact. One grape per line.
 const GD={
