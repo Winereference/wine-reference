@@ -423,18 +423,24 @@ document.addEventListener("keydown",ev=>{if(ev.key==="Escape"&&sh)sh.classList.r
 <script>
 // TRADE TASTING CALENDAR: d/e = start/end (YYYY-MM-DD), tbc = text when date not announced (d then = YYYY-MM for sorting)
 const TT=[
+{d:"2027-01-19",n:"Liberty Wines annual portfolio tasting",o:"Liberty Wines",l:"London (venue on invitation)",t:"Portfolio",u:"https://www.libertywines.co.uk/",note:"Wines grouped by grape and price. Invitation for customers and trade."},
+{d:"2027-01-25",n:"Hatch Mansfield portfolio tasting",o:"Hatch Mansfield",l:"IoD, 116 Pall Mall, London",t:"Portfolio",u:"https://www.hatchmansfield.com",note:"A good chance to taste Champagne and family estates from one agency. 10:00–16:00."},
+{d:"2027-01-26",n:"Borsa Vini Italiani",o:"Italian Trade Agency",l:"IET London, 2 Savoy Place, London",t:"Generic",u:"https://wsta.co.uk/trade-diary/",note:"Italian producers, many still looking for a UK importer. 10:30–17:00."},
+{d:"2027-02",n:"Fells annual portfolio tasting",o:"Fells",l:"London (2026 edition: IET, Savoy Place)",t:"Portfolio",u:"https://fells.co.uk/",tbc:"usually February",note:"Port, Champagne, Burgundy and more, with masterclasses."},
 {d:"2027-02-01",n:"Barcelona Wine Week",o:"Fira de Barcelona",l:"Barcelona, Spain",t:"Fair",u:"https://www.barcelonawineweek.com/",tbc:"expected 1–3 Feb, check organiser",note:"Spain's biggest trade fair for Spanish wine, with every DO represented."},
+{d:"2027-02-02",n:"Berkmann Wine Cellars portfolio tasting (London)",o:"Berkmann Wine Cellars",l:"Guildhall, London (Leeds on 3 Feb)",t:"Portfolio",u:"https://www.berkmann.co.uk",note:"A large agency portfolio under one roof; a northern edition follows in Leeds. 10:00–16:30."},
 {d:"2027-02-09",n:"Australia & New Zealand Trade Tasting (London)",o:"Wine Australia & New Zealand Winegrowers",l:"Lindley Hall, Royal Horticultural Halls, London",t:"Generic",u:"https://www.wineaustralia.com/whats-happening/events/australia-and-new-zealand-trade-tasting-2027",note:"Around 1,000 wines from about 250 wineries. 10:00–17:00."},
 {d:"2027-02-11",n:"Australia & New Zealand Trade Tasting (Edinburgh)",o:"Wine Australia & New Zealand Winegrowers",l:"Edinburgh (venue TBC)",t:"Generic",u:"https://www.wineaustralia.com/whats-happening/events/australia-and-new-zealand-trade-tasting-2027",note:"Trade tasting plus a masterclass."},
 {d:"2027-02-15",e:"2027-02-17",n:"Wine Paris",o:"Vinexposium",l:"Paris Expo Porte de Versailles, Paris",t:"Fair",u:"https://wineparis.com/",note:"Now one of the world's biggest wine and spirits fairs. Many UK importers exhibit."},
 {d:"2027-02-15",e:"2027-02-16",n:"UGCB Bordeaux 2024 vintage tasting",o:"Union des Grands Crus de Bordeaux",l:"At Wine Paris, Paris",t:"Generic",u:"https://wineparis.com/",note:"Classed growths showing the 2024 vintage from bottle."},
+{d:"2027-02-22",n:"Enotria&Coe portfolio tasting",o:"Enotria&Coe",l:"Sky Garden, 20 Fenchurch Street, London",t:"Portfolio",u:"https://www.enotriacoe.com",note:"Taste the range with a view over the City. 11:00–17:00."},
+{d:"2027-02-23",n:"Alliance Wine spring portfolio tasting",o:"Alliance Wine",l:"Central London (Edinburgh on 22 Feb)",t:"Portfolio",u:"https://www.alliancewine.com",note:"Spring showing of the Alliance range, with a Scottish date the day before."},
+{d:"2027-03-02",n:"Mentzendorff portfolio tasting",o:"Mentzendorff",l:"Central London (venue TBC)",t:"Portfolio",u:"https://mentzendorff.co.uk",note:"Champagne, Port and fine-wine agencies from a long-established importer. 10:00–16:00."},
 {d:"2027-03-07",e:"2027-03-09",n:"ProWein",o:"Messe Düsseldorf",l:"Messe Düsseldorf, Germany",t:"Fair",u:"https://www.prowein.com/",note:"Huge international fair. Plan your halls in advance."},
 {d:"2027-03-15",n:"The Big Fortified Tasting",o:"the bft",l:"IET London, 2 Savoy Place, London",t:"Generic",u:"https://thebft.co.uk/",note:"Port, Sherry, Madeira, Marsala and more. Trade only, 10:00–16:00."},
-{d:"2027-04-11",e:"2027-04-14",n:"Vinitaly",o:"Veronafiere",l:"Veronafiere, Verona, Italy",t:"Fair",u:"https://www.vinitaly.com/",note:"59th edition. The essential Italian wine fair."},
 {d:"2027-04",n:"Bordeaux en primeur week",o:"Union des Grands Crus de Bordeaux",l:"Bordeaux, France",t:"Generic",u:"https://www.ugcb.net/",tbc:"usually early April",note:"First tastings of the 2026 vintage from barrel. Invitation through your importer."},
-{d:"2027-05-17",e:"2027-05-19",n:"London Wine Fair",o:"London Wine Fair",l:"Olympia, London",t:"Fair",u:"https://www.londonwinefair.com/",note:"The UK's main trade fair: importers, producers, masterclasses and the Discovery zone."},
-{d:"2027-01",n:"Liberty Wines annual portfolio tasting",o:"Liberty Wines",l:"The Kia Oval, London",t:"Portfolio",u:"https://www.libertywines.co.uk/",tbc:"usually late January or February",note:"Wines grouped by grape and price. Invitation for customers and trade."},
-{d:"2027-02",n:"Fells annual portfolio tasting",o:"Fells",l:"London (2026 edition: IET, Savoy Place)",t:"Portfolio",u:"https://fells.co.uk/",tbc:"usually February",note:"Port, Champagne, Burgundy and more, with masterclasses."}
+{d:"2027-04-11",e:"2027-04-14",n:"Vinitaly",o:"Veronafiere",l:"Veronafiere, Verona, Italy",t:"Fair",u:"https://www.vinitaly.com/",note:"59th edition. The essential Italian wine fair."},
+{d:"2027-05-17",e:"2027-05-19",n:"London Wine Fair",o:"London Wine Fair",l:"Olympia, London",t:"Fair",u:"https://www.londonwinefair.com/",note:"The UK's main trade fair: importers, producers, masterclasses and the Discovery zone."}
 ];
 (function(){
  const L=document.getElementById('tcl'),F=document.getElementById('tcf');if(!L)return;
