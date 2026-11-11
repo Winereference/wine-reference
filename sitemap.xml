@@ -183,6 +183,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/grapes/alicante-bouschet/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/grapes/aligote/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -366,6 +372,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/grapes/croatina/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/grapes/dolcetto/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -397,6 +409,12 @@
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/fernao-pires/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/grapes/feteasca-alba/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -510,6 +528,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/grapes/gros-manseng/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/grapes/gruner-veltliner/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -546,6 +570,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/grapes/listan-negro/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/grapes/loureiro/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -577,6 +607,12 @@
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/marselan/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/grapes/mavrud/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -686,6 +722,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/grapes/parellada/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/grapes/pecorino/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -777,6 +819,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/grapes/posip/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/grapes/poulsard/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/grapes/primitivo/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -848,6 +902,12 @@
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/savagnin/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/grapes/savatiano/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -2468,6 +2528,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/s/napa-valley-vineyard-judgment-of-paris-1976.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/stories/speyer-wine-bottle-oldest-wine-in-the-world/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/s/speyer-cathedral-roman-wine-bottle-germany.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/a-a-badenhorst-kalmoesfontein-white/</loc>
