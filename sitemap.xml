@@ -2645,6 +2645,12 @@
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/priorat-hills-torroja-del-priorat-spain.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/alvear-fino-cb/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/alvear-pedro-ximenez-1927-solera/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -2875,6 +2881,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/bodega-pintia-pintia/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/bodega-pirineos-3404-tinto/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -2914,6 +2926,13 @@
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/bodegas-chivite-chivite-coleccion-125-chardonnay/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/navarra-bardenas-reales-castildetierra-spain.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/bodegas-chivite-las-fincas-rosado/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -2992,10 +3011,24 @@
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/rioja-vineyards-hilltop-ruin-sierra-cantabria-spain.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/bodegas-salentein-reserve-malbec/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/uco-valley-winter-vineyard-andes-tunuyan-argentina.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/bodegas-y-vinedos-ponce-clos-lojen/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/boekenhoutskloof-semillon/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/franschhoek-vineyard-mountains-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/bollinger-la-cote-aux-enfants-rouge/</loc>
@@ -3652,6 +3685,12 @@
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/marlborough-vineyard-rows-renwick-new-zealand.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/codorniu-anna-blanc-de-blancs/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/concha-y-toro-don-melchor/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -3693,6 +3732,13 @@
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/hawkes-bay-tukituki-valley-te-mata-peak-new-zealand.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/cristom-mt-jefferson-cuvee-pinot-noir/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/willamette-valley-vineyard-rows-polk-county-oregon.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/croft-vintage-port/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -3726,6 +3772,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/kent-white-chalk-cliffs-coast-england.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/de-bortoli-yarra-valley-estate-grown-chardonnay/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/yarra-valley-vineyards-aerial-victoria-australia.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/de-ladoucette-pouilly-fume/</loc>
@@ -3871,6 +3924,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/burgundy-vineyard-rows-yonne-france.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/domaine-cauhape-symphonie-de-novembre/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/domaine-chanson-bourgogne-chardonnay/</loc>
@@ -4304,6 +4363,13 @@
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/wachau-vineyards-weissenkirchen-danube-austria.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/falesco-montiano/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/lazio-frascati-castelli-romani-sunset-italy.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/familia-torres-grans-muralles/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -4429,6 +4495,13 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/gaia-wines-thalassitis/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/santorini-caldera-view-cyclades-greece.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/gaja-barbaresco-costa-russi/</loc>
@@ -4567,6 +4640,20 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/champagne-vineyards-ay-autumn-france.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/herdade-do-mouchao-mouchao/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/alentejo-monsaraz-hilltop-castle-village-portugal.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/hermann-j-wiemer-dry-riesling/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/finger-lakes-vineyard-rows-lodi-new-york.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/howard-park-abercrombie-cabernet-sauvignon/</loc>
@@ -5046,6 +5133,13 @@
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/veneto-prosecco-hills-valdobbiadene-vineyards-italy.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/miolo-cuvee-tradition-brut/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/serra-gaucha-bento-goncalves-train-countryside-brazil.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/mission-hill-oculus/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -5146,6 +5240,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sussex-seven-sisters-chalk-cliffs-england.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/oremus-mandolas-dry-furmint/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/tokaj-town-main-street-hungary.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/p-and-m-jacqueson-rully-les-chaponnieres/</loc>
@@ -5256,6 +5357,13 @@
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/pheasants-tears-rkatsiteli/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/kakheti-vineyard-caucasus-mountains-shakriani-georgia.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/pheasants-tears-saperavi/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -5392,6 +5500,13 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/quails-gate-pinot-noir/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/okanagan-valley-vineyard-lake-wine-glass-canada.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/quilceda-creek-cabernet-sauvignon/</loc>
@@ -5610,6 +5725,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/friuli-cividale-del-friuli-devils-bridge-italy.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/seghesio-family-vineyards-sonoma-zinfandel/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sonoma-vineyard-spring-mustard-flowers-california.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/sella-and-mosca-cannonau-di-sardegna-riserva/</loc>
@@ -5909,6 +6031,20 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/burgundy-vineyard-rows-yonne-france.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/weingut-leitz-eins-zwei-dry-riesling/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/rheingau-vineyard-sunset-geisenheim-germany.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/wine-library/weingut-prager-riesling-smaragd-achleiten/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/wachau-vineyards-weissenkirchen-danube-austria.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/weingut-wieninger-wiener-riesling/</loc>
