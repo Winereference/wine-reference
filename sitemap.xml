@@ -2402,6 +2402,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/spirits/lebanon/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/spirits/lesbos/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -2511,6 +2517,12 @@
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/spirits/veneto-bassano-del-grappa/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/spirits/western-cape/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
