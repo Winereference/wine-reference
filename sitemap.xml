@@ -253,6 +253,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/cabernet-sauvignon-red-grapes-autumn-leaves-napa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/cannonau/</loc>
@@ -307,12 +308,14 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/champagne-vineyards-verzenay-montagne-de-reims.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/chardonnay/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/chardonnay-green-grape-bunches-vine-oregon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/chasselas/</loc>
@@ -595,6 +598,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/merlot-black-grape-bunches-vine-brazil.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/monastrell/</loc>
@@ -643,6 +647,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/nebbiolo-grape-harvest-serralunga-barolo-italy.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/negroamaro/</loc>
@@ -757,6 +762,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/pinot-noir-grape-clusters-vineyard-oregon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/pinotage/</loc>
@@ -781,6 +787,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/prosecco-glera-vineyard-hills-valdobbiadene-italy.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/refosco/</loc>
@@ -799,6 +806,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/riesling-white-grape-bunches-vine-franken.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/rkatsiteli/</loc>
@@ -823,6 +831,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sangiovese-vineyard-grapes-montepulciano-tuscany.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/saperavi/</loc>
@@ -835,6 +844,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sauvignon-blanc-sancerre-vineyard-autumn-loire.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/grapes/savagnin/</loc>
@@ -1140,6 +1150,12 @@
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/basilicata-matera-sassi-cathedral-italy.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/regions/beaujolais/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/regions/bierzo/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -1210,6 +1226,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/campanha-gaucha-pampa-highway-uruguaiana-brazil.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/campania/</loc>
@@ -1319,6 +1336,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/condado-de-huelva-el-rocio-hermitage-andalusia-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/cornwall/</loc>
@@ -1457,6 +1475,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/hemel-en-aarde-hermanus-coast-mountains-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/ica-valley/</loc>
@@ -1742,6 +1761,12 @@
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/navarra-bardenas-reales-castildetierra-spain.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://winereference.github.io/wine-reference/regions/niagara-peninsula/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://winereference.github.io/wine-reference/regions/okanagan-valley/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
@@ -1774,6 +1799,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/pla-de-bages-cardona-castle-gothic-courtyard-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/pla-i-llevant/</loc>
@@ -1849,6 +1875,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/ribera-del-guadiana-merida-roman-amphitheatre-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/ribera-del-jucar/</loc>
@@ -1923,6 +1950,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sierra-de-salamanca-pena-de-francia-mountains-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/sierras-de-malaga/</loc>
@@ -1936,6 +1964,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/somontano-barbastro-old-townhouse-aragon-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/sonoma/</loc>
@@ -1943,6 +1972,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/sonoma-vineyard-spring-mustard-flowers-california.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://winereference.github.io/wine-reference/regions/south-west-france/</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/stellenbosch/</loc>
@@ -1970,6 +2005,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/swartland-darling-wildflowers-farm-track-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/tacoronte-acentejo/</loc>
@@ -2003,6 +2039,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/tierra-del-vino-zamora-el-perdigon-farmland-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/tokaj/</loc>
@@ -2036,6 +2073,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/ucles-monastery-hilltop-village-aerial-cuenca-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/regions/uco-valley/</loc>
@@ -2436,18 +2474,21 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/swartland-darling-wildflowers-farm-track-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/a-a-badenhorst-secateurs-chenin-blanc/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/swartland-darling-wildflowers-farm-track-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/a-a-badenhorst-secateurs-red-blend/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/swartland-darling-wildflowers-farm-track-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/a-levasseur-extrait-gourmand-rose/</loc>
@@ -2468,6 +2509,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/pla-de-bages-cardona-castle-gothic-courtyard-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/akitu-pinot-noir-blanc/</loc>
@@ -2770,6 +2812,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/somontano-barbastro-old-townhouse-aragon-spain.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/bodega-weinert-tonel-unico-malbec/</loc>
@@ -4421,6 +4464,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/hemel-en-aarde-hermanus-coast-mountains-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/harlan-estate-harlan-estate/</loc>
@@ -4993,12 +5037,14 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/swartland-darling-wildflowers-farm-track-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/mullineux-straw-wine/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/swartland-darling-wildflowers-farm-track-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/musella-recioto-della-valpolicella/</loc>
@@ -5420,12 +5466,14 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/hemel-en-aarde-hermanus-coast-mountains-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/restless-river-pinot-noir/</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/hemel-en-aarde-hermanus-coast-mountains-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/ridge-vineyards-lytton-springs/</loc>
@@ -5529,6 +5577,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/swartland-darling-wildflowers-farm-track-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/suertes-del-marques-7-fuentes/</loc>
@@ -5672,6 +5721,7 @@
     <lastmod>2026-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://winereference.github.io/wine-reference/img/p/swartland-darling-wildflowers-farm-track-south-africa.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://winereference.github.io/wine-reference/wine-library/tollini-mendo-blendo/</loc>
