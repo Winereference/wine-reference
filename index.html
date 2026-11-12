@@ -675,6 +675,16 @@ const PH={
 "Champagne (Chardonnay, Pinot Noir, Meunier)":["champagne-vineyards-verzenay-montagne-de-reims.webp","Adlan","adlan7000","Golden autumn vineyard rows leading to Verzenay village in the Montagne de Reims, Champagne"],
 "Prosecco (Glera)":["prosecco-glera-vineyard-hills-valdobbiadene-italy.webp","Alberto Caliman","supercaliman","Aerial view of steep vine-covered Prosecco hills at Valdobbiadene, Veneto, Italy"],
 "Nebbiolo":["nebbiolo-grape-harvest-serralunga-barolo-italy.webp","Andrea Cairone","kaicaironejpg","Hands cutting a dark Nebbiolo grape bunch at harvest in Serralunga, Barolo, Italy"],
+"Beaujolais":["beaujolais-brouilly-vineyard-hills-france.webp", "Carnet de Voyage d'Alex", "alexisribeyrecarnetdevoyage", "Rolling vineyard hills around Brouilly in Beaujolais, France"],
+"Niagara Peninsula":["niagara-peninsula-red-grapes-vine-canada.webp", "Wendy Shervington", "wendywens", "Ripe red grape bunches on the vine at Niagara-on-the-Lake, Ontario, Canada"],
+"South West France":["saint-cirq-lapopie-lot-valley-south-west-france.webp", "le Sixième Rêve", "le_sixieme_reve", "Medieval village of Saint-Cirq-Lapopie above the Lot valley, South West France"],
+"Catalunya":["montserrat-mountain-landscape-catalunya-spain.webp", "Madara Parma", "madaratravels", "Jagged peaks of Montserrat rising over the Catalunya countryside, Spain"],
+"Syrah / Shiraz":["shiraz-barossa-valley-vineyard-australia.webp", "Mikael Andreasson", "micke88", "Sunny vineyard rows in the Barossa Valley, South Australia, home of Shiraz"],
+"Pinot Grigio":["white-grapes-vine-alto-adige-pinot-grigio.webp", "Manuel Venturini", "manuelventurini", "Golden white grape clusters on the vine in Alto Adige, northern Italy"],
+"Grenache Rosé":["glass-of-pale-rose-wine-grenache.webp", "micheile henderson", "micheile", "Glass of pale rosé wine beside a glass of white wine on a table"],
+"Malbec":["malbec-vine-leaves-mendoza-argentina.webp", "Flor Saurina", "saurinaf", "Sunlit Malbec vine shoot and tendrils in a Mendoza vineyard, Argentina"],
+"Zinfandel":["red-grape-cluster-sonoma-zinfandel-california.webp", "Hari Nandakumar", "hariprasad000", "Ripe dark grape cluster on the vine in Sonoma, California, Zinfandel country"],
+"Gewürztraminer":["riquewihr-village-vineyards-alsace-gewurztraminer.webp", "Marco Pregnolato", "marco_pregnolato", "Vines in front of the village of Riquewihr in Alsace, home of Gewürztraminer"],
 };
 function phx(n){const p=PH[n];if(!p)return"";const q=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));return `<div class="cph"><img src="img/p/${q(p[0])}" alt="${q(p[3]||n)}" loading="lazy" decoding="async" width="600" height="400"><small>Photo: <a href="https://unsplash.com/@${q(p[2])}?utm_source=wine_reference&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">${q(p[1])}</a></small></div>`}
 const G=[
