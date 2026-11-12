@@ -685,6 +685,16 @@ const PH={
 "Malbec":["malbec-vine-leaves-mendoza-argentina.webp", "Flor Saurina", "saurinaf", "Sunlit Malbec vine shoot and tendrils in a Mendoza vineyard, Argentina"],
 "Zinfandel":["red-grape-cluster-sonoma-zinfandel-california.webp", "Hari Nandakumar", "hariprasad000", "Ripe dark grape cluster on the vine in Sonoma, California, Zinfandel country"],
 "Gewürztraminer":["riquewihr-village-vineyards-alsace-gewurztraminer.webp", "Marco Pregnolato", "marco_pregnolato", "Vines in front of the village of Riquewihr in Alsace, home of Gewürztraminer"],
+"Crémant":["coupe-glass-sparkling-cremant-wine.webp", "Nataliya Melnychuk", "natinati", "Coupe glass of golden sparkling Crémant wine against soft gold fabric"],
+"Franciacorta":["franciacorta-white-grapes-vine-sunlight-italy.webp", "paola capelletto", "___pi___", "Backlit white grape bunch on the vine in Franciacorta, Lombardy, Italy"],
+"Sekt":["sekt-sparkling-wine-poured-into-flutes.webp", "Alexander Naglestad", "alexandernaglestad", "Sparkling wine such as Sekt being poured into a tray of flutes"],
+"English sparkling wine":["english-sparkling-wine-vineyard-kent.webp", "Jez Timms", "jeztimms", "Hazy morning over vineyard rows in the Kent countryside, England"],
+"Cap Classique":["cap-classique-stellenbosch-vineyard-south-africa.webp", "Matthieu Joannon", "matt_j", "Sweeping vineyard rows on a Stellenbosch hillside, South Africa"],
+"Asti / Moscato d'Asti":["monferrato-hill-village-vineyards-piedmont-moscato.webp", "Fa Trinca", "fa_trinca", "Hilltop village of Vignale Monferrato above vineyards in Piedmont, Italy"],
+"Barbera":["barbera-piedmont-hillside-vineyards-italy.webp", "Kristaps Grundsteins", "grundsteins", "Steep hillside vineyards in Piedmont, Italy, the heartland of Barbera"],
+"Gamay":["gamay-chateau-de-la-chaize-beaujolais-france.webp", "Carnet de Voyage d'Alex", "alexisribeyrecarnetdevoyage", "Château de la Chaize in Brouilly, Beaujolais, the home of Gamay"],
+"Touriga Nacional":["touriga-nacional-grapes-vine-dao-portugal.webp", "John Cameron", "john_cameron", "Bunch of Touriga Nacional grapes on an old vine in the Dão, Portugal"],
+"Cabernet Franc":["saint-emilion-vineyard-cabernet-franc-bordeaux.webp", "Wojciech Rzepka", "wrzepka", "Spring vines around a small stone building in Saint-Émilion, Bordeaux"],
 };
 function phx(n){const p=PH[n];if(!p)return"";const q=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));return `<div class="cph"><img src="img/p/${q(p[0])}" alt="${q(p[3]||n)}" loading="lazy" decoding="async" width="600" height="400"><small>Photo: <a href="https://unsplash.com/@${q(p[2])}?utm_source=wine_reference&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">${q(p[1])}</a></small></div>`}
 const G=[
