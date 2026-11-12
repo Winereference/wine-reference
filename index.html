@@ -845,7 +845,17 @@ Parellada|W|1|Green apple, citrus, floral|Penedès, Conca de Barberà
 Gros Manseng|W|3|Pineapple, grapefruit, quince, spice|Jurançon, Gascony
 Fetească Albă|W|2|Peach, apricot, floral, grape|Romania, Moldova
 Savatiano|W|2|Lemon, green apple, herbs|Attica, Boeotia
-Pošip|W|3|Apricot, citrus, almond, herbs|Korčula, Dalmatia`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
+Pošip|W|3|Apricot, citrus, almond, herbs|Korčula, Dalmatia
+Mondeuse|R|3|Black cherry, plum, pepper, violet|Savoie, Bugey
+Castelão|R|3|Red cherry, plum, earth, spice|Setúbal, Tejo, Lisboa
+Mavrodaphne|R|4|Raisin, black cherry, chocolate, coffee|Patras, Cephalonia
+Schioppettino|R|2|Raspberry, green peppercorn, violet|Friuli
+Norton|R|4|Blackcurrant, plum, spice, earth|Virginia, Missouri
+Koshu|W|1|Citrus, white peach, pear|Yamanashi
+Muscadelle|W|2|Honeysuckle, grape, citrus, floral|Bordeaux, Bergerac, Rutherglen
+Treixadura|W|3|Peach, apple, citrus, floral|Ribeiro, Vinho Verde
+Zierfandler|W|4|Orange peel, quince, almond, spice|Thermenregion
+Sercial|W|2|Lemon, citrus peel, almond, walnut|Madeira`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
 // GRAPE DETAILS for the "More detail" panel on grape cards. Key = exact grape name in G. o origin & history, w where it grows,
 // st structure (body, acidity, tannin), y aromas young and aged, a ageing, k also known as, x one extra fact. One grape per line.
 const GD={
