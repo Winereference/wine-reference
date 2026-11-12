@@ -1,5 +1,5 @@
 # The live site moved to GitHub Pages on 2026-11-07:
-#   https://winereference.github.io/wine-reference/
+#   https://thewinereference.co.uk/
 # This file only tells the OLD Netlify address (wine-reference.netlify.app) to send
 # every visitor and search engine to the same page on the new site (permanent 301).
 
@@ -11,9 +11,9 @@
   ignore = "! git log -1 --pretty=%B | grep -qF '[netlify]'"
 
 # Send every path to the same path on the new site, e.g.
-#   /grapes/merlot/  ->  https://winereference.github.io/wine-reference/grapes/merlot/
+#   /grapes/merlot/  ->  https://thewinereference.co.uk/grapes/merlot/
 [[redirects]]
   from = "/*"
-  to = "https://winereference.github.io/wine-reference/:splat"
+  to = "https://thewinereference.co.uk/:splat"
   status = 301
   force = true

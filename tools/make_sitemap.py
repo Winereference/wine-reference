@@ -5,7 +5,7 @@ Run from the repo root after adding photos or rebuilding pages: python3 tools/ma
 (node tools/build_pages.js runs it automatically.)"""
 import re,os,datetime
 from xml.sax.saxutils import escape
-U='https://winereference.github.io/wine-reference/'
+U='https://thewinereference.co.uk/'
 today=datetime.date.today().isoformat()
 s=open('index.html',encoding='utf-8').read()
 ph=re.search(r'const PH=\{(.*?)\n\};',s,re.S).group(1)

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://winereference.github.io/wine-reference/sitemap.xml
+Sitemap: https://thewinereference.co.uk/sitemap.xml

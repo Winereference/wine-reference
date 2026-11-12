@@ -8,7 +8,7 @@
 const {chromium}=require('playwright');
 const fs=require('fs'),path=require('path'),{execSync}=require('child_process');
 const ROOT=path.resolve(__dirname,'..');
-const SITE='https://winereference.github.io/wine-reference/';
+const SITE='https://thewinereference.co.uk/';
 const OUT=['grapes','regions','spirits','stories','wine-library','food-pairing','glossary','careers','newsletter'];
 
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
