@@ -70,7 +70,7 @@ ${/^https:\/\//.test(NL.action||'')?`<div class="support nl"><h2>The Wine Refere
 <div class="support"><h2>Support The Wine Reference</h2><p>This guide is free, with no paywall. If it helped you choose a bottle, you can buy me a glass and keep it growing.</p><a class="btn" href="https://ko-fi.com/winereference" target="_blank" rel="noopener">🍷 Buy me a glass</a></div>
 </main>
 <footer><div class="in"><nav aria-label="Browse"><a href="${up}">Interactive guide</a><a href="${up}grapes/">Grapes</a><a href="${up}regions/">Wine regions</a><a href="${up}wine-library/">Wine Library</a><a href="${up}spirits/">Spirits</a><a href="${up}food-pairing/">Food pairing</a><a href="${up}stories/">Wine stories</a><a href="${up}glossary/">Glossary</a><a href="${up}careers/">Sommelier careers</a><a href="${up}newsletter/">Newsletter</a></nav>
-<p>By Diego Muntoni, head sommelier. For reference only. Please enjoy responsibly. Over 18s only (21 in the USA).</p></div></footer>
+<p>By Diego Muntoni, head of bars and beverage. For reference only. Please enjoy responsibly. Over 18s only (21 in the USA).</p></div></footer>
 <div id="age" role="dialog" aria-modal="true" aria-labelledby="ageh"><div class="box"><div style="font-size:42px">🍷</div><h2 id="ageh" style="margin:6px 0 8px">Are you of legal drinking age?</h2><p class="muted" style="margin:0 0 12px">This guide is about alcohol and is for adults only: 18 or over in the UK, EU and most countries, 21 in the USA.</p><button id="agy" type="button">Yes, I am of legal drinking age</button><button id="agn" class="no" type="button">No</button><p id="agm" style="min-height:1.4em;color:var(--accent);font-size:14px;margin:8px 0 0"></p></div></div>
 <script>(function(){var a=document.getElementById('age'),ok=false;try{ok=localStorage.getItem('ageOK')=='1'}catch(e){}if(ok)return;a.style.display='flex';document.body.style.overflow='hidden';
 document.getElementById('agy').onclick=function(){try{localStorage.setItem('ageOK','1')}catch(e){}a.style.display='none';document.body.style.overflow=''};
@@ -109,7 +109,7 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
     const syn=d.k?d.k.split(/[,;]/).map(x=>x.replace(/\(.*?\)/g,'').trim()).filter(x=>x&&x.length<30):[];
     const kw=uniq([n,isGrape?`${n} grape`:`${n} wine`,`${n} wine`,`${n} tasting notes`,`${n} food pairing`,`what does ${n} taste like`,...syn.slice(0,4),...String(rg||'').split(',').map(x=>x.trim()).slice(0,3),`${t.toLowerCase()} wine`,'wine grape guide','sommelier']);
     const title=T(`${n}: ${isGrape?'Grape Guide':'Wine Guide'}, Taste & Food Pairing`);
-    const desc=cut(`${n} is a ${typeWord(t)} with flavours of ${String(fl).toLowerCase()}. Where it grows (${rg}), how it tastes, ageing and food pairing, explained by a head sommelier.`,158);
+    const desc=cut(`${n} is a ${typeWord(t)} with flavours of ${String(fl).toLowerCase()}. Where it grows (${rg}), how it tastes, ageing and food pairing, explained by a wine professional.`,158);
     const sec=[['Origin and history',d.o],['Where it grows',d.w],['Structure',d.st],['Aromas, young and aged',d.y],['Ageing',d.a],['Also known as',d.k],['Good to know',d.x]].filter(x=>x[1]);
     const bodyH=`${photo(n,up)}<p class="meta">${esc(t)}${isGrape?' grape':''}</p>
 <p class="lead">${esc(n)} is a ${typeWord(t)} known for ${esc(String(fl).toLowerCase())}.${rg?` Its best-known homes are ${esc(rg)}.`:''}</p>
@@ -157,7 +157,7 @@ ${same.length?`<h2>More wine regions in ${esc(c)}</h2><div class="chips">${same.
    const body=`<p class="lead">${R.length} wine regions in ${uniq(R.map(r=>r[1])).length} countries, each with its key grapes, producers, appellations and wines to try.</p>
 ${conts.map(ct=>`<h2>${esc(ct)}</h2>${uniq(R.filter(r=>r[2]==ct).map(r=>r[1])).map(c=>`<h3 style="margin-top:14px">${esc(c)}</h3><div class="chips">${R.filter(r=>r[1]==c).map(r=>`<a class="chip" href="${up}regions/${RS[r[0]]}/">${esc(r[0])}</a>`).join('')}</div>`).join('')}`).join('\n')}
 <p><a class="btn" href="${up}#winemap">Open the interactive wine map</a></p>`;
-   pages.push([rel,page({rel,title:'Wine Regions of the World: Guide & Map | The Wine Reference',desc:cut(`Explore ${R.length} wine regions in Europe, the Americas, Australia, New Zealand and South Africa: grapes, producers, appellations and wines to try, by a head sommelier.`,158),
+   pages.push([rel,page({rel,title:'Wine Regions of the World: Guide & Map | The Wine Reference',desc:cut(`Explore ${R.length} wine regions in Europe, the Americas, Australia, New Zealand and South Africa: grapes, producers, appellations and wines to try, by a wine professional.`,158),
      keywords:['wine regions','wine regions of the world','French wine regions','Italian wine regions','Spanish wine regions','wine map','wine appellations'],h1:'Wine regions of the world',crumbs:[['Wine regions',rel]],body,jsonld:{"@type":"CollectionPage","name":"Wine regions of the world","url":SITE+rel}})]);}
 
   // ---------- SPIRITS ----------
@@ -198,14 +198,14 @@ ${x.r&&x.r.length?`<h2>Sources</h2><ul class="list">${x.r.map(r=>`<li><a href="$
       jsonld:{"@type":"Article","headline":x.t,"description":x.s,"datePublished":x.d,"author":{"@type":"Person","name":"Diego Muntoni"},"mainEntityOfPage":SITE+rel,...(img?{"image":SITE+img}:{})}})]);
   }
   {const rel='stories/',up='../';const body=`<p class="lead">A new story from the world of wine every day: history, people, places and curious facts, each with its sources.</p><div class="grid">${(ST||[]).map(x=>`<a class="card" href="${up}stories/${slug(x.id)}/"><div class="meta">${esc(x.c)} · ${esc(x.d)}</div><h3>${esc(x.t)}</h3><p>${esc(x.s)}</p></a>`).join('')}</div>`;
-   pages.push([rel,page({rel,title:'Wine Stories: History, People & Places | The Wine Reference',desc:'A new wine story every day: wine history, famous bottles, people, regions and curious facts, each with its sources. By head sommelier Diego Muntoni.',keywords:['wine stories','wine history','wine facts','famous wines','wine blog'],h1:'Wine stories',crumbs:[['Wine stories',rel]],body,jsonld:{"@type":"CollectionPage","name":"Wine stories","url":SITE+rel}})]);}
+   pages.push([rel,page({rel,title:'Wine Stories: History, People & Places | The Wine Reference',desc:'A new wine story every day: wine history, famous bottles, people, regions and curious facts, each with its sources. By Diego Muntoni, head of bars and beverage.',keywords:['wine stories','wine history','wine facts','famous wines','wine blog'],h1:'Wine stories',crumbs:[['Wine stories',rel]],body,jsonld:{"@type":"CollectionPage","name":"Wine stories","url":SITE+rel}})]);}
 
   // ---------- WINE LIBRARY ----------
   {const rel='wine-library/',up='../';const cs=uniq(WL.map(w=>w.c)).sort();
    const body=`<p class="lead">${WL.length} real bottles from real producers, each linked to its region and grapes. New wines are added every day.</p><div class="chips">${cs.map(c=>`<a class="chip" href="#${slug(c)}">${esc(c)}</a>`).join('')}</div>
 ${cs.map(c=>`<h2 id="${slug(c)}">${esc(c)}</h2>${wineList(WL.filter(w=>w.c==c),up)}`).join('\n')}
 <p><a class="btn" href="${up}#library">Search and filter the Wine Library</a></p>`;
-   pages.push([rel,page({rel,title:'The Wine Library: Real Wines to Try by Region & Grape | The Wine Reference',desc:cut(`${WL.length} recommended wines from real producers, from classic Bordeaux and Barolo to great-value bottles, with tasting notes and food pairing, by a head sommelier.`,158),
+   pages.push([rel,page({rel,title:'The Wine Library: Real Wines to Try by Region & Grape | The Wine Reference',desc:cut(`${WL.length} recommended wines from real producers, from classic Bordeaux and Barolo to great-value bottles, with tasting notes and food pairing, by a wine professional.`,158),
      keywords:['wine recommendations','best wines to try','wine list','red wine recommendations','white wine recommendations','sommelier wine picks'],h1:'The Wine Library',crumbs:[['Wine Library',rel]],body,jsonld:{"@type":"CollectionPage","name":"The Wine Library","url":SITE+rel}})]);}
 
   // ---------- ONE PAGE PER WINE ----------
@@ -218,7 +218,7 @@ ${cs.map(c=>`<h2 id="${slug(c)}">${esc(c)}</h2>${wineList(WL.filter(w=>w.c==c),u
     const body=`<p class="meta">${esc(w.s)} · ${esc(w.c)}${ds?` · <span class="ds"><img src="${up}assets/icon.svg" alt="" width="18" height="18" style="vertical-align:-4px;margin-right:4px">Diego's Selection</span>`:''}</p>
 <p class="lead">${esc(w.n)}</p>
 <div class="facts"><div><b>Producer</b>${esc(w.p)}</div><div><b>Region</b>${rlink(w.r,up)}</div>${w.a&&w.a!=w.r?`<div><b>Appellation</b>${esc(w.a)}</div>`:''}<div><b>Country</b>${esc(w.c)}</div><div><b>Style</b>${esc(w.s)}</div><div><b>Grapes</b>${gr}</div>${w.f?`<div><b>Food match</b>${esc(w.f)}</div>`:''}</div>
-${ds?`<p class="muted">Diego's Selection: a wine Diego Muntoni pours as head sommelier.</p>`:''}
+${ds?`<p class="muted">Diego's Selection: a wine Diego Muntoni pours as head of bars and beverage.</p>`:''}
 <h2>Where to buy</h2><div class="chips"><a class="chip" href="https://www.wine-searcher.com/find/${slug(nm).replace(/-/g,'+')}/1/uk" target="_blank" rel="noopener">Compare UK prices (Wine-Searcher)</a><a class="chip" href="https://www.google.com/search?tbm=shop&q=${q}" target="_blank" rel="noopener">Google Shopping</a><a class="chip" href="https://www.vivino.com/search/wines?q=${q}" target="_blank" rel="noopener">Vivino</a></div>
 ${more.length?`<h2>More wines from ${esc(w.r)}</h2>${wineList(more,up)}`:''}
 <p><a class="btn" href="${up}#library/w/${q}">Open in the interactive Wine Library</a></p>`;
@@ -231,7 +231,7 @@ ${more.length?`<h2>More wines from ${esc(w.r)}</h2>${wineList(more,up)}`:''}
    const body=`<p class="lead">${DP.length} dishes with the grapes that suit them, real bottles to try and a recipe.</p><div class="chips">${cats.map(c=>`<a class="chip" href="#${slug(c)}">${esc(c)}</a>`).join('')}</div>
 ${cats.map(c=>{const xs=DP.filter(x=>x.c==c);return xs.length?`<h2 id="${slug(c)}">${esc(c)}</h2><div class="grid">${xs.map(x=>`<div class="card"><h3>${esc(x.d)}</h3><p><b>Wine:</b> ${x.g.map(y=>glink(y,up)).join(', ')}</p>${x.n?`<p>${esc(x.n)}</p>`:''}${x.b&&x.b.length?`<p class="muted">Try: ${x.b.map(b=>esc(b[0]+' '+b[1])).join('; ')}</p>`:''}${x.r?`<p><a href="${esc(x.r[1])}" target="_blank" rel="noopener">Recipe: ${esc(x.r[0])}</a></p>`:''}</div>`).join('')}</div>`:''}).join('\n')}
 <p><a class="btn" href="${up}#pairing">Use the interactive food and wine matcher</a></p>`;
-   pages.push([rel,page({rel,title:'Food and Wine Pairing Guide: What Wine With Dinner? | The Wine Reference',desc:cut(`What wine goes with steak, salmon, curry or pizza? ${DP.length} dishes matched with grapes, real bottles and recipes by a head sommelier.`,158),
+   pages.push([rel,page({rel,title:'Food and Wine Pairing Guide: What Wine With Dinner? | The Wine Reference',desc:cut(`What wine goes with steak, salmon, curry or pizza? ${DP.length} dishes matched with grapes, real bottles and recipes by a wine professional.`,158),
      keywords:['food and wine pairing','wine pairing','what wine with steak','what wine with salmon','wine with curry','wine with pizza','wine pairing guide'],h1:'Food and wine pairing',crumbs:[['Food pairing',rel]],body,jsonld:{"@type":"CollectionPage","name":"Food and wine pairing","url":SITE+rel}})]);}
 
   // ---------- GLOSSARY ----------
@@ -252,11 +252,11 @@ ${x.k&&x.k.length?`<h2>Key points</h2><ul class="list">${x.k.map(k=>`<li>${esc(k
 ${x.r&&x.r.length?`<h2>Sources</h2><ul class="list">${x.r.map(r=>`<li><a href="${esc(r[1])}" target="_blank" rel="noopener">${esc(r[0])}</a></li>`).join('')}</ul>`:''}
 <p><a class="btn" href="${up}careers/">More sommelier career guides</a></p>`;
     pages.push([rel,page({rel,title:T(x.t),desc:cut(x.s,158),keywords:kw,h1:x.t,crumbs:[['Sommelier careers','careers/'],[x.t,rel]],body,
-      jsonld:{"@type":"Article","headline":x.t,"description":x.s,"datePublished":x.d,"author":{"@type":"Person","name":"Diego Muntoni","jobTitle":"Head Sommelier"},"mainEntityOfPage":SITE+rel}})]);
+      jsonld:{"@type":"Article","headline":x.t,"description":x.s,"datePublished":x.d,"author":{"@type":"Person","name":"Diego Muntoni","jobTitle":"Head of Bars and Beverage"},"mainEntityOfPage":SITE+rel}})]);
   }
-  {const rel='careers/',up='../';const body=`<p class="lead">In-depth guides to a career in wine by head sommelier Diego Muntoni: qualifications, roles, skills, interviews, pay and progression. A new guide every week.</p><div class="grid">${CGv.map(x=>`<a class="card" href="${up}careers/${x.id}/"><div class="meta">${esc(x.c)} · ${esc(x.d)}</div><h3>${esc(x.t)}</h3><p>${esc(x.s)}</p></a>`).join('')}</div>
+  {const rel='careers/',up='../';const body=`<p class="lead">In-depth guides to a career in wine by Diego Muntoni, head of bars and beverage: qualifications, roles, skills, interviews, pay and progression. A new guide every week.</p><div class="grid">${CGv.map(x=>`<a class="card" href="${up}careers/${x.id}/"><div class="meta">${esc(x.c)} · ${esc(x.d)}</div><h3>${esc(x.t)}</h3><p>${esc(x.s)}</p></a>`).join('')}</div>
 <p><a class="btn" href="${up}#careers">Find sommelier jobs and use the job tracker</a></p>`;
-   pages.push([rel,page({rel,title:'Sommelier Careers: How to Become a Sommelier | The Wine Reference',desc:'How to become a sommelier: qualifications (Court of Master Sommeliers, WSET), roles, skills, interviews, pay and career progression, explained by a head sommelier.',
+   pages.push([rel,page({rel,title:'Sommelier Careers: How to Become a Sommelier | The Wine Reference',desc:'How to become a sommelier: qualifications (Court of Master Sommeliers, WSET), roles, skills, interviews, pay and career progression, explained by a wine professional.',
      keywords:['sommelier career','how to become a sommelier','sommelier qualifications','sommelier jobs','wine career','Court of Master Sommeliers','WSET'],h1:'Sommelier careers',crumbs:[['Sommelier careers',rel]],body,jsonld:{"@type":"CollectionPage","name":"Sommelier careers","url":SITE+rel}})]);}
 
   // ---------- NEWSLETTER (data/newsletter.json) ----------
@@ -269,9 +269,9 @@ ${x.items.map(it=>`<h2>${esc(it.h)}</h2><p>${esc(it.p)}</p><p><a class="btn" hre
 <p class="muted" style="font-size:14px">Missed an issue? <a href="${up}newsletter/">See all newsletters</a>.</p>`;
      pages.push([rel,page({rel,title:T(x.subject),desc:cut(x.preview,158),keywords:['wine newsletter','The Wine Reference newsletter','wine recommendations','sommelier tips'],h1:x.subject,crumbs:[['Newsletter','newsletter/'],[x.d,rel]],body,
        jsonld:{"@type":"Article","headline":x.subject,"description":x.preview,"datePublished":x.d,"author":{"@type":"Person","name":"Diego Muntoni"},"mainEntityOfPage":SITE+rel}})]);}
-   const rel='newsletter/',up='../';const body=`<p class="lead">A short weekly email from head sommelier Diego Muntoni: new wine stories, bottles worth opening, spirits and career advice. One email a week at most; unsubscribe any time.</p>
+   const rel='newsletter/',up='../';const body=`<p class="lead">A short weekly email from Diego Muntoni, head of bars and beverage: new wine stories, bottles worth opening, spirits and career advice. One email a week at most; unsubscribe any time.</p>
 <h2>Past issues</h2><div class="grid">${NI.map(x=>`<a class="card" href="${up}newsletter/${x.id}/"><div class="meta">${esc(x.d)}</div><h3>${esc(x.subject)}</h3><p>${esc(x.preview)}</p></a>`).join('')||'<p class="muted">The first issue is on its way.</p>'}</div>`;
-   pages.push([rel,page({rel,title:'The Wine Reference Newsletter: Weekly Wine Picks & Stories',desc:'Sign up for a short weekly email from a head sommelier: new wine stories, bottles worth opening, spirits and career advice. Read past issues here.',keywords:['wine newsletter','weekly wine email','wine recommendations','sommelier newsletter'],h1:'The Wine Reference newsletter',crumbs:[['Newsletter',rel]],body,jsonld:{"@type":"CollectionPage","name":"The Wine Reference newsletter","url":SITE+rel}})]);}
+   pages.push([rel,page({rel,title:'The Wine Reference Newsletter: Weekly Wine Picks & Stories',desc:'Sign up for a short weekly email from a wine professional: new wine stories, bottles worth opening, spirits and career advice. Read past issues here.',keywords:['wine newsletter','weekly wine email','wine recommendations','sommelier newsletter'],h1:'The Wine Reference newsletter',crumbs:[['Newsletter',rel]],body,jsonld:{"@type":"CollectionPage","name":"The Wine Reference newsletter","url":SITE+rel}})]);}
 
   const seen=new Set();for(const [rel,html] of pages){if(seen.has(rel))throw new Error('Duplicate page '+rel);seen.add(rel);write(rel,html)}
   console.log('pages written:',pages.length);
