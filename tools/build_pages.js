@@ -9,7 +9,7 @@ const {chromium}=require('playwright');
 const fs=require('fs'),path=require('path'),{execSync}=require('child_process');
 const ROOT=path.resolve(__dirname,'..');
 const SITE='https://thewinereference.co.uk/';
-const OUT=['grapes','regions','spirits','stories','wine-library','food-pairing','glossary','careers','newsletter'];
+const OUT=['grapes','regions','spirits','cocktails','stories','wine-library','food-pairing','glossary','careers','newsletter'];
 
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const slug=t=>String(t).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[·']/g,'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -24,7 +24,7 @@ async function loadData(){
   const d=await p.evaluate(()=>{const g=n=>{try{return eval(n)}catch(e){return null}};
     const gl=[...document.querySelectorAll('#az dt')].map(dt=>{const dd=dt.nextElementSibling;return [dt.textContent.trim(),dd&&dd.tagName=='DD'?dd.textContent.trim():'']});
     return {R:g('R'),G:g('G'),G0:g('G0').map(x=>x[0]),GD:g('GD'),K:g('K'),SUB:g('SUB'),CI:g('CI'),AP:g('AP'),PH:g('PH'),WL:g('WL'),DP:g('DP'),PC:g('PC'),
-      SPR:g('SPR'),SPB:g('SPB'),SPD:g('SPD')||{},SPH:g('SPH')||{},SPC:g('SPC'),ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},gl}});
+      SPR:g('SPR'),SPB:g('SPB'),SPD:g('SPD')||{},SPH:g('SPH')||{},SPC:g('SPC'),CK:g('CK')||[],ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},gl}});
   await b.close();return d}
 
 let NL={};
@@ -69,7 +69,7 @@ ${/^https:\/\//.test(NL.action||'')?`<div class="support nl"><h2>The Wine Refere
 <div class="shr"><b>Share this page</b><a href="https://wa.me/?text=${encodeURIComponent(h1+" · The Wine Reference "+url)}" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">Facebook</a><a href="https://x.com/intent/tweet?text=${encodeURIComponent(h1+" · The Wine Reference")}&amp;url=${encodeURIComponent(url)}" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">LinkedIn</a><a href="https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&amp;media=${encodeURIComponent(og)}&amp;description=${encodeURIComponent(h1)}" target="_blank" rel="noopener">Pinterest</a><a href="mailto:?subject=${encodeURIComponent(h1+" · The Wine Reference")}&amp;body=${encodeURIComponent(url)}">Email</a></div>
 <div class="support"><h2>Support The Wine Reference</h2><p>This guide is free, with no paywall. If it helped you choose a bottle, you can buy me a glass and keep it growing.</p><a class="btn" href="https://ko-fi.com/winereference" target="_blank" rel="noopener">🍷 Buy me a glass</a></div>
 </main>
-<footer><div class="in"><nav aria-label="Browse"><a href="${up}">Interactive guide</a><a href="${up}grapes/">Grapes</a><a href="${up}regions/">Wine regions</a><a href="${up}wine-library/">Wine Library</a><a href="${up}spirits/">Spirits</a><a href="${up}food-pairing/">Food pairing</a><a href="${up}stories/">Wine stories</a><a href="${up}glossary/">Glossary</a><a href="${up}careers/">Sommelier careers</a><a href="${up}newsletter/">Newsletter</a></nav>
+<footer><div class="in"><nav aria-label="Browse"><a href="${up}">Interactive guide</a><a href="${up}grapes/">Grapes</a><a href="${up}regions/">Wine regions</a><a href="${up}wine-library/">Wine Library</a><a href="${up}spirits/">Spirits</a><a href="${up}cocktails/">Cocktails</a><a href="${up}food-pairing/">Food pairing</a><a href="${up}stories/">Wine stories</a><a href="${up}glossary/">Glossary</a><a href="${up}careers/">Sommelier careers</a><a href="${up}newsletter/">Newsletter</a></nav>
 <p>By Diego Muntoni, head of bars and beverage. For reference only. Please enjoy responsibly. Over 18s only (21 in the USA).</p></div></footer>
 <div id="age" role="dialog" aria-modal="true" aria-labelledby="ageh"><div class="box"><div style="font-size:42px">🍷</div><h2 id="ageh" style="margin:6px 0 8px">Are you of legal drinking age?</h2><p class="muted" style="margin:0 0 12px">This guide is about alcohol and is for adults only: 18 or over in the UK, EU and most countries, 21 in the USA.</p><button id="agy" type="button">Yes, I am of legal drinking age</button><button id="agn" class="no" type="button">No</button><p id="agm" style="min-height:1.4em;color:var(--accent);font-size:14px;margin:8px 0 0"></p></div></div>
 <script>(function(){var a=document.getElementById('age'),ok=false;try{ok=localStorage.getItem('ageOK')=='1'}catch(e){}if(ok)return;a.style.display='flex';document.body.style.overflow='hidden';
@@ -84,7 +84,7 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
 (async()=>{
   const D=await loadData();NL=D.NL||{};
   for(const o of OUT)fs.rmSync(path.join(ROOT,o),{recursive:true,force:true});
-  const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;const SPD=D.SPD||{},SPH=D.SPH||{};
+  const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;const CK=D.CK||[];const SPD=D.SPD||{},SPH=D.SPH||{};
   const PHf=n=>PH&&PH[n];
   // grape name lookup incl. aliases ("Syrah / Shiraz" -> Syrah, Shiraz; "Prosecco (Glera)" -> Glera)
   const GS={},GA={};G.forEach(g=>{const s=slug(g[0]);GS[g[0]]=s;GA[g[0].toLowerCase()]=g[0];g[0].split(/\s*\/\s*|\s*\(\s*|\s*\)\s*|,\s*/).filter(x=>x.length>2).forEach(a=>{const k=a.toLowerCase();if(!GA[k])GA[k]=g[0]})});
@@ -173,6 +173,7 @@ ${conts.map(ct=>`<h2>${esc(ct)}</h2>${uniq(R.filter(r=>r[2]==ct).map(r=>r[1])).m
 ${[['History',dd.h],['Ageing and label terms',dd.ag],['Styles',dd.sy],['Rules and protected names',dd.ru],['How to serve and classic cocktails',dd.cx],['With food',dd.fx],['Good to know',dd.x]].filter(r=>r[1]).map(r=>`<h2>${r[0]}</h2><p>${esc(r[1])}</p>`).join('\n')}
 <h2>Producers</h2><ul class="list">${x.p.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
 ${bs.length?`<h2>Bottles to try</h2><div class="grid">${bs.map(b=>`<div class="card"><div class="meta">${esc(b.t)} · ${esc(b.c)}</div><h3>${esc(b.p)} ${esc(b.w)}</h3><p>${esc(b.n)}</p>${b.a||b.ag?`<p>${b.a?`<b>Strength:</b> ${esc(b.a)}`:''}${b.a&&b.ag?' · ':''}${b.ag?`<b>Age and cask:</b> ${esc(b.ag)}`:''}</p>`:''}${b.x?`<p>${esc(b.x)}</p>`:''}${b.dr?`<p><b>Serve:</b> ${esc(b.dr)}</p>`:''}</div>`).join('')}</div>`:''}
+${CK.filter(c=>c.r==x.n).length?`<h2>Cocktails to make</h2><div class="chips">${CK.filter(c=>c.r==x.n).map(c=>`<a class="chip" href="${up}cocktails/${slug(c.n)}/">${esc(c.n)}</a>`).join('')}</div>`:''}
 ${x.wr&&RS[x.wr]?`<p>Also a wine region: <a href="${up}regions/${RS[x.wr]}/">${esc(x.wr)} wine guide</a>.</p>`:''}
 ${same.length?`<h2>More ${esc(x.t.toLowerCase())} regions</h2><div class="chips">${same.map(y=>`<a class="chip" href="${up}spirits/${slug(y.n)}/">${esc(y.n)}</a>`).join('')}</div>`:''}
 <p><a class="btn" href="${up}#spirits">Explore all spirits in the interactive guide</a></p>`;
@@ -181,9 +182,36 @@ ${same.length?`<h2>More ${esc(x.t.toLowerCase())} regions</h2><div class="chips"
   {const rel='spirits/',up='../';const cats=uniq((SPR||[]).map(x=>x.t));
    const body=`<p class="lead">The great spirit regions of the world: ${(SPR||[]).length} places, what they make, how it's made and ${(SPB||[]).length} bottles to try.</p>
 ${cats.map(t=>`<h2>${esc(t)}</h2><div class="grid">${SPR.filter(x=>x.t==t).map(x=>`<a class="card" href="${up}spirits/${slug(x.n)}/"><div class="meta">${esc(x.c)}</div><h3>${esc(x.n)}</h3><p>${esc(x.s)}</p></a>`).join('')}</div>`).join('\n')}
+<p>Want to mix something? See <a href="${up}cocktails/">${CK.length} classic cocktail recipes</a>.</p>
 <p><a class="btn" href="${up}#spirits">Open the interactive spirits guide</a></p>`;
    pages.push([rel,page({rel,title:'Spirits Guide: Whisky, Cognac, Rum, Tequila & Gin Regions | The Wine Reference',desc:cut('A sommelier\'s guide to the world\'s spirit regions: Scotch whisky from Speyside and Islay, bourbon, Cognac, Armagnac, rum, tequila, mezcal, gin and more, with bottles to try.',158),
      keywords:['spirits guide','whisky regions','Scotch whisky regions','cognac','rum','tequila','mezcal','gin','bourbon','brandy'],h1:'Spirits guide',crumbs:[['Spirits',rel]],body,jsonld:{"@type":"CollectionPage","name":"Spirits guide","url":SITE+rel}})]);}
+
+  // ---------- COCKTAILS ----------
+  {const SN={};(SPR||[]).forEach(r=>SN[r.n]=1);const cats=uniq(CK.map(c=>c.t));
+   for(const c of CK){
+    const s=slug(c.n),up='../../',rel=`cocktails/${s}/`,same=CK.filter(y=>y.t==c.t&&y.n!=c.n);
+    const title=T(`${c.n} Cocktail Recipe: Ingredients & Method`);
+    const desc=cut(`How to make a ${c.n}: ${c.d} Ingredients in ml, method, glass and garnish, plus a little history.`,158);
+    const kw=uniq([`${c.n} recipe`,`${c.n} cocktail`,`how to make a ${c.n}`,c.n,`${c.s} cocktails`,'classic cocktails','cocktail recipe']);
+    const body=`<p class="meta">${esc(c.t)} · ${esc(c.m)}</p><p class="lead">${esc(c.d)}</p>
+<div class="facts"><div><b>Base</b>${esc(c.s)}</div><div><b>Method</b>${esc(c.m)}</div><div><b>Glass</b>${esc(c.g)}</div>${c.gn?`<div><b>Garnish</b>${esc(c.gn)}</div>`:''}</div>
+<h2>Ingredients</h2><ul class="list">${c.i.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+<h2>How to make it</h2><p>${esc(c.st)}</p>
+${c.h?`<h2>History</h2><p>${esc(c.h)}</p>`:''}
+${c.r&&SN[c.r]?`<p>Learn about the spirit: <a href="${up}spirits/${slug(c.r)}/">${esc(c.r)} guide</a>.</p>`:''}
+${same.length?`<h2>More ${esc(c.t.toLowerCase())} cocktails</h2><div class="chips">${same.map(y=>`<a class="chip" href="${up}cocktails/${slug(y.n)}/">${esc(y.n)}</a>`).join('')}</div>`:''}
+<p class="muted" style="font-size:14px">Measures in millilitres; sugar syrup means equal parts sugar and water. Please drink responsibly.</p>
+<p><a class="btn" href="${up}cocktails/">All cocktails</a></p>`;
+    pages.push([rel,page({rel,title,desc,keywords:kw,h1:`${c.n}`,crumbs:[['Cocktails','cocktails/'],[c.n,rel]],body,
+      jsonld:{"@type":"Recipe","name":c.n,"description":c.d,"recipeCategory":"Cocktail","keywords":kw.join(', '),"recipeIngredient":c.i,"recipeInstructions":[{"@type":"HowToStep","text":c.st}],"recipeYield":"1 drink","author":{"@type":"Person","name":"Diego Muntoni"},"mainEntityOfPage":SITE+rel}})]);
+   }
+   const rel='cocktails/',up='../';
+   const body=`<p class="lead">${CK.length} classic cocktails, from the Martini and Negroni to the Margarita and Mai Tai: ingredients in ml, method, glass, garnish and a little history for each.</p>
+${cats.map(t=>`<h2>${esc(t)}</h2><div class="grid">${CK.filter(c=>c.t==t).map(c=>`<a class="card" href="${up}cocktails/${slug(c.n)}/"><div class="meta">${esc(c.s)}</div><h3>${esc(c.n)}</h3><p>${esc(c.d)}</p></a>`).join('')}</div>`).join('\n')}
+<p><a class="btn" href="${up}#cocktails">Open the cocktails in the interactive guide</a></p>`;
+   pages.push([rel,page({rel,title:'Classic Cocktail Recipes: Martini, Negroni, Margarita & More | The Wine Reference',desc:cut(`${CK.length} classic cocktail recipes with measures in ml: Martini, Negroni, Old Fashioned, Margarita, Daiquiri, Mai Tai, Espresso Martini and more, with method and history.`,158),
+     keywords:['cocktail recipes','classic cocktails','how to make cocktails','gin cocktails','whisky cocktails','rum cocktails','tequila cocktails'],h1:'Classic cocktails',crumbs:[['Cocktails',rel]],body,jsonld:{"@type":"CollectionPage","name":"Classic cocktails","url":SITE+rel}})]);}
 
   // ---------- STORIES ----------
   for(const x of ST||[]){
