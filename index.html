@@ -695,6 +695,16 @@ const PH={
 "Gamay":["gamay-chateau-de-la-chaize-beaujolais-france.webp", "Carnet de Voyage d'Alex", "alexisribeyrecarnetdevoyage", "Château de la Chaize in Brouilly, Beaujolais, the home of Gamay"],
 "Touriga Nacional":["touriga-nacional-grapes-vine-dao-portugal.webp", "John Cameron", "john_cameron", "Bunch of Touriga Nacional grapes on an old vine in the Dão, Portugal"],
 "Cabernet Franc":["saint-emilion-vineyard-cabernet-franc-bordeaux.webp", "Wojciech Rzepka", "wrzepka", "Spring vines around a small stone building in Saint-Émilion, Bordeaux"],
+"Pinotage":["pinotage-stellenbosch-vineyard-mountains-south-africa.webp", "Mpho Mojapelo", "mpho_mojapelo", "Hilltop vineyard with mountains beyond in Stellenbosch, South Africa, the home of Pinotage"],
+"Grüner Veltliner":["gruner-veltliner-wachau-terraces-danube-austria.webp", "Éric Bolliger", "designbyeb", "Terraced vineyards above the Danube in the Wachau, Austria, Grüner Veltliner country"],
+"Torrontés":["torrontes-cafayate-vineyard-mountains-argentina.webp", "Mauro Mathys", "mauraw", "Young vineyard below arid mountains at Cafayate, Salta, Argentina, home of Torrontés"],
+"Nerello Mascalese":["nerello-mascalese-etna-vineyard-sicily-italy.webp", "Caitlyn Vermeij", "caitlynvermeij", "Vineyard on the slopes of Mount Etna, Sicily, the home of Nerello Mascalese"],
+"Montepulciano":["montepulciano-grapes-offida-marche-italy.webp", "Chris Weiher", "chrisvomradio", "Grapes on the vine framing the town of Offida in Marche, Montepulciano country, Italy"],
+"Primitivo":["primitivo-puglia-harvest-crate-vineyard-italy.webp", "Gabriella Clare Marino", "gabiontheroad", "Harvested white grapes in a crate in a Puglia vineyard, the land of Primitivo, Italy"],
+"Dolcetto":["dolcetto-langhe-vineyards-la-morra-piedmont-italy.webp", "Pix Tresa", "pixtresa", "Morning mist over vineyards at La Morra in the Langhe, Piedmont, Italy, home of Dolcetto"],
+"Pinot Meunier":["pinot-meunier-champagne-vineyard-chavot-france.webp", "Sue Winston", "winniepix", "Vine rows below the church of Chavot in Champagne, France, Pinot Meunier country"],
+"Zweigelt":["zweigelt-vineyard-rows-carnuntum-austria.webp", "Lukáš Kulla", "lukajzz", "Autumn vineyard rows at Edelstal in Carnuntum, Austria, Zweigelt country"],
+"Chasselas":["chasselas-lavaux-terraces-lake-geneva-switzerland.webp", "Razvan Sassu", "razvansassu", "Lavaux vineyard terraces above Lake Geneva, Switzerland, the home of Chasselas"],
 };
 function phx(n){const p=PH[n];if(!p)return"";const q=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));return `<div class="cph"><img src="img/p/${q(p[0])}" alt="${q(p[3]||n)}" loading="lazy" decoding="async" width="600" height="400"><small>Photo: <a href="https://unsplash.com/@${q(p[2])}?utm_source=wine_reference&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">${q(p[1])}</a></small></div>`}
 const G=[
