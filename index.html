@@ -875,7 +875,17 @@ Koshu|W|1|Citrus, white peach, pear|Yamanashi
 Muscadelle|W|2|Honeysuckle, grape, citrus, floral|Bordeaux, Bergerac, Rutherglen
 Treixadura|W|3|Peach, apple, citrus, floral|Ribeiro, Vinho Verde
 Zierfandler|W|4|Orange peel, quince, almond, spice|Thermenregion
-Sercial|W|2|Lemon, citrus peel, almond, walnut|Madeira`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
+Sercial|W|2|Lemon, citrus peel, almond, walnut|Madeira
+Piedirosso|R|2|Red cherry, plum, herbs, smoke|Campania, Vesuvius, Campi Flegrei
+Tinta Barroca|R|4|Blackberry, plum, earth, spice|Douro, Swartland
+Négrette|R|3|Violet, raspberry, liquorice, pepper|Fronton, South West France
+Prokupac|R|3|Sour cherry, raspberry, pepper, herbs|Župa, Toplica, Serbia
+Chambourcin|R|3|Black cherry, plum, herbs, spice|Pennsylvania, Missouri, New South Wales
+Airén|W|2|Melon, apple, citrus|La Mancha, Valdepeñas
+Timorasso|W|3|Pear, citrus, honey, flint|Colli Tortonesi, Piedmont
+Antão Vaz|W|3|Tropical fruit, ripe citrus, apricot|Alentejo
+Roditis|W|2|Lemon, green apple, melon, herbs|Peloponnese, Patras, Attica
+Seyval Blanc|W|1|Green apple, lemon, grass, hay|England, Finger Lakes`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
 // GRAPE DETAILS for the "More detail" panel on grape cards. Key = exact grape name in G. o origin & history, w where it grows,
 // st structure (body, acidity, tannin), y aromas young and aged, a ageing, k also known as, x one extra fact. One grape per line.
 const GD={
