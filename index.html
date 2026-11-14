@@ -725,6 +725,16 @@ const PH={
 "Pinot Blanc":["pinot-blanc-white-grapes-vine-alsace-france.webp", "Armands Brants", "armandsbrants", "White grape bunches on the vine below a castle hill, Alsace, France, Pinot Blanc country"],
 "Carignan":["carignan-old-vines-carcassonne-languedoc-france.webp", "Boudewijn Boer", "boudewijnboer", "Low sun over vineyard rows near Carcassonne, Languedoc, France, Carignan country"],
 "Trebbiano":["trebbiano-radda-in-chianti-vineyard-tuscany-italy.webp", "Rich Martello", "rmarte", "Vineyards, olive trees and cypresses at Radda in Chianti, Tuscany, Italy, Trebbiano country"],
+"Vernaccia":["vernaccia-san-gimignano-towers-grapes-tuscany-italy.webp", "Flo P", "nattyflo", "Grape bunches framing the medieval towers of San Gimignano, Tuscany, Italy, home of Vernaccia"],
+"Tinta Barroca":["tinta-barroca-douro-terraced-vineyards-portugal.webp", "Thimo van Leeuwen", "thimovanleeuwen", "Terraced vineyards and oleander flowers in the Douro Valley, Portugal, home of Tinta Barroca"],
+"Muscadelle":["muscadelle-saint-emilion-vineyard-stone-walls-bordeaux-france.webp", "Wojciech Rzepka", "wrzepka", "Pruned vines and stone walls by a wisteria-covered cottage at Saint-Émilion, Bordeaux, Muscadelle country"],
+"Dornfelder":["dornfelder-pfalz-vineyard-aerial-autumn-germany.webp", "Bernd Dittrich", "hdbernd", "Aerial view of autumn vineyards and a village in the Pfalz, Germany, Dornfelder country"],
+"Kerner":["kerner-wurttemberg-vineyards-weinstadt-germany.webp", "Raphael Giesbrecht", "juragi", "Golden autumn vineyard slopes above Weinstadt, Württemberg, Germany, the birthplace of Kerner"],
+"Scheurebe":["scheurebe-pfalz-winter-vines-manor-germany.webp", "paws and prints", "paws_and_prints", "Pruned winter vines below a hillside manor house in the Pfalz, Germany, Scheurebe country"],
+"Pošip":["posip-green-grapes-vine-dalmatia-croatia.webp", "Alex Block", "alexblock", "Green grape bunch among vine leaves near Dubrovnik, Dalmatia, Croatia, the coast of Pošip"],
+"Arneis":["arneis-piedmont-vineyard-hills-barolo-italy.webp", "Sebastian", "bicio", "Autumn vineyards and hazelnut groves near Barolo, Piedmont, Italy, close to Arneis country"],
+"Malvasia":["malvasia-volcanic-vineyard-pits-canary-islands-spain.webp", "Marian Florinel Condruz", "gottapics", "Vines in volcanic ash pits behind stone walls, Canary Islands, Spain, home of Malvasía Volcánica"],
+"Aligoté":["aligote-burgundy-vines-autumn-beaune-france.webp", "James Lee", "jbl12761", "Autumn vine row with a ripe grape bunch at Beaune, Burgundy, France, Aligoté country"],
 };
 function phx(n){const p=PH[n];if(!p)return"";const q=x=>String(x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));return `<div class="cph"><img src="img/p/${q(p[0])}" alt="${q(p[3]||n)}" loading="lazy" decoding="async" width="600" height="400"><small>Photo: <a href="https://unsplash.com/@${q(p[2])}?utm_source=wine_reference&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">${q(p[1])}</a></small></div>`}
 const G=[
