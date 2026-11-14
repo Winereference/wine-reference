@@ -905,7 +905,17 @@ Airén|W|2|Melon, apple, citrus|La Mancha, Valdepeñas
 Timorasso|W|3|Pear, citrus, honey, flint|Colli Tortonesi, Piedmont
 Antão Vaz|W|3|Tropical fruit, ripe citrus, apricot|Alentejo
 Roditis|W|2|Lemon, green apple, melon, herbs|Peloponnese, Patras, Attica
-Seyval Blanc|W|1|Green apple, lemon, grass, hay|England, Finger Lakes`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
+Seyval Blanc|W|1|Green apple, lemon, grass, hay|England, Finger Lakes
+Trincadeira|R|3|Plum, blackberry, spice, herbs|Alentejo, Douro, Tejo
+Grignolino|R|1|Red cherry, strawberry, white pepper, rose|Asti, Monferrato
+Öküzgözü|R|2|Cherry, raspberry, pomegranate, violet|Elazığ, Eastern Anatolia
+Fer Servadou|R|3|Redcurrant, blackcurrant, green pepper, earth|Marcillac, Gaillac
+Areni|R|3|Sour cherry, red berries, black pepper, herbs|Vayots Dzor, Armenia
+Mauzac|W|2|Green apple, pear, dried apple peel, herbs|Gaillac, Limoux
+Hondarrabi Zuri|W|1|Lemon, green apple, saline, herbs|Getaria, Bizkaia, Basque Country
+Žilavka|W|3|Apricot, pear, almond, herbs|Mostar, Herzegovina
+Juhfark|W|3|Lemon, green apple, smoke, saline|Somló
+Tămâioasă Românească|W|3|Grape, rose, orange blossom, honey|Dealu Mare, Cotnari`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
 // GRAPE DETAILS for the "More detail" panel on grape cards. Key = exact grape name in G. o origin & history, w where it grows,
 // st structure (body, acidity, tannin), y aromas young and aged, a ageing, k also known as, x one extra fact. One grape per line.
 const GD={
