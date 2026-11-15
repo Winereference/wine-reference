@@ -294,7 +294,7 @@ document.addEventListener("keydown",ev=>{if(ev.key==="Escape"&&sh)sh.classList.r
 <h2>Grape Varieties</h2>
 <img class="sbn" src="img/wine-grapes-ripening-on-the-vine.webp" alt="Wine grapes ripening on the vine" loading="lazy" decoding="async" width="1600" height="600">
 <input type="search" id="q" placeholder="Search grapes, flavors or regions…">
-<div class="chips" id="chips"></div>
+<div class="chips" id="chips" hidden></div>
 <div class="favs" id="gfav"></div>
 <details class="card tool" id="gtools"><summary>Grape finder and side-by-side compare</summary>
 <div id="gfind"><label>1. Colour</label><div class="chips"><button type="button" class="chip on" data-fq="c" data-v="Red">Red</button><button type="button" class="chip" data-fq="c" data-v="White">White</button></div>
@@ -2538,7 +2538,7 @@ function apx(r){const a=AP.filter(x=>x.r==r);if(!a.length)return"";return `<deta
 function wlc(r){const n=WL.filter(w=>w.r==r).length;return n?`<p style="margin:12px 0 0;font-size:13px"><a href="#library" data-wlr="${r}" style="color:var(--accent)">${n} wine${n>1?"s":""} from ${r} in The Wine Library →</a></p>`:""}
 let type="All";
 const $=id=>document.getElementById(id);
-$('chips').innerHTML=["All","Red","White","Sparkling","Rosé"].map(t=>`<button class="chip${t=="All"?" on":""}" data-t="${t}">${t}</button>`).join("");
+
 $('chips').onclick=e=>{if(!e.target.dataset.t)return;type=e.target.dataset.t;[...$('chips').children].forEach(c=>c.classList.toggle('on',c===e.target));gl=24;draw()};
 $('q').oninput=()=>{gl=24;draw()};$('gmore').onclick=()=>{gl+=24;draw()};
 function draw(){
