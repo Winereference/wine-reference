@@ -3748,6 +3748,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/wine-library/bodega-bouza-albarino/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/wine-library/bodega-chacra-barda-pinot-noir/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -3926,6 +3932,20 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/wine-library/bodegas-muga-rosado/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/rioja-vineyards-hilltop-ruin-sierra-cantabria-spain.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/wine-library/bodegas-peique-tinto-mencia/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/bierzo-las-medulas-red-rock-landscape-spain.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/wine-library/bodegas-roda-roda-i-blanco/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -4030,6 +4050,12 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/hemel-en-aarde-hermanus-coast-mountains-south-africa.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/wine-library/boutari-naoussa/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/wine-library/bruno-giacosa-barbaresco-asili-riserva/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -4097,6 +4123,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/alto-adige-montiggl-vineyards-autumn-aerial-italy.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/wine-library/cantine-del-notaio-la-firma/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/basilicata-matera-sassi-cathedral-italy.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/cantine-lunae-etichetta-nera-vermentino/</loc>
@@ -4377,6 +4410,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/bordeaux-pomerol-merlot-grapes-on-the-vine-france.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/wine-library/chateau-ksara-blanc-de-blancs/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/bekaa-valley-baalbek-temple-of-bacchus-lebanon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/chateau-ksara-reserve-du-couvent/</loc>
@@ -5744,6 +5784,13 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/hampshire-thatched-cottage-braishfield-test-valley-england.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/wine-library/hatzidakis-assyrtiko-de-mylos/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/santorini-caldera-view-cyclades-greece.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/wine-library/haute-cabriere-pierre-jourdan-brut/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -5770,6 +5817,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/champagne-vineyards-ay-autumn-france.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/wine-library/henriques-and-henriques-15-year-old-verdelho-madeira/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/herdade-do-mouchao-mouchao/</loc>
@@ -5927,6 +5980,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/wine-library/kracher-cuvee-beerenauslese/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/wine-library/krug-grande-cuvee/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -6046,6 +6105,13 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/librandi-ciro-rosso-classico-superiore/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/calabria-countryside-fields-cropani-italy.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/wine-library/librandi-duca-sanfelice-ciro-rosso-classico-superiore-riserva/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -6181,6 +6247,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/burgundy-vineyard-rows-yonne-france.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/wine-library/markus-molitor-haus-klosterberg-riesling/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/mosel-river-loop-vineyards-bernkastel-kues-germany.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/marques-de-alella-clasico/</loc>
@@ -6808,6 +6881,13 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/sussex-seven-sisters-chalk-cliffs-england.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/wine-library/raventos-i-blanc-de-nit/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/penedes-vineyard-el-vendrell-catalonia-spain.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/wine-library/renegade-urban-winery-calvin-white-pinot-noir/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -7006,6 +7086,13 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/douro-valley-terraced-vineyards-pinhao-river-portugal.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/wine-library/szepsy-tokaji-furmint/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/tokaj-town-main-street-hungary.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/wine-library/tabali-talinay-chardonnay/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -7040,6 +7127,13 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/adelaide-hills-gum-trees-farm-track-australia.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/wine-library/tawse-quarry-road-chardonnay/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/niagara-peninsula-red-grapes-vine-canada.webp</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/wine-library/taylors-historic-collection-tawny/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -7052,6 +7146,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/douro-valley-terraced-vineyards-pinhao-river-portugal.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/wine-library/tbilvino-qvevris-saperavi/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/kakheti-vineyard-caucasus-mountains-shakriani-georgia.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/te-mata-elston-chardonnay/</loc>
@@ -7175,6 +7276,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/barossa-valley-gum-tree-hills-tanunda-australia.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/wine-library/torre-dei-beati-rosa-ae/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/abruzzo-mountain-church-hills-italy.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/trimbach-riesling-clos-sainte-hune/</loc>
@@ -7303,6 +7411,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/wine-library/weingut-donnhoff-tonschiefer-riesling-trocken/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/wine-library/weingut-hirtzberger-gruner-veltliner-smaragd-honivogl/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -7331,6 +7445,18 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/rheingau-vineyard-sunset-geisenheim-germany.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/wine-library/weingut-mayer-am-pfarrplatz-wiener-gemischter-satz/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/wine-library/weingut-moric-blaufrankisch/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/wine-library/weingut-prager-riesling-smaragd-achleiten/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -7339,6 +7465,12 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/weingut-wieninger-wiener-riesling/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/wine-library/weingut-wittmann-100-hugel-riesling-trocken/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
