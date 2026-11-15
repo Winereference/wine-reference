@@ -263,6 +263,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/cocktails/batanga/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/cocktails/bellini/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -288,6 +294,12 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/cocktails/brandy-alexander/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/cocktails/brandy-crusta/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -426,6 +438,12 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/cocktails/margarita/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/cocktails/martinez/</loc>
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
