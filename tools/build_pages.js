@@ -303,5 +303,12 @@ ${x.items.map(it=>`<h2>${esc(it.h)}</h2><p>${esc(it.p)}</p><p><a class="btn" hre
 
   const seen=new Set();for(const [rel,html] of pages){if(seen.has(rel))throw new Error('Duplicate page '+rel);seen.add(rel);write(rel,html)}
   console.log('pages written:',pages.length);
+  // RSS feed of the wine stories (feed.xml at the site root, newest 30 published stories)
+  {const td=new Date().toISOString().slice(0,10);const live=(ST||[]).filter(x=>x.d<=td).sort((a,b)=>b.d.localeCompare(a.d)).slice(0,30);
+   const x=t=>String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+   const items=live.map(it=>{const u=SITE+'stories/'+slug(it.id)+'/';return `<item><title>${x(it.t)}</title><link>${u}</link><guid isPermaLink="true">${u}</guid><pubDate>${new Date(it.d+'T07:00:00Z').toUTCString()}</pubDate><category>${x(it.c)}</category><description>${x(it.s)}</description>${it.img?`<enclosure url="${SITE}img/s/${x(it.img[0])}" type="image/webp" length="0"/>`:''}</item>`}).join('\n');
+   fs.writeFileSync(path.join(ROOT,'feed.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>The Wine Reference: wine stories</title><link>${SITE}stories/</link><atom:link href="${SITE}feed.xml" rel="self" type="application/rss+xml"/><description>A new wine story every day by Diego Muntoni: history, people, places and curious facts.</description><language>en-gb</language>${live[0]?`<lastBuildDate>${new Date(live[0].d+'T07:00:00Z').toUTCString()}</lastBuildDate>`:''}\n${items}\n</channel></rss>\n`);
+   console.log('feed.xml:',live.length,'stories');}
+
   execSync('python3 tools/make_sitemap.py',{cwd:ROOT,stdio:'inherit'});
 })().catch(e=>{console.error(e);process.exit(1)});
