@@ -233,6 +233,7 @@ html.big :is(section,header.hero,footer,#home,.hgrid){zoom:1.15}
 .rss{font-size:14px;color:var(--accent)}
 .srp{cursor:pointer;text-align:left;font:inherit;color:inherit}
 #instb{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);font:inherit;color:var(--text);cursor:pointer;padding:14px 20px}
+.gpc input[type=text]{width:100%;max-width:320px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);font:inherit}.gpc .ctab{font-size:13px}.gpc .ctab th{text-transform:none;letter-spacing:0;font-size:13px;width:auto}.gpc .ctab td,.gpc .ctab th{padding:7px 4px}.gpit{margin-left:6px;font-size:13px;color:var(--accent)}
 #insth{font-size:13px;color:var(--muted);padding:10px 20px;margin:0;border-bottom:1px solid var(--line)}
 </style>
 <link rel="manifest" href="manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="The Wine Reference: wine stories" href="https://thewinereference.co.uk/feed.xml">
@@ -547,6 +548,29 @@ const TT=[
 <h2>UK Suppliers</h2>
 <p class="vnote" style="margin:-4px 0 16px">Who imports what: the UK's wine importers and agents, and the producers they represent. Producer lists are checked against each importer's own website; portfolios change, so always confirm with the importer. <span id="sucount"></span></p>
 <div id="sub">
+<details class="card tool gpc" id="gpcalc" open><summary>GP calculator</summary>
+<p class="vnote" style="margin:8px 0 0">Price a wine for your list, or check the GP on a price you already charge. UK VAT at 20%. Everything stays on your device.</p>
+<div class="chips" id="gpm" style="margin-top:12px"><button type="button" class="chip on" data-gm="p">Price my wine</button><button type="button" class="chip" data-gm="c">Check my GP</button></div>
+<div id="gpp">
+<div class="trow"><div><label for="gpn">Wine (optional)</label><input id="gpn" type="text" placeholder="e.g. Chablis, Domaine X" autocomplete="off"></div>
+<div><label for="gpc1">Bottle cost, ex VAT (£)</label><input id="gpc1" type="number" min="0" step="0.01" value="10" inputmode="decimal"></div></div>
+<div class="trow"><div><label for="gpt">Target GP (%)</label><input id="gpt" type="number" min="0" max="95" step="0.5" value="72" inputmode="decimal"></div>
+<div><label for="gpw">Wastage on glasses and carafes (%)</label><input id="gpw" type="number" min="0" max="30" step="0.5" value="5" inputmode="decimal"></div>
+<div><label for="gpr">Round menu prices</label><select id="gpr"><option value="0.5">Up to the next 50p</option><option value="1">Up to the next £1</option><option value="0.1">Up to the next 10p</option><option value="0">Don't round</option></select></div></div>
+<div class="tout" id="gpout" aria-live="polite"></div>
+<div class="chips" style="margin-top:10px"><button type="button" class="chip on" id="gpadd">Add to my wine list</button></div>
+<div id="gplist"></div>
+</div>
+<div id="gpk" hidden>
+<div class="trow"><div><label for="gkc">Bottle cost, ex VAT (£)</label><input id="gkc" type="number" min="0" step="0.01" value="10" inputmode="decimal"></div>
+<div><label for="gks">Serve</label><select id="gks"><option value="750">Bottle (75 cl)</option><option value="500">Carafe (500 ml)</option><option value="250">Glass, 250 ml</option><option value="175" selected>Glass, 175 ml</option><option value="125">Glass, 125 ml</option><option value="75">Taster or Coravin, 75 ml</option></select></div></div>
+<div class="trow"><div><label for="gkp">Menu price, incl. VAT (£)</label><input id="gkp" type="number" min="0" step="0.05" value="11" inputmode="decimal"></div>
+<div><label for="gkt">Target GP (%)</label><input id="gkt" type="number" min="0" max="95" step="0.5" value="72" inputmode="decimal"></div>
+<div><label for="gkw">Wastage (%)</label><input id="gkw" type="number" min="0" max="30" step="0.5" value="5" inputmode="decimal"></div></div>
+<div class="tout" id="gkout" aria-live="polite"></div>
+</div>
+<p class="vnote" style="margin:12px 0 0">GP % = (price ex VAT − cost) ÷ price ex VAT. Glass and carafe costs add your wastage allowance. Remember that a lower GP on a pricier wine can still earn more cash per bottle.</p>
+</details>
 <div class="sb"><input id="suq" type="search" placeholder="Search an importer or a producer, e.g. Bollinger or Torres" aria-label="Search importers and producers" autocomplete="off"><button type="button" class="sbb" data-f="suq" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
 <div id="suw"></div>
 <div class="chips" id="suc" style="margin-top:12px"></div>
@@ -4636,6 +4660,37 @@ if(matchMedia("(display-mode: standalone)").matches&&ib){ib.hidden=true}
 
 /* ---------- Label guide: link glossary terms ---------- */
 document.querySelectorAll("[data-azt]").forEach(a=>{const x=AZM.get(a.dataset.azt.toLowerCase());if(x){a.href="#az/"+x.s}else{a.replaceWith(document.createTextNode(a.textContent))}});
+})();
+</script>
+<script>
+/* ---------- GP calculator (UK Suppliers, trade) ---------- */
+(function(){const $=id=>document.getElementById(id);if(!$("gpcalc"))return;
+const Q=x=>String(x==null?"":x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const GBP=x=>"£"+(Math.round(x*100)/100).toFixed(2),num=(id,d)=>{const v=parseFloat($(id).value);return isFinite(v)?v:d};
+const SV=[["Bottle",750],["Carafe 500 ml",500],["Glass 250 ml",250],["Glass 175 ml",175],["Glass 125 ml",125]];
+const up=(x,s)=>s>0?Math.ceil(x/s-1e-9)*s:x;
+const costOf=(c,ml,w)=>c*ml/750*(ml<750?1+w/100:1);
+function row(c,ml,gp,w,r){const k=costOf(c,ml,w),net=gp<100?k/(1-gp/100):0,price=up(net*1.2,r),n2=price/1.2;return {k,price,gp:n2>0?(n2-k)/n2*100:0,cash:n2-k}}
+let list=LS.get("wr-gp",[]);
+function priceIt(){const c=num("gpc1",0),gp=Math.min(95,Math.max(0,num("gpt",72))),w=num("gpw",0),r=parseFloat($("gpr").value)||0;
+ $("gpout").innerHTML=`<div class="wrap"><table class="ctab"><tr><th>Serve</th><td><b>Cost</b></td><td><b>Price</b></td><td><b>GP</b></td><td><b>Cash</b></td></tr>${SV.map(([n,ml])=>{const x=row(c,ml,gp,w,r);return `<tr><th>${n}</th><td>${GBP(x.k)}</td><td><b>${GBP(x.price)}</b></td><td>${x.gp.toFixed(1)}%</td><td>${GBP(x.cash)}</td></tr>`}).join("")}</table></div>`}
+function drawList(){if(!list.length){$("gplist").innerHTML="";return}
+ const tot=list.reduce((a,x)=>{const n=x.p/1.2;a.n+=n;a.k+=x.c;return a},{n:0,k:0}),avg=tot.n?(tot.n-tot.k)/tot.n*100:0;
+ $("gplist").innerHTML=`<h3 style="font-size:20px;margin:16px 0 6px">My wine list</h3><div class="wrap"><table class="ctab"><tr><th>Wine</th><td><b>Cost</b></td><td><b>Price</b></td><td><b>GP</b></td><td><b>Cash</b></td><td></td></tr>${list.map((x,i)=>{const n=x.p/1.2;return `<tr><th>${Q(x.n)}</th><td>${GBP(x.c)}</td><td>${GBP(x.p)}</td><td>${((n-x.c)/n*100).toFixed(1)}%</td><td>${GBP(n-x.c)}</td><td><button type="button" class="link" data-gpdel="${i}" aria-label="Remove ${Q(x.n)}">✕</button></td></tr>`}).join("")}<tr><th>Average</th><td colspan="2">${list.length} wine${list.length>1?"s":""}</td><td><b>${avg.toFixed(1)}%</b></td><td>${GBP((tot.n-tot.k)/list.length)}</td><td></td></tr></table></div><div class="chips" style="margin-top:8px"><button type="button" class="chip" id="gpclr">Clear the list</button></div>`}
+$("gpadd").onclick=()=>{const c=num("gpc1",0),x=row(c,750,num("gpt",72),0,parseFloat($("gpr").value)||0);if(!c)return;list.push({n:($("gpn").value.trim()||"Wine "+(list.length+1)).slice(0,80),c,p:x.price});LS.set("wr-gp",list);$("gpn").value="";drawList()};
+$("gplist").addEventListener("click",e=>{const d=e.target.closest("[data-gpdel]");if(d){list.splice(+d.dataset.gpdel,1);LS.set("wr-gp",list);drawList()}if(e.target.id==="gpclr"){list=[];LS.set("wr-gp",list);drawList()}});
+function check(){const c=num("gkc",0),ml=+$("gks").value,p=num("gkp",0),t=Math.min(95,Math.max(0,num("gkt",72))),w=num("gkw",0),k=costOf(c,ml,w),n=p/1.2,gp=n>0?(n-k)/n*100:0,need=k/(1-t/100)*1.2;
+ $("gkout").innerHTML=`<div class="bnum"><div><b>${gp.toFixed(1)}%</b>GP now</div><div><b>${GBP(n-k)}</b>cash margin per serve</div><div><b>${GBP(need)}</b>price for ${t}% GP</div></div><p class="vnote" style="margin:6px 0 0">Wine cost per serve: ${GBP(k)} · price ex VAT: ${GBP(n)}.</p>`}
+$("gpm").onclick=e=>{const b=e.target.closest("[data-gm]");if(!b)return;[...$("gpm").children].forEach(x=>x.classList.toggle("on",x===b));$("gpp").hidden=b.dataset.gm!=="p";$("gpk").hidden=b.dataset.gm!=="c"};
+["gpc1","gpt","gpw","gpr"].forEach(id=>{$(id).addEventListener("input",priceIt);$(id).addEventListener("change",priceIt)});
+["gkc","gks","gkp","gkt","gkw"].forEach(id=>{$(id).addEventListener("input",check);$(id).addEventListener("change",check)});
+priceIt();check();drawList();
+/* "Price it" buttons next to producers in the "Who imports it?" box */
+const suw=$("suw");if(suw){const aug=()=>suw.querySelectorAll(".suw p").forEach(p=>{if(p.dataset.gp)return;p.dataset.gp=1;const nm=p.textContent.replace(/\s*→.*$/,"").trim();
+ const b=document.createElement("button");b.type="button";b.className="link gpit";b.textContent="Price it";b.dataset.gpn=nm;b.setAttribute("aria-label","Work out a menu price for "+nm);p.append(" ",b)});
+ new MutationObserver(aug).observe(suw,{childList:true,subtree:true});aug();
+ suw.addEventListener("click",e=>{const b=e.target.closest(".gpit");if(!b)return;const d=$("gpcalc");d.open=true;$("gpm").querySelector('[data-gm="p"]').click();$("gpn").value=b.dataset.gpn;d.scrollIntoView({behavior:"smooth",block:"start"});setTimeout(()=>{$("gpc1").focus();$("gpc1").select()},400)})}
 })();
 </script>
 </body>
