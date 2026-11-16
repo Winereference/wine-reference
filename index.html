@@ -4247,7 +4247,7 @@ const GN=G.filter(x=>x[1]=="Red"||x[1]=="White"),gcol=n=>{const g=G.find(x=>x[0]
 const sameCountry=c=>R.filter(r=>r[1]==c),sameCont=c=>{const r=R.find(x=>x[1]==c);return r?R.filter(x=>x[2]==r[2]):R};
 const regPool=c=>{let p=sameCountry(c).map(x=>x[0]);if(p.length<4)p=sameCont(c).map(x=>x[0]);return p};
 const syn=[];if(has("GD"))for(const n in GD){const k=GD[n].k;if(!k)continue;k.split(/,|;/).map(x=>x.replace(/\(.*?\)/g,"").replace(/\.$/,"").trim()).filter(x=>x&&x.length<25&&!/^(also|in|the)\b/i.test(x)&&!n.toLowerCase().includes(x.toLowerCase())).forEach(x=>syn.push([x,n]))}
-const TEMP=[...document.querySelectorAll("#pairing table tr")].map(tr=>[...tr.querySelectorAll("td")].map(td=>td.textContent.trim())).filter(r=>r.length>=2&&r[0]&&r[1]);
+const TEMP=[...document.querySelectorAll("#serving table tr")].map(tr=>[...tr.querySelectorAll("td")].map(td=>td.textContent.trim())).filter(r=>r.length>=2&&r[0]&&/°C/.test(r[1]));
 const L={g:["#grapes","Read about the grapes"],r:["#regions","Explore wine regions"],l:["#library","Browse the Wine Library"],s:["#spirits","Explore spirits"],p:["#pairing","See food pairings"],a:["#az","Open the A–Z glossary"],h:["#stories/history","Open the wine history timeline"]};
 const col=n=>{const g=G.find(x=>x[0]==n);return g?g[1]:"?"},cols=a=>new Set(a.map(col)),clash=(a,b)=>{for(const c of a)if(b.has(c))return true;return false};
 const Q=(o,l)=>o&&o.o?Object.assign(o,{l:L[l][0],lt:L[l][1]}):null;
