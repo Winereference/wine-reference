@@ -385,6 +385,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/cocktails/el-presidente/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/cocktails/espresso-martini/</loc>
     <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
@@ -404,6 +410,12 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/cocktails/gin-and-tonic/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/cocktails/gin-fizz/</loc>
     <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -518,6 +530,12 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/cocktails/paloma/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/cocktails/paper-plane/</loc>
     <lastmod>2026-11-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
