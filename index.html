@@ -232,6 +232,7 @@ html.big :is(section,header.hero,footer,#home,.hgrid){zoom:1.15}
 .srp{cursor:pointer;text-align:left;font:inherit;color:inherit}
 #instb{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);font:inherit;color:var(--text);cursor:pointer;padding:14px 20px}
 .gpc input[type=text]{width:100%;max-width:320px;padding:9px 10px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);font:inherit}.gpc .ctab{font-size:13px}.gpc .ctab th{text-transform:none;letter-spacing:0;font-size:13px;width:auto}.gpc .ctab td,.gpc .ctab th{padding:7px 4px}.gpit{margin-left:6px;font-size:13px;color:var(--accent)}
+.aw{display:flex;flex-wrap:wrap;gap:18px;align-items:center}.awsvg{width:100%;max-width:340px;margin:0 auto;display:block}.awsvg path{cursor:pointer;transition:opacity .15s}.awsvg path:hover,.awsvg path:focus{opacity:.85;outline:none}.awsvg path.on{stroke:var(--text);stroke-width:2.5}.awout{flex:1 1 240px;min-width:0}
 #insth{font-size:13px;color:var(--muted);padding:10px 20px;margin:0;border-bottom:1px solid var(--line)}
 </style>
 <link rel="manifest" href="manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="The Wine Reference: wine stories" href="https://thewinereference.co.uk/feed.xml">
@@ -438,6 +439,9 @@ document.addEventListener("keydown",ev=>{if(ev.key==="Escape"&&sh)sh.classList.r
 <div class="card" style="margin-top:14px"><h3>Study tips</h3>
 <p>Learn regions with a map, then link each to grapes and styles. Taste with the same grid every time. Quiz in short, frequent sessions. Requirements and exam formats change, so confirm details with the provider.</p></div>
 <div id="st-extra">
+<h3 style="font-size:28px;margin:30px 0 6px" id="aromawheel">Wine aroma wheel</h3>
+<p style="color:var(--muted);margin:0 0 14px;font-size:15px">The main aroma families you meet when tasting. Tap a slice to see which grapes are known for that aroma.</p>
+<div class="card aw" id="awheel"></div>
 <h3 style="font-size:28px;margin:30px 0 6px" id="flashcards">Glossary flashcards</h3>
 <p style="color:var(--muted);margin:0 0 14px;font-size:15px">Revise the A–Z Glossary: tap the card to flip it, then mark it. Your progress is saved on this device.</p>
 <div class="fc card" id="flash"><div class="fcard" id="fccard" role="button" tabindex="0" aria-live="polite"></div><div class="chips"><button type="button" class="chip on" id="fcok">Got it</button><button type="button" class="chip" id="fcag">Again</button><button type="button" class="chip" id="fcrs">Start over</button></div><p class="vnote" id="fcn" style="margin:8px 0 0"></p></div>
@@ -4795,6 +4799,36 @@ const suw=$("suw");if(suw){const aug=()=>suw.querySelectorAll(".suw p").forEach(
  const b=document.createElement("button");b.type="button";b.className="link gpit";b.textContent="Price it";b.dataset.gpn=nm;b.setAttribute("aria-label","Work out a menu price for "+nm);p.append(" ",b)});
  new MutationObserver(aug).observe(suw,{childList:true,subtree:true});aug();
  suw.addEventListener("click",e=>{const b=e.target.closest(".gpit");if(!b)return;const d=$("gpcalc");d.open=true;$("gpm").querySelector('[data-gm="p"]').click();$("gpn").value=b.dataset.gpn;d.scrollIntoView({behavior:"smooth",block:"start"});setTimeout(()=>{$("gpc1").focus();$("gpc1").select()},400)})}
+})();
+</script>
+<script>
+/* ---------- Aroma wheel (Sommelier Study) ---------- */
+(function(){const box=document.getElementById("awheel");if(!box||typeof G==="undefined")return;
+const Q=x=>String(x==null?"":x).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const F=[["Fruit","#b23a48",[["Red fruit",/red (fruit|berr|cherr|currant)|strawberr|raspberr|cranberr|red cherr|sour cherr/i],["Black fruit",/black(berr|currant| cherr|\s?fruit)|blueberr|cassis|plum|mulberr|bramble/i],["Citrus",/citrus|lemon|lime|grapefruit|orange|zest|yuzu/i],["Orchard fruit",/apple|pear|quince/i,"Orchard"],["Stone fruit",/peach|apricot|nectarine/i],["Tropical",/tropical|pineapple|mango|passion|lychee|melon|guava|banana/i],["Dried fruit",/dried|raisin|fig|prune|date|candied/i,"Dried fruit"]]],
+["Floral","#c06c9b",[["Rose",/rose(?!mary)/i],["Violet",/violet/i],["Blossom",/blossom|floral|elderflower|acacia|jasmine|orange flower|honeysuckle/i]]],
+["Herbal","#5f8f4e",[["Fresh herbs",/herb|mint|thyme|sage|fennel|basil/i,"Herbs"],["Grass & green",/grass|green pepper|bell pepper|capsicum|leaf|tomato leaf|nettle|gooseberr/i,"Grassy"],["Eucalyptus",/eucalyptus|menthol/i]]],
+["Spice","#b0702a",[["Black pepper",/pepper(?!corn)|peppery/i],["Sweet spice",/clove|cinnamon|nutmeg|spice|ginger/i],["Liquorice",/liquorice|licorice|anise/i]]],
+["Oak & toast","#8a5a2b",[["Vanilla",/vanilla/i],["Toast & smoke",/toast|smok|char/i,"Smoke"],["Coffee & cocoa",/coffee|mocha|cocoa|chocolate/i,"Coffee"],["Brioche & nuts",/brioche|bread|biscuit|yeast|almond|hazelnut|nut/i,"Brioche"]]],
+["Earth","#6b4f3a",[["Mushroom",/mushroom|truffle|forest floor|undergrowth/i],["Leather & tobacco",/leather|tobacco|cigar|cedar/i,"Leather"],["Earth & game",/earth|game|meaty|savoury|tar/i,"Earthy"]]],
+["Mineral","#4f6d7a",[["Flint & stone",/flint|stone|mineral|chalk|slate|wet stone/i,"Flint"],["Petrol",/petrol|kerosene/i],["Saline",/saline|salt|sea|iodine/i]]]];
+const GDx=typeof GD!=="undefined"?GD:{};
+const skip=/\b(DOC|Sekt|Crémant|Cava|Franciacorta|Cap Classique|English sparkling|Pét-Nat|Prosecco|Champagne|Asti)\b/;
+function grapes(rx){const a=[];G.forEach((g,i)=>{if(skip.test(g[0]))return;const p=rx.test(g[4]),s=!p&&rx.test((GDx[g[0]]||{}).y||"");if(p||s)a.push([p?0:1,i,g[0]])});return a.sort((x,y)=>x[0]-y[0]||x[1]-y[1]).slice(0,12).map(x=>x[2])}
+const W=320,C=W/2,R0=46,R1=98,R2=156,TAU=Math.PI*2,total=F.reduce((n,f)=>n+f[2].length,0);
+const pt=(r,a)=>[(C+r*Math.sin(a)).toFixed(2),(C-r*Math.cos(a)).toFixed(2)];
+const arc=(r1,r2,a1,a2)=>{const L=a2-a1>Math.PI?1:0,p1=pt(r2,a1),p2=pt(r2,a2),p3=pt(r1,a2),p4=pt(r1,a1);return `M${p1}A${r2},${r2} 0 ${L} 1 ${p2}L${p3}A${r1},${r1} 0 ${L} 0 ${p4}Z`};
+const lab=(t,r,a,sz,col)=>{let deg=a*180/Math.PI;const p=pt(r,a);let rot=deg-90;if(deg>180)rot=deg+90;return `<text x="${p[0]}" y="${p[1]}" transform="rotate(${rot.toFixed(1)} ${p[0]} ${p[1]})" text-anchor="middle" dominant-baseline="middle" font-size="${sz}" fill="${col}" pointer-events="none">${Q(t)}</text>`};
+let k=0,svg="";F.forEach((f,fi)=>{const a1=k/total*TAU,a2=(k+f[2].length)/total*TAU;
+ svg+=`<path d="${arc(R0,R1,a1,a2)}" fill="${f[1]}" stroke="var(--bg)" stroke-width="1.5" data-fam="${fi}" tabindex="0" role="button" aria-label="${Q(f[0])}"/>`+lab(f[0]=="Oak & toast"?"Oak":f[0],(R0+R1)/2,(a1+a2)/2,10.5,"#fff");
+ f[2].forEach((x,xi)=>{const b1=(k+xi)/total*TAU,b2=(k+xi+1)/total*TAU;svg+=`<path d="${arc(R1,R2,b1,b2)}" fill="${f[1]}" fill-opacity=".72" stroke="var(--bg)" stroke-width="1.5" data-fam="${fi}" data-aro="${xi}" tabindex="0" role="button" aria-label="${Q(x[0])}"/>`+lab(x[2]||x[0],(R1+R2)/2,(b1+b2)/2,9,"#fff")});k+=f[2].length});
+box.innerHTML=`<svg viewBox="0 0 ${W} ${W}" class="awsvg" role="group" aria-label="Wine aroma wheel">${svg}<circle cx="${C}" cy="${C}" r="${R0-2}" fill="var(--surface)"/><text x="${C}" y="${C}" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="var(--muted)">Tap a slice</text></svg><div class="awout" id="awout" aria-live="polite"><p class="vnote">Tap an aroma on the outer ring to see the grapes known for it, or a family in the middle to see its aromas.</p></div>`;
+const out=document.getElementById("awout");
+function pick(el){const f=F[+el.dataset.fam];box.querySelectorAll("path").forEach(p=>p.classList.toggle("on",p===el));
+ if(el.dataset.aro==null){out.innerHTML=`<h4 style="margin:0 0 6px">${Q(f[0])}</h4><div class="chips">${f[2].map((x,i)=>`<button type="button" class="chip" data-awf="${el.dataset.fam}" data-awa="${i}">${Q(x[0])}</button>`).join("")}</div>`;return}
+ const x=f[2][+el.dataset.aro],g=grapes(x[1]);out.innerHTML=`<h4 style="margin:0 0 6px">${Q(x[0])} <small style="color:var(--muted);font-weight:400">· ${Q(f[0])}</small></h4>${g.length?`<p class="vnote" style="margin:0 0 8px">Grapes known for it (tap to open):</p><div class="chips">${g.map(n=>`<button type="button" class="chip" data-xg="${Q(n)}">${Q(n)}</button>`).join("")}</div>`:`<p class="vnote">This aroma comes more from winemaking or age than from any one grape.</p>`}`}
+box.addEventListener("click",e=>{const p=e.target.closest("path[data-fam]");if(p){pick(p);return}const c=e.target.closest("[data-awa]");if(c){const el=box.querySelector(`path[data-fam="${c.dataset.awf}"][data-aro="${c.dataset.awa}"]`);if(el)pick(el)}});
+box.addEventListener("keydown",e=>{const p=e.target.closest("path[data-fam]");if(p&&(e.key==="Enter"||e.key===" ")){e.preventDefault();pick(p)}});
 })();
 </script>
 </body>
