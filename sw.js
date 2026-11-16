@@ -1,6 +1,6 @@
 // The Wine Reference service worker: lets the site be installed as an app and keeps pages already
 // visited working offline. Pages are fetched fresh when online (network first), so updates appear at once.
-const CACHE = 'wr-v1';
+const CACHE = 'wr-v2';
 const CORE = ['./', 'index.html', 'manifest.webmanifest', 'assets/icon-192.png', 'assets/icon-512.png', 'assets/pages.css'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting()));
