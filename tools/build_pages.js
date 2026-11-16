@@ -24,10 +24,10 @@ async function loadData(){
   const d=await p.evaluate(()=>{const g=n=>{try{return eval(n)}catch(e){return null}};
     const gl=[...document.querySelectorAll('#az dt')].map(dt=>{const dd=dt.nextElementSibling;return [dt.textContent.trim(),dd&&dd.tagName=='DD'?dd.textContent.trim():'']});
     return {R:g('R'),G:g('G'),G0:g('G0').map(x=>x[0]),GD:g('GD'),K:g('K'),SUB:g('SUB'),CI:g('CI'),AP:g('AP'),PH:g('PH'),WL:g('WL'),DP:g('DP'),PC:g('PC'),
-      SPR:g('SPR'),SPB:g('SPB'),SPD:g('SPD')||{},SPH:g('SPH')||{},SPC:g('SPC'),CK:g('CK')||[],ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},gl}});
+      SPR:g('SPR'),SPB:g('SPB'),SPD:g('SPD')||{},SPH:g('SPH')||{},SPC:g('SPC'),CK:g('CK')||[],ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},AS:(window.MONEY||{}).adsense||'',gl}});
   await b.close();return d}
 
-let NL={};
+let NL={},ASID='';
 function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
   const depth=rel.split('/').filter(Boolean).length, up='../'.repeat(depth), url=SITE+rel;
   const og=img?SITE+img:SITE+'img/og-wine-reference-douro-vineyards.jpg';
@@ -56,7 +56,7 @@ function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${up}assets/pages.css">
-<script type="application/ld+json">${JSON.stringify(ld).replace(/</g,'\\u003c')}</script>
+${/^ca-pub-\d+$/.test(ASID)?`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ASID}" crossorigin="anonymous"></script>\n`:''}<script type="application/ld+json">${JSON.stringify(ld).replace(/</g,'\\u003c')}</script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});try{if(localStorage.getItem('wr-consent')==='granted'){gtag('consent','update',{analytics_storage:'granted'});gtag('js',new Date());gtag('config','G-7LNSJRE6G4',{anonymize_ip:true});var t=document.createElement('script');t.async=1;t.src='https://www.googletagmanager.com/gtag/js?id=G-7LNSJRE6G4';document.head.appendChild(t)}}catch(e){}</script>
 </head>
 <body>
@@ -82,7 +82,7 @@ document.getElementById('agn').onclick=function(){document.getElementById('agm')
 function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,html)}
 
 (async()=>{
-  const D=await loadData();NL=D.NL||{};
+  const D=await loadData();NL=D.NL||{};ASID=D.AS||"";
   for(const o of OUT)fs.rmSync(path.join(ROOT,o),{recursive:true,force:true});
   const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;const CK=D.CK||[];const SPD=D.SPD||{},SPH=D.SPH||{};
   const PHf=n=>PH&&PH[n];
