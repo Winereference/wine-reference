@@ -1049,7 +1049,17 @@ Auxerrois|W|3|Ripe apple, melon, honey, almond|Alsace, Luxembourg, Baden
 Ortega|W|3|Peach, elderflower, citrus, spice|England, Rheinhessen, Pfalz
 Albana|W|3|Apricot, peach, almond, honey|Romagna
 Vidiano|W|3|Apricot, peach, herbs, mineral|Crete
-Roter Veltliner|W|3|Citrus, almond, white pepper, nuts|Wagram, Kamptal, Kremstal`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
+Roter Veltliner|W|3|Citrus, almond, white pepper, nuts|Wagram, Kamptal, Kremstal
+Blauer Portugieser|R|2|Red cherry, raspberry, plum, soft spice|Pfalz, Rheinhessen, Villány
+Marzemino|R|2|Black cherry, plum, violet, herbs|Trentino, Lombardy
+Pineau d'Aunis|R|2|Red berries, white pepper, herbs|Coteaux du Loir, Touraine, Anjou
+Tinta Negra|R|4|Dried fig, caramel, walnut, orange peel|Madeira
+Limnio|R|3|Red cherry, bay leaf, herbs, spice|Lemnos, Chalkidiki, Mount Athos
+Xynisteri|W|2|Lemon, green apple, white peach, mineral|Cyprus
+Jacquère|W|1|Lemon, green apple, white flowers, flint|Savoie
+Inzolia|W|2|Citrus, almond, nuts, herbs|Sicily, Maremma
+Kisi|W|3|Pear, apricot, walnut, orange peel|Kakheti
+Neuburger|W|3|Almond, nuts, pear, bread|Thermenregion, Wachau, Leithaberg`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
 // GRAPE DETAILS for the "More detail" panel on grape cards. Key = exact grape name in G. o origin & history, w where it grows,
 // st structure (body, acidity, tannin), y aromas young and aged, a ageing, k also known as, x one extra fact. One grape per line.
 const GD={
