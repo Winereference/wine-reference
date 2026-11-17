@@ -37,6 +37,10 @@ function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="${up}assets/favicon-96.png" sizes="96x96" type="image/png">
+<link rel="icon" href="${up}assets/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="icon" href="${up}assets/icon-192.png" sizes="192x192" type="image/png">
 <link rel="icon" href="${up}assets/icon.svg" type="image/svg+xml"><link rel="icon" href="${up}assets/favicon-32.png" sizes="32x32" type="image/png"><link rel="apple-touch-icon" href="${up}assets/apple-touch-icon.png"><meta name="theme-color" content="#7a1f3d">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title>
