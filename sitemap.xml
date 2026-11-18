@@ -819,6 +819,12 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/bacchus-grape-rheinhessen-vineyard-sunrise-germany.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/grapes/baco-noir/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/grapes/baga/</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -1743,6 +1749,12 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/roter-veltliner-grape-wachau-weissenkirchen-vineyard.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/grapes/rotgipfler/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/grapes/roussanne/</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
@@ -1802,6 +1814,12 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/schioppettino/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/grapes/sciaccarellu/</loc>
     <lastmod>2026-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -3724,6 +3742,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/s/phylloxera-crisis-vineyard-rows-vine-trunks.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/stories/port-and-stilton-why-britain-pairs-them-at-christmas/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/s/port-and-stilton-blue-cheese-board-red-wine-glasses.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/stories/speyer-wine-bottle-oldest-wine-in-the-world/</loc>
