@@ -199,6 +199,8 @@ section.lkd>*:not(h2):not(.gate){display:none!important}
 </style>
 <style>
 /* SUGGESTIONS PACK 2026-11-15 */
+/* Nearby regions (suggestion 2026-11-14-3) */
+.nbr{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line)}.nbr .chip small{color:var(--muted);font-size:11px;margin-left:2px}.nbr .chip{cursor:pointer}.nbr .chips{margin-bottom:0}
 /* Sparkling sweetness scale (suggestion 2026-11-13-5) */
 .ss{display:grid;grid-template-columns:minmax(118px,160px) 1fr;gap:4px 12px;align-items:center;font-size:14px;padding:16px}
 .ss .ssax{display:contents}
@@ -4903,7 +4905,16 @@ function augGrapes(){const grid=$("grid");if(!grid)return;grid.querySelectorAll(
  const p=P[n];if(p)h.insertAdjacentHTML("afterend",`<p class="pron">Say it: <i>${Q(p[0])}</i><button type="button" data-say="${Q(n)}" data-lang="${p[1]}" aria-label="Hear how to say ${Q(n)}">🔊 Listen</button></p>`);
  const k=(GDx[n]||{}).k;if(k){const m=c.querySelector(".meta");if(m)m.insertAdjacentHTML("afterend",`<p class="aka"><b>Also called:</b> ${Q(k)}</p>`)}
  const s=similar(n);if(s.length){const d=c.querySelector("details")||c.lastElementChild;const html=`<div class="sim"><b>If you like ${Q(n)}, try…</b><div class="chips">${s.map(x=>`<button type="button" class="chip" data-xg="${Q(x)}">${Q(x)}</button>`).join("")}</div></div>`;if(d&&d.tagName=="DETAILS")d.insertAdjacentHTML("beforebegin",html);else c.insertAdjacentHTML("beforeend",html)}})}
-function augRegions(){const b=$("rbody");if(!b)return;const RN=new Set((typeof R!=="undefined"?R:[]).map(r=>r[0]));b.querySelectorAll(".card").forEach(c=>{if(c.dataset.aug)return;const h=c.querySelector("h3");if(!h)return;const n=h.textContent.trim();if(!RN.has(n))return;c.dataset.aug=1;h.insertAdjacentHTML("beforeend",favBtn("r",n))})}
+function augRegions(){const b=$("rbody");if(!b)return;const RN=new Set((typeof R!=="undefined"?R:[]).map(r=>r[0]));b.querySelectorAll(".card").forEach(c=>{if(c.dataset.aug)return;const h=c.querySelector("h3");if(!h)return;const n=h.textContent.trim();if(!RN.has(n))return;c.dataset.aug=1;h.insertAdjacentHTML("beforeend",favBtn("r",n));
+ if(c.querySelector(".cshr")){const nb=nearby(n);if(nb.length)c.insertAdjacentHTML("beforeend",`<div class="sim nbr"><b>Nearby regions to explore</b><div class="chips">${nb.map(x=>`<button type="button" class="chip" data-xr="${Q(x[0])}" aria-label="Open ${Q(x[0])}${x[1]!=null?", about "+x[1]+" km away":""}">${Q(x[0])}${x[1]!=null?` <small>${x[1]} km</small>`:""}</button>`).join("")}</div></div>`)}})}
+/* Nearby regions (suggestion 2026-11-14-3): same country first, nearest by LL; regions without coordinates (Canary Islands) prefer each other, then list order */
+function nearby(n){const RR=typeof R!=="undefined"?R:[],L=typeof LL!=="undefined"?LL:{},g=RR.find(r=>r[0]===n);if(!g)return[];
+ const km=(a,b)=>{const r=Math.PI/180,x=Math.sin((b[0]-a[0])*r/2)**2+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin((b[1]-a[1])*r/2)**2;return Math.round(12742*Math.asin(Math.sqrt(x)))};
+ const me=L[n],same=RR.filter(r=>r[1]===g[1]&&r[0]!==n);let out;
+ if(me){const wl=same.filter(r=>L[r[0]]).map(r=>[r[0],km(me,L[r[0]])]).sort((a,b)=>a[1]-b[1]);out=wl.concat(same.filter(r=>!L[r[0]]).map(r=>[r[0],null]));
+  if(out.length<2){const far=RR.filter(r=>r[1]!==g[1]&&L[r[0]]).map(r=>[r[0],km(me,L[r[0]])]).filter(x=>x[1]<=600).sort((a,b)=>a[1]-b[1]);out=out.concat(far)}}
+ else{const all=RR.filter(r=>r[1]===g[1]);const k=all.indexOf(g);out=all.map((r,j)=>[r,(L[r[0]]?1000:0)+Math.abs(j-k)]).filter(x=>x[0]!==g).sort((a,b)=>a[1]-b[1]).map(x=>[x[0][0],null])}
+ return out.slice(0,3)}
 document.addEventListener("click",e=>{const s=e.target.closest("[data-say]");if(s){e.preventDefault();say(s.dataset.say,s.dataset.lang)}});
 [["grid",augGrapes],["rbody",augRegions]].forEach(([id,f])=>{const el=$(id);if(el){new MutationObserver(f).observe(el,{childList:true,subtree:true});f()}});
 favStrips();
