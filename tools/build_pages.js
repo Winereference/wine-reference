@@ -23,7 +23,7 @@ async function loadData(){
   await p.goto('file://'+path.join(ROOT,'index.html'));await p.waitForTimeout(500);
   const d=await p.evaluate(()=>{const g=n=>{try{return eval(n)}catch(e){return null}};
     const gl=[...document.querySelectorAll('#az dt')].map(dt=>{const dd=dt.nextElementSibling;return [dt.textContent.trim(),dd&&dd.tagName=='DD'?dd.textContent.trim():'']});
-    return {R:g('R'),G:g('G'),G0:g('G0').map(x=>x[0]),GD:g('GD'),K:g('K'),SUB:g('SUB'),CI:g('CI'),AP:g('AP'),PH:g('PH'),WL:g('WL'),DP:g('DP'),PC:g('PC'),
+    return {E:g('E')||{},R:g('R'),G:g('G'),G0:g('G0').map(x=>x[0]),GD:g('GD'),K:g('K'),SUB:g('SUB'),CI:g('CI'),AP:g('AP'),PH:g('PH'),WL:g('WL'),DP:g('DP'),PC:g('PC'),
       SPR:g('SPR'),SPB:g('SPB'),SPD:g('SPD')||{},SPH:g('SPH')||{},SPC:g('SPC'),CK:g('CK')||[],ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},AS:(window.MONEY||{}).adsense||'',gl}});
   await b.close();return d}
 
@@ -101,6 +101,15 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
   const wineList=(ws,up)=>`<div class="grid">${ws.map(w=>`<div class="card"><div class="meta">${esc(w.s)} · ${esc(w.c)}${w.src=='oxo'?' · <span class="ds">Diego\'s Selection</span>':''}</div><h3>${wlink(w,up)}</h3><p class="muted">${rlink(w.r,up)}${w.a&&w.a!=w.r?' · '+esc(w.a):''} · ${w.g.map(x=>glink(x,up)).join(', ')}</p><p>${esc(w.n)}</p>${w.f?`<p><b>Food:</b> ${esc(w.f)}</p>`:''}</div>`).join('')}</div>`;
   const photo=(n,up,cls)=>{const p=PHf(n);return p?`<img class="hero${cls?' '+cls:''}" src="${up}img/p/${esc(p[0])}" alt="${esc(p[3]||n)}" width="600" height="400"><p class="credit">Photo: <a href="https://unsplash.com/@${esc(p[2])}?utm_source=wine_reference&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">${esc(p[1])}</a> on Unsplash</p>`:''};
   const pages=[];
+  // ---- shared helpers for richer pages ----
+  const Ed=(D.E||{});
+  const GR={};G.forEach(g=>GR[g[0]]=g);
+  const STv=(ST||[]).filter(x=>x.d<=new Date().toISOString().slice(0,10));
+  const storiesAbout=t=>{const re=new RegExp('\\b'+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i');return STv.filter(x=>re.test(x.t+' '+x.s+' '+(x.b||[]).join(' '))).slice(0,4)};
+  const storyChips=(xs,up)=>`<div class="chips">${xs.map(x=>`<a class="chip" href="${up}stories/${x.id}/">${esc(x.t)}</a>`).join('')}</div>`;
+  const dishesFor=names=>{const set=new Set(names);return (DP||[]).filter(x=>(x.g||[]).some(y=>set.has(gfind(y))))};
+  const dishList=(xs,up)=>`<ul class="list">${xs.map(x=>`<li><a href="${up}food-pairing/#${slug(x.c)}"><b>${esc(x.d)}</b></a>${x.n?`: ${esc(x.n)}`:''}</li>`).join('')}</ul>`;
+  const grapeLine=(n,up)=>{const g=GR[n];if(!g)return '';return `<li><a href="${up}grapes/${GS[n]}/"><b>${esc(n)}</b></a> (${esc(String(g[1]).toLowerCase())}): ${esc(String(g[4]||'').toLowerCase())}${g[5]?`. Best known in ${esc(g[5])}`:''}.</li>`};
 
   // ---------- GRAPES ----------
   const typeWord=t=>({Red:'red grape',White:'white grape',Sparkling:'sparkling wine style',Rosé:'rosé style'}[t]||'wine style');
@@ -121,6 +130,9 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
 ${sec.map(x=>`<h2>${esc(x[0])}</h2><p>${esc(x[1])}</p>`).join('\n')}
 ${regs.length?`<h2>Wine regions for ${esc(n)}</h2><div class="chips">${regs.map(r=>`<a class="chip" href="${up}regions/${RS[r[0]]}/">${esc(r[0])}</a>`).join('')}</div>`:''}
 ${ws.length?`<h2>${esc(n)} wines to try</h2><p class="muted">Real bottles from The Wine Library.</p>${wineList(ws,up)}`:''}
+${(()=>{const dp=dishesFor([n]).slice(0,8);return dp.length?`<h2>Food to pair with ${esc(n)}</h2>${dishList(dp,up)}`:''})()}
+${(()=>{const ap=(AP||[]).filter(a=>(a.g||[]).some(x=>gfind(x)==n)).slice(0,14);return ap.length?`<h2>Appellations that use ${esc(n)}</h2><ul class="list">${ap.map(a=>`<li><b>${esc(a.n)}</b> ${esc(a.t||'')} · ${rlink(a.r,up)}${a.s?` · ${esc(a.s)}`:''}</li>`).join('')}</ul>`:''})()}
+${(()=>{const st=storiesAbout(n);return st.length?`<h2>Wine stories about ${esc(n)}</h2>${storyChips(st,up)}`:''})()}
 <h2>Similar ${t=='Red'||t=='White'?t.toLowerCase()+' grapes':'styles'}</h2><div class="chips">${rel6.map(x=>`<a class="chip" href="${up}grapes/${GS[x[0]]}/">${esc(x[0])}</a>`).join('')}</div>
 <p><a class="btn" href="${up}#grapes">Explore all grapes in the interactive guide</a></p>`;
     pages.push([rel,page({rel,title,desc,keywords:kw,h1:isGrape?`${n} grape`:n,crumbs:[['Grapes','grapes/'],[n,rel]],body:bodyH,img:PHf(n)?'img/p/'+PHf(n)[0]:null,
@@ -148,9 +160,15 @@ ${types.map(t=>`<h2>${esc(t)} ${t=='Red'||t=='White'?'grapes':'styles'} (${by(t)
     const body=`${photo(n,up)}<p class="meta">${esc(c)} · ${esc(cont)}</p><p class="lead">${esc(ds)}.</p>
 ${CI&&CI[c]?`<p class="muted">${esc(CI[c])}</p>`:''}
 <div class="facts"><div><b>Country</b>${esc(c)}</div><div><b>Key grapes</b>${gr.split(',').map(x=>glink(x,up)).join(', ')}</div>${sub.length?`<div><b>Subregions</b>${esc(sub.join(', '))}</div>`:''}</div>
+${Ed[n]&&Ed[n][0]?`<h2>Climate and soil</h2><p>${esc(Ed[n][0])}</p>`:''}
+${Ed[n]&&Ed[n][1]?`<h2>Key areas and appellations</h2><p>${esc(Ed[n][1])}</p>`:''}
+${Ed[n]&&Ed[n][2]?`<h2>Good to know</h2><p>${esc(Ed[n][2])}</p>`:''}
+${(()=>{const gs=uniq(gr.split(',').map(x=>gfind(x)).filter(Boolean));return gs.length?`<h2>The grapes of ${esc(n)}</h2><ul class="list">${gs.map(x=>grapeLine(x,up)).join('')}</ul>`:''})()}
 ${prod.length?`<h2>Notable producers in ${esc(n)}</h2><ul class="list">${prod.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>`:''}
 ${ap.length?`<h2>Official appellations</h2><div class="tbl"><table><tr><th>Appellation</th><th>Status</th><th>Style</th><th>Grapes</th></tr>${ap.map(a=>`<tr><td><b>${esc(a.n)}</b>${a.y?` <span class="muted">(${esc(a.y)})</span>`:''}${a.d?`<br><span class="muted" style="font-size:14px">${esc(a.d)}</span>`:''}</td><td>${esc(a.t)}</td><td>${esc(a.s)}</td><td>${(a.g||[]).map(x=>glink(x,up)).join(', ')}</td></tr>`).join('')}</table></div>`:''}
 ${ws.length?`<h2>${esc(n)} wines to try</h2>${wineList(ws,up)}`:''}
+${(()=>{const gs=uniq(gr.split(',').map(x=>gfind(x)).filter(Boolean));const dp=dishesFor(gs).slice(0,6);return dp.length?`<h2>Food to try with ${esc(n)} wines</h2>${dishList(dp,up)}`:''})()}
+${(()=>{const st=storiesAbout(n);return st.length?`<h2>Wine stories about ${esc(n)}</h2>${storyChips(st,up)}`:''})()}
 ${sp.length?`<h2>Spirits from ${esc(n)}</h2><div class="chips">${sp.map(x=>`<a class="chip" href="${up}spirits/${slug(x.n)}/">${esc(x.s)}</a>`).join('')}</div>`:''}
 ${same.length?`<h2>More wine regions in ${esc(c)}</h2><div class="chips">${same.map(x=>`<a class="chip" href="${up}regions/${RS[x[0]]}/">${esc(x[0])}</a>`).join('')}</div>`:''}
 <p><a class="btn" href="${up}#regions">See ${esc(n)} on the wine map</a></p>`;
@@ -269,6 +287,10 @@ ${cs.map(c=>`<h2 id="${slug(c)}">${esc(c)}</h2>${wineList(WL.filter(w=>w.c==c),u
 <p class="lead">${esc(w.n)}</p>
 <div class="facts"><div><b>Producer</b>${esc(w.p)}</div><div><b>Region</b>${rlink(w.r,up)}</div>${w.a&&w.a!=w.r?`<div><b>Appellation</b>${esc(w.a)}</div>`:''}<div><b>Country</b>${esc(w.c)}</div><div><b>Style</b>${esc(w.s)}</div><div><b>Grapes</b>${gr}</div>${w.f?`<div><b>Food match</b>${esc(w.f)}</div>`:''}</div>
 ${ds?`<p class="muted">Diego's Selection: a wine Diego Muntoni pours as head of bars and beverage.</p>`:''}
+${(()=>{const r=R.find(x=>x[0]==w.r);if(!r)return '';const e=Ed[w.r]||[];return `<h2>About ${esc(w.r)}</h2><p>${esc(r[4])}.${e[0]?' '+esc(e[0]):''}</p><p>${rlink(w.r,up)}: key grapes ${esc(r[3])}.</p>`})()}
+${(()=>{const gs=uniq((w.g||[]).map(x=>gfind(x)).filter(Boolean));return gs.length?`<h2>The ${gs.length>1?'grapes':'grape'}</h2><ul class="list">${gs.map(x=>grapeLine(x,up)).join('')}</ul>`:''})()}
+${(()=>{const gs=uniq((w.g||[]).map(x=>gfind(x)).filter(Boolean));const dp=dishesFor(gs).slice(0,5);return dp.length?`<h2>More food ideas</h2>${dishList(dp,up)}`:''})()}
+${(()=>{const g0=gfind((w.g||[])[0]||'');if(!g0)return '';const o=WL.filter(x=>x!==w&&x.r!=w.r&&(x.g||[]).some(y=>gfind(y)==g0)).slice(0,4);return o.length?`<h2>Other ${esc(g0)} wines to compare</h2>${wineList(o,up)}`:''})()}
 <h2>Where to buy</h2><div class="chips"><a class="chip" href="https://www.wine-searcher.com/find/${slug(nm).replace(/-/g,'+')}/1/uk" target="_blank" rel="noopener">Compare UK prices (Wine-Searcher)</a><a class="chip" href="https://www.google.com/search?tbm=shop&q=${q}" target="_blank" rel="noopener">Google Shopping</a><a class="chip" href="https://www.vivino.com/search/wines?q=${q}" target="_blank" rel="noopener">Vivino</a></div>
 ${more.length?`<h2>More wines from ${esc(w.r)}</h2>${wineList(more,up)}`:''}
 <p><a class="btn" href="${up}#library/w/${q}">Open in the interactive Wine Library</a></p>`;
