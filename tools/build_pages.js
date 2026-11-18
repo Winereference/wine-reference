@@ -273,7 +273,7 @@ ${ds?`<p class="muted">Diego's Selection: a wine Diego Muntoni pours as head of 
 ${more.length?`<h2>More wines from ${esc(w.r)}</h2>${wineList(more,up)}`:''}
 <p><a class="btn" href="${up}#library/w/${q}">Open in the interactive Wine Library</a></p>`;
     pages.push([rel,page({rel,title,desc,keywords:uniq([nm,`${w.p} wine`,`${w.w}`,`${w.r} wine`,`${w.g[0]} wine`,`${w.c} wine`,'wine recommendation']),h1:nm,crumbs:[['Wine Library','wine-library/'],[nm,rel]],body,img:PHf(w.r)?'img/p/'+PHf(w.r)[0]:null,
-      jsonld:{"@type":"Product","name":nm,"brand":{"@type":"Brand","name":w.p},"category":`${w.s} wine`,"description":desc,"url":SITE+rel,...(PHf(w.r)?{"image":SITE+'img/p/'+PHf(w.r)[0]}:{})}})]);
+      jsonld:{"@type":"Article","headline":nm,"description":desc,"author":{"@type":"Person","name":"Diego Muntoni","jobTitle":"Head of Bars and Beverage"},"about":{"@type":"Thing","name":nm,"description":`${w.s} wine by ${w.p}, ${w.r}, ${w.c}`},"mainEntityOfPage":SITE+rel,"url":SITE+rel,...(PHf(w.r)?{"image":SITE+'img/p/'+PHf(w.r)[0]}:{})}})]);
   }
 
   // ---------- FOOD PAIRING ----------
