@@ -199,6 +199,7 @@ section.lkd>*:not(h2):not(.gate){display:none!important}
 </style>
 <style>
 /* SUGGESTIONS PACK 2026-11-15 */
+.qzr .qzsh{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px}.qzr .qzsh .shb{margin:0}
 /* Nearby regions (suggestion 2026-11-14-3) */
 .nbr{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line)}.nbr .chip small{color:var(--muted);font-size:11px;margin-left:2px}.nbr .chip{cursor:pointer}.nbr .chips{margin-bottom:0}
 /* Sparkling sweetness scale (suggestion 2026-11-13-5) */
@@ -4590,7 +4591,7 @@ bar();prog.querySelector("span").textContent=`Question ${asked} of ${N}`;
 $("qzm").innerHTML=(ok?"Correct! ":`Not quite: it's ${q(x.a)}. `)+(x.l==self?"":`<a href="${x.l}">${x.lt} →</a>`);
 $("qzn").textContent=asked>=N?"See your Reward Score 🥂":"Next question";$("qzn").hidden=false}}
 function finish(){const r=RANKS.find(x=>score>=x[0]),won=score>=PASS;show(true);
-res.innerHTML=`${won?`<div class="cp" aria-hidden="true">${BOTTLE}<div class="cp-burst"></div></div>`:""}<small>Your Reward Score</small><div class="qzs"><b>${score}</b><span>/ ${N}</span></div><h3>${q(r[1])}</h3><p>${q(r[2])}</p><button type="button" class="chip on qza">${won?"Play again":"Try again"}</button>`;
+res.innerHTML=`${won?`<div class="cp" aria-hidden="true">${BOTTLE}<div class="cp-burst"></div></div>`:""}<small>Your Reward Score</small><div class="qzs"><b>${score}</b><span>/ ${N}</span></div><h3>${q(r[1])}</h3><p>${q(r[2])}</p><div class="qzsh"><button type="button" class="chip on qza">${won?"Play again":"Try again"}</button>${window.wrShareBtn?wrShareBtn(`I scored ${score}/${N} on the ${label} at The Wine Reference (${r[1]}). Can you beat me?`,WRB+(self&&self!="#home"?self:""),"Share my score"):""}</div>`;
 res.querySelector(".qza").onclick=()=>{score=0;asked=0;seen=new Set();show(false);next();el.scrollIntoView({behavior:"smooth",block:"start"})};
 if(!won){res.scrollIntoView({behavior:"smooth",block:"center"});return}
 const burst=res.querySelector(".cp-burst"),cols=["#d4af37","#f3e0a0","#7a1f3d","#e08aa6","#ffffff","#c9a227"],n=18+score*4;
