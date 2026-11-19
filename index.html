@@ -1148,7 +1148,10 @@ Prieto Picudo|R|3|Red cherry, plum, black pepper, herbs|Tierra de León, Castill
 Muscat Bailey A|R|2|Strawberry, grape, candy, red berries|Yamanashi, Nagano, Niigata
 Sciaccarellu|R|2|Red berries, pepper, garrigue, smoke|Ajaccio, Sartène, Calvi
 Rotgipfler|W|4|Ripe pear, quince, spice, almond|Thermenregion, Gumpoldskirchen
-Baco Noir|R|3|Blackberry, plum, smoke, earthy|Ontario, Nova Scotia, New York`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
+Baco Noir|R|3|Blackberry, plum, smoke, earthy|Ontario, Nova Scotia, New York
+Ciliegiolo|R|2|Cherry, red plum, violet, spice|Tuscany, Umbria, Liguria
+Robola|W|3|Lemon, green apple, flint, saline|Kefalonia
+Altesse|W|3|Bergamot, quince, almond, honey|Savoie, Bugey`.split("\n").forEach((l,i)=>{const[n,t,b,f,r]=l.split("|"),red=t=="R";G.push([n,red?"Red":"White",+b,red?`hsl(${340+(i*7)%30} 55% ${22+(i*5)%20}%)`:`hsl(${48+(i*9)%20} 60% ${70+(i*3)%15}%)`,f,r,""])});
 // GRAPE DETAILS for the "More detail" panel on grape cards. Key = exact grape name in G. o origin & history, w where it grows,
 // st structure (body, acidity, tannin), y aromas young and aged, a ageing, k also known as, x one extra fact. One grape per line.
 const GD={
