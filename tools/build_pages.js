@@ -108,7 +108,8 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
   const storiesAbout=t=>{const re=new RegExp('\\b'+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i');return STv.filter(x=>re.test(x.t+' '+x.s+' '+(x.b||[]).join(' '))).slice(0,4)};
   const storyChips=(xs,up)=>`<div class="chips">${xs.map(x=>`<a class="chip" href="${up}stories/${x.id}/">${esc(x.t)}</a>`).join('')}</div>`;
   const dishesFor=names=>{const set=new Set(names);return (DP||[]).filter(x=>(x.g||[]).some(y=>set.has(gfind(y))))};
-  const dishList=(xs,up)=>`<ul class="list">${xs.map(x=>`<li><a href="${up}food-pairing/#${slug(x.c)}"><b>${esc(x.d)}</b></a>${x.n?`: ${esc(x.n)}`:''}</li>`).join('')}</ul>`;
+  const DSL=new Map();{const used=new Set();for(const x of (DP||[])){let b=slug(x.d)||'dish',k=b,i=2;while(used.has(k))k=b+'-'+(i++);used.add(k);DSL.set(x,k)}}
+  const dishList=(xs,up)=>`<ul class="list">${xs.map(x=>`<li><a href="${up}food-pairing/${DSL.get(x)}/"><b>${esc(x.d)}</b></a>${x.n?`: ${esc(x.n)}`:''}</li>`).join('')}</ul>`;
   const grapeLine=(n,up)=>{const g=GR[n];if(!g)return '';return `<li><a href="${up}grapes/${GS[n]}/"><b>${esc(n)}</b></a> (${esc(String(g[1]).toLowerCase())}): ${esc(String(g[4]||'').toLowerCase())}${g[5]?`. Best known in ${esc(g[5])}`:''}.</li>`};
 
   // ---------- GRAPES ----------
@@ -298,10 +299,33 @@ ${more.length?`<h2>More wines from ${esc(w.r)}</h2>${wineList(more,up)}`:''}
       jsonld:{"@type":"Article","headline":nm,"description":desc,"author":{"@type":"Person","name":"Diego Muntoni","jobTitle":"Head of Bars and Beverage"},"about":{"@type":"Thing","name":nm,"description":`${w.s} wine by ${w.p}, ${w.r}, ${w.c}`},"mainEntityOfPage":SITE+rel,"url":SITE+rel,...(PHf(w.r)?{"image":SITE+'img/p/'+PHf(w.r)[0]}:{})}})]);
   }
 
+  // ---------- FOOD PAIRING: one page per dish ----------
+  for(const x of (DP||[])){
+    const up='../../',rel=`food-pairing/${DSL.get(x)}/`;
+    const gs=uniq((x.g||[]).map(y=>gfind(y)).filter(Boolean));
+    const findW=b=>WL.find(w=>w.p.toLowerCase()==String(b[0]).toLowerCase()&&w.w.toLowerCase()==String(b[1]).toLowerCase());
+    const bottles=(x.b||[]).map(b=>{const w=findW(b);return `<li>${w?wlink(w,up):`<b>${esc(b[0])}</b> ${esc(b[1])}`}${b[2]?` <span class="muted">(${esc(b[2])})</span>`:''}</li>`}).join('');
+    const lib=WL.filter(w=>(w.g||[]).some(y=>gs.includes(gfind(y)))).filter(w=>!(x.b||[]).some(b=>findW(b)===w)).slice(0,4);
+    const sameCat=(DP||[]).filter(y=>y!==x&&y.c==x.c).slice(0,12);
+    const gnames=(x.g||[]).map(y=>y.trim());
+    const tc=String(x.d).replace(/(^|[\s(-])([a-zà-ÿ])/g,(m,a,b)=>a+b.toUpperCase()).replace(/\b(And|With|Of|In|On|The|A|Au|Al|Alla|à|La|Le|De|Di)\b/g,(m,w,o)=>o?w.toLowerCase():w);const title=T(`What Wine Goes With ${tc}? Best Pairings`);
+    const desc=cut(`What wine to drink with ${x.d}: ${gnames.join(', ')}. ${x.n||''} Bottles to try and a recipe, from a wine professional.`,158);
+    const kw=uniq([`what wine goes with ${x.d.toLowerCase()}`,`wine with ${x.d.toLowerCase()}`,`${x.d.toLowerCase()} wine pairing`,`best wine for ${x.d.toLowerCase()}`,...gnames.map(g=>`${g} food pairing`),'food and wine pairing']);
+    const body=`<p class="meta">${esc(x.c)}</p>
+<p class="lead"><b>Best wines for ${esc(x.d.toLowerCase())}:</b> ${gnames.map(g=>glink(g,up)).join(', ')}.${x.n?` ${esc(x.n)}`:''}</p>
+${gs.length?`<h2>Why these grapes work</h2><ul class="list">${gs.map(g=>grapeLine(g,up)).join('')}</ul>`:''}
+${bottles?`<h2>Bottles to try with ${esc(x.d.toLowerCase())}</h2><ul class="list">${bottles}</ul>`:''}
+${x.r?`<h2>Recipe</h2><p><a href="${esc(x.r[1])}" target="_blank" rel="noopener">${esc(x.r[0])}</a>${x.r[2]?` <span class="muted">(${esc(x.r[2])})</span>`:''}</p>`:''}
+${lib.length?`<h2>More wines from The Wine Library that suit it</h2>${wineList(lib,up)}`:''}
+${sameCat.length?`<h2>More ${esc(x.c.toLowerCase())} pairings</h2><div class="chips">${sameCat.map(y=>`<a class="chip" href="${up}food-pairing/${DSL.get(y)}/">${esc(y.d)}</a>`).join('')}</div>`:''}
+<p><a class="btn" href="${up}#pairing">Use the interactive food and wine matcher</a></p>`;
+    pages.push([rel,page({rel,title,desc,keywords:kw,h1:`What wine goes with ${x.d.toLowerCase()}?`,crumbs:[['Food pairing','food-pairing/'],[x.d,rel]],body,
+      jsonld:{"@type":"Article","headline":`What wine goes with ${x.d}?`,"description":desc,"author":{"@type":"Person","name":"Diego Muntoni","jobTitle":"Head of Bars and Beverage"},"about":{"@type":"Thing","name":x.d},"mainEntityOfPage":SITE+rel}})]);
+  }
   // ---------- FOOD PAIRING ----------
   {const rel='food-pairing/',up='../';const cats=(D.PC||uniq(DP.map(x=>x.c)));
    const body=`<p class="lead">${DP.length} dishes with the grapes that suit them, real bottles to try and a recipe.</p><div class="chips">${cats.map(c=>`<a class="chip" href="#${slug(c)}">${esc(c)}</a>`).join('')}</div>
-${cats.map(c=>{const xs=DP.filter(x=>x.c==c);return xs.length?`<h2 id="${slug(c)}">${esc(c)}</h2><div class="grid">${xs.map(x=>`<div class="card"><h3>${esc(x.d)}</h3><p><b>Wine:</b> ${x.g.map(y=>glink(y,up)).join(', ')}</p>${x.n?`<p>${esc(x.n)}</p>`:''}${x.b&&x.b.length?`<p class="muted">Try: ${x.b.map(b=>esc(b[0]+' '+b[1])).join('; ')}</p>`:''}${x.r?`<p><a href="${esc(x.r[1])}" target="_blank" rel="noopener">Recipe: ${esc(x.r[0])}</a></p>`:''}</div>`).join('')}</div>`:''}).join('\n')}
+${cats.map(c=>{const xs=DP.filter(x=>x.c==c);return xs.length?`<h2 id="${slug(c)}">${esc(c)}</h2><div class="grid">${xs.map(x=>`<div class="card"><h3><a href="${up}food-pairing/${DSL.get(x)}/">${esc(x.d)}</a></h3><p><b>Wine:</b> ${x.g.map(y=>glink(y,up)).join(', ')}</p>${x.n?`<p>${esc(x.n)}</p>`:''}${x.b&&x.b.length?`<p class="muted">Try: ${x.b.map(b=>esc(b[0]+' '+b[1])).join('; ')}</p>`:''}${x.r?`<p><a href="${esc(x.r[1])}" target="_blank" rel="noopener">Recipe: ${esc(x.r[0])}</a></p>`:''}</div>`).join('')}</div>`:''}).join('\n')}
 <p><a class="btn" href="${up}#pairing">Use the interactive food and wine matcher</a></p>`;
    pages.push([rel,page({rel,title:'Food and Wine Pairing Guide: What Wine With Dinner? | The Wine Reference',desc:cut(`What wine goes with steak, salmon, curry or pizza? ${DP.length} dishes matched with grapes, real bottles and recipes by a wine professional.`,158),
      keywords:['food and wine pairing','wine pairing','what wine with steak','what wine with salmon','wine with curry','wine with pizza','wine pairing guide'],h1:'Food and wine pairing',crumbs:[['Food pairing',rel]],body,jsonld:{"@type":"CollectionPage","name":"Food and wine pairing","url":SITE+rel}})]);}
