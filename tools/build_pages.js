@@ -9,7 +9,7 @@ const {chromium}=require('playwright');
 const fs=require('fs'),path=require('path'),{execSync}=require('child_process');
 const ROOT=path.resolve(__dirname,'..');
 const SITE='https://thewinereference.co.uk/';
-const OUT=['privacy','grapes','regions','spirits','cocktails','stories','wine-library','food-pairing','glossary','careers','newsletter'];
+const OUT=['about','contact','privacy','grapes','regions','spirits','cocktails','stories','wine-library','food-pairing','glossary','careers','newsletter'];
 
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const slug=t=>String(t).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[·']/g,'').toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -73,10 +73,10 @@ ${/^https:\/\//.test(NL.action||'')?`<div class="support nl"><h2>The Wine Refere
 <div class="shr"><b>Share this page</b><a href="https://wa.me/?text=${encodeURIComponent(h1+" · The Wine Reference "+url)}" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">Facebook</a><a href="https://x.com/intent/tweet?text=${encodeURIComponent(h1+" · The Wine Reference")}&amp;url=${encodeURIComponent(url)}" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">LinkedIn</a><a href="https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&amp;media=${encodeURIComponent(og)}&amp;description=${encodeURIComponent(h1)}" target="_blank" rel="noopener">Pinterest</a><a href="mailto:?subject=${encodeURIComponent(h1+" · The Wine Reference")}&amp;body=${encodeURIComponent(url)}">Email</a></div>
 <div class="support"><h2>Support The Wine Reference</h2><p>This guide is free, with no paywall. If it helped you choose a bottle, you can buy me a glass and keep it growing.</p><a class="btn" href="https://ko-fi.com/winereference" target="_blank" rel="noopener">🍷 Buy me a glass</a></div>
 </main>
-<footer><div class="in"><nav aria-label="Browse"><a href="${up}">Interactive guide</a><a href="${up}grapes/">Grapes</a><a href="${up}regions/">Wine regions</a><a href="${up}wine-library/">Wine Library</a><a href="${up}spirits/">Spirits</a><a href="${up}cocktails/">Cocktails</a><a href="${up}food-pairing/">Food pairing</a><a href="${up}stories/">Wine stories</a><a href="${up}glossary/">Glossary</a><a href="${up}careers/">Sommelier careers</a><a href="${up}newsletter/">Newsletter</a><a href="${up}privacy/">Privacy</a></nav>
+<footer><div class="in"><nav aria-label="Browse"><a href="${up}">Interactive guide</a><a href="${up}grapes/">Grapes</a><a href="${up}regions/">Wine regions</a><a href="${up}wine-library/">Wine Library</a><a href="${up}spirits/">Spirits</a><a href="${up}cocktails/">Cocktails</a><a href="${up}food-pairing/">Food pairing</a><a href="${up}stories/">Wine stories</a><a href="${up}glossary/">Glossary</a><a href="${up}careers/">Sommelier careers</a><a href="${up}newsletter/">Newsletter</a><a href="${up}about/">About</a><a href="${up}contact/">Contact</a><a href="${up}privacy/">Privacy</a></nav>
 <p>By Diego Muntoni, head of bars and beverage. For reference only. Please enjoy responsibly. Over 18s only (21 in the USA).</p></div></footer>
 <div id="age" role="dialog" aria-modal="true" aria-labelledby="ageh"><div class="box"><div style="font-size:42px">🍷</div><h2 id="ageh" style="margin:6px 0 8px">Are you of legal drinking age?</h2><p class="muted" style="margin:0 0 12px">This guide is about alcohol and is for adults only: 18 or over in the UK, EU and most countries, 21 in the USA.</p><button id="agy" type="button">Yes, I am of legal drinking age</button><button id="agn" class="no" type="button">No</button><p id="agm" style="min-height:1.4em;color:var(--accent);font-size:14px;margin:8px 0 0"></p></div></div>
-<script>(function(){var a=document.getElementById('age'),ok=false;try{ok=localStorage.getItem('ageOK')=='1'}catch(e){}if(ok)return;a.style.display='flex';document.body.style.overflow='hidden';
+<script>(function(){var a=document.getElementById('age'),ok=false;try{ok=localStorage.getItem('ageOK')=='1'}catch(e){}if(ok||/bot|crawl|spider|slurp|mediapartners|adsbot|google-inspectiontool|bingpreview/i.test(navigator.userAgent))return;a.style.display='flex';document.body.style.overflow='hidden';
 document.getElementById('agy').onclick=function(){try{localStorage.setItem('ageOK','1')}catch(e){}a.style.display='none';document.body.style.overflow=''};
 document.getElementById('agn').onclick=function(){document.getElementById('agm').textContent='Sorry, you must be of legal drinking age to view this site.'}})();</script>
 </body>
@@ -101,6 +101,36 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
   const wineList=(ws,up)=>`<div class="grid">${ws.map(w=>`<div class="card"><div class="meta">${esc(w.s)} · ${esc(w.c)}${w.src=='oxo'?' · <span class="ds">Diego\'s Selection</span>':''}</div><h3>${wlink(w,up)}</h3><p class="muted">${rlink(w.r,up)}${w.a&&w.a!=w.r?' · '+esc(w.a):''} · ${w.g.map(x=>glink(x,up)).join(', ')}</p><p>${esc(w.n)}</p>${w.f?`<p><b>Food:</b> ${esc(w.f)}</p>`:''}</div>`).join('')}</div>`;
   const photo=(n,up,cls)=>{const p=PHf(n);return p?`<img class="hero${cls?' '+cls:''}" src="${up}img/p/${esc(p[0])}" alt="${esc(p[3]||n)}" width="600" height="400"><p class="credit">Photo: <a href="https://unsplash.com/@${esc(p[2])}?utm_source=wine_reference&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">${esc(p[1])}</a> on Unsplash</p>`:''};
   const pages=[];
+  // ---------- ABOUT and CONTACT (static copies for readers, search engines and AdSense reviewers) ----------
+  {const src=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');const i=src.indexOf('<section id="about"'),j=src.indexOf('</section>',i);
+   if(i>0&&j>i){let h=src.slice(src.indexOf('>',i)+1,j);
+     h=h.replace(/<h2[^>]*>\s*About me\s*<\/h2>/i,'').replace(/\s(src|href)="(?!https?:|mailto:|#|\/|data:)([^"]+)"/g,' $1="../$2"').replace(/href="#([^"]*)"/g,'href="../#$1"').replace(/<script[\s\S]*?<\/script>/g,'').replace(/\sid="/g,' data-id="');
+     const rel='about/';
+     const body=`<p class="lead">The Wine Reference is a free, independent guide to wine, spirits and cocktails, written and maintained by Diego Muntoni, head of bars and beverage in London, WSET Diploma holder and Graham's Port Ambassador.</p>
+<h2>What the guide covers</h2><p>${G.length} grape varieties, ${R.length} wine regions with a map, ${WL.length} wines in The Wine Library, ${(DP||[]).length} food and wine pairings, ${CK.length} classic cocktails, ${(SPR||[]).length} spirit regions, a daily wine story, a wine history timeline, an A–Z glossary and guides for anyone building a career as a sommelier.</p>
+<h2>How it is written</h2><p>Every grape, region and wine is checked against official appellation bodies, producers' own websites and respected wine publications, and written in our own words. Wines are real bottles from established producers; recipes are links to their original authors. Corrections are always welcome through the <a href="../contact/">contact page</a>.</p>
+<div class="aboutcopy">${h}</div>`;
+     pages.push([rel,page({rel,title:'About The Wine Reference and Diego Muntoni | The Wine Reference',desc:cut(`About The Wine Reference, a free wine guide by Diego Muntoni, head of bars and beverage in London: WSET Diploma, Court of Master Sommeliers Certified, Graham's Port Ambassador.`,158),
+       keywords:['Diego Muntoni','about The Wine Reference','sommelier London','head of bars and beverage','WSET Diploma','Graham\'s Port Ambassador'],h1:'About The Wine Reference',crumbs:[['About',rel]],body,
+       jsonld:{"@type":"AboutPage","name":"About The Wine Reference","url":SITE+rel,"mainEntity":{"@type":"Person","name":"Diego Muntoni","jobTitle":"Head of Bars and Beverage","url":SITE+rel}}})]);}}
+  {const rel='contact/';
+   const body=`<p class="lead">Questions, corrections, wine or producer suggestions, trade enquiries or press: send a message and Diego will reply as soon as he can.</p>
+<form id="cform" class="cform" onsubmit="return false">
+<label>Your name<input id="cn" required autocomplete="name"></label>
+<label>Your email<input id="ce" type="email" required autocomplete="email"></label>
+<label>Subject<select id="cs"><option>General question</option><option>Correction</option><option>Wine or producer suggestion</option><option>Trade or consultancy enquiry</option><option>Press</option></select></label>
+<label>Message<textarea id="cm" rows="7" required></textarea></label>
+<button class="btn" id="cb" type="submit" style="border:0;cursor:pointer;font:600 15px Inter,sans-serif">Send message</button>
+<p class="muted" id="cmsg" style="font-size:14px">Sending opens your own email app with the message ready to go.</p>
+</form>
+<p class="muted">You can also follow new wines and stories through the <a href="../newsletter/">newsletter</a>. See the <a href="../privacy/">privacy policy</a> for how messages are handled.</p>
+<style>.cform{display:grid;gap:12px;max-width:560px}.cform label{display:grid;gap:4px;font-weight:600;font-size:14px}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--text)}</style>
+<script>(function(){var f=document.getElementById('cform');f.onsubmit=function(){if(!f.reportValidity())return false;var m=document.getElementById('cmsg');m.textContent='Opening your email app…';
+fetch('../privacy/').then(function(r){return r.text()}).then(function(t){var a=(t.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}/)||[])[0];if(!a){m.textContent='Sorry, the message could not be prepared. Please try again later.';return}
+var s='[The Wine Reference] '+document.getElementById('cs').value,b=document.getElementById('cm').value+'\\n\\n'+document.getElementById('cn').value+' ('+document.getElementById('ce').value+')';
+location.href='mailto:'+a+'?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent(b);m.textContent='Your email app should now be open with the message ready. Just press send.'}).catch(function(){m.textContent='Sorry, the message could not be prepared. Please try again later.'});return false}})();</script>`;
+   pages.push([rel,page({rel,title:'Contact | The Wine Reference',desc:'Contact The Wine Reference and Diego Muntoni: questions, corrections, wine suggestions, trade and press enquiries.',
+     keywords:['contact The Wine Reference','contact Diego Muntoni','wine guide contact'],h1:'Contact',crumbs:[['Contact',rel]],body,jsonld:{"@type":"ContactPage","name":"Contact The Wine Reference","url":SITE+rel}})]);}
   // ---- shared helpers for richer pages ----
   const Ed=(D.E||{});
   const GR={};G.forEach(g=>GR[g[0]]=g);
