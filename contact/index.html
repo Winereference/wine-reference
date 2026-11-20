@@ -35,7 +35,15 @@
 <p class="crumbs"><a href="../">Home</a> › Contact</p>
 <h1>Contact</h1>
 <p class="lead">Questions, corrections, wine or producer suggestions, trade enquiries or press: send a message and Diego will reply as soon as he can.</p>
-<p><b>The contact form is being set up and will be here very soon.</b> In the meantime you can follow new wines and stories through the newsletter below.</p>
+<form id="cform" class="cform" method="POST" action="https://formspree.io/f/mbgoagqa">
+<label>Your name<input name="name" required autocomplete="name"></label>
+<label>Your email<input name="email" type="email" required autocomplete="email"></label>
+<label>Subject<select name="subject"><option>General question</option><option>Correction</option><option>Wine or producer suggestion</option><option>Trade or consultancy enquiry</option><option>Press</option></select></label>
+<label>Message<textarea name="message" rows="7" required></textarea></label>
+<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+<button class="btn" type="submit" style="border:0;cursor:pointer;font:600 15px Inter,sans-serif">Send message</button>
+<p class="muted" id="cmsg" style="font-size:14px" aria-live="polite"></p>
+</form>
 <p class="muted">You can also follow new wines and stories through the <a href="../newsletter/">newsletter</a>. See the <a href="../privacy/">privacy policy</a> for how messages are handled.</p>
 <style>.cform{display:grid;gap:12px;max-width:560px}.cform label{display:grid;gap:4px;font-weight:600;font-size:14px}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--text)}</style>
 <script>(function(){var f=document.getElementById('cform');if(!f)return;var m=document.getElementById('cmsg');
