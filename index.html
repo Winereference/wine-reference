@@ -202,6 +202,8 @@ section.lkd>*:not(h2):not(.gate){display:none!important}
 <style>
 /* SUGGESTIONS PACK 2026-11-15 */
 .qzr .qzsh{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px}.qzr .qzsh .shb{margin:0}
+/* Story themes (suggestion 2026-11-14-5) */
+#stth{margin:0 0 16px;gap:6px}#stth .chip{font-size:13px;padding:5px 13px}#stth .chip small{opacity:.7;font-size:11px;margin-left:2px}#stl a.stc[hidden]{display:none}
 /* Nearby regions (suggestion 2026-11-14-3) */
 .nbr{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line)}.nbr .chip small{color:var(--muted);font-size:11px;margin-left:2px}.nbr .chip{cursor:pointer}.nbr .chips{margin-bottom:0}
 /* Sparkling sweetness scale (suggestion 2026-11-13-5) */
@@ -5135,6 +5137,19 @@ function augStory(){const a=document.querySelector("#stv article.stf");if(!a||a.
   if(nx.length){const h=`<div class="rnx"><h4>Read next</h4>${nx.map(x=>`<a href="#stories/${encodeURIComponent(x.id)}">${Q(x.t)}</a>`).join("")}</div>`;const sh=a.querySelector(".shr");if(sh)sh.insertAdjacentHTML("beforebegin",h);else a.insertAdjacentHTML("beforeend",h)}}
  tapTerms(a)}
 const stv=$("stv");if(stv){new MutationObserver(augStory).observe(stv,{childList:true});augStory()}
+
+/* ---------- Filter stories by theme (suggestion 2026-11-14-5) ---------- */
+const stl=$("stl");if(stl){let sth="All";
+ const catOf=a=>{const id=decodeURIComponent((a.getAttribute("href")||"").split("/")[1]||""),x=(typeof ST!=="undefined"?ST:[]).find(y=>y.id===id);return x&&x.c?x.c:((a.querySelector(".meta")||{}).textContent||"").split(" · ")[0].trim()};
+ const augThemes=()=>{const tiles=[...stl.querySelectorAll("a.stc")];let bar=$("stth");
+  if(!bar){bar=document.createElement("div");bar.id="stth";bar.className="chips";bar.setAttribute("role","group");bar.setAttribute("aria-label","Filter stories by theme");stl.parentNode.insertBefore(bar,stl)}
+  const n={};tiles.forEach(a=>{const c=catOf(a);a.dataset.th=c;n[c]=(n[c]||0)+1});const cats=Object.keys(n).sort((a,b)=>n[b]-n[a]||a.localeCompare(b));
+  if(sth!=="All"&&!n[sth])sth="All";bar.hidden=cats.length<2;
+  const want=["All",...cats].map(c=>`<button type="button" class="chip${c===sth?" on":""}" data-th="${Q(c)}" aria-pressed="${c===sth}">${Q(c)} <small>${c==="All"?tiles.length:n[c]}</small></button>`).join("");
+  if(bar.innerHTML!==want)bar.innerHTML=want;
+  tiles.forEach(a=>{const h=sth!=="All"&&a.dataset.th!==sth;if(a.hidden!==h)a.hidden=h})};
+ document.addEventListener("click",e=>{const b=e.target.closest("#stth [data-th]");if(!b)return;sth=b.dataset.th;augThemes()});
+ new MutationObserver(augThemes).observe(stl,{childList:true});augThemes()}
 
 /* ---------- Glossary flashcards ---------- */
 const fc=$("flash");if(fc&&AZ.length){let known=new Set(LS.get("wr-fc",[])),cur=null,flip=false;
