@@ -24,10 +24,10 @@ async function loadData(){
   const d=await p.evaluate(()=>{const g=n=>{try{return eval(n)}catch(e){return null}};
     const gl=[...document.querySelectorAll('#az dt')].map(dt=>{const dd=dt.nextElementSibling;return [dt.textContent.trim(),dd&&dd.tagName=='DD'?dd.textContent.trim():'']});
     return {E:g('E')||{},R:g('R'),G:g('G'),G0:g('G0').map(x=>x[0]),GD:g('GD'),K:g('K'),SUB:g('SUB'),CI:g('CI'),AP:g('AP'),PH:g('PH'),WL:g('WL'),DP:g('DP'),PC:g('PC'),
-      SPR:g('SPR'),SPB:g('SPB'),SPD:g('SPD')||{},SPH:g('SPH')||{},SPC:g('SPC'),CK:g('CK')||[],ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},AS:(window.MONEY||{}).adsense||'',gl}});
+      SPR:g('SPR'),SPB:g('SPB'),SPD:g('SPD')||{},SPH:g('SPH')||{},SPC:g('SPC'),CK:g('CK')||[],ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},AS:(window.MONEY||{}).adsense||'',CF:(window.MONEY||{}).contactForm||'',gl}});
   await b.close();return d}
 
-let NL={},ASID='';
+let NL={},ASID='',CF='';
 function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
   const depth=rel.split('/').filter(Boolean).length, up='../'.repeat(depth), url=SITE+rel;
   const og=img?SITE+img:SITE+'img/og-wine-reference-douro-vineyards.jpg';
@@ -86,7 +86,7 @@ document.getElementById('agn').onclick=function(){document.getElementById('agm')
 function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(path.dirname(f),{recursive:true});fs.writeFileSync(f,html)}
 
 (async()=>{
-  const D=await loadData();NL=D.NL||{};ASID=D.AS||"";
+  const D=await loadData();NL=D.NL||{};ASID=D.AS||"";CF=D.CF||"";
   for(const o of OUT)fs.rmSync(path.join(ROOT,o),{recursive:true,force:true});
   const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;const CK=D.CK||[];const SPD=D.SPD||{},SPH=D.SPH||{};
   const PHf=n=>PH&&PH[n];
@@ -115,20 +115,20 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
        jsonld:{"@type":"AboutPage","name":"About The Wine Reference","url":SITE+rel,"mainEntity":{"@type":"Person","name":"Diego Muntoni","jobTitle":"Head of Bars and Beverage","url":SITE+rel}}})]);}}
   {const rel='contact/';
    const body=`<p class="lead">Questions, corrections, wine or producer suggestions, trade enquiries or press: send a message and Diego will reply as soon as he can.</p>
-<form id="cform" class="cform" onsubmit="return false">
-<label>Your name<input id="cn" required autocomplete="name"></label>
-<label>Your email<input id="ce" type="email" required autocomplete="email"></label>
-<label>Subject<select id="cs"><option>General question</option><option>Correction</option><option>Wine or producer suggestion</option><option>Trade or consultancy enquiry</option><option>Press</option></select></label>
-<label>Message<textarea id="cm" rows="7" required></textarea></label>
-<button class="btn" id="cb" type="submit" style="border:0;cursor:pointer;font:600 15px Inter,sans-serif">Send message</button>
-<p class="muted" id="cmsg" style="font-size:14px">Sending opens your own email app with the message ready to go.</p>
-</form>
+${/^https:\/\/formspree\.io\/f\/[A-Za-z0-9]+$/.test(CF)?`<form id="cform" class="cform" method="POST" action="${esc(CF)}">
+<label>Your name<input name="name" required autocomplete="name"></label>
+<label>Your email<input name="email" type="email" required autocomplete="email"></label>
+<label>Subject<select name="subject"><option>General question</option><option>Correction</option><option>Wine or producer suggestion</option><option>Trade or consultancy enquiry</option><option>Press</option></select></label>
+<label>Message<textarea name="message" rows="7" required></textarea></label>
+<input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+<button class="btn" type="submit" style="border:0;cursor:pointer;font:600 15px Inter,sans-serif">Send message</button>
+<p class="muted" id="cmsg" style="font-size:14px" aria-live="polite"></p>
+</form>`:`<p><b>The contact form is being set up and will be here very soon.</b> In the meantime you can follow new wines and stories through the newsletter below.</p>`}
 <p class="muted">You can also follow new wines and stories through the <a href="../newsletter/">newsletter</a>. See the <a href="../privacy/">privacy policy</a> for how messages are handled.</p>
 <style>.cform{display:grid;gap:12px;max-width:560px}.cform label{display:grid;gap:4px;font-weight:600;font-size:14px}.cform input,.cform select,.cform textarea{font:inherit;font-weight:400;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--text)}</style>
-<script>(function(){var f=document.getElementById('cform');f.onsubmit=function(){if(!f.reportValidity())return false;var m=document.getElementById('cmsg');m.textContent='Opening your email app…';
-fetch('../privacy/').then(function(r){return r.text()}).then(function(t){var a=(t.match(/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}/)||[])[0];if(!a){m.textContent='Sorry, the message could not be prepared. Please try again later.';return}
-var s='[The Wine Reference] '+document.getElementById('cs').value,b=document.getElementById('cm').value+'\\n\\n'+document.getElementById('cn').value+' ('+document.getElementById('ce').value+')';
-location.href='mailto:'+a+'?subject='+encodeURIComponent(s)+'&body='+encodeURIComponent(b);m.textContent='Your email app should now be open with the message ready. Just press send.'}).catch(function(){m.textContent='Sorry, the message could not be prepared. Please try again later.'});return false}})();</script>`;
+<script>(function(){var f=document.getElementById('cform');if(!f)return;var m=document.getElementById('cmsg');
+f.addEventListener('submit',function(ev){ev.preventDefault();m.textContent='Sending…';
+fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}}).then(function(r){if(r.ok){f.reset();m.textContent='Thank you, your message has been sent. Diego will reply by email.'}else{m.textContent='Sorry, the message could not be sent. Please try again in a moment.'}}).catch(function(){m.textContent='Sorry, the message could not be sent. Please check your connection and try again.'})})})();</script>`;
    pages.push([rel,page({rel,title:'Contact | The Wine Reference',desc:'Contact The Wine Reference and Diego Muntoni: questions, corrections, wine suggestions, trade and press enquiries.',
      keywords:['contact The Wine Reference','contact Diego Muntoni','wine guide contact'],h1:'Contact',crumbs:[['Contact',rel]],body,jsonld:{"@type":"ContactPage","name":"Contact The Wine Reference","url":SITE+rel}})]);}
   // ---- shared helpers for richer pages ----
@@ -243,7 +243,7 @@ ${cats.map(t=>`<h2>${esc(t)}</h2><div class="grid">${SPR.filter(x=>x.t==t).map(x
   // ---------- PRIVACY POLICY ----------
   {const rel='privacy/',up='../';
    const body=`<p class="lead">This page explains what information The Wine Reference collects, why, and the choices you have. Last updated: 16 November 2026.</p>
-<h2>Who runs this site</h2><p>The Wine Reference (thewinereference.co.uk) is run by Diego Muntoni in London, United Kingdom, who is responsible for your data under UK data protection law. Contact: <a href="mailto:finewineloversuk@gmail.com">finewineloversuk@gmail.com</a>.</p>
+<h2>Who runs this site</h2><p>The Wine Reference (thewinereference.co.uk) is run by Diego Muntoni in London, United Kingdom, who is responsible for your data under UK data protection law. To get in touch, use the <a href="../contact/">contact page</a>.</p>
 <h2>Your choices</h2><p>Visitors in the UK, EU and Switzerland are asked for consent through Google's consent message before cookies are used for analytics or advertising. You can change or withdraw your choice at any time with the button below, or with 'Privacy and cookie settings' at the bottom of every page.</p><p><button type="button" class="btn" id="pvreset">Privacy and cookie settings</button></p>
 <h2>Analytics (Google Analytics)</h2><p>We use Google Analytics to see how visitors use the site: pages viewed, device and browser type, and approximate location. In the UK, EU and Switzerland it uses cookies (such as _ga) only if you consent; without consent it sends only basic, cookieless measurements. We use it only to improve the guide. Google acts as our processor; see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
 <h2>Advertising (Google AdSense)</h2><p>The site shows ads from Google AdSense, which helps keep it free. Google and its partners may use cookies or similar technologies to show ads, limit how often you see them, measure them and, with your consent, personalise them. Visitors in the UK, EU and Switzerland are asked for consent through Google's consent message before personal data is used for ads. Learn more in <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites that use its services</a>, and manage personalised ads at <a href="https://adssettings.google.com" target="_blank" rel="noopener">Google Ad Settings</a>.</p>
@@ -252,7 +252,7 @@ ${cats.map(t=>`<h2>${esc(t)}</h2><div class="grid">${SPR.filter(x=>x.t==t).map(x
 <h2>Member accounts</h2><p>If member accounts are switched on and you create one, we store your email address and the details you add (such as a business name) so we can give you access to members' areas. Passwords are stored securely by our account provider and are never visible to us. You can ask us to delete your account at any time.</p>
 <h2>Stored only on your device</h2><p>Some features remember your choices in your own browser: favourite grapes and regions, flashcard progress, your GP calculator wine list, text size and your cookie choice. This information stays on your device and is never sent to us. You can clear it in your browser settings.</p>
 <h2>Hosting and fonts</h2><p>The site is hosted by GitHub Pages, which may log visitors' IP addresses for security; see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's Privacy Statement</a>. Fonts are loaded from Google Fonts, so your browser connects to Google's servers when a page loads.</p>
-<h2>Your rights</h2><p>You have the right to access, correct or delete your personal data, to object to or restrict how it is used, and to withdraw consent at any time. To use these rights, email us at the address above. If you are unhappy with how we handle your data, you can complain to the <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">Information Commissioner's Office (ICO)</a>.</p>
+<h2>Your rights</h2><p>You have the right to access, correct or delete your personal data, to object to or restrict how it is used, and to withdraw consent at any time. To use these rights, send us a message through the <a href="../contact/">contact page</a>. Messages sent through the contact form are delivered to us by our form provider, Formspree, and used only to reply to you. If you are unhappy with how we handle your data, you can complain to the <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener">Information Commissioner's Office (ICO)</a>.</p>
 <h2>Age</h2><p>The Wine Reference is about alcohol and is intended for adults of legal drinking age (18 in the UK).</p>
 <h2>Changes</h2><p>If this policy changes, the new version will be posted here with a new date.</p>
 <script>document.getElementById('pvreset').addEventListener('click',function(){wrPrivacy()});</script>`;
