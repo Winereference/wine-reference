@@ -202,6 +202,9 @@ section.lkd>*:not(h2):not(.gate){display:none!important}
 <style>
 /* SUGGESTIONS PACK 2026-11-15 */
 .qzr .qzsh{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px}.qzr .qzsh .shb{margin:0}
+/* Listen to a story (suggestion 2026-11-15-1) */
+.tts{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:4px 0 14px}.tts button{display:inline-flex;align-items:center;gap:6px;font:500 13px Inter,system-ui,sans-serif;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--accent);cursor:pointer}.tts button:hover{border-color:var(--accent)}.tts .ttsp{background:var(--accent);color:var(--bg);border-color:var(--accent)}.tts button[hidden]{display:none}.tts svg{width:14px;height:14px;fill:currentColor}.tts small{color:var(--muted);font-size:12px}
+article.stf p.ttsr{background:color-mix(in srgb,var(--accent) 9%,transparent);border-radius:6px;box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 9%,transparent)}
 /* Story themes (suggestion 2026-11-14-5) */
 #stth{margin:0 0 16px;gap:6px}#stth .chip{font-size:13px;padding:5px 13px}#stth .chip small{opacity:.7;font-size:11px;margin-left:2px}#stl a.stc[hidden]{display:none}
 /* Nearby regions (suggestion 2026-11-14-3) */
@@ -5239,6 +5242,28 @@ const stl=$("stl");if(stl){let sth="All";
   tiles.forEach(a=>{const h=sth!=="All"&&a.dataset.th!==sth;if(a.hidden!==h)a.hidden=h})};
  document.addEventListener("click",e=>{const b=e.target.closest("#stth [data-th]");if(!b)return;sth=b.dataset.th;augThemes()});
  new MutationObserver(augThemes).observe(stl,{childList:true});augThemes()}
+
+/* ---------- Listen to a story read aloud (suggestion 2026-11-15-1) ---------- */
+if(stv&&"speechSynthesis" in window&&typeof SpeechSynthesisUtterance!=="undefined"){const SS=window.speechSynthesis;let ttsA=null,ttsQ=[],ttsI=0,ttsOn=false,ttsTok=0;
+ const IC={play:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>',pause:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>',stop:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h12v12H6z"/></svg>'};
+ const voice=()=>{const v=SS.getVoices()||[];return v.find(x=>/^en-GB/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang))||null};
+ const chunks=t=>{const out=[];(t.match(/[^.!?…]+[.!?…]+["'’”)]*\s*|[^.!?…]+$/g)||[t]).forEach(x=>{x=x.trim();if(!x)return;const l=out[out.length-1];if(l&&l.length+x.length<220)out[out.length-1]=l+" "+x;else out.push(x)});return out};
+ const ui=()=>{if(!ttsA)return;const b=ttsA.querySelector(".tts");if(!b)return;const p=b.querySelector(".ttsp"),x=b.querySelector(".ttsx"),st=b.querySelector("small");
+  const paused=ttsOn&&SS.paused;p.innerHTML=(ttsOn&&!paused?IC.pause+"Pause":IC.play+(paused?"Resume":"Listen"));p.setAttribute("aria-pressed",String(ttsOn&&!paused));x.hidden=!ttsOn;st.textContent=ttsOn?(paused?"Paused":"Reading aloud…"):"Read aloud by your browser's voice"};
+ const mark=el=>{if(!ttsA)return;ttsA.querySelectorAll("p.ttsr").forEach(p=>p.classList.remove("ttsr"));if(el&&el.tagName==="P")el.classList.add("ttsr")};
+ const stop=()=>{ttsTok++;ttsOn=false;ttsQ=[];ttsI=0;try{SS.cancel()}catch(e){}mark(null);ui()};
+ const speakNext=tok=>{if(tok!==ttsTok)return;if(ttsI>=ttsQ.length){ttsOn=false;mark(null);ui();return}const c=ttsQ[ttsI++],u=new SpeechSynthesisUtterance(c.t),v=voice();
+  u.lang=v?v.lang:"en-GB";if(v)u.voice=v;u.rate=.95;u.onstart=()=>{if(tok===ttsTok)mark(c.el)};u.onend=()=>speakNext(tok);u.onerror=e=>{if(tok===ttsTok&&e.error!=="interrupted"&&e.error!=="canceled")speakNext(tok)};SS.speak(u)};
+ const start=()=>{if(!ttsA)return;stop();const els=[ttsA.querySelector("h3"),...ttsA.querySelectorAll("p")].filter(el=>el&&!el.closest(".src,.shr,.rnx,figure,.tts,.gpop"));
+  ttsQ=[];els.forEach(el=>chunks(el.textContent.replace(/\s+/g," ").trim()).forEach(t=>ttsQ.push({t,el})));if(!ttsQ.length)return;ttsOn=true;const tok=++ttsTok;speakNext(tok);ui()};
+ const augTts=()=>{const a=document.querySelector("#stv article.stf");if(a!==ttsA&&ttsOn)stop();ttsA=a;if(!a||a.querySelector(".tts"))return;
+  const bar=document.createElement("div");bar.className="tts";bar.setAttribute("role","group");bar.setAttribute("aria-label","Listen to this story");
+  bar.innerHTML=`<button type="button" class="ttsp" aria-pressed="false"></button><button type="button" class="ttsx" hidden>${IC.stop}Stop</button><small aria-live="polite"></small>`;
+  const anchor=a.querySelector("p.lead")||a.querySelector("p");if(anchor)anchor.parentNode.insertBefore(bar,anchor);else a.appendChild(bar);
+  bar.querySelector(".ttsp").onclick=()=>{if(!ttsOn)start();else if(SS.paused){SS.resume();ui()}else{SS.pause();ui()}};bar.querySelector(".ttsx").onclick=stop;ui()};
+ new MutationObserver(augTts).observe(stv,{childList:true});augTts();
+ addEventListener("hashchange",()=>{if(ttsOn&&!/^#stories\//.test(location.hash))stop()});addEventListener("pagehide",stop);
+}
 
 /* ---------- Glossary flashcards ---------- */
 const fc=$("flash");if(fc&&AZ.length){let known=new Set(LS.get("wr-fc",[])),cur=null,flip=false;
