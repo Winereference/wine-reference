@@ -1,6 +1,6 @@
 {
 "about/": [
-"504100a306db74e3",
+"c39fc3b06a0958fb",
 "2026-11-21"
 ],
 "careers/": [
@@ -1460,8 +1460,8 @@
 "2026-11-20"
 ],
 "grapes/carignan/": [
-"fa810dbb89fab31c",
-"2026-11-20"
+"75ba30d0bc4a6179",
+"2026-11-21"
 ],
 "grapes/carmenere/": [
 "db5630ec7b83e0d8",
@@ -1496,7 +1496,7 @@
 "2026-11-20"
 ],
 "grapes/chardonnay/": [
-"f25ccf8a28895851",
+"bd6a0f49f7c186ef",
 "2026-11-21"
 ],
 "grapes/chasselas/": [
@@ -1628,12 +1628,12 @@
 "2026-11-20"
 ],
 "grapes/garnacha-grenache/": [
-"b2eeecbe7a858d4e",
-"2026-11-20"
+"2bf9b35b2417fb81",
+"2026-11-21"
 ],
 "grapes/gewurztraminer/": [
-"5fcfbebf54fca2ac",
-"2026-11-20"
+"b3b88f633f21ddb9",
+"2026-11-21"
 ],
 "grapes/godello/": [
 "5fee08ee178d55fd",
@@ -1740,8 +1740,8 @@
 "2026-11-21"
 ],
 "grapes/malbec/": [
-"08f3c28dce6da853",
-"2026-11-20"
+"85bd1cd3c0cd5967",
+"2026-11-21"
 ],
 "grapes/malvasia/": [
 "9a38c031eb2c0ff2",
@@ -1940,7 +1940,7 @@
 "2026-11-20"
 ],
 "grapes/pinot-noir/": [
-"0f11e6bd06f34905",
+"e4b01e4c49058788",
 "2026-11-21"
 ],
 "grapes/pinotage/": [
@@ -1984,8 +1984,8 @@
 "2026-11-20"
 ],
 "grapes/riesling/": [
-"3e17edf6af1861e5",
-"2026-11-20"
+"ba217a1f412d3b61",
+"2026-11-21"
 ],
 "grapes/rkatsiteli/": [
 "479b1deb05a0fd3c",
@@ -2024,7 +2024,7 @@
 "2026-11-20"
 ],
 "grapes/sauvignon-blanc/": [
-"bebd502c87718591",
+"ae0102b9ca85e8c0",
 "2026-11-21"
 ],
 "grapes/sauvignon-gris/": [
@@ -2032,7 +2032,7 @@
 "2026-11-21"
 ],
 "grapes/savagnin/": [
-"ed5fb6e4d1c7a193",
+"affda1457dc99109",
 "2026-11-21"
 ],
 "grapes/savatiano/": [
@@ -2060,7 +2060,7 @@
 "2026-11-20"
 ],
 "grapes/semillon/": [
-"dba2955dbca937b8",
+"be16fa0522d4bc6f",
 "2026-11-21"
 ],
 "grapes/sercial/": [
@@ -2140,8 +2140,8 @@
 "2026-11-20"
 ],
 "grapes/treixadura/": [
-"2de3514d8358a61e",
-"2026-11-20"
+"1c656d1a68640e15",
+"2026-11-21"
 ],
 "grapes/trento-doc/": [
 "f0fd27778d742aa6",
@@ -2208,7 +2208,7 @@
 "2026-11-21"
 ],
 "grapes/xinomavro/": [
-"42f93d0c764e82e9",
+"ee86c0883c246efd",
 "2026-11-21"
 ],
 "grapes/xynisteri/": [
@@ -2260,8 +2260,8 @@
 "2026-11-20"
 ],
 "regions/adelaide-hills/": [
-"7d71ea7d3dc78e25",
-"2026-11-20"
+"7c9a280106b44be2",
+"2026-11-21"
 ],
 "regions/alella/": [
 "bc19da27d7f875e8",
@@ -2352,8 +2352,8 @@
 "2026-11-20"
 ],
 "regions/calabria/": [
-"d663062513b318a7",
-"2026-11-20"
+"f6acdc154a515900",
+"2026-11-21"
 ],
 "regions/calatayud/": [
 "253a8a5e54ac7843",
@@ -2444,8 +2444,8 @@
 "2026-11-20"
 ],
 "regions/cornwall/": [
-"f87e8717c7794b33",
-"2026-11-20"
+"8238ac3b7d26ee41",
+"2026-11-21"
 ],
 "regions/costers-del-segre/": [
 "c422587219d5c8ba",
@@ -2536,8 +2536,8 @@
 "2026-11-20"
 ],
 "regions/hunter-valley/": [
-"7cb282feb22970fa",
-"2026-11-20"
+"62e59cb34c114d7c",
+"2026-11-21"
 ],
 "regions/ica-valley/": [
 "5f7c04982e5a3605",
@@ -2560,7 +2560,7 @@
 "2026-11-20"
 ],
 "regions/jura/": [
-"9a2299502bf6f197",
+"82c3b32108bf3ced",
 "2026-11-21"
 ],
 "regions/kakheti/": [
@@ -2568,8 +2568,8 @@
 "2026-11-20"
 ],
 "regions/kamptal/": [
-"54627d07e2ddd5f4",
-"2026-11-20"
+"33d1f37ace633c59",
+"2026-11-21"
 ],
 "regions/kent/": [
 "5c25d75752c5d893",
@@ -2636,11 +2636,11 @@
 "2026-11-20"
 ],
 "regions/lujan-de-cuyo/": [
-"fc4afeada7904ffe",
-"2026-11-20"
+"9fe447d4e938a8ed",
+"2026-11-21"
 ],
 "regions/macedonia/": [
-"d0788b0b70a5d5fc",
+"3242be1c06c78161",
 "2026-11-21"
 ],
 "regions/madeira/": [
@@ -2700,8 +2700,8 @@
 "2026-11-20"
 ],
 "regions/mentrida/": [
-"3c236cb6708c4df1",
-"2026-11-20"
+"c995da8e94ff8781",
+"2026-11-21"
 ],
 "regions/molise/": [
 "f8895c81c3d4feab",
@@ -2724,12 +2724,12 @@
 "2026-11-20"
 ],
 "regions/montsant/": [
-"2ac62096a52ac7f2",
-"2026-11-20"
+"3afba75c97c30558",
+"2026-11-21"
 ],
 "regions/mornington-peninsula/": [
-"b7d1c53852cf0d6f",
-"2026-11-20"
+"0d6a6633717817b3",
+"2026-11-21"
 ],
 "regions/mosel/": [
 "35a236fa7f85962b",
@@ -2744,7 +2744,7 @@
 "2026-11-20"
 ],
 "regions/naoussa/": [
-"bf6497b05d3a8b73",
+"71267024eb068ada",
 "2026-11-21"
 ],
 "regions/napa-valley/": [
@@ -2768,12 +2768,12 @@
 "2026-11-20"
 ],
 "regions/paarl/": [
-"217e5b58b79fa277",
-"2026-11-20"
+"b465868a8ca21abe",
+"2026-11-21"
 ],
 "regions/patagonia-argentina/": [
-"1d29848f470dd3fe",
-"2026-11-20"
+"6a06cc25878b68a4",
+"2026-11-21"
 ],
 "regions/penedes/": [
 "2251e8a87e16b542",
@@ -2808,7 +2808,7 @@
 "2026-11-20"
 ],
 "regions/rheinhessen/": [
-"05286747f70dba85",
+"6bf73a9b9f2ad785",
 "2026-11-21"
 ],
 "regions/rhone-valley/": [
@@ -2824,8 +2824,8 @@
 "2026-11-20"
 ],
 "regions/ribeiro/": [
-"2f454ee8ddbf1ea2",
-"2026-11-20"
+"55e0e3447eb2634b",
+"2026-11-21"
 ],
 "regions/ribera-del-duero/": [
 "485176270bd3f83b",
@@ -2892,8 +2892,8 @@
 "2026-11-20"
 ],
 "regions/somontano/": [
-"1990e248bec2ebc5",
-"2026-11-20"
+"cdc3184597d4c7d7",
+"2026-11-21"
 ],
 "regions/sonoma/": [
 "31a5bf73e78241f7",
@@ -3020,8 +3020,8 @@
 "2026-11-20"
 ],
 "regions/vinos-de-madrid/": [
-"2c21584936235ccd",
-"2026-11-20"
+"a0b78c11003921a1",
+"2026-11-21"
 ],
 "regions/wachau/": [
 "79cbb334259f26ce",
@@ -3312,7 +3312,7 @@
 "2026-11-20"
 ],
 "wine-library/": [
-"964a04e2611e4197",
+"d3f37f687470910b",
 "2026-11-21"
 ],
 "wine-library/a-a-badenhorst-kalmoesfontein-white/": [
@@ -3342,6 +3342,10 @@
 "wine-library/achaval-ferrer-finca-altamira-malbec/": [
 "45affcc4f531f083",
 "2026-11-20"
+],
+"wine-library/acustic-celler-acustic-negre/": [
+"8863ae322624f43d",
+"2026-11-21"
 ],
 "wine-library/akitu-pinot-noir-blanc/": [
 "9972fb7722415296",
@@ -3374,6 +3378,10 @@
 "wine-library/almaviva-puente-alto/": [
 "414c185ae0769aed",
 "2026-11-20"
+],
+"wine-library/alpha-estate-xinomavro-reserve-vieilles-vignes/": [
+"abc43751cc45a57b",
+"2026-11-21"
 ],
 "wine-library/altos-de-trevejos-mountain-wines-listan-blanco/": [
 "4104e09f4d6444a4",
@@ -3488,8 +3496,8 @@
 "2026-11-20"
 ],
 "wine-library/bernabeleva-navaherreros/": [
-"2adc6a9ae1e33460",
-"2026-11-20"
+"66e9cece4c046f9b",
+"2026-11-21"
 ],
 "wine-library/bests-great-western-bin-1-shiraz/": [
 "246ce1e2d69d3817",
@@ -3536,8 +3544,12 @@
 "2026-11-21"
 ],
 "wine-library/bodega-chacra-barda-pinot-noir/": [
-"9bd03aa49280c7e9",
-"2026-11-20"
+"7b0a3fc09ace6858",
+"2026-11-21"
+],
+"wine-library/bodega-chacra-treinta-y-dos-pinot-noir/": [
+"8644be54ff1948d0",
+"2026-11-21"
 ],
 "wine-library/bodega-colome-malbec-estate/": [
 "abeef4efa4554ac0",
@@ -3560,12 +3572,12 @@
 "2026-11-20"
 ],
 "wine-library/bodega-noemia-a-lisa/": [
-"71bcfccbd93d1fa6",
-"2026-11-20"
+"c77f6bc76b3a8468",
+"2026-11-21"
 ],
 "wine-library/bodega-norton-reserva-malbec/": [
-"085c56fd70e3e892",
-"2026-11-20"
+"76f03b71ceebc8ce",
+"2026-11-21"
 ],
 "wine-library/bodega-numanthia-numanthia/": [
 "48abcb37ac6d2dfe",
@@ -3576,8 +3588,8 @@
 "2026-11-20"
 ],
 "wine-library/bodega-pirineos-3404-tinto/": [
-"680d53180d1e5223",
-"2026-11-20"
+"9c84b9c17140bb32",
+"2026-11-21"
 ],
 "wine-library/bodega-vagal-cuvee-joana/": [
 "52a8631e0de8e554",
@@ -3760,8 +3772,12 @@
 "2026-11-20"
 ],
 "wine-library/boutari-naoussa/": [
-"22e0ec0617e6291f",
-"2026-11-20"
+"718729b6538725a3",
+"2026-11-21"
+],
+"wine-library/brokenwood-ilr-reserve-semillon/": [
+"c3b274366c5f8982",
+"2026-11-21"
 ],
 "wine-library/bruna-u-baccan-pigato/": [
 "7bb5989888c53ea6",
@@ -3788,8 +3804,12 @@
 "2026-11-20"
 ],
 "wine-library/camel-valley-camel-valley-brut/": [
-"0515d9a6d26fbf33",
-"2026-11-20"
+"94c53c7fd3166276",
+"2026-11-21"
+],
+"wine-library/camel-valley-pinot-noir-rose-brut/": [
+"4f28814c953bc330",
+"2026-11-21"
 ],
 "wine-library/campbells-rutherglen-muscat/": [
 "8f8b368ec4ca5fdd",
@@ -3872,8 +3892,8 @@
 "2026-11-20"
 ],
 "wine-library/celler-de-capcanes-mas-donis/": [
-"d88f06e57f44cd99",
-"2026-11-20"
+"9f7c1e69819313fa",
+"2026-11-21"
 ],
 "wine-library/celler-del-roure-les-alcusses/": [
 "a11eaa016544a5f3",
@@ -4195,6 +4215,10 @@
 "08ba550052c2db74",
 "2026-11-20"
 ],
+"wine-library/comando-g-la-bruja-de-rozas/": [
+"39f22bbe3f44e304",
+"2026-11-21"
+],
 "wine-library/concha-y-toro-don-melchor/": [
 "e5b07adb7630a363",
 "2026-11-20"
@@ -4210,6 +4234,10 @@
 "wine-library/cortijo-los-aguilares-pinot-noir/": [
 "e4852ec3a3d46109",
 "2026-11-20"
+],
+"wine-library/coto-de-gomariz-the-flower-and-the-bee-treixadura/": [
+"9c022c6d3ebe855f",
+"2026-11-21"
 ],
 "wine-library/cradle-valley-chardonnay/": [
 "6cb9deae627e323e",
@@ -4595,6 +4623,10 @@
 "d5771292f02c0121",
 "2026-11-20"
 ],
+"wine-library/domaine-berthet-bondet-chateau-chalon/": [
+"64279da72a154acd",
+"2026-11-21"
+],
 "wine-library/domaine-billaud-simon-chablis/": [
 "9262c8b77e93ec28",
 "2026-11-20"
@@ -4662,6 +4694,10 @@
 "wine-library/domaine-de-lhortus-grande-cuvee-rouge/": [
 "4f12f8fc551dd304",
 "2026-11-20"
+],
+"wine-library/domaine-de-montbourgeau-letoile/": [
+"945ca1e7322e682d",
+"2026-11-21"
 ],
 "wine-library/domaine-des-baumard-coteaux-du-layon/": [
 "00950005bfe1f3b9",
@@ -4787,6 +4823,10 @@
 "6f76f11892ea1733",
 "2026-11-20"
 ],
+"wine-library/domaine-tissot-arbois-chardonnay-patchwork/": [
+"be7f3809ffb79e53",
+"2026-11-21"
+],
 "wine-library/domaine-vincent-dauvissat-chablis-1er-cru-vaillons/": [
 "b363f34829288c9c",
 "2026-11-20"
@@ -4812,8 +4852,8 @@
 "2026-11-20"
 ],
 "wine-library/domaines-schlumberger-gewurztraminer-cuvee-christine-vt/": [
-"3aa94745a1f76d32",
-"2026-11-20"
+"4251cecd67974f90",
+"2026-11-21"
 ],
 "wine-library/domaines-schlumberger-riesling-grand-cru-clos-saint-leger/": [
 "c4b6e4ece79db551",
@@ -4884,8 +4924,8 @@
 "2026-11-20"
 ],
 "wine-library/emilio-rojo-emilio-rojo/": [
-"c83da5a93144115f",
-"2026-11-20"
+"43fdb7a0469bd94b",
+"2026-11-21"
 ],
 "wine-library/eric-forest-pouilly-fuisse-1er-cru-les-crays/": [
 "a946cd22768ddc5e",
@@ -5059,6 +5099,10 @@
 "d9f1aa63c3c934fe",
 "2026-11-20"
 ],
+"wine-library/glen-carlou-chardonnay/": [
+"7d7f0fca1f66b222",
+"2026-11-21"
+],
 "wine-library/gonzalez-byass-tio-pepe-fino/": [
 "a67b470eacf3239b",
 "2026-11-20"
@@ -5168,12 +5212,12 @@
 "2026-11-20"
 ],
 "wine-library/hugel-gentil/": [
-"f73872664898f829",
-"2026-11-20"
+"da0fc1ebdb12724c",
+"2026-11-21"
 ],
 "wine-library/hugel-gewurztraminer-estate/": [
-"8b48386411e0a380",
-"2026-11-20"
+"7916be293f7c9df4",
+"2026-11-21"
 ],
 "wine-library/il-marroneto-rosso-di-montalcino-ignaccio/": [
 "12f87b836468bf48",
@@ -5215,9 +5259,13 @@
 "5d86e266b92bc9b7",
 "2026-11-20"
 ],
+"wine-library/jimenez-landi-pielago/": [
+"d56f6a475ab99c5d",
+"2026-11-21"
+],
 "wine-library/jimenez-landi-sotorrondero/": [
-"f96ea66543c2e44a",
-"2026-11-20"
+"f515d80c8613d42a",
+"2026-11-21"
 ],
 "wine-library/joh-jos-prum-wehlener-sonnenuhr-riesling-spatlese/": [
 "60f2fe7e94d62877",
@@ -5252,8 +5300,8 @@
 "2026-11-20"
 ],
 "wine-library/kir-yianni-ramnista/": [
-"743347dfcfc0ad75",
-"2026-11-20"
+"78b0d5246a299892",
+"2026-11-21"
 ],
 "wine-library/kracher-cuvee-beerenauslese/": [
 "6333ce155016789d",
@@ -5268,7 +5316,7 @@
 "2026-11-20"
 ],
 "wine-library/ktima-gerovassiliou-malagousia/": [
-"cf0d17337cd5b84c",
+"d21b38e47cd14391",
 "2026-11-21"
 ],
 "wine-library/l-fayolle-crozes-hermitage-sens/": [
@@ -5340,12 +5388,16 @@
 "2026-11-20"
 ],
 "wine-library/librandi-ciro-rosso-classico-superiore/": [
-"b4754f5540945042",
-"2026-11-20"
+"58e8a05ee90d8293",
+"2026-11-21"
+],
+"wine-library/librandi-critone/": [
+"bf242d75b8e5efab",
+"2026-11-21"
 ],
 "wine-library/librandi-duca-sanfelice-ciro-rosso-classico-superiore-riserva/": [
-"9048dc912e3104ba",
-"2026-11-20"
+"09a0f023c98ec526",
+"2026-11-21"
 ],
 "wine-library/lismore-estate-vineyards-the-age-of-grace-viognier/": [
 "54596f34c3526ffe",
@@ -5404,8 +5456,8 @@
 "2026-11-20"
 ],
 "wine-library/luigi-bosca-malbec/": [
-"743d2eb8684de5f7",
-"2026-11-20"
+"13c9a8be92ae706c",
+"2026-11-21"
 ],
 "wine-library/lungarotti-rubesco-rosso-di-torgiano/": [
 "f529752f0a9c5fee",
@@ -5510,6 +5562,10 @@
 "wine-library/melville-estate-pinot-noir/": [
 "59f9feb81e74d9f6",
 "2026-11-20"
+],
+"wine-library/mendel-malbec/": [
+"73a6c8f855e346e6",
+"2026-11-21"
 ],
 "wine-library/mendes-and-symington-contacto-alvarinho/": [
 "7ee5a3bf3fe0e3e9",
@@ -5632,12 +5688,12 @@
 "2026-11-20"
 ],
 "wine-library/paringa-estate-estate-pinot-gris/": [
-"b04bf847cb47263c",
-"2026-11-20"
+"4b8defbad736f254",
+"2026-11-21"
 ],
 "wine-library/paringa-estate-peninsula-pinot-noir/": [
-"88386256ed8255c6",
-"2026-11-20"
+"df42b7f2a90eb45f",
+"2026-11-21"
 ],
 "wine-library/pascal-jolivet-attitude-sauvignon-blanc/": [
 "19281cfc72f4562b",
@@ -5676,8 +5732,8 @@
 "2026-11-20"
 ],
 "wine-library/penfolds-yattarna-chardonnay/": [
-"799647c9ec265041",
-"2026-11-20"
+"a7e0fc4a5f4fec2a",
+"2026-11-21"
 ],
 "wine-library/perez-barquero-gran-barquero-fino/": [
 "4e45e5403596e73a",
@@ -5996,8 +6052,8 @@
 "2026-11-20"
 ],
 "wine-library/schloss-gobelsburg-gruner-veltliner-ried-renner/": [
-"2120a5f6e3f644d3",
-"2026-11-20"
+"8bf5a058dfcc80c4",
+"2026-11-21"
 ],
 "wine-library/schuchmann-wines-vinoterra-kisi/": [
 "b502c6c42bb95003",
@@ -6019,6 +6075,10 @@
 "a3d728dc4fa5cfd0",
 "2026-11-20"
 ],
+"wine-library/shaw-smith-sauvignon-blanc/": [
+"e0c70fc13f57b6ac",
+"2026-11-21"
+],
 "wine-library/simpsons-wine-estate-q-class-pinot-noir/": [
 "2d4278d7a1c1f2c2",
 "2026-11-20"
@@ -6030,6 +6090,10 @@
 "wine-library/spice-route-pinotage/": [
 "5256dc3038c9b402",
 "2026-11-20"
+],
+"wine-library/stonier-chardonnay/": [
+"1d4b5dced1fe086c",
+"2026-11-21"
 ],
 "wine-library/suertes-del-marques-7-fuentes/": [
 "0b5fbbd420bdc5da",
@@ -6068,8 +6132,8 @@
 "2026-11-20"
 ],
 "wine-library/tapanappa-tiers-vineyard-1-5m-chardonnay/": [
-"a368693450a467d2",
-"2026-11-20"
+"e9784245f0ae6c8b",
+"2026-11-21"
 ],
 "wine-library/tasca-dalmerita-regaleali-le-rose/": [
 "45ab24d9e316d7aa",
@@ -6155,9 +6219,13 @@
 "2044efa23bd7a992",
 "2026-11-20"
 ],
+"wine-library/thymiopoulos-vineyards-earth-and-sky/": [
+"3ca9ec5a77601c5e",
+"2026-11-21"
+],
 "wine-library/thymiopoulos-vineyards-jeunes-vignes-de-xinomavro/": [
-"21114d725b666526",
-"2026-11-20"
+"39229cad77f0d32b",
+"2026-11-21"
 ],
 "wine-library/tollini-mendo-blendo/": [
 "89a018c3a67d4a6a",
@@ -6196,12 +6264,12 @@
 "2026-11-20"
 ],
 "wine-library/tyrrells-old-winery-verdelho/": [
-"8a4fccfc3df0d8dd",
-"2026-11-20"
+"450b7898dd744ddf",
+"2026-11-21"
 ],
 "wine-library/tyrrells-vat-1-hunter-semillon/": [
-"b1351905a10c9664",
-"2026-11-20"
+"5fe29156cd1a6ee6",
+"2026-11-21"
 ],
 "wine-library/umani-ronchi-casal-di-serra-verdicchio/": [
 "6c0e699e07d76831",
@@ -6228,12 +6296,12 @@
 "2026-11-20"
 ],
 "wine-library/vilafonte-series-m/": [
-"03130856ded7e906",
-"2026-11-20"
+"7edb986fbe63de0d",
+"2026-11-21"
 ],
 "wine-library/vilafonte-seriously-old-dirt/": [
-"9d7838f4f80edc1d",
-"2026-11-20"
+"80a60d12aea2fd26",
+"2026-11-21"
 ],
 "wine-library/vina-altair-altair/": [
 "35dca8ca106ae281",
@@ -6263,6 +6331,10 @@
 "2bea9f9e26900799",
 "2026-11-20"
 ],
+"wine-library/vinas-del-vero-gewurztraminer/": [
+"9937da97349d03ad",
+"2026-11-21"
+],
 "wine-library/vincent-girardin-meursault-vieilles-vignes/": [
 "54640d91302b1855",
 "2026-11-20"
@@ -6272,8 +6344,8 @@
 "2026-11-20"
 ],
 "wine-library/weingut-brundlmayer-kamptaler-terrassen-gruner-veltliner/": [
-"50925a55a8c32b40",
-"2026-11-20"
+"a5811b6c4b729cf7",
+"2026-11-21"
 ],
 "wine-library/weingut-donnhoff-tonschiefer-riesling-trocken/": [
 "639c6e572f8340b9",
@@ -6283,12 +6355,20 @@
 "cd3773e707359dfd",
 "2026-11-20"
 ],
+"wine-library/weingut-gunderloch-jean-baptiste-riesling-kabinett/": [
+"f486e4d4942e1ad4",
+"2026-11-21"
+],
+"wine-library/weingut-hirsch-ried-heiligenstein-riesling/": [
+"45337844478eb07e",
+"2026-11-21"
+],
 "wine-library/weingut-hirtzberger-gruner-veltliner-smaragd-honivogl/": [
 "d66e9acc6191d4b8",
 "2026-11-20"
 ],
 "wine-library/weingut-keller-von-der-fels-riesling/": [
-"589407ad10279e3e",
+"29321ebb98377294",
 "2026-11-21"
 ],
 "wine-library/weingut-knoll-gruner-veltliner-smaragd-ried-loibenberg/": [
@@ -6324,7 +6404,7 @@
 "2026-11-20"
 ],
 "wine-library/weingut-wittmann-100-hugel-riesling-trocken/": [
-"e89093a9a1c491f2",
+"de2fec066ad507b9",
 "2026-11-21"
 ],
 "wine-library/william-fevre-chablis-grand-cru-bougros/": [
