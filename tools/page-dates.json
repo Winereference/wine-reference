@@ -1,6 +1,6 @@
 {
 "about/": [
-"dc8474511b418348",
+"beb1fb9b2742a020",
 "2026-11-21"
 ],
 "careers/": [
@@ -1340,8 +1340,8 @@
 "2026-11-20"
 ],
 "grapes/": [
-"e2f93f376149368b",
-"2026-11-20"
+"e8e1bb2761170ae9",
+"2026-11-21"
 ],
 "grapes/agiorgitiko/": [
 "cfdf9a9f0a15f332",
@@ -1443,6 +1443,10 @@
 "45f1bb0ba7b5a131",
 "2026-11-20"
 ],
+"grapes/canaiolo/": [
+"746df14fa1da8a49",
+"2026-11-21"
+],
 "grapes/cannonau/": [
 "928e2d9f06f7431a",
 "2026-11-20"
@@ -1538,6 +1542,10 @@
 "grapes/dornfelder/": [
 "cd78d1a059727ee8",
 "2026-11-20"
+],
+"grapes/elbling/": [
+"73663470de26e86b",
+"2026-11-21"
 ],
 "grapes/encruzado/": [
 "8d3bd0c22a8e1fee",
@@ -1804,8 +1812,8 @@
 "2026-11-20"
 ],
 "grapes/muscadelle/": [
-"8ead01c082693559",
-"2026-11-20"
+"943bdc7e7f220456",
+"2026-11-21"
 ],
 "grapes/muscat-bailey-a/": [
 "d00ad4a34a14d846",
@@ -1884,8 +1892,8 @@
 "2026-11-20"
 ],
 "grapes/petit-manseng/": [
-"e96e4f98aede93e9",
-"2026-11-20"
+"cbfa38f7486459df",
+"2026-11-21"
 ],
 "grapes/petit-verdot/": [
 "f6ed97ebe7c6fb42",
@@ -2013,6 +2021,10 @@
 ],
 "grapes/sauvignon-blanc/": [
 "7c4a2a2eb6e31ba9",
+"2026-11-21"
+],
+"grapes/sauvignon-gris/": [
+"03cfaca16e3f86d5",
 "2026-11-21"
 ],
 "grapes/savagnin/": [
@@ -2160,8 +2172,8 @@
 "2026-11-20"
 ],
 "grapes/vernaccia/": [
-"cb82cb58df4f8e06",
-"2026-11-20"
+"f8d0c662712e8675",
+"2026-11-21"
 ],
 "grapes/vidal-blanc/": [
 "0e7083cc44af855c",

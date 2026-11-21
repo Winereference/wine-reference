@@ -321,7 +321,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2507,6 +2507,12 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/cabernet-sauvignon-red-grapes-autumn-leaves-napa.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/grapes/canaiolo/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/grapes/cannonau/</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -2671,6 +2677,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/dornfelder-pfalz-vineyard-aerial-autumn-germany.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/grapes/elbling/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/encruzado/</loc>
@@ -3118,7 +3130,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/muscadelle/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/muscadelle-saint-emilion-vineyard-stone-walls-bordeaux-france.webp</image:loc></image:image>
@@ -3255,7 +3267,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/petit-manseng/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3474,6 +3486,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/sauvignon-blanc-sancerre-vineyard-autumn-loire.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/grapes/sauvignon-gris/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/savagnin/</loc>
@@ -3719,7 +3737,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/vernaccia/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/vernaccia-san-gimignano-towers-grapes-tuscany-italy.webp</image:loc></image:image>
