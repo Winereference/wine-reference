@@ -1,6 +1,6 @@
 {
 "about/": [
-"c39fc3b06a0958fb",
+"55bd5686fbf424f1",
 "2026-11-21"
 ],
 "careers/": [
@@ -16,36 +16,40 @@
 "2026-11-20"
 ],
 "cocktails/": [
-"7b783164b1e936f1",
-"2026-11-20"
+"cd3674e7512fe327",
+"2026-11-21"
 ],
 "cocktails/absinthe-drip/": [
 "ac3b8c3116e80a11",
 "2026-11-20"
 ],
+"cocktails/adonis/": [
+"c9949388ccc8330b",
+"2026-11-21"
+],
 "cocktails/americano/": [
-"f8addeb7c08cd7ef",
-"2026-11-20"
+"563afbaca6a0563e",
+"2026-11-21"
 ],
 "cocktails/aperol-spritz/": [
-"d5434cef017c7792",
-"2026-11-20"
+"40e9870a61064ee8",
+"2026-11-21"
 ],
 "cocktails/aviation/": [
-"a46054526b7bb5f0",
-"2026-11-20"
+"6e5937ea2140fbcf",
+"2026-11-21"
 ],
 "cocktails/batanga/": [
 "b610a45fbd071d5f",
 "2026-11-20"
 ],
 "cocktails/bees-knees/": [
-"828aec3e8f8849b7",
-"2026-11-20"
+"788cbb7b63ffff5e",
+"2026-11-21"
 ],
 "cocktails/bellini/": [
-"72545292073847f5",
-"2026-11-20"
+"7c5c622d7c5907fb",
+"2026-11-21"
 ],
 "cocktails/between-the-sheets/": [
 "c504a7815907ece8",
@@ -56,16 +60,16 @@
 "2026-11-20"
 ],
 "cocktails/bloody-mary/": [
-"42dcd7252bd1aa14",
-"2026-11-20"
+"784b56779ce9ffe9",
+"2026-11-21"
 ],
 "cocktails/boulevardier/": [
 "3109fc619cf16caf",
 "2026-11-20"
 ],
 "cocktails/bramble/": [
-"eb0dfd1858d24630",
-"2026-11-20"
+"5d0965d27a50eb5c",
+"2026-11-21"
 ],
 "cocktails/brandy-alexander/": [
 "0bd25e03bd540af8",
@@ -80,20 +84,20 @@
 "2026-11-20"
 ],
 "cocktails/champagne-cocktail/": [
-"60f0fc3864cb61d3",
-"2026-11-20"
+"eaefbb9797a58769",
+"2026-11-21"
 ],
 "cocktails/clover-club/": [
-"059043061d6fed86",
-"2026-11-20"
+"6e07d743b6edc4d8",
+"2026-11-21"
 ],
 "cocktails/corpse-reviver-no-2/": [
-"4a653278949cee42",
-"2026-11-20"
+"681456e5e38d2a49",
+"2026-11-21"
 ],
 "cocktails/cosmopolitan/": [
-"014ac300e634c8ae",
-"2026-11-20"
+"65ee30a905173199",
+"2026-11-21"
 ],
 "cocktails/cuba-libre/": [
 "d85049b4fa9a3f57",
@@ -108,40 +112,44 @@
 "2026-11-20"
 ],
 "cocktails/dry-martini/": [
-"1a189c29c94212bd",
-"2026-11-20"
+"32c6c6c3c85a425d",
+"2026-11-21"
 ],
 "cocktails/el-presidente/": [
 "b6dd80dd94336280",
 "2026-11-20"
 ],
 "cocktails/espresso-martini/": [
-"a0fbaaab3919eb0c",
-"2026-11-20"
+"feb9f99007ea374c",
+"2026-11-21"
 ],
 "cocktails/french-75/": [
-"5b8e0589daec6f10",
-"2026-11-20"
+"6b72c270f4cf60fc",
+"2026-11-21"
 ],
 "cocktails/gimlet/": [
-"34e96f88246c280f",
-"2026-11-20"
+"e30438805bca2589",
+"2026-11-21"
 ],
 "cocktails/gin-and-tonic/": [
-"94efa48b237021c1",
-"2026-11-20"
+"6907f41e216feaa7",
+"2026-11-21"
+],
+"cocktails/gin-basil-smash/": [
+"5d87128f9c9b2cd2",
+"2026-11-21"
 ],
 "cocktails/gin-fizz/": [
-"32813a26822b7fe6",
-"2026-11-20"
+"52e991048c565f6c",
+"2026-11-21"
 ],
 "cocktails/gold-rush/": [
 "8faba42100338a8a",
 "2026-11-20"
 ],
 "cocktails/hanky-panky/": [
-"517b447edbeccc23",
-"2026-11-20"
+"8fcc323292fd92ba",
+"2026-11-21"
 ],
 "cocktails/hemingway-daiquiri/": [
 "34a0229d4a778792",
@@ -163,13 +171,17 @@
 "341e39d1fc136d3d",
 "2026-11-20"
 ],
+"cocktails/kamikaze/": [
+"9a2ba2e2045719bc",
+"2026-11-21"
+],
 "cocktails/kir-royale/": [
-"2785bdc8f96d9ff3",
-"2026-11-20"
+"9f92d9add422e191",
+"2026-11-21"
 ],
 "cocktails/last-word/": [
-"523e53cfd2b9a1e7",
-"2026-11-20"
+"51c1464d474a59aa",
+"2026-11-21"
 ],
 "cocktails/mai-tai/": [
 "b1647ac5bedc207d",
@@ -184,8 +196,8 @@
 "2026-11-20"
 ],
 "cocktails/martinez/": [
-"df4672643e5db825",
-"2026-11-20"
+"f23cee4221a62e89",
+"2026-11-21"
 ],
 "cocktails/mary-pickford/": [
 "f32cfe9326983d36",
@@ -200,16 +212,16 @@
 "2026-11-20"
 ],
 "cocktails/moscow-mule/": [
-"e2424a1762646c23",
-"2026-11-20"
+"fdc8eedf8fa90d7f",
+"2026-11-21"
 ],
 "cocktails/naked-and-famous/": [
 "a04def780c1c0632",
 "2026-11-20"
 ],
 "cocktails/negroni/": [
-"3cc4c29398b4f22b",
-"2026-11-20"
+"af89c3807cc7c706",
+"2026-11-21"
 ],
 "cocktails/oaxaca-old-fashioned/": [
 "a096a0b26577902d",
@@ -248,8 +260,8 @@
 "2026-11-20"
 ],
 "cocktails/ramos-gin-fizz/": [
-"9c32ce3d80c3eda2",
-"2026-11-20"
+"c686de9e1a340832",
+"2026-11-21"
 ],
 "cocktails/rob-roy/": [
 "c3da9840ce14891b",
@@ -264,20 +276,20 @@
 "2026-11-20"
 ],
 "cocktails/sherry-cobbler/": [
-"4882c905c8a062ff",
-"2026-11-20"
+"d60ddcf807aea0eb",
+"2026-11-21"
 ],
 "cocktails/sidecar/": [
 "55f5e644e100aeb7",
 "2026-11-20"
 ],
 "cocktails/singapore-sling/": [
-"c7c0731b96bcc292",
-"2026-11-20"
+"e1f34eb777bce8f9",
+"2026-11-21"
 ],
 "cocktails/southside/": [
-"6f02a1de24d21441",
-"2026-11-20"
+"c04df96d61fdc745",
+"2026-11-21"
 ],
 "cocktails/stinger/": [
 "9fe706ec21bf25d2",
@@ -292,8 +304,8 @@
 "2026-11-20"
 ],
 "cocktails/tom-collins/": [
-"fe12ea447dd8564c",
-"2026-11-20"
+"1c0d533c2cd7ca1f",
+"2026-11-21"
 ],
 "cocktails/tommys-margarita/": [
 "230c5fee4ee67bcf",
@@ -304,8 +316,8 @@
 "2026-11-20"
 ],
 "cocktails/vesper/": [
-"96265bf73a807a8e",
-"2026-11-20"
+"3c54be6ef08e5107",
+"2026-11-21"
 ],
 "cocktails/vieux-carre/": [
 "a9fecd49b02c7fd5",
@@ -320,8 +332,8 @@
 "2026-11-20"
 ],
 "cocktails/white-russian/": [
-"1ce01cc7b238bdf3",
-"2026-11-20"
+"101a6bf747cfda25",
+"2026-11-21"
 ],
 "contact/": [
 "7345ce8d35f6b7ed",
@@ -3048,12 +3060,12 @@
 "2026-11-20"
 ],
 "spirits/": [
-"1e88e6487aa91fc6",
-"2026-11-20"
+"e85aeb19cc424d69",
+"2026-11-21"
 ],
 "spirits/armagnac/": [
-"0716329fe0dbb9d6",
-"2026-11-20"
+"5beb286cc8018b06",
+"2026-11-21"
 ],
 "spirits/armenia/": [
 "b5987cc9b2f75223",
@@ -3068,8 +3080,8 @@
 "2026-11-20"
 ],
 "spirits/brazil/": [
-"19911a50046a4602",
-"2026-11-20"
+"1c315da07b14a046",
+"2026-11-21"
 ],
 "spirits/campbeltown/": [
 "67e0fcdacb91a032",
@@ -3096,8 +3108,8 @@
 "2026-11-20"
 ],
 "spirits/finland/": [
-"c19582870ca9f7fd",
-"2026-11-20"
+"d25478327f94c167",
+"2026-11-21"
 ],
 "spirits/guatemala/": [
 "4f8db23b95c235d6",
@@ -3136,8 +3148,8 @@
 "2026-11-20"
 ],
 "spirits/jalisco/": [
-"54ae790ecf402678",
-"2026-11-20"
+"233ea2bf60a55bdd",
+"2026-11-21"
 ],
 "spirits/jamaica/": [
 "2e19d417c66ae0f6",
@@ -3148,8 +3160,8 @@
 "2026-11-20"
 ],
 "spirits/jerez/": [
-"0de415dde1fae6dd",
-"2026-11-20"
+"e37fcecd6649354f",
+"2026-11-21"
 ],
 "spirits/kagoshima/": [
 "9204469094958e86",
@@ -3188,8 +3200,8 @@
 "2026-11-20"
 ],
 "spirits/oaxaca/": [
-"595c1727f4a2815a",
-"2026-11-20"
+"3bd8b1da415d17dd",
+"2026-11-21"
 ],
 "spirits/plymouth/": [
 "75e327aa4150f579",
@@ -3200,20 +3212,20 @@
 "2026-11-20"
 ],
 "spirits/puerto-rico/": [
-"c807527e94823c85",
-"2026-11-20"
+"c70148bc27c7c6cc",
+"2026-11-21"
 ],
 "spirits/schiedam/": [
-"14c1d1b0bbabce29",
-"2026-11-20"
+"e2c7fad8404c656f",
+"2026-11-21"
 ],
 "spirits/scottish-islands/": [
 "c9769e2de2d2c3c9",
 "2026-11-20"
 ],
 "spirits/sichuan/": [
-"6a9a40a7c07167a4",
-"2026-11-20"
+"d9125057e61bc4db",
+"2026-11-21"
 ],
 "spirits/speyside/": [
 "4c583fae715ac528",
@@ -3228,32 +3240,32 @@
 "2026-11-20"
 ],
 "spirits/tasmania/": [
-"7a7220cc0f8d474f",
-"2026-11-20"
+"dc263121f6c37ae2",
+"2026-11-21"
 ],
 "spirits/tennessee/": [
 "4e9bab7e2e7baae7",
 "2026-11-20"
 ],
 "spirits/trinidad-and-tobago/": [
-"140935043ef131fb",
-"2026-11-20"
+"2cb07a49f5a83ffe",
+"2026-11-21"
 ],
 "spirits/val-de-travers/": [
-"82f1a7df31753d7d",
-"2026-11-20"
+"d84f2880bf2cedd7",
+"2026-11-21"
 ],
 "spirits/veneto-bassano-del-grappa/": [
-"83056e74d6c526c2",
-"2026-11-20"
+"a41c22f2e1d011f0",
+"2026-11-21"
 ],
 "spirits/venezuela/": [
 "56bb5a1d2b8e5fc9",
 "2026-11-20"
 ],
 "spirits/western-cape/": [
-"9879714873524b20",
-"2026-11-20"
+"bae017d1ac4c0e8c",
+"2026-11-21"
 ],
 "stories/": [
 "391abdafe22572b7",
