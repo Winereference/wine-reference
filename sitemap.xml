@@ -309,7 +309,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/food-pairing/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1742,6 +1742,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/food-pairing/panettone/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/food-pairing/panna-cotta/</loc>
     <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
@@ -2645,7 +2651,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/corvina/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/corvina-verona-adige-river-sunset-veneto-italy.webp</image:loc></image:image>
@@ -5665,14 +5671,14 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/allegrini-amarone-della-valpolicella-classico/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/veneto-prosecco-hills-valdobbiadene-vineyards-italy.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/allegrini-valpolicella/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/veneto-prosecco-hills-valdobbiadene-vineyards-italy.webp</image:loc></image:image>
@@ -7229,14 +7235,14 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/de-stefani-bailo-amarone/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/veneto-prosecco-hills-valdobbiadene-vineyards-italy.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/de-stefani-bailo-ripasso/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/veneto-prosecco-hills-valdobbiadene-vineyards-italy.webp</image:loc></image:image>
@@ -8955,7 +8961,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/la-collina-dei-ciliegi-valpolicella-superiore-peratara/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/veneto-prosecco-hills-valdobbiadene-vineyards-italy.webp</image:loc></image:image>
@@ -9370,7 +9376,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/meroni-amarone-della-valpolicella-classico-velluto/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/veneto-prosecco-hills-valdobbiadene-vineyards-italy.webp</image:loc></image:image>
@@ -9479,7 +9485,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/musella-recioto-della-valpolicella/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/veneto-prosecco-hills-valdobbiadene-vineyards-italy.webp</image:loc></image:image>
@@ -10485,7 +10491,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/tommasi-valpolicella-ripasso/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/veneto-prosecco-hills-valdobbiadene-vineyards-italy.webp</image:loc></image:image>

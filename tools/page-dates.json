@@ -1,6 +1,6 @@
 {
 "about/": [
-"beb1fb9b2742a020",
+"504100a306db74e3",
 "2026-11-21"
 ],
 "careers/": [
@@ -328,8 +328,8 @@
 "2026-11-20"
 ],
 "food-pairing/": [
-"fa8e94bca7cea708",
-"2026-11-20"
+"6fa26a963ac9aca2",
+"2026-11-21"
 ],
 "food-pairing/aligot/": [
 "5b2965419c0ca15f",
@@ -939,6 +939,10 @@
 "b2d1544b3f35c82c",
 "2026-11-20"
 ],
+"food-pairing/panettone/": [
+"57788cc9faf0e2ee",
+"2026-11-21"
+],
 "food-pairing/panna-cotta/": [
 "fe1dcdf4357bf092",
 "2026-11-20"
@@ -1524,8 +1528,8 @@
 "2026-11-20"
 ],
 "grapes/corvina/": [
-"31da3197822f4fc1",
-"2026-11-20"
+"a8c492f41ee2f659",
+"2026-11-21"
 ],
 "grapes/cremant/": [
 "2d850b2757aca7ee",
@@ -3360,12 +3364,12 @@
 "2026-11-20"
 ],
 "wine-library/allegrini-amarone-della-valpolicella-classico/": [
-"056634153f70b1b0",
-"2026-11-20"
+"45e96c9f5a3850c1",
+"2026-11-21"
 ],
 "wine-library/allegrini-valpolicella/": [
-"cb1fd5e93373b761",
-"2026-11-20"
+"3a22c06846c7eff0",
+"2026-11-21"
 ],
 "wine-library/almaviva-puente-alto/": [
 "414c185ae0769aed",
@@ -4272,12 +4276,12 @@
 "2026-11-20"
 ],
 "wine-library/de-stefani-bailo-amarone/": [
-"85f7a4e6388e5353",
-"2026-11-20"
+"de30e07620089a11",
+"2026-11-21"
 ],
 "wine-library/de-stefani-bailo-ripasso/": [
-"ed59a70f322a82a3",
-"2026-11-20"
+"f381d2e4b37ca459",
+"2026-11-21"
 ],
 "wine-library/de-stefani-blanc-de-noirs-metodo-classico/": [
 "595ba8e0b143fe90",
@@ -5272,8 +5276,8 @@
 "2026-11-20"
 ],
 "wine-library/la-collina-dei-ciliegi-valpolicella-superiore-peratara/": [
-"ec5f20433ce9ee98",
-"2026-11-20"
+"918b43080a6ac73e",
+"2026-11-21"
 ],
 "wine-library/la-rioja-alta-vina-alberdi-reserva/": [
 "72035cb57b119d34",
@@ -5512,8 +5516,8 @@
 "2026-11-20"
 ],
 "wine-library/meroni-amarone-della-valpolicella-classico-velluto/": [
-"f8a03f653413c50f",
-"2026-11-20"
+"7ea0850e559246ed",
+"2026-11-21"
 ],
 "wine-library/miguel-torres-chile-manso-de-velasco/": [
 "9771dbb95712f926",
@@ -5576,8 +5580,8 @@
 "2026-11-20"
 ],
 "wine-library/musella-recioto-della-valpolicella/": [
-"eae0b9383a03a158",
-"2026-11-20"
+"8b343d183f153b42",
+"2026-11-21"
 ],
 "wine-library/narbona-tannat-roble/": [
 "552fa295e4542af1",
@@ -6160,8 +6164,8 @@
 "2026-11-20"
 ],
 "wine-library/tommasi-valpolicella-ripasso/": [
-"686cfc1872bd5863",
-"2026-11-20"
+"ea794094b746b431",
+"2026-11-21"
 ],
 "wine-library/torbreck-woodcutters-semillon/": [
 "96ff791dfa626933",
