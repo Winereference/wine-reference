@@ -1424,8 +1424,8 @@
 "2026-11-20"
 ],
 "grapes/barbera/": [
-"07a86fc3cbfe5984",
-"2026-11-20"
+"e52786b87952e40b",
+"2026-11-21"
 ],
 "grapes/blauer-portugieser/": [
 "27ee640cd2d5af02",
@@ -1440,8 +1440,8 @@
 "2026-11-20"
 ],
 "grapes/cabernet-franc/": [
-"21cfcf7195d6cfa6",
-"2026-11-20"
+"6df43b79cb9a0bec",
+"2026-11-21"
 ],
 "grapes/cabernet-sauvignon/": [
 "45f1bb0ba7b5a131",
@@ -1464,8 +1464,8 @@
 "2026-11-21"
 ],
 "grapes/carmenere/": [
-"db5630ec7b83e0d8",
-"2026-11-20"
+"25d5bb500002151c",
+"2026-11-21"
 ],
 "grapes/carricante/": [
 "9f022bc29f28c657",
@@ -1484,7 +1484,7 @@
 "2026-11-20"
 ],
 "grapes/cesanese/": [
-"e08c78c896c4aead",
+"c3902bc426334db9",
 "2026-11-21"
 ],
 "grapes/chambourcin/": [
@@ -1536,12 +1536,12 @@
 "2026-11-20"
 ],
 "grapes/croatina/": [
-"421135048319de0e",
+"5aacf5ced34961f4",
 "2026-11-21"
 ],
 "grapes/dolcetto/": [
-"086f31f3811af735",
-"2026-11-20"
+"7ec0b967cbef21e6",
+"2026-11-21"
 ],
 "grapes/dornfelder/": [
 "cd78d1a059727ee8",
@@ -1560,8 +1560,8 @@
 "2026-11-20"
 ],
 "grapes/erbaluce/": [
-"9dca469413cc4c0c",
-"2026-11-20"
+"f1ae055180ff2c3a",
+"2026-11-21"
 ],
 "grapes/falanghina/": [
 "5196b98c261978c6",
@@ -1600,12 +1600,12 @@
 "2026-11-20"
 ],
 "grapes/freisa/": [
-"efb6e288676a7047",
-"2026-11-20"
+"6b4d8f4c0d3d74fd",
+"2026-11-21"
 ],
 "grapes/friulano/": [
-"0309356aee0ae5a5",
-"2026-11-20"
+"3756831e621d6b78",
+"2026-11-21"
 ],
 "grapes/furmint/": [
 "e972feb4d5f766ca",
@@ -1656,8 +1656,8 @@
 "2026-11-20"
 ],
 "grapes/grignolino/": [
-"1b3a43c610832ff5",
-"2026-11-20"
+"e3a8d411efb3bcf4",
+"2026-11-21"
 ],
 "grapes/grillo/": [
 "65c87220605609d9",
@@ -1828,8 +1828,8 @@
 "2026-11-20"
 ],
 "grapes/nebbiolo/": [
-"854bb9a665849f2b",
-"2026-11-20"
+"29b2ec16e8e8e233",
+"2026-11-21"
 ],
 "grapes/negrette/": [
 "97f9636201d3dfe5",
@@ -1932,8 +1932,8 @@
 "2026-11-20"
 ],
 "grapes/pinot-grigio/": [
-"3d349f5f8ea8dad6",
-"2026-11-20"
+"6f97c8ad631c176f",
+"2026-11-21"
 ],
 "grapes/pinot-meunier/": [
 "422d364ca513c8dd",
@@ -1976,12 +1976,12 @@
 "2026-11-20"
 ],
 "grapes/refosco/": [
-"55a65e5dd229953f",
-"2026-11-20"
+"c7cf6973807d4bff",
+"2026-11-21"
 ],
 "grapes/ribolla-gialla/": [
-"8741c8083963a431",
-"2026-11-20"
+"a241af6cf0c19137",
+"2026-11-21"
 ],
 "grapes/riesling/": [
 "ba217a1f412d3b61",
@@ -2024,7 +2024,7 @@
 "2026-11-20"
 ],
 "grapes/sauvignon-blanc/": [
-"ae0102b9ca85e8c0",
+"f7f5d7c6e7c94ef5",
 "2026-11-21"
 ],
 "grapes/sauvignon-gris/": [
@@ -2504,8 +2504,8 @@
 "2026-11-20"
 ],
 "regions/friuli-venezia-giulia/": [
-"41c6b81595810366",
-"2026-11-20"
+"2dde720cbd385277",
+"2026-11-21"
 ],
 "regions/getariako-txakolina/": [
 "38c9559cea0e2fa6",
@@ -2604,8 +2604,8 @@
 "2026-11-20"
 ],
 "regions/lazio/": [
-"a81fd6f178769c0e",
-"2026-11-20"
+"200b03ccae21b04c",
+"2026-11-21"
 ],
 "regions/lebrija/": [
 "244f60324bdb568e",
@@ -2632,8 +2632,8 @@
 "2026-11-21"
 ],
 "regions/lombardy/": [
-"10cd5023542f2466",
-"2026-11-20"
+"51d7e71595434708",
+"2026-11-21"
 ],
 "regions/lujan-de-cuyo/": [
 "9fe447d4e938a8ed",
@@ -2780,8 +2780,8 @@
 "2026-11-20"
 ],
 "regions/piedmont/": [
-"28fd26ee102cc45a",
-"2026-11-20"
+"11a0326f401a158f",
+"2026-11-21"
 ],
 "regions/pla-de-bages/": [
 "583d8022a881bc97",
@@ -3008,8 +3008,8 @@
 "2026-11-20"
 ],
 "regions/veneto/": [
-"1b28f545cc2ae322",
-"2026-11-20"
+"68b847cf226bcb4f",
+"2026-11-21"
 ],
 "regions/vienna/": [
 "25020b521bcd6dac",
