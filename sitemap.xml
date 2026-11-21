@@ -315,7 +315,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/glossary/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -351,7 +351,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/stories/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3542,7 +3542,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/semillon/</loc>
-    <lastmod>2026-11-20</lastmod>
+    <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/semillon-hunter-valley-vineyard-denman-australia.webp</image:loc></image:image>
@@ -5544,6 +5544,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/s/port-and-stilton-blue-cheese-board-red-wine-glasses.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/stories/sauternes-and-foie-gras-french-christmas-reveillon/</loc>
+    <lastmod>2026-11-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/s/foie-gras-terrine-with-toast-and-cherries.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/stories/speyer-wine-bottle-oldest-wine-in-the-world/</loc>
