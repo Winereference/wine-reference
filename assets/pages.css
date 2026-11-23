@@ -121,3 +121,56 @@ video.clip{display:block;width:100%;height:auto;border-radius:16px;background:va
 .trv{display:grid;gap:22px;align-items:center}
 .trvv video.clip{max-height:72vh;width:auto;max-width:100%;margin:0 auto;aspect-ratio:9/16}
 @media (min-width:700px){.trv{grid-template-columns:minmax(240px,360px) 1fr}}
+
+/* Grape cards (same as the app), copied from index.html */
+/* WINE BY STYLE carousel + alternating layout + motion (23 Nov 2026) */
+.wsn{display:flex;gap:8px}
+.wsbtn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--accent);font-size:20px;cursor:pointer;line-height:1}
+.wsbtn:hover{border-color:var(--accent)}
+.wsw{grid-column:1/-1;min-width:0}
+.wss{display:grid;grid-auto-flow:column;grid-auto-columns:88%;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;scrollbar-width:none;overscroll-behavior-x:contain}
+.wss::-webkit-scrollbar{display:none}
+@media (min-width:700px){.wss{grid-auto-columns:calc(50% - 8px)}}
+@media (min-width:700px){.wsb{flex-basis:86px;width:86px}}@media (min-width:1050px){.wsb{flex-basis:96px;width:96px}.wsi h3{font-size:28px}}
+.wsc{scroll-snap-align:start;display:flex;gap:14px;align-items:center;border:1px solid var(--line);border-radius:20px;padding:22px 18px;background:var(--surface);position:relative;overflow:hidden}
+.wsc::before{content:"";position:absolute;left:-40px;bottom:-60px;width:170px;height:170px;border-radius:50%;background:var(--sc);opacity:.08}
+.wsb{flex:0 0 64px;width:64px;height:auto;position:relative;filter:drop-shadow(0 8px 10px rgba(0,0,0,.18));transform-origin:50% 90%}
+.wsi{flex:1;min-width:0;position:relative}
+.wsi h3{font-size:24px;margin:0 0 4px;line-height:1.15}
+.wsg{font-size:15px;margin:0 0 12px;color:var(--muted)}
+.wsg a{color:var(--accent);text-decoration:none}.wsg a:hover{text-decoration:underline}
+.wsi h4{font:600 11.5px Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin:10px 0 7px}
+.wsf{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;text-align:center}
+.wsf li{font-size:11px;hyphens:manual;line-height:1.25;color:var(--muted)}
+.wsf span{display:block;font-size:24px;line-height:1.2;margin-bottom:3px}
+.wsp{margin:0;display:grid;gap:7px}
+.wsp .wsr{display:grid;grid-template-columns:82px 1fr;align-items:center;gap:10px}
+.wsp .wsl{font-size:13px;color:var(--muted)}
+.wsbar{display:block;height:8px;position:relative;background:repeating-linear-gradient(90deg,var(--chip) 0 calc(20% - 3px),transparent calc(20% - 3px) 20%)}
+.wsbar i{position:absolute;left:0;top:0;bottom:0;width:0;background:repeating-linear-gradient(90deg,var(--sc) 0 calc(var(--seg) - 3px),transparent calc(var(--seg) - 3px) var(--seg));--seg:calc(100% / max(var(--v),1));transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.wsc.in .wsbar i,.no-io .wsbar i{width:calc(var(--v) * 20%)}
+.wsc.in .wsr:nth-child(2) i{transition-delay:.12s}.wsc.in .wsr:nth-child(3) i{transition-delay:.24s}.wsc.in .wsr:nth-child(4) i{transition-delay:.36s}.wsc.in .wsr:nth-child(5) i{transition-delay:.48s}
+.wsa{font-size:12.5px;color:var(--muted);margin:8px 0 0}
+.wsm{display:inline-block;margin-top:10px;font-weight:600;font-size:15px;color:var(--accent);text-decoration:none}
+.wsc.in .wsb{animation:stbob 5s ease-in-out infinite}
+@keyframes stbob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5px) rotate(-2deg)}}
+.wsc:hover .wsb{animation:sttilt .9s ease-in-out}
+@keyframes sttilt{0%,100%{transform:rotate(0)}40%{transform:rotate(-14deg) translateX(-3px)}}
+.wsdots{display:flex;justify-content:center;gap:6px;margin:4px 0 10px}
+.wsdots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:all .3s}
+.wsdots i.on{width:22px;border-radius:4px;background:var(--accent)}
+.wsall{display:block;width:max-content;margin:6px auto 0;padding:12px 26px;border-radius:999px;background:var(--accent);color:#fff!important;font-weight:600;text-decoration:none}
+#home:has(#hq:not(:placeholder-shown)) .wsw{display:none}
+/* GRAPE CARDS in the Wine by style format */
+#grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:18px}
+.wsc.gsc{display:block;scroll-snap-align:none;padding:22px 20px;border-radius:20px}
+.gsc .gtop{display:flex;gap:14px;align-items:center;position:relative}
+.gsc .wsi h3{font-size:25px;margin:0 0 2px}
+.gsc .meta{margin:0 0 4px}
+.gsc.in .wsb{animation:none}
+.gsc .wsb{flex-basis:62px;width:62px}
+@media (min-width:700px){.gsc .wsb{flex-basis:72px;width:72px}}
+.gsc>p{position:relative;font-size:16px;margin:10px 0 0}
+.gsc .pron{margin:0 0 4px}
+.gsc{margin:18px 0 10px}.gsc .wsi h4{margin-top:4px}
+.gsc{max-width:680px}

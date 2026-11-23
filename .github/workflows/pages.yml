@@ -25,6 +25,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: British English (flavour, colour, centre...) in all pages
+        run: python3 tools/british.py .
       - name: Build optimised copy
         run: python3 tools/optimize_site.py . _site
       - name: Check the optimised page

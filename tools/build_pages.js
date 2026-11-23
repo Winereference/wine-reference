@@ -41,7 +41,7 @@ async function loadData(){
   const d=await p.evaluate(()=>{const g=n=>{try{return eval(n)}catch(e){return null}};
     const gl=[...document.querySelectorAll('#az dt')].map(dt=>{const dd=dt.nextElementSibling;return [dt.textContent.trim(),dd&&dd.tagName=='DD'?dd.textContent.trim():'']});
     return {E:g('E')||{},R:g('R'),G:g('G'),G0:g('G0').map(x=>x[0]),GD:g('GD'),K:g('K'),SUB:g('SUB'),CI:g('CI'),AP:g('AP'),PH:g('PH'),WL:g('WL'),DP:g('DP'),PC:g('PC'),
-      SPR:g('SPR'),SPB:g('SPB'),SPD:g('SPD')||{},SPH:g('SPH')||{},SPC:g('SPC'),CK:g('CK')||[],ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},AS:(window.MONEY||{}).adsense||'',CF:(window.MONEY||{}).contactForm||'',gl}});
+      SPR:g('SPR'),SPB:g('SPB'),SPD:g('SPD')||{},SPH:g('SPH')||{},SPC:g('SPC'),CK:g('CK')||[],ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},AS:(window.MONEY||{}).adsense||'',CF:(window.MONEY||{}).contactForm||'',GW:(typeof wsGrapeBlock=='function'?Object.fromEntries(G.map(x=>[x[0],wsGrapeBlock(x)])):{}),gl}});
   await b.close();return d}
 
 let NL={},ASID='',CF='';
@@ -52,7 +52,7 @@ function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
   const bc={"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"The Wine Reference","item":SITE}].concat(crumbs.map((c,i)=>({"@type":"ListItem","position":i+2,"name":c[0],"item":SITE+c[1]})))};
   const ld={"@context":"https://schema.org","@graph":[bc].concat(jsonld?[jsonld]:[])};
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -112,7 +112,7 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
 (async()=>{
   const D=await loadData();NL=D.NL||{};ASID=D.AS||"";CF=D.CF||"";
   for(const o of OUT)fs.rmSync(path.join(ROOT,o),{recursive:true,force:true});
-  const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;const CK=D.CK||[];const SPD=D.SPD||{},SPH=D.SPH||{};
+  const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;const GW=D.GW||{};const CK=D.CK||[];const SPD=D.SPD||{},SPH=D.SPH||{};
   const PHf=n=>PH&&PH[n];
   // grape name lookup incl. aliases ("Syrah / Shiraz" -> Syrah, Shiraz; "Prosecco (Glera)" -> Glera)
   const GS={},GA={};G.forEach(g=>{const s=slug(g[0]);GS[g[0]]=s;GA[g[0].toLowerCase()]=g[0];g[0].split(/\s*\/\s*|\s*\(\s*|\s*\)\s*|,\s*/).filter(x=>x.length>2).forEach(a=>{const k=a.toLowerCase();if(!GA[k])GA[k]=g[0]})});
@@ -182,7 +182,8 @@ fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/
     const sec=[['Origin and history',d.o],['Where it grows',d.w],['Structure',d.st],['Aromas, young and aged',d.y],['Ageing',d.a],['Also known as',d.k],['Good to know',d.x]].filter(x=>x[1]);
     const bodyH=`${photo(n,up)}<p class="meta">${esc(t)}${isGrape?' grape':''}</p>
 <p class="lead">${esc(n)} is a ${typeWord(t)} known for ${esc(String(fl).toLowerCase())}.${rg?` Its best-known homes are ${esc(rg)}.`:''}</p>
-<div class="facts"><div><b>Style</b>${esc(t)}</div><div><b>Body</b>${'●'.repeat(body)}${'○'.repeat(5-body)} (${body}/5)</div><div><b>Flavours</b>${esc(fl)}</div><div><b>Key regions</b>${esc(rg)}</div>${pair?`<div><b>Food pairing</b>${esc(pair)}</div>`:''}</div>
+${GW[n]?`<div class="wsc gsc in" style="--sc:${GW[n].sc}"><div class="gtop">${GW[n].bottle}<div class="wsi">${GW[n].body}</div></div></div>`:''}
+<div class="facts">${GW[n]?'':`<div><b>Style</b>${esc(t)}</div><div><b>Body</b>${'●'.repeat(body)}${'○'.repeat(5-body)} (${body}/5)</div><div><b>Flavours</b>${esc(fl)}</div>`}<div><b>Key regions</b>${esc(rg)}</div>${pair?`<div><b>Food pairing</b>${esc(pair)}</div>`:''}</div>
 ${sec.map(x=>`<h2>${esc(x[0])}</h2><p>${esc(x[1])}</p>`).join('\n')}
 ${regs.length?`<h2>Wine regions for ${esc(n)}</h2><div class="chips">${regs.map(r=>`<a class="chip" href="${up}regions/${RS[r[0]]}/">${esc(r[0])}</a>`).join('')}</div>`:''}
 ${ws.length?`<h2>${esc(n)} wines to try</h2><p class="muted">Real bottles from The Wine Library.</p>${wineList(ws,up)}`:''}
