@@ -429,6 +429,9 @@ input,select,textarea{font-size:17px}
 .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.wsc .wsb{animation:none!important}.wsbar i{transition:none}}
+/* VIDEO CLIPS (23 Nov 2026): short silent loops stored in video/, made with tools/add_video.py */
+video.clip{display:block;width:100%;height:auto;border-radius:16px;background:var(--chip) center/cover no-repeat;object-fit:cover}
+.hero video.clip{position:absolute;inset:0;width:100%;height:100%;border-radius:0;z-index:0}
 footer .fcols{display:grid;grid-template-columns:1fr;gap:22px;text-align:left;max-width:1100px;margin:0 auto 22px}
 @media (min-width:700px){footer .fcols{grid-template-columns:1.4fr 1fr 1fr 1fr}}
 footer .fab b{font-family:var(--serif,Georgia,serif);font-size:19px}footer .fab p{margin:6px 0 0;max-width:34ch}
@@ -5595,6 +5598,17 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.targ
 cards.forEach(c=>io.observe(c));
 if(!red){const hm=document.getElementById("home");const els=[...hm.querySelectorAll(":scope > .hc, :scope > .hsec, :scope > .wsw")].filter(x=>x.getBoundingClientRect().top>innerHeight);
 els.forEach(x=>{x.classList.add("rv");io.observe(x)})}}catch(e){}})();
+</script>
+<script>
+/* Plays .clip videos only while on screen; poster only for reduced motion or data saver. */
+(function(){const red=matchMedia("(prefers-reduced-motion: reduce)").matches,save=navigator.connection&&navigator.connection.saveData;
+const go=v=>{if(!v.src){v.src=(innerWidth<760&&v.dataset.srcMobile)||v.dataset.src}const p=v.play();if(p)p.catch(()=>{})};
+const setup=()=>{const vs=[...document.querySelectorAll("video.clip:not([data-on])")];if(!vs.length)return;
+if(red||save){vs.forEach(v=>v.dataset.on=1);return}
+if(!("IntersectionObserver" in window)){vs.forEach(v=>{v.dataset.on=1;go(v)});return}
+const io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;e.isIntersecting?go(v):v.pause()}),{threshold:.2});
+vs.forEach(v=>{v.dataset.on=1;io.observe(v)})};
+setup();addEventListener("hashchange",()=>setTimeout(setup,300));window.wrClips=setup})();
 </script>
 </body>
 </html>
