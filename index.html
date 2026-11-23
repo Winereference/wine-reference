@@ -266,6 +266,43 @@ html.big :is(section,header.hero,footer,#home,.hgrid){zoom:1.15}
 </style>
 <link rel="manifest" href="manifest.webmanifest"><link rel="alternate" type="application/rss+xml" title="The Wine Reference: wine stories" href="https://thewinereference.co.uk/feed.xml">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5125574046117246" crossorigin="anonymous"></script>
+<style id="clean-style">
+/* CLEAN STYLE (stage 1 of the redesign, 23 Nov 2026): white, calmer, easier to read. Light theme only; dark theme keeps its own colours. */
+:root{--surface:#ffffff;--text:#1f1a1c;--muted:#655c60;--line:#ebe6e3;--chip:#f4f1ef}
+body{font-size:17px;line-height:1.65}
+section{max-width:1100px;padding:56px 24px 16px}
+h2{margin-bottom:20px}
+p{max-width:72ch}
+.card,#pairOut,.trg,.gate,.lbc,.gls figure,.bnum div{box-shadow:none;border-color:var(--line)}
+.card{padding:22px}
+.chip{border-color:#e2dcd8;background:#fff}
+.chip:hover{border-color:var(--accent)}
+/* home tiles: picture on top, text below, no boxes */
+.hgrid{max-width:1100px;padding:20px 20px 40px;gap:28px 16px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+@media (min-width:700px){.hgrid{gap:32px 22px;padding:20px 24px 40px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}}
+.hc{background:transparent;border:0;border-radius:0;padding:0;overflow:visible}
+.hc:hover,.hc:active{border-color:transparent}
+.hc .hi{width:100%;margin:0 0 12px;border-radius:12px}
+.hc b{color:var(--text);font-size:20px}
+@media (min-width:700px){.hc b{font-size:23px}}
+.hc:hover b{color:var(--accent)}
+.hc span{font-size:14.5px}
+.hc:not(:has(> .hi)):not(.wh):not(.hh):not(.nlh):not(.qz):not(.tiph){border:1px solid var(--line);border-radius:14px;padding:22px 20px;background:#fff}
+.hc.wh{padding:24px 22px;border-radius:14px;border:0}
+.hc.wh b{color:#fff}
+.hc.hh,.hc.nlh,.hc.qz{border:0;border-top:1px solid var(--line);border-radius:0;padding:24px 2px 4px;background:transparent}
+.hc.tiph{border:1px solid var(--line);border-radius:14px;padding:28px 22px}
+.suw{border-left-width:1px}
+.wtl{border-left-color:var(--line)}
+/* desktop menu across the top */
+nav .dnav{display:none}
+@media (min-width:1000px){
+ nav .dnav{display:flex;gap:2px;margin-left:18px;align-items:center}
+ nav .dnav a{color:var(--text);font-weight:500;font-size:14.5px;padding:6px 11px}
+ nav .dnav a:hover{background:transparent;color:var(--accent)}
+ nav{padding-left:24px!important;padding-right:24px!important}
+}
+</style>
 </head>
 <body><a class="skip" id="skipc" href="#">Skip to content</a>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -292,7 +329,7 @@ document.addEventListener("click",ev=>{const b=ev.target.closest(".shb");if(!b)r
 if(navigator.share&&matchMedia("(pointer:coarse)").matches){navigator.share({title:t+" · The Wine Reference",text:t,url:u}).catch(()=>{})}else menu(t,u)});
 document.addEventListener("keydown",ev=>{if(ev.key==="Escape"&&sh)sh.classList.remove("on")})})();
 </script>
-<nav><button id="mbtn" type="button" aria-label="Open categories" aria-expanded="false" aria-controls="mdr"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button><a id="ttl" href="#home"><svg class="nlogo" aria-hidden="true"><use href="#dsb"/></svg>The Wine Reference</a></nav>
+<nav><button id="mbtn" type="button" aria-label="Open categories" aria-expanded="false" aria-controls="mdr"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button><a id="ttl" href="#home"><svg class="nlogo" aria-hidden="true"><use href="#dsb"/></svg>The Wine Reference</a><span class="dnav"><a href="#grapes">Grapes</a><a href="#regions">Regions</a><a href="#library">Wine Library</a><a href="#pairing">Food pairing</a><a href="#stories">Stories</a><a href="#spirits">Spirits</a><a href="#study">Learn</a></span></nav>
 <div id="mov" hidden></div>
 <aside id="mdr" aria-label="Categories" aria-hidden="true" inert><div class="mh"><b>Categories</b><button id="mcl" type="button" aria-label="Close categories">&times;</button></div><a href="#home">Home</a><a href="#wotd">Wine of the Day</a><a href="#stories">Wine Stories</a><a href="#grapes">Grape Varieties</a><a href="#regions">Wine Regions</a><a href="#library">The Wine Library</a><a href="#spirits">Spirits</a><a href="#pairing">What&#39;s for dinner?</a><a href="#vintage">Vintage Chart</a><a href="#az">A–Z Glossary</a><a href="#study">Sommelier Study</a><a href="#careers">Sommelier Careers</a><a href="#tastings">Trade Tasting Calendar</a><a href="#suppliers">UK Suppliers (trade)</a><a href="#account" id="mnacc">Log in / Account</a><a href="#about">About me</a><a href="#consultancy">Consultancy</a><button id="instb" type="button">Install as an app on your phone</button><p id="insth" hidden></p></aside>
 
