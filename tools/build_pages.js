@@ -45,6 +45,7 @@ async function loadData(){
   await b.close();return d}
 
 let NL={},ASID='',CF='';
+const MENU=up=>[['grapes/','Grapes'],['regions/','Regions'],['wine-library/','Wine Library'],['food-pairing/','Food pairing'],['stories/','Stories'],['spirits/','Spirits'],['glossary/','Glossary']].map(([h,t])=>`<a href="${up}${h}">${t}</a>`).join('');
 function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
   const depth=rel.split('/').filter(Boolean).length, up='../'.repeat(depth), url=SITE+rel;
   const og=img?SITE+img:SITE+'img/og-wine-reference-douro-vineyards.jpg';
@@ -75,13 +76,15 @@ function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
 <meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="${up}assets/pages.css">
 ${/^ca-pub-\d+$/.test(ASID)?`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ASID}" crossorigin="anonymous"></script>\n`:''}<script type="application/ld+json">${JSON.stringify(ld).replace(/</g,'\\u003c')}</script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500,region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']});gtag('js',new Date());gtag('config','G-7LNSJRE6G4');(function(){var t=document.createElement('script');t.async=1;t.src='https://www.googletagmanager.com/gtag/js?id=G-7LNSJRE6G4';document.head.appendChild(t)})();window.wrLoadGA=function(){};window.wrPrivacy=function(){window.googlefc=window.googlefc||{};googlefc.callbackQueue=googlefc.callbackQueue||[];googlefc.callbackQueue.push(function(){googlefc.showRevocationMessage()})};</script>
 </head>
 <body>
-<header class="top"><a class="logo" href="${up}"><img src="${up}assets/icon.svg" alt="" width="26" height="26" style="vertical-align:-6px;margin-right:8px">The Wine Reference</a><a class="tip" href="https://ko-fi.com/winereference" target="_blank" rel="noopener">🍷 Support</a></header>
+<header class="top"><a class="logo" href="${up}"><img src="${up}assets/icon.svg" alt="" width="26" height="26" style="vertical-align:-6px;margin-right:8px">The Wine Reference</a><nav class="mnav" aria-label="Main">${MENU(up)}</nav><a class="tip" href="https://ko-fi.com/winereference" target="_blank" rel="noopener">🍷 Support</a></header>
+<nav class="mbar" aria-label="Sections">${MENU(up)}</nav>
 <main class="wrap">
 <p class="crumbs"><a href="${up}">Home</a>${crumbs.map((c,i)=>i<crumbs.length-1?` › <a href="${up}${c[1]}">${esc(c[0])}</a>`:` › ${esc(c[0])}`).join('')}</p>
 <h1>${esc(h1)}</h1>
@@ -90,8 +93,11 @@ ${/^https:\/\//.test(NL.action||'')?`<div class="support nl"><h2>The Wine Refere
 <div class="shr"><b>Share this page</b><a href="https://wa.me/?text=${encodeURIComponent(h1+" · The Wine Reference "+url)}" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">Facebook</a><a href="https://x.com/intent/tweet?text=${encodeURIComponent(h1+" · The Wine Reference")}&amp;url=${encodeURIComponent(url)}" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">LinkedIn</a><a href="https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&amp;media=${encodeURIComponent(og)}&amp;description=${encodeURIComponent(h1)}" target="_blank" rel="noopener">Pinterest</a><a href="mailto:?subject=${encodeURIComponent(h1+" · The Wine Reference")}&amp;body=${encodeURIComponent(url)}">Email</a></div>
 <div class="support"><h2>Support The Wine Reference</h2><p>This guide is free, with no paywall. If it helped you choose a bottle, you can buy me a glass and keep it growing.</p><a class="btn" href="https://ko-fi.com/winereference" target="_blank" rel="noopener">🍷 Buy me a glass</a></div>
 </main>
-<footer><div class="in"><nav aria-label="Browse"><a href="${up}">Interactive guide</a><a href="${up}grapes/">Grapes</a><a href="${up}regions/">Wine regions</a><a href="${up}wine-library/">Wine Library</a><a href="${up}spirits/">Spirits</a><a href="${up}cocktails/">Cocktails</a><a href="${up}food-pairing/">Food pairing</a><a href="${up}stories/">Wine stories</a><a href="${up}glossary/">Glossary</a><a href="${up}careers/">Sommelier careers</a><a href="${up}newsletter/">Newsletter</a><a href="${up}about/">About</a><a href="${up}contact/">Contact</a><a href="${up}privacy/">Privacy</a></nav>
-<p>By Diego Muntoni, head of bars and beverage. For reference only. Please enjoy responsibly. Over 18s only (21 in the USA).</p></div></footer>
+<footer><div class="in"><div class="cols"><div><b>The Wine Reference</b><p>A free wine guide by Diego Muntoni, head of bars and beverage, WSET Diploma, Graham's Port Ambassador.</p><p><a href="${up}">Open the interactive guide →</a></p></div>
+<nav aria-label="Learn"><h4>Learn</h4><a href="${up}grapes/">Grape varieties</a><a href="${up}regions/">Wine regions</a><a href="${up}glossary/">Wine glossary</a><a href="${up}careers/">Sommelier careers</a></nav>
+<nav aria-label="Explore"><h4>Explore</h4><a href="${up}wine-library/">Wine Library</a><a href="${up}food-pairing/">Food and wine pairing</a><a href="${up}spirits/">Spirits</a><a href="${up}cocktails/">Cocktails</a><a href="${up}stories/">Wine stories</a></nav>
+<nav aria-label="About"><h4>About</h4><a href="${up}about/">About Diego</a><a href="${up}contact/">Contact</a><a href="${up}newsletter/">Newsletter</a><a href="${up}privacy/">Privacy policy</a></nav></div>
+<p>For reference only. Please enjoy responsibly. Over 18s only (21 in the USA).</p></div></footer>
 <div id="age" role="dialog" aria-modal="true" aria-labelledby="ageh"><div class="box"><div style="font-size:42px">🍷</div><h2 id="ageh" style="margin:6px 0 8px">Are you of legal drinking age?</h2><p class="muted" style="margin:0 0 12px">This guide is about alcohol and is for adults only: 18 or over in the UK, EU and most countries, 21 in the USA.</p><button id="agy" type="button">Yes, I am of legal drinking age</button><button id="agn" class="no" type="button">No</button><p id="agm" style="min-height:1.4em;color:var(--accent);font-size:14px;margin:8px 0 0"></p></div></div>
 <script>(function(){var a=document.getElementById('age'),ok=false;try{ok=localStorage.getItem('ageOK')=='1'}catch(e){}if(ok||/bot|crawl|spider|slurp|mediapartners|adsbot|google-inspectiontool|bingpreview/i.test(navigator.userAgent))return;a.style.display='flex';document.body.style.overflow='hidden';
 document.getElementById('agy').onclick=function(){try{localStorage.setItem('ageOK','1')}catch(e){}a.style.display='none';document.body.style.overflow=''};
