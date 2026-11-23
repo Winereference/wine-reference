@@ -350,6 +350,26 @@ section h3{line-height:1.2}
 @media (max-width:520px){section .card h3{font-size:20px}section{padding:36px 18px 12px}}
 section table{border-color:var(--line)}
 details.card>summary{cursor:pointer}
+
+/* BIGGER TEXT (23 Nov 2026, Diego's request) */
+body{font-size:18.5px;line-height:1.7}
+section>h2:first-child{font-size:clamp(38px,6vw,56px)}
+section h2{font-size:clamp(30px,4vw,38px)}
+section h3,.card h3{font-size:24px}
+section>p,section>.vnote,.vnote{font-size:18px}
+.card p,.card span,.card li{font-size:17px}
+.chip{font-size:15.5px}
+.hsec{font-size:32px}
+.hc b{font-size:22px}
+@media (min-width:700px){.hc b{font-size:26px}}
+.hc span{font-size:16px}
+.hc.wk b{font-size:23px}
+.hc.pband b,.hc.pband:hover b{font-size:32px}
+.hc.pband span{font-size:18px}
+.hero .hsub{font-size:20px}
+nav .dnav a{font-size:16px!important}
+input,select,textarea{font-size:17px}
+@media (max-width:520px){body{font-size:18px}section .card h3{font-size:22px}}
 footer .fcols{display:grid;grid-template-columns:1fr;gap:22px;text-align:left;max-width:1100px;margin:0 auto 22px}
 @media (min-width:700px){footer .fcols{grid-template-columns:1.4fr 1fr 1fr 1fr}}
 footer .fab b{font-family:var(--serif,Georgia,serif);font-size:19px}footer .fab p{margin:6px 0 0;max-width:34ch}

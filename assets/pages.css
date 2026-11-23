@@ -101,3 +101,17 @@ footer .cols p{margin:6px 0 0;max-width:34ch}
 footer .cols nav{display:flex;flex-direction:column;gap:7px;margin:0}
 footer .cols h4{margin:0 0 4px;font:600 12px Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 footer .cols nav a{text-decoration:none}footer .cols nav a:hover{text-decoration:underline}
+
+/* BIGGER TEXT (23 Nov 2026) */
+body{font-size:18.5px}
+h1{font-size:clamp(40px,7vw,60px)}
+h2{font-size:clamp(30px,4vw,36px)}
+h3{font-size:24px}
+.lead{font-size:21px}
+.card p{font-size:17px}
+.chip{font-size:15.5px}
+.top .mnav a{font-size:16px!important}
+.mbar a{font-size:15.5px}
+.crumbs{font-size:15px}
+.facts b{font-size:13px}
+footer{font-size:16px}
