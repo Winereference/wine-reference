@@ -338,6 +338,18 @@ footer .fcols .fbr a{padding:0;border:0;min-height:0}
 @media (max-width:699px){.hc.wk{grid-column:1/-1}.hero .hey{letter-spacing:.08em;font-size:11px}}
 .hc.sty .hi{aspect-ratio:16/9!important}
 .hc.fh{background:color-mix(in srgb,var(--accent) 6%,var(--surface))!important}
+
+/* STAGE 4: inside the sections (23 Nov 2026) */
+section>.sbn{aspect-ratio:auto;height:clamp(140px,20vw,240px);max-height:none;border-radius:16px;margin:0 0 22px}
+section>h2:first-child{font-size:clamp(34px,5vw,48px);line-height:1.08;margin-bottom:18px}
+section>p,section>.vnote{font-size:16.5px;line-height:1.65;color:var(--muted)}
+section p a:not([class]),.rss a,.rss{color:var(--accent)}
+section input[type=search],section input[type=text]:not(.qi){border-radius:999px}
+.chip{font-size:14px}
+section h3{line-height:1.2}
+@media (max-width:520px){section .card h3{font-size:20px}section{padding:36px 18px 12px}}
+section table{border-color:var(--line)}
+details.card>summary{cursor:pointer}
 footer .fcols{display:grid;grid-template-columns:1fr;gap:22px;text-align:left;max-width:1100px;margin:0 auto 22px}
 @media (min-width:700px){footer .fcols{grid-template-columns:1.4fr 1fr 1fr 1fr}}
 footer .fab b{font-family:var(--serif,Georgia,serif);font-size:19px}footer .fab p{margin:6px 0 0;max-width:34ch}
