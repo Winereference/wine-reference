@@ -5335,7 +5335,9 @@ if(matchMedia("(display-mode: standalone)").matches&&ib){ib.hidden=true}
 const hb=$("hinst"),hh=$("hinsth");if(hb){if(matchMedia("(display-mode: standalone)").matches){hb.hidden=true}
  hb.addEventListener("click",async()=>{if(dp){dp.prompt();try{const r=await dp.userChoice;if(r&&r.outcome==="accepted")hb.hidden=true}catch(e){}dp=null;return}
   hh.hidden=false;hh.textContent=/iphone|ipad|ipod/i.test(navigator.userAgent)?"In Safari, tap the Share button (the square with an arrow), then 'Add to Home Screen'.":"In your browser menu (⋮), choose 'Install app' or 'Add to Home screen'."});
- addEventListener("appinstalled",()=>{hb.hidden=true;hh.hidden=true})}
+ addEventListener("appinstalled",()=>{hb.hidden=true;hh.hidden=true;try{window.gtag&&gtag("event","app_install")}catch(e){}})}
+/* ---------- App tracking: count launches from the home-screen app ---------- */
+(function(){try{var sa=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone===true;if(sa&&window.gtag&&!sessionStorage.getItem("wr-appopen")){sessionStorage.setItem("wr-appopen","1");gtag("event","app_open")}}catch(e){}})();
 
 /* ---------- Label guide: link glossary terms ---------- */
 document.querySelectorAll("[data-azt]").forEach(a=>{const x=AZM.get(a.dataset.azt.toLowerCase());if(x){a.href="#az/"+x.s}else{a.replaceWith(document.createTextNode(a.textContent))}});
