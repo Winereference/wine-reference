@@ -19,6 +19,8 @@ ap.add_argument('src'); ap.add_argument('name')
 ap.add_argument('--start', type=float, default=0); ap.add_argument('--len', type=float, default=12)
 ap.add_argument('--width', type=int, default=1280); ap.add_argument('--sound', action='store_true')
 ap.add_argument('--alt', default='')
+ap.add_argument('--mobile-width', type=int, default=720)
+ap.add_argument('--crf', type=int, default=27)
 a = ap.parse_args()
 root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 out = os.path.join(root, 'video'); os.makedirs(out, exist_ok=True)
@@ -33,7 +35,7 @@ def enc(width, path, crf):
     return os.path.getsize(path)
 
 big = os.path.join(out, a.name + '.mp4'); small = os.path.join(out, a.name + '-mobile.mp4'); poster = os.path.join(out, a.name + '.webp')
-s1 = enc(a.width, big, 27); s2 = enc(720, small, 29)
+s1 = enc(a.width, big, a.crf); s2 = enc(a.mobile_width, small, a.crf + 2)
 subprocess.run(['ffmpeg', '-y', '-v', 'error', '-ss', str(a.start + 0.5), '-i', a.src, '-frames:v', '1',
                 '-vf', f"scale='min({a.width},iw)':-2", '-c:v', 'libwebp', '-quality', '78', poster], check=True)
 info = json.loads(subprocess.run(['ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries', 'stream=width,height',

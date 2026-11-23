@@ -102,6 +102,7 @@ ${/^https:\/\//.test(NL.action||'')?`<div class="support nl"><h2>The Wine Refere
 <script>(function(){var a=document.getElementById('age'),ok=false;try{ok=localStorage.getItem('ageOK')=='1'}catch(e){}if(ok||/bot|crawl|spider|slurp|mediapartners|adsbot|google-inspectiontool|bingpreview/i.test(navigator.userAgent))return;a.style.display='flex';document.body.style.overflow='hidden';
 document.getElementById('agy').onclick=function(){try{localStorage.setItem('ageOK','1')}catch(e){}a.style.display='none';document.body.style.overflow=''};
 document.getElementById('agn').onclick=function(){document.getElementById('agm').textContent='Sorry, you must be of legal drinking age to view this site.'}})();</script>
+${/class="clip"/.test(body)?`<script>(function(){var vs=document.querySelectorAll('video.clip');if(!vs.length||matchMedia('(prefers-reduced-motion: reduce)').matches||(navigator.connection&&navigator.connection.saveData)||!('IntersectionObserver' in window))return;var go=function(v){if(!v.src)v.src=(innerWidth<760&&v.dataset.srcMobile)||v.dataset.src;var p=v.play();if(p)p.catch(function(){})};var io=new IntersectionObserver(function(es){es.forEach(function(e){e.isIntersecting?go(e.target):e.target.pause()})},{threshold:.2});vs.forEach(function(v){io.observe(v)})})();</script>`:''}
 </body>
 </html>
 `}
@@ -127,7 +128,7 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
   // ---------- ABOUT and CONTACT (static copies for readers, search engines and AdSense reviewers) ----------
   {const src=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');const i=src.indexOf('<section id="about"'),j=src.indexOf('</section>',i);
    if(i>0&&j>i){let h=src.slice(src.indexOf('>',i)+1,j);
-     h=h.replace(/<h2[^>]*>\s*About me\s*<\/h2>/i,'').replace(/\s(src|href)="(?!https?:|mailto:|#|\/|data:)([^"]+)"/g,' $1="../$2"').replace(/href="#([^"]*)"/g,'href="../#$1"').replace(/<script[\s\S]*?<\/script>/g,'').replace(/\sid="/g,' data-id="');
+     h=h.replace(/<h2[^>]*>\s*About me\s*<\/h2>/i,'').replace(/\s(src|href|poster|data-src|data-src-mobile)="(?!https?:|mailto:|#|\/|data:)([^"]+)"/g,' $1="../$2"').replace(/href="#([^"]*)"/g,'href="../#$1"').replace(/<script[\s\S]*?<\/script>/g,'').replace(/\sid="/g,' data-id="');
      const rel='about/';
      const body=`<p class="lead">The Wine Reference is a free, independent guide to wine, spirits and cocktails, written and maintained by Diego Muntoni, head of bars and beverage in London, WSET Diploma holder and Graham's Port Ambassador.</p>
 <h2>What the guide covers</h2><p>${G.length} grape varieties, ${R.length} wine regions with a map, ${WL.length} wines in The Wine Library, ${(DP||[]).length} food and wine pairings, ${CK.length} classic cocktails, ${(SPR||[]).length} spirit regions, a daily wine story, a wine history timeline, an A–Z glossary and guides for anyone building a career as a sommelier.</p>
