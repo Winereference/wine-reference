@@ -112,7 +112,9 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
 (async()=>{
   const D=await loadData();NL=D.NL||{};ASID=D.AS||"";CF=D.CF||"";
   for(const o of OUT)fs.rmSync(path.join(ROOT,o),{recursive:true,force:true});
-  const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;const GW=D.GW||{};const CK=D.CK||[];const SPD=D.SPD||{},SPH=D.SPH||{};
+  const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;const GW=D.GW||{};
+  // the app gives each bottle SVG a random id suffix; make it stable so unchanged grape pages stay byte-identical (real sitemap dates)
+  for(const k in GW){const b=GW[k]&&GW[k].bottle;const m=b&&b.match(/id="wsg[^"]*?(\d{3,})"/);if(m)GW[k].bottle=b.split(m[1]).join('')}const CK=D.CK||[];const SPD=D.SPD||{},SPH=D.SPH||{};
   const PHf=n=>PH&&PH[n];
   // grape name lookup incl. aliases ("Syrah / Shiraz" -> Syrah, Shiraz; "Prosecco (Glera)" -> Glera)
   const GS={},GA={};G.forEach(g=>{const s=slug(g[0]);GS[g[0]]=s;GA[g[0].toLowerCase()]=g[0];g[0].split(/\s*\/\s*|\s*\(\s*|\s*\)\s*|,\s*/).filter(x=>x.length>2).forEach(a=>{const k=a.toLowerCase();if(!GA[k])GA[k]=g[0]})});
@@ -161,6 +163,41 @@ fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/
   const STv=(ST||[]).filter(x=>x.d<=new Date().toISOString().slice(0,10));
   const storiesAbout=t=>{const re=new RegExp('\\b'+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i');return STv.filter(x=>re.test(x.t+' '+x.s+' '+(x.b||[]).join(' '))).slice(0,4)};
   const storyChips=(xs,up)=>`<div class="chips">${xs.map(x=>`<a class="chip" href="${up}stories/${x.id}/">${esc(x.t)}</a>`).join('')}</div>`;
+  // ---- automatic links inside story text (grapes, regions, appellations, glossary terms) ----
+  // First mention of each target only, at most LMAX links per story; names (grapes, regions, appellations) are
+  // matched case-sensitively and take priority over glossary terms. Story text is plain text, so no link can nest.
+  const LMAX=8;
+  const AUTO=(()=>{const T=new Map(),add=(term,o)=>{term=String(term).trim();if(term.length<3)return;const k=term.toLowerCase();const a=T.get(k)||[];a.push({term,...o});T.set(k,a)};
+    const VSKIP=new Set(['Hunter','Eden','Clare','Edna','Casablanca']);// 'X Valley' is also matched as 'X' unless X is a common word or name
+    // priority: 1 region, 2 grape, 3 appellation, 4 glossary
+    R.forEach(r=>{add(r[0],{p:1,cs:1,kind:'r',name:r[0],href:`regions/${RS[r[0]]}/`});const h=r[0].replace(/\s*\(.*?\)\s*/g,'').trim();if(h!=r[0])add(h,{p:1.5,cs:1,kind:'r',name:r[0],href:`regions/${RS[r[0]]}/`});
+      const v=h.replace(/ Valley$/,'');if(v!=h&&v.length>=4&&!VSKIP.has(v))add(v,{p:1.6,cs:1,kind:'r',name:r[0],href:`regions/${RS[r[0]]}/`})});
+    G.forEach(g=>{const n=g[0],o={cs:1,kind:'g',name:n,href:`grapes/${GS[n]}/`};add(n,{p:2,...o});
+      const base=n.replace(/\s*\(.*?\)/g,'').trim();base.split(/\s*\/\s*/).forEach(a=>{if(a!=n)add(a,{p:2.5,...o})});
+      const par=(n.match(/\((.*?)\)/)||[])[1];if(par&&!/,/.test(par))add(par,{p:2.5,...o})});
+    const APSKIP=new Set(['Melissa','Amelia','Marino','Reno','Nus','Fara','Cori','Boca','Todi','Roma','Faro','Noto','Pergola','Vittoria','Colonia','Matino','Atina','Esino','Venezia','Modena','Vicenza','Assisi','Capri','Elba','Alba','Garda','Trento']);
+    (AP||[]).forEach(a=>{if(!a.n||!RS[a.r]||APSKIP.has(a.n)||/[()]/.test(a.n))return;add(a.n,{p:3,cs:1,kind:'a',name:a.r,href:`regions/${RS[a.r]}/`})});
+    const GSKIP=new Set(('Aroma Aspect Balance Bitter Blend Body Bung Buttery Cap Capsule Carafe Cellar Chalky Château Clone Clos Cloying Complex Cooked Cooperative Cordon Cork Côte Creamy Crisp Crust Dense Domaine Dry Dumb Earthy '+
+      'Elegant Extract Fat Finish Firm Flabby Flat Fleshy Flight Floral Flowering Flute Green Hard Harvest Heady Hollow Hot Imperial Inky Integrated Juicy Lean Legs Length Lifted Lively Lush Mineral Must Nose Nutty Opulent '+
+      'Palate Pipe Plush Polished Pressing Punt Quinta Racy Rainwater Rich Robust Round Ruby Rustic Silky Smoky Soft Spicy Stems Structure Supple Tart Texture Thin Tight Toast Trellis Vat Velvety Vineyard Weight Winemaker '+
+      'Winery Woody Yeast Bodega Cantina Tenuta Weingut Cooperage Coupe Fiasco Governo Hang time Weight Toast').split(' '));
+    (D.gl||[]).forEach(([t])=>{if(GSKIP.has(t))return;const href=`glossary/#${slug(t)}`;
+      const forms=uniq([t.replace(/\s*\(.*?\)\s*/g,' ').trim(),...t.split(/\s*\/\s*/)]).filter(x=>x&&!/[()]/.test(x));
+      forms.forEach(f=>add(f,{p:4,cs:/[A-Z]/.test(f.slice(1))||f.length<4?1:0,kind:'t',name:t,href}))});
+    const terms=[...T.values()].flat().map(x=>x.term).sort((a,b)=>b.length-a.length);
+    const re=new RegExp(`(?<![\\p{L}\\p{N}\\-’'])(?:${uniq(terms).map(t=>t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')})(?:e?s)?(?![\\p{L}\\p{N}]|-\\p{L})`,'giu');
+    const look=m=>{for(const k of [m,m.replace(/s$/i,''),m.replace(/es$/i,'')]){const c=(T.get(k.toLowerCase())||[]).filter(x=>!x.cs||x.term==k).sort((a,b)=>a.p-b.p);if(c.length)return c[0]}return null};
+    return {re,look}})();
+  // linkStory(paragraphs, up) -> {html:[...], related:[{kind,name,href}]}
+  const linkStory=(paras,up)=>{const found=[],seen=new Set(),rel=[],relSeen=new Set();
+    paras.forEach((p,i)=>{for(const m of String(p).matchAll(AUTO.re)){const c=AUTO.look(m[0]);if(!c)continue;
+      if((c.kind=='g'||c.kind=='r'||c.kind=='a')&&!relSeen.has(c.href)){relSeen.add(c.href);rel.push(c)}
+      if(seen.has(c.href))continue;seen.add(c.href);found.push({i,at:m.index,len:m[0].length,c})}});
+    const pick=new Set(found.slice().sort((a,b)=>(a.c.p>=4)-(b.c.p>=4)||a.i-b.i||a.at-b.at).slice(0,LMAX));
+    const html=paras.map((p,i)=>{p=String(p);const ms=found.filter(f=>f.i==i&&pick.has(f)).sort((a,b)=>a.at-b.at);let out='',pos=0;
+      for(const f of ms){out+=esc(p.slice(pos,f.at))+`<a href="${up}${f.c.href}"${f.c.kind=='t'?' class="gl"':''}>${esc(p.substr(f.at,f.len))}</a>`;pos=f.at+f.len}
+      return out+esc(p.slice(pos))});
+    return {html,related:rel}};
   const dishesFor=names=>{const set=new Set(names);return (DP||[]).filter(x=>(x.g||[]).some(y=>set.has(gfind(y))))};
   const DSL=new Map();{const used=new Set();for(const x of (DP||[])){let b=slug(x.d)||'dish',k=b,i=2;while(used.has(k))k=b+'-'+(i++);used.add(k);DSL.set(x,k)}}
   const dishList=(xs,up)=>`<ul class="list">${xs.map(x=>`<li><a href="${up}food-pairing/${DSL.get(x)}/"><b>${esc(x.d)}</b></a>${x.n?`: ${esc(x.n)}`:''}</li>`).join('')}</ul>`;
@@ -321,12 +358,15 @@ ${cats.map(t=>`<h2>${esc(t)}</h2><div class="grid">${CK.filter(c=>c.t==t).map(c=
     const s=slug(x.id),up='../../',rel=`stories/${s}/`;
     const img=x.img?`img/s/${x.img[0]}`:null;
     const kw=uniq([...x.t.split(/[:,–-]/).map(y=>y.trim()).filter(y=>y.length>3).slice(0,3),x.c+' of wine','wine story','wine history']);
+    const lk=linkStory([x.s,...(x.b||[])],up);
+    const relG=lk.related.filter(c=>c.kind=='g').slice(0,8),relR=lk.related.filter(c=>c.kind!='g').slice(0,8);
     const body=`<p class="meta">${esc(x.c)} · ${esc(x.d)}</p>${img?`<img class="hero wide" src="${up}${esc(img)}" alt="${esc(x.img[3]||x.t)}" width="1200" height="675"><p class="credit">Photo: <a href="https://unsplash.com/@${esc(x.img[2])}?utm_source=wine_reference&amp;utm_medium=referral" target="_blank" rel="noopener noreferrer">${esc(x.img[1])}</a> on Unsplash</p>`:''}
-<p class="lead">${esc(x.s)}</p>${(x.b||[]).map(p=>`<p>${esc(p)}</p>`).join('\n')}
+<p class="lead">${lk.html[0]}</p>${lk.html.slice(1).map(p=>`<p>${p}</p>`).join('\n')}
+${relG.length||relR.length?`<h2>Related grapes and regions</h2>${relG.length?`<p class="muted">Grapes</p><div class="chips">${relG.map(c=>`<a class="chip" href="${up}${c.href}">${esc(c.name)}</a>`).join('')}</div>`:''}${relR.length?`<p class="muted">Regions</p><div class="chips">${relR.map(c=>`<a class="chip" href="${up}${c.href}">${esc(c.name)}</a>`).join('')}</div>`:''}`:''}
 ${x.r&&x.r.length?`<h2>Sources</h2><ul class="list">${x.r.map(r=>`<li><a href="${esc(r[1])}" target="_blank" rel="noopener">${esc(r[0])}</a></li>`).join('')}</ul>`:''}
 <p><a class="btn" href="${up}stories/">More wine stories</a></p>`;
     pages.push([rel,page({rel,title:T(x.t),desc:DS(...splitS(x.s),['A wine story with its sources, from The Wine Reference','A wine story with sources']),keywords:kw,h1:x.t,crumbs:[['Wine stories','stories/'],[x.t,rel]],body,img,
-      jsonld:{"@type":"Article","headline":x.t,"description":x.s,"datePublished":x.d,"author":{"@type":"Person","name":"Diego Muntoni"},"mainEntityOfPage":SITE+rel,...(img?{"image":SITE+img}:{})}})]);
+      jsonld:{"@type":"Article","headline":x.t,"description":x.s,"datePublished":x.d,"author":{"@type":"Person","name":"Diego Muntoni"},"mainEntityOfPage":SITE+rel,...(img?{"image":SITE+img}:{}),...(lk.related.length?{"mentions":lk.related.slice(0,16).map(c=>({"@type":"Thing","name":c.name,"url":SITE+c.href}))}:{})}})]);
   }
   {const rel='stories/',up='../';const body=`<p class="lead">A new story from the world of wine every day: history, people, places and curious facts, each with its sources.</p><div class="grid">${(ST||[]).map(x=>`<a class="card" href="${up}stories/${slug(x.id)}/"><div class="meta">${esc(x.c)} · ${esc(x.d)}</div><h3>${esc(x.t)}</h3><p>${esc(x.s)}</p></a>`).join('')}</div>`;
    pages.push([rel,page({rel,title:TT('Wine Stories: History, People & Places'),desc:'A new wine story every day: history, famous bottles, people, places and curious facts, each with its sources. By Diego Muntoni, head of bars and beverage.',keywords:['wine stories','wine history','wine facts','famous wines','wine blog'],h1:'Wine stories',crumbs:[['Wine stories',rel]],body,jsonld:{"@type":"CollectionPage","name":"Wine stories","url":SITE+rel}})]);}
