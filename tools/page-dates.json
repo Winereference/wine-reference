@@ -1444,8 +1444,8 @@
 "2026-11-24"
 ],
 "grapes/barbera/": [
-"da1a62bd13360393",
-"2026-11-24"
+"34d4e64326b6f5c3",
+"2026-11-25"
 ],
 "grapes/bical/": [
 "d5b9b06162839195",
@@ -1468,8 +1468,8 @@
 "2026-11-25"
 ],
 "grapes/cabernet-franc/": [
-"fce479e7ba0a02ff",
-"2026-11-24"
+"bda43ef6394d3e16",
+"2026-11-25"
 ],
 "grapes/cabernet-sauvignon/": [
 "cdf16e33dcb2ecf3",
@@ -1492,8 +1492,8 @@
 "2026-11-25"
 ],
 "grapes/carmenere/": [
-"eef0613aa55f4978",
-"2026-11-24"
+"2bdfc6aa7bf54dbd",
+"2026-11-25"
 ],
 "grapes/carricante/": [
 "d30e7c3454d1026d",
@@ -1564,8 +1564,8 @@
 "2026-11-24"
 ],
 "grapes/croatina/": [
-"3994d68199fd8ea0",
-"2026-11-24"
+"d63b8744972fc1e0",
+"2026-11-25"
 ],
 "grapes/dolcetto/": [
 "d0abd92a44ad8585",
@@ -1588,8 +1588,8 @@
 "2026-11-24"
 ],
 "grapes/erbaluce/": [
-"ec7b76f1512a5b8b",
-"2026-11-24"
+"be5eec3ec05c497e",
+"2026-11-25"
 ],
 "grapes/falanghina/": [
 "fb9b0e43d1a7b853",
@@ -1628,12 +1628,12 @@
 "2026-11-24"
 ],
 "grapes/freisa/": [
-"262dfed0d4551b86",
-"2026-11-24"
+"c807e444e623bbf0",
+"2026-11-25"
 ],
 "grapes/friulano/": [
-"98c4fa3b787e2ac7",
-"2026-11-24"
+"ef44f47fc3793bc0",
+"2026-11-25"
 ],
 "grapes/furmint/": [
 "332ba2868f221804",
@@ -1812,8 +1812,8 @@
 "2026-11-25"
 ],
 "grapes/merlot/": [
-"7f472728c5e24827",
-"2026-11-24"
+"d232de89dca7848c",
+"2026-11-25"
 ],
 "grapes/monastrell/": [
 "02c33855e59af7c6",
@@ -1840,7 +1840,7 @@
 "2026-11-24"
 ],
 "grapes/muller-thurgau/": [
-"a649ad7ee4797932",
+"7d404775daa6a576",
 "2026-11-25"
 ],
 "grapes/muscadelle/": [
@@ -1856,16 +1856,16 @@
 "2026-11-24"
 ],
 "grapes/nebbiolo/": [
-"77d38a77dff45208",
-"2026-11-24"
+"d53d49d51e796cba",
+"2026-11-25"
 ],
 "grapes/negrette/": [
 "84bf6514391e9bc7",
 "2026-11-24"
 ],
 "grapes/negroamaro/": [
-"63c2bcdba9389dcf",
-"2026-11-24"
+"9c80bfaefadbb8cf",
+"2026-11-25"
 ],
 "grapes/nerello-cappuccio/": [
 "b37bb41d0af28402",
@@ -1876,8 +1876,8 @@
 "2026-11-24"
 ],
 "grapes/nero-davola/": [
-"c9c26d2a84fe4e25",
-"2026-11-24"
+"0b1e5eed9da57a17",
+"2026-11-25"
 ],
 "grapes/nero-di-troia/": [
 "d492da15f7a1bae8",
@@ -1960,8 +1960,8 @@
 "2026-11-24"
 ],
 "grapes/pinot-grigio/": [
-"853ff7ffb329d062",
-"2026-11-24"
+"c3e2a77fc5358f30",
+"2026-11-25"
 ],
 "grapes/pinot-meunier/": [
 "f2c35776aa864c11",
@@ -2004,8 +2004,8 @@
 "2026-11-24"
 ],
 "grapes/refosco/": [
-"b2580affe6c2da91",
-"2026-11-24"
+"3acc6df7f3578ac5",
+"2026-11-25"
 ],
 "grapes/ribolla-gialla/": [
 "e74d74fba8ab6d54",
@@ -2076,8 +2076,8 @@
 "2026-11-24"
 ],
 "grapes/schiava/": [
-"1f25a1acdc07c43c",
-"2026-11-24"
+"676143bd8471b859",
+"2026-11-25"
 ],
 "grapes/schioppettino/": [
 "e9b8c2134b57a965",
@@ -2116,8 +2116,8 @@
 "2026-11-24"
 ],
 "grapes/syrah-shiraz/": [
-"b95562a617358c1c",
-"2026-11-24"
+"af892a3f44b47644",
+"2026-11-25"
 ],
 "grapes/tamaioasa-romaneasca/": [
 "ef88b14f287b007b",
@@ -2536,8 +2536,8 @@
 "2026-11-23"
 ],
 "regions/friuli-venezia-giulia/": [
-"ccc2da9dadbdf720",
-"2026-11-23"
+"c151dc8c4129c6eb",
+"2026-11-25"
 ],
 "regions/getariako-txakolina/": [
 "e642b5ce7637c4a1",
@@ -2664,8 +2664,8 @@
 "2026-11-25"
 ],
 "regions/lombardy/": [
-"e0fee5fde90c69fc",
-"2026-11-23"
+"0bbea44cff7ad7d1",
+"2026-11-25"
 ],
 "regions/lujan-de-cuyo/": [
 "266fe6f63a663117",
@@ -2816,8 +2816,8 @@
 "2026-11-25"
 ],
 "regions/piedmont/": [
-"8d7ec3a2861cd914",
-"2026-11-23"
+"b0cb562c0d1deba2",
+"2026-11-25"
 ],
 "regions/pla-de-bages/": [
 "fd2a5cc91e96778b",
@@ -2836,8 +2836,8 @@
 "2026-11-25"
 ],
 "regions/puglia/": [
-"54f518555a331629",
-"2026-11-23"
+"6306ee4d8e48e5e5",
+"2026-11-25"
 ],
 "regions/rheingau/": [
 "d09b5fc807a92ac8",
@@ -2904,7 +2904,7 @@
 "2026-11-23"
 ],
 "regions/sardinia/": [
-"9f8fb3ca31cfe12b",
+"44712b2035ddf735",
 "2026-11-25"
 ],
 "regions/savoie/": [
@@ -2920,8 +2920,8 @@
 "2026-11-23"
 ],
 "regions/sicily/": [
-"83ba907fe2963b75",
-"2026-11-23"
+"60a6769b871dc76f",
+"2026-11-25"
 ],
 "regions/sierra-de-salamanca/": [
 "f6fb240a4c745dff",
@@ -2992,8 +2992,8 @@
 "2026-11-23"
 ],
 "regions/trentino-alto-adige/": [
-"c6f73ff286228e23",
-"2026-11-23"
+"b5b1121432df3d9c",
+"2026-11-25"
 ],
 "regions/tuscany/": [
 "76e601db401bc9e5",
@@ -3052,8 +3052,8 @@
 "2026-11-23"
 ],
 "regions/veneto/": [
-"fb02ef486b445e71",
-"2026-11-23"
+"5c7409e7816dbf9d",
+"2026-11-25"
 ],
 "regions/vienna/": [
 "6562a310d739cba8",
