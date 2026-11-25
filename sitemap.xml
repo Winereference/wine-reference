@@ -311,7 +311,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/food-pairing/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1002,6 +1002,12 @@
   <url>
     <loc>https://thewinereference.co.uk/food-pairing/broccoli-and-stilton-soup/</loc>
     <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/food-pairing/buche-de-noel-yule-log/</loc>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3714,7 +3720,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/touriga-nacional/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/touriga-nacional-grapes-vine-dao-portugal.webp</image:loc></image:image>
