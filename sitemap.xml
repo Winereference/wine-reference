@@ -317,7 +317,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/glossary/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -353,7 +353,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/stories/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -5642,6 +5642,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/s/champagne-riddling-racks-pupitres-cellar-ay-france.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/stories/why-champagne-became-the-wine-of-new-years-eve/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/s/champagne-flutes-gold-baubles-new-year-celebration.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/stories/why-we-drink-a-toast-origin-of-the-word/</loc>
