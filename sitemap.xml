@@ -323,7 +323,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2505,6 +2505,12 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/barbera-piedmont-hillside-vineyards-italy.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/grapes/bical/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/grapes/blauer-portugieser/</loc>
     <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -2525,6 +2531,12 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/bobal-red-grapes-on-vine-utiel-spain.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/grapes/bogazkere/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/grapes/cabernet-franc/</loc>
     <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -2540,9 +2552,10 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/canaiolo/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/canaiolo-radda-in-chianti-vineyard-cypress-tuscany.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/cannonau/</loc>
@@ -2580,7 +2593,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/castelao/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/castelao-serra-da-arrabida-coast-setubal-portugal.webp</image:loc></image:image>
@@ -2978,7 +2991,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/koshu/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/koshu-yamanashi-chureito-pagoda-mount-fuji-japan.webp</image:loc></image:image>
@@ -3473,6 +3486,12 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/roditis-patras-rio-antirrio-bridge-greece.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/grapes/romorantin/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/grapes/roter-veltliner/</loc>
     <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -3729,7 +3748,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/trousseau/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4397,6 +4416,7 @@
     <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/jura-church-clock-tower-fog-france.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/kakheti/</loc>
@@ -7885,9 +7905,10 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/domaine-berthet-bondet-chateau-chalon/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/jura-church-clock-tower-fog-france.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/domaine-billaud-simon-chablis/</loc>
@@ -8010,9 +8031,10 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/domaine-de-montbourgeau-letoile/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/jura-church-clock-tower-fog-france.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/domaine-des-baumard-coteaux-du-layon/</loc>
@@ -8232,9 +8254,10 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/domaine-tissot-arbois-chardonnay-patchwork/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/p/jura-church-clock-tower-fog-france.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/wine-library/domaine-vincent-dauvissat-chablis-1er-cru-vaillons/</loc>

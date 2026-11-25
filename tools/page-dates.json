@@ -1,6 +1,6 @@
 {
 "about/": [
-"8252d6a3a8dfaade",
+"4e730ba9136c93ab",
 "2026-11-25"
 ],
 "careers/": [
@@ -1360,8 +1360,8 @@
 "2026-11-23"
 ],
 "grapes/": [
-"c24bb43205884ff6",
-"2026-11-23"
+"a416a24238bc54a8",
+"2026-11-25"
 ],
 "grapes/agiorgitiko/": [
 "af29cdccd0c54808",
@@ -1443,6 +1443,10 @@
 "da1a62bd13360393",
 "2026-11-24"
 ],
+"grapes/bical/": [
+"d5b9b06162839195",
+"2026-11-25"
+],
 "grapes/blauer-portugieser/": [
 "cc99eaef9918fa85",
 "2026-11-24"
@@ -1455,6 +1459,10 @@
 "e621ac1306aeb4b7",
 "2026-11-24"
 ],
+"grapes/bogazkere/": [
+"34b8241346676867",
+"2026-11-25"
+],
 "grapes/cabernet-franc/": [
 "fce479e7ba0a02ff",
 "2026-11-24"
@@ -1464,8 +1472,8 @@
 "2026-11-24"
 ],
 "grapes/canaiolo/": [
-"571fd814cdaa05fa",
-"2026-11-24"
+"d69e5fbf6e1bf12e",
+"2026-11-25"
 ],
 "grapes/cannonau/": [
 "72ef1469ec07266d",
@@ -1488,8 +1496,8 @@
 "2026-11-24"
 ],
 "grapes/castelao/": [
-"b424c369fb5fa899",
-"2026-11-24"
+"7002db1206bbc44a",
+"2026-11-25"
 ],
 "grapes/catarratto/": [
 "eabeceebf78266f4",
@@ -1724,8 +1732,8 @@
 "2026-11-24"
 ],
 "grapes/koshu/": [
-"13e5d52a77b4970b",
-"2026-11-24"
+"4ff865263ee8e414",
+"2026-11-25"
 ],
 "grapes/kotsifali/": [
 "1c3ed34f0ff6cc03",
@@ -2015,6 +2023,10 @@
 "0ef030f2e201b75c",
 "2026-11-24"
 ],
+"grapes/romorantin/": [
+"39f4876e91e08913",
+"2026-11-25"
+],
 "grapes/roter-veltliner/": [
 "2eb6bc9937fd8b25",
 "2026-11-24"
@@ -2168,8 +2180,8 @@
 "2026-11-24"
 ],
 "grapes/trousseau/": [
-"a21d25f55a562a0a",
-"2026-11-24"
+"002057f65655fe3f",
+"2026-11-25"
 ],
 "grapes/ugni-blanc/": [
 "11c51fca10a9066f",
@@ -2576,7 +2588,7 @@
 "2026-11-23"
 ],
 "regions/jura/": [
-"6a2a27d97ee3c276",
+"6ce5875dbbd25a7d",
 "2026-11-25"
 ],
 "regions/kakheti/": [
@@ -4652,8 +4664,8 @@
 "2026-11-23"
 ],
 "wine-library/domaine-berthet-bondet-chateau-chalon/": [
-"4bdacacf6aab7f91",
-"2026-11-23"
+"8c1ab1aa554f64e8",
+"2026-11-25"
 ],
 "wine-library/domaine-billaud-simon-chablis/": [
 "72f99407ccf7bf4c",
@@ -4724,8 +4736,8 @@
 "2026-11-23"
 ],
 "wine-library/domaine-de-montbourgeau-letoile/": [
-"a385c7957469e27b",
-"2026-11-23"
+"8cba4773f0e0b40e",
+"2026-11-25"
 ],
 "wine-library/domaine-des-baumard-coteaux-du-layon/": [
 "dcce3dc631b00329",
@@ -4852,8 +4864,8 @@
 "2026-11-23"
 ],
 "wine-library/domaine-tissot-arbois-chardonnay-patchwork/": [
-"0792379deaa00656",
-"2026-11-23"
+"9e5a7d711f9b2cfb",
+"2026-11-25"
 ],
 "wine-library/domaine-vincent-dauvissat-chablis-1er-cru-vaillons/": [
 "bd88d41676d5c3fd",
