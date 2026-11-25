@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://thewinereference.co.uk/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/og-wine-reference-douro-vineyards.jpg</image:loc><image:title>The Wine Reference</image:title></image:image>
@@ -285,7 +285,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/about/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -339,7 +339,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2423,7 +2423,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/altesse/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2619,14 +2619,14 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/chardonnay/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/chardonnay-green-grape-bunches-vine-oregon.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/chasselas/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/chasselas-lavaux-terraces-lake-geneva-switzerland.webp</image:loc></image:image>
@@ -2703,7 +2703,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/dornfelder/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/dornfelder-pfalz-vineyard-aerial-autumn-germany.webp</image:loc></image:image>
@@ -2822,7 +2822,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/gamay/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/gamay-chateau-de-la-chaize-beaujolais-france.webp</image:loc></image:image>
@@ -2938,7 +2938,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/jacquere/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3120,7 +3120,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/mondeuse/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/mondeuse-lac-du-bourget-boats-savoie-france.webp</image:loc></image:image>
@@ -3153,7 +3153,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/muller-thurgau/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/muller-thurgau-grapes-vine-franconia-germany.webp</image:loc></image:image>
@@ -3372,7 +3372,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/pinot-noir/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/pinot-noir-grape-clusters-vineyard-oregon.webp</image:loc></image:image>
@@ -3444,7 +3444,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/riesling/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/riesling-white-grape-bunches-vine-franken.webp</image:loc></image:image>
@@ -3512,7 +3512,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/sauvignon-blanc/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/sauvignon-blanc-sancerre-vineyard-autumn-loire.webp</image:loc></image:image>
@@ -3890,7 +3890,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/adelaide-hills/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/adelaide-hills-gum-trees-farm-track-australia.webp</image:loc></image:image>
@@ -3923,7 +3923,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/alsace/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/alsace-wine-village-and-vineyards-france.webp</image:loc></image:image>
@@ -3955,7 +3955,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/barossa-valley/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/barossa-valley-gum-tree-hills-tanunda-australia.webp</image:loc></image:image>
@@ -3969,7 +3969,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/beaujolais/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/beaujolais-brouilly-vineyard-hills-france.webp</image:loc></image:image>
@@ -4010,7 +4010,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/bordeaux/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/bordeaux-pomerol-merlot-grapes-on-the-vine-france.webp</image:loc></image:image>
@@ -4029,7 +4029,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/burgundy/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/burgundy-vineyard-rows-yonne-france.webp</image:loc></image:image>
@@ -4140,7 +4140,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/champagne/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/champagne-vineyards-ay-autumn-france.webp</image:loc></image:image>
@@ -4153,7 +4153,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/clare-valley/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4186,7 +4186,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/coonawarra/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4233,7 +4233,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/eden-valley/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4309,7 +4309,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/grampians/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/grampians-mountain-range-forest-victoria-australia.webp</image:loc></image:image>
@@ -4351,7 +4351,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/hunter-valley/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/hunter-valley-pokolbin-road-vineyards-sunset-australia.webp</image:loc></image:image>
@@ -4392,7 +4392,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/jura/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4446,13 +4446,13 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/langhorne-creek/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/languedoc-roussillon/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/languedoc-pic-saint-loup-vineyard-autumn-france.webp</image:loc></image:image>
@@ -4506,7 +4506,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/loire-valley/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/loire-valley-sancerre-vineyards-autumn-france.webp</image:loc></image:image>
@@ -4580,7 +4580,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/margaret-river/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/margaret-river-winery-vineyard-western-australia.webp</image:loc></image:image>
@@ -4607,7 +4607,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/mclaren-vale/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/mclaren-vale-port-willunga-jetty-dusk-australia.webp</image:loc></image:image>
@@ -4672,27 +4672,27 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/mornington-peninsula/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/mornington-peninsula-coastal-heath-bay-australia.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/mosel/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/mosel-river-loop-vineyards-bernkastel-kues-germany.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/nagambie-lakes/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/nahe/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4758,6 +4758,12 @@
     <image:image><image:loc>https://thewinereference.co.uk/img/p/penedes-vineyard-el-vendrell-catalonia-spain.webp</image:loc></image:image>
   </url>
   <url>
+    <loc>https://thewinereference.co.uk/regions/pfalz/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://thewinereference.co.uk/regions/piedmont/</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -4787,7 +4793,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/provence/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/provence-winery-vineyard-rows-france.webp</image:loc></image:image>
@@ -4801,21 +4807,21 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/rheingau/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/rheingau-vineyard-sunset-geisenheim-germany.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/rheinhessen/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/rheinhessen-mainz-rhine-bridge-sunset-germany.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/rhone-valley/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/rhone-valley-vineyard-hills-tournon-sur-rhone-france.webp</image:loc></image:image>
@@ -4875,7 +4881,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/rutherglen/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4912,6 +4918,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/sardinia-castelsardo-coast-vineyard-italy.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/regions/savoie/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/serra-catarinense/</loc>
@@ -4964,7 +4976,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/south-west-france/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/saint-cirq-lapopie-lot-valley-south-west-france.webp</image:loc></image:image>
@@ -5017,6 +5029,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/tarragona-roman-amphitheatre-mediterranean-coast-spain.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/regions/tasmania/</loc>
+    <lastmod>2026-11-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/terra-alta/</loc>
@@ -5195,7 +5213,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/regions/yarra-valley/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/yarra-valley-vineyards-aerial-victoria-australia.webp</image:loc></image:image>
@@ -5584,7 +5602,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/stories/speyer-wine-bottle-oldest-wine-in-the-world/</loc>
-    <lastmod>2026-11-24</lastmod>
+    <lastmod>2026-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/s/speyer-cathedral-roman-wine-bottle-germany.webp</image:loc></image:image>
