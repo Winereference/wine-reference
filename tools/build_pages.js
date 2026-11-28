@@ -44,13 +44,18 @@ async function loadData(){
       SPR:g('SPR'),SPB:g('SPB'),SPD:g('SPD')||{},SPH:g('SPH')||{},SPC:g('SPC'),CK:g('CK')||[],ST:g('ST'),CG:g('CG')||[],NL:(window.MONEY||{}).newsletter||{},AS:(window.MONEY||{}).adsense||'',CF:(window.MONEY||{}).contactForm||'',GW:(typeof wsGrapeBlock=='function'?Object.fromEntries(G.map(x=>[x[0],wsGrapeBlock(x)])):{}),gl}});
   await b.close();return d}
 
-let NL={},ASID='',CF='';
+let NL={},ASID='',CF='',HUB={};
+// AdSense / quality (28 Nov 2026): item pages with under 250 words of their own text are kept out of Google
+// (noindex, still linked and visible) until the daily tasks make them longer. Hubs are always indexed.
+const THIN_DIRS=/^(wine-library|food-pairing|grapes|regions|cocktails|spirits|glossary)\/[^/]+\/$/;
+const thinPage=(rel,body)=>THIN_DIRS.test(rel)&&String(body).replace(/<svg[\s\S]*?<\/svg>|<script[\s\S]*?<\/script>/g,'').replace(/<[^>]+>/g,' ').split(/\s+/).filter(Boolean).length<250;
 const MENU=up=>[['grapes/','Grapes'],['regions/','Regions'],['wine-library/','Wine Library'],['food-pairing/','Food pairing'],['stories/','Stories'],['spirits/','Spirits'],['glossary/','Glossary']].map(([h,t])=>`<a href="${up}${h}">${t}</a>`).join('');
 function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
   const depth=rel.split('/').filter(Boolean).length, up='../'.repeat(depth), url=SITE+rel;
   const og=img?SITE+img:SITE+'img/og-wine-reference-douro-vineyards.jpg';
   const bc={"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"The Wine Reference","item":SITE}].concat(crumbs.map((c,i)=>({"@type":"ListItem","position":i+2,"name":c[0],"item":SITE+c[1]})))};
-  const ld={"@context":"https://schema.org","@graph":[bc].concat(jsonld?[jsonld]:[])};
+  const il=HUB[rel]?(()=>{const seen=new Set(),it=[];const re=new RegExp('href="(?:\\.\\./)?('+rel.replace(/[-/]/g,m=>'\\'+m)+'[^"/#]+/)"','g');let m;while((m=re.exec(body))&&it.length<50){if(!seen.has(m[1])){seen.add(m[1]);it.push({"@type":"ListItem","position":it.length+1,"url":SITE+m[1]})}}return it.length?{"@type":"ItemList","name":h1,"numberOfItems":it.length,"itemListElement":it}:null})():null;
+  const ld={"@context":"https://schema.org","@graph":[bc].concat(jsonld?[jsonld]:[]).concat(il?[il]:[])};
   return `<!DOCTYPE html>
 <html lang="en-GB">
 <head>
@@ -64,7 +69,7 @@ function page({rel,title,desc,keywords,h1,crumbs,body,img,imgAlt,jsonld}){
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc)}">
 <meta name="keywords" content="${esc(keywords.join(', '))}">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="${thinPage(rel,body)?'noindex, follow':'index, follow, max-image-preview:large'}">
 <meta name="author" content="Diego Muntoni">
 <link rel="canonical" href="${url}">
 <meta property="og:type" content="article">
@@ -88,7 +93,7 @@ ${/^ca-pub-\d+$/.test(ASID)?`<script async src="https://pagead2.googlesyndicatio
 <main class="wrap">
 <p class="crumbs"><a href="${up}">Home</a>${crumbs.map((c,i)=>i<crumbs.length-1?` › <a href="${up}${c[1]}">${esc(c[0])}</a>`:` › ${esc(c[0])}`).join('')}</p>
 <h1>${esc(h1)}</h1>
-${body}
+${HUB[rel]||''}${body}
 ${/^https:\/\//.test(NL.action||'')?`<div class="support nl"><h2>The Wine Reference newsletter</h2><p>New wines, stories and career guides, one email a week at most.</p><form method="post" target="_blank" action="${esc(NL.action)}" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center"><label for="nle" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label><input type="email" id="nle" name="${esc(NL.field||'email')}" required autocomplete="email" placeholder="Your email address" style="flex:1 1 200px;min-width:0;padding:11px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit"><button class="btn" type="submit" style="border:0;margin:0;cursor:pointer;font:600 15px Inter,sans-serif">Subscribe</button></form><p class="muted" style="font-size:12px;margin:8px 0 0">Over 18s only. Unsubscribe any time with one click. Your email is stored securely by ${esc(NL.provider||'our newsletter provider')} and never shared.</p></div>`:''}
 <div class="shr"><b>Share this page</b><a href="https://wa.me/?text=${encodeURIComponent(h1+" · The Wine Reference "+url)}" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}" target="_blank" rel="noopener">Facebook</a><a href="https://x.com/intent/tweet?text=${encodeURIComponent(h1+" · The Wine Reference")}&amp;url=${encodeURIComponent(url)}" target="_blank" rel="noopener">X</a><a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">LinkedIn</a><a href="https://pinterest.com/pin/create/button/?url=${encodeURIComponent(url)}&amp;media=${encodeURIComponent(og)}&amp;description=${encodeURIComponent(h1)}" target="_blank" rel="noopener">Pinterest</a><a href="mailto:?subject=${encodeURIComponent(h1+" · The Wine Reference")}&amp;body=${encodeURIComponent(url)}">Email</a></div>
 <div class="support"><h2>Support The Wine Reference</h2><p>This guide is free, with no paywall. If it helped you choose a bottle, you can buy me a glass and keep it growing.</p><a class="btn" href="https://ko-fi.com/winereference" target="_blank" rel="noopener">🍷 Buy me a glass</a></div>
@@ -112,7 +117,7 @@ function write(rel,html){const f=path.join(ROOT,rel,'index.html');fs.mkdirSync(p
 (async()=>{
   const D=await loadData();NL=D.NL||{};ASID=D.AS||"";CF=D.CF||"";
   for(const o of OUT)fs.rmSync(path.join(ROOT,o),{recursive:true,force:true});
-  const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;const GW=D.GW||{};
+  const {R,G,GD,K,SUB,CI,AP,PH,WL,DP,SPR,SPB,ST}=D;const GW=D.GW||{};HUB=require('./hub_intros.js')({G:G.length,R:R.length,C:new Set(R.map(r=>r[1])).size,WL:WL.length,DP:(DP||[]).length,CK:(D.CK||[]).length,SPB:(SPB||[]).length});
   // the app gives each bottle SVG a random id suffix; make it stable so unchanged grape pages stay byte-identical (real sitemap dates)
   for(const k in GW){const b=GW[k]&&GW[k].bottle;const m=b&&b.match(/id="wsg[^"]*?(\d{3,})"/);if(m)GW[k].bottle=b.split(m[1]).join('')}const CK=D.CK||[];const SPD=D.SPD||{},SPH=D.SPH||{};
   const PHf=n=>PH&&PH[n];

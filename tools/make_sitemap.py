@@ -34,6 +34,7 @@ for root,dirs,files in os.walk('.'):
         pages.append(root[2:].replace(os.sep,'/')+'/')
 for rel in sorted(pages,key=lambda r:(r.count('/'),r)):
     h=open(os.path.join(rel,'index.html'),encoding='utf-8').read()
+    if 'content="noindex' in h: continue  # thin pages hidden from Google until they grow
     m=re.search(r'<meta property="og:image" content="([^"]+)"',h)
     im=f'\n    <image:image><image:loc>{escape(m.group(1))}</image:loc></image:image>' if m and 'og-wine-reference' not in m.group(1) else ''
     hub=rel.count('/')==1
