@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://thewinereference.co.uk/</loc>
-    <lastmod>2026-11-27</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/og-wine-reference-douro-vineyards.jpg</image:loc><image:title>The Wine Reference</image:title></image:image>
@@ -353,7 +353,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/stories/</loc>
-    <lastmod>2026-11-27</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -3483,7 +3483,7 @@
   </url>
   <url>
     <loc>https://thewinereference.co.uk/grapes/riesling/</loc>
-    <lastmod>2026-11-25</lastmod>
+    <lastmod>2026-11-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/p/riesling-white-grape-bunches-vine-franken.webp</image:loc></image:image>
@@ -5596,6 +5596,13 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <image:image><image:loc>https://thewinereference.co.uk/img/s/avignon-palais-des-papes-chateauneuf-du-pape-ufo-ban.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://thewinereference.co.uk/stories/christmas-truce-1914-beer-schnapps-and-plum-pudding/</loc>
+    <lastmod>2026-11-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <image:image><image:loc>https://thewinereference.co.uk/img/s/candle-lanterns-in-snow-christmas-truce-1914.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://thewinereference.co.uk/stories/feuerzangenbowle-germany-flaming-christmas-punch/</loc>
